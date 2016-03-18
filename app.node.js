@@ -8655,7 +8655,7 @@ module.exports =
               return console.error('https://api.ebeecare.com/api/getServices', err.toString());
             }
             if (res.body && res.body.services && Array.isArray(res.body.services)) {
-              console.log(res.body.services);
+              // console.log(res.body.services);
               _this.setState({
                 services: res.body.services
               });
