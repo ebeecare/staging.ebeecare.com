@@ -8227,6 +8227,10 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
+  var _libUtil = __webpack_require__(10);
+
+  var _libUtil2 = _interopRequireDefault(_libUtil);
+
   var LoginPopup = (function (_Component) {
     _inherits(LoginPopup, _Component);
 
@@ -8334,13 +8338,13 @@ module.exports =
 
           this.setState({ pending: true });
 
-          this.serverRequest = _superagent2['default'].post(Util.host + '/api/mlogin').auth(Util.authKey, Util.authSecret).send({
+          this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/mlogin').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
             email: this.state.email,
             password: this.state.password
           }).end(function (err, res) {
             _this2.setState({ pending: false });
             if (err) {
-              return console.error(Util.host + '/api/mlogin', status, err.toString());
+              return console.error(_libUtil2['default'].host + '/api/mlogin', status, err.toString());
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body);
