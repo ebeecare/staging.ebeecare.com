@@ -732,10 +732,28 @@ module.exports =
 /* 10 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-link-state");
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+  var util = {
+    host: window.location.hostname.indexOf('ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
+    authKey: 'secret',
+    authSecret: 'secret0nlyWeilsonKnowsShhh852~'
+  };
+
+  exports['default'] = util;
+  module.exports = exports['default'];
 
 /***/ },
 /* 11 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-link-state");
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -833,24 +851,6 @@ module.exports =
   })(_react.Component);
 
   exports['default'] = AlertPopup;
-  module.exports = exports['default'];
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-  var util = {
-    host: window.location.hostname.indexOf('ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
-    authKey: 'secret',
-    authSecret: 'secret0nlyWeilsonKnowsShhh852~'
-  };
-
-  exports['default'] = util;
   module.exports = exports['default'];
 
 /***/ },
@@ -1223,7 +1223,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -1241,7 +1241,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1249,7 +1249,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -1457,7 +1457,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1585,7 +1585,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -1619,7 +1619,7 @@ module.exports =
 
   var _LoginPopup2 = _interopRequireDefault(_LoginPopup);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1978,7 +1978,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -1992,7 +1992,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2008,7 +2008,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -2301,7 +2301,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2575,7 +2575,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -2585,7 +2585,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2888,7 +2888,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -3145,7 +3145,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -3183,7 +3183,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -4203,7 +4203,7 @@ module.exports =
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -4217,7 +4217,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -4225,7 +4225,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -4460,7 +4460,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -4740,7 +4740,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -4778,7 +4778,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -5488,7 +5488,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -5689,7 +5689,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -5723,7 +5723,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -5731,7 +5731,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -6873,6 +6873,10 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
+  var _libUtil = __webpack_require__(10);
+
+  var _libUtil2 = _interopRequireDefault(_libUtil);
+
   var BookingPaypal = (function (_Component) {
     _inherits(BookingPaypal, _Component);
 
@@ -6895,11 +6899,11 @@ module.exports =
             pending: true
           });
           // Execute paypal payment since this is returned from Paypal
-          this.serverRequest1 = _superagent2['default'].post(Util.host + '/api/verifyPaypalTransaction').auth(Util.authKey, Util.authSecret).send({
+          this.serverRequest1 = _superagent2['default'].post(_libUtil2['default'].host + '/api/verifyPaypalTransaction').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
             ppid: this.state.paymentId
           }).end(function (err, res) {
             if (err) {
-              return console.error(Util.host + '/api/verifyPaypalTransaction', status, err.toString());
+              return console.error(_libUtil2['default'].host + '/api/verifyPaypalTransaction', status, err.toString());
             }
             console.log(res.body);
             if (res.body && res.body.status) {
@@ -7005,7 +7009,7 @@ module.exports =
           pending: true
         });
 
-        this.serverRequest2 = _superagent2['default'].post(Util.host + '/api/makePaypalWebPayment').auth(Util.authKey, Util.authSecret).send({
+        this.serverRequest2 = _superagent2['default'].post(_libUtil2['default'].host + '/api/makePaypalWebPayment').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
           amount: this.props.booking['case'].price,
           type: 'case',
           cid: this.props.booking['case'].id,
@@ -7013,7 +7017,7 @@ module.exports =
           cancelUrl: window.location.href.slice(0, window.location.href.indexOf('?')) + '?bid=' + this.props.booking.id
         }).end(function (err, res) {
           if (err) {
-            return console.error(Util.host + '/api/makePaypalWebPayment', status, err.toString());
+            return console.error(_libUtil2['default'].host + '/api/makePaypalWebPayment', status, err.toString());
           }
           if (res.body && res.body.status) {
             console.log(res.body.url);
@@ -8178,7 +8182,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -8682,7 +8686,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -8694,7 +8698,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(12);
+  var _libUtil = __webpack_require__(10);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
