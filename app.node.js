@@ -8469,7 +8469,7 @@ module.exports =
               { className: 'Navigation-item' },
               _react2['default'].createElement(
                 'a',
-                { className: 'Navigation-link', href: 'http://161.202.19.121/login/' },
+                { className: 'Navigation-link', href: 'https://app.ebeecare.com/login/' },
                 'Login'
               )
             )
@@ -8543,7 +8543,7 @@ module.exports =
                   { className: 'Navigation-item' },
                   _react2['default'].createElement(
                     'a',
-                    { className: 'Navigation-link', href: 'http://161.202.19.121/login/' },
+                    { className: 'Navigation-link', href: 'https://app.ebeecare.com/login/' },
                     'Login'
                   )
                 )
