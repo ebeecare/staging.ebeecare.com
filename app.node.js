@@ -4065,11 +4065,15 @@ module.exports =
                   'Call Ebeecare Hotline'
                 ),
                 _react2['default'].createElement(
-                  'a',
-                  { href: '#', className: 'btn Actions-item-button', onClick: function (e) {
-                      e.preventDefault();
-                    } },
-                  '9733 6938'
+                  'div',
+                  null,
+                  _react2['default'].createElement(
+                    'a',
+                    { href: '#', className: 'btn Actions-item-button', onClick: function (e) {
+                        e.preventDefault();
+                      } },
+                    '9733 6938'
+                  )
                 )
               )
             )
