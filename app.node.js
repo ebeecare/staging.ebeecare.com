@@ -1339,12 +1339,12 @@ module.exports =
         if (this._accountManageBookingForm.checkValidity()) {
           event.preventDefault();
 
-          this.serverRequest1 = _superagent2['default'].get('http://161.202.19.121/api/getBooking').query({
+          this.serverRequest1 = _superagent2['default'].get('https://api.ebeecare.com/api/getBooking').query({
             bid: this.state.bid,
             email: this.state.email
           }).auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/getBooking', status, err.toString());
+              return console.error('https://api.ebeecare.com/api/getBooking', status, err.toString());
             }
             if (res.body && res.body.booking && res.body.status) {
               console.log(res.body.booking);
@@ -1369,7 +1369,7 @@ module.exports =
   module.exports = exports['default'];
   /*
   <div className="Account-login Account-container-item">
-   <form id="AccountLoginForm" action="http://161.202.19.121/login/" method="POST">
+   <form id="AccountLoginForm" action="https://app.ebecare.com/login/" method="POST">
      <h3>Already a Member?</h3>
      <input className="EmailInput" type="email" name="email" placeholder="Enter Email" />
      <input className="PasswordInput" type="password" name="password" placeholder="Enter Password" />
@@ -1995,7 +1995,7 @@ module.exports =
         // Reset sum displayed on sidebar
         _actionsBookingActions2['default'].setSum();
 
-        this.serverRequest = _superagent2['default'].get('http://161.202.19.121/api/getAvailableSchedule').query({
+        this.serverRequest = _superagent2['default'].get('https://api.ebeecare.com/api/getAvailableSchedule').query({
           service: this.props.booking.service,
           dateStart: this.props.booking.range.start.format('YYYY-MM-DD'),
           dateEnd: this.props.booking.range.end.format('YYYY-MM-DD'),
@@ -2003,7 +2003,7 @@ module.exports =
           'preferredTimes[]': this.props.booking.timeslots // hack to send PHP style arrays
         }).auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
           if (err) {
-            return console.error('http://161.202.19.121/api/getAvailableSchedule', status, err.toString());
+            return console.error('https://api.ebeecare.com/api/getAvailableSchedule', status, err.toString());
           }
           if (res.body && res.body.timeSlots && Array.isArray(res.body.timeSlots)) {
             // console.log(res.body.timeSlots);
@@ -2872,9 +2872,9 @@ module.exports =
         _storesBookingStore2['default'].addChangeListener(this._onChange.bind(this));
 
         if (!_storesBookingStore2['default'].getServices()) {
-          this.serverRequest1 = _superagent2['default'].get('http://161.202.19.121/api/getServices').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
+          this.serverRequest1 = _superagent2['default'].get('https://api.ebeecare.com/api/getServices').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/getServices', err.toString());
+              return console.error('https://api.ebeecare.com/api/getServices', err.toString());
             }
             if (res.body && res.body.services && Array.isArray(res.body.services)) {
               // console.log(res.body.services);
@@ -2891,12 +2891,12 @@ module.exports =
             _actionsBookingActions2['default'].setPostStatus('payment-paypal');
           }
 
-          this.serverRequest2 = _superagent2['default'].get('http://161.202.19.121/api/getBooking').query({
+          this.serverRequest2 = _superagent2['default'].get('https://api.ebeecare.com/api/getBooking').query({
             bid: this.props.location.query.bid,
             email: this.props.location.query.email
           }).auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/getBooking', status, err.toString());
+              return console.error('https://api.ebeecare.com/api/getBooking', status, err.toString());
             }
             if (res.body && res.body.booking && res.body.status) {
               // console.log(res.body.booking);
@@ -3760,7 +3760,7 @@ module.exports =
           case 'user':
             if (this._userDetailsForm.checkValidity()) {
               this.setState({ updatingUser: true });
-              this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+              this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 booking: {
@@ -3770,7 +3770,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error('http://161.202.19.121/api/editBooking', err.toString());
+                  return console.error('https://api.ebeecare.com/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -3793,7 +3793,7 @@ module.exports =
           case 'address':
             if (this._addressDetailsForm.checkValidity()) {
               this.setState({ updatingAddress: true });
-              this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+              this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 'case': {
@@ -3806,7 +3806,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error('http://161.202.19.121/api/editBooking', err.toString());
+                  return console.error('https://api.ebeecare.com/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -4319,14 +4319,14 @@ module.exports =
             ref: undefined
           });
 
-          this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/verifyBankTransaction').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+          this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/verifyBankTransaction').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
             amount: this.props.booking['case'].price,
             type: 'Payment',
             ref: this.state.ref,
             sku: 'ebc-case-' + this.props.booking['case'].id
           }).end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/verifyBankTransaction', status, err.toString());
+              return console.error('https://api.ebeecare.com/api/verifyBankTransaction', status, err.toString());
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body);
@@ -4432,7 +4432,7 @@ module.exports =
               price: this.props.booking.sessions[i].price
             });
           }
-          this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/createCase').auth(this.props.user.id, this.props.user.token).send({
+          this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/createCase').auth(this.props.user.id, this.props.user.token).send({
             notes: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
             price: this.props.booking && this.props.booking.sum && this.props.booking.sum.toFixed(2),
             pid: this.props.patient.id,
@@ -4445,7 +4445,7 @@ module.exports =
             }]
           }).end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/createCase', err.toString());
+              return console.error('https://api.ebeecare.com/api/createCase', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body['case']) {
@@ -4471,7 +4471,7 @@ module.exports =
               price: this.props.booking.sessions[i].price
             });
           }
-          this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/createBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+          this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/createBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
             booking: {
               client_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
               client_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
@@ -4497,7 +4497,7 @@ module.exports =
             }
           }).end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/createBooking', err.toString());
+              return console.error('https://api.ebeecare.com/api/createBooking', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body.booking && res.body.booking['case']) {
@@ -5251,7 +5251,7 @@ module.exports =
           case 'user':
             if (this._userDetailsForm.checkValidity()) {
               this.setState({ updatingUser: true });
-              this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+              this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 booking: {
@@ -5259,7 +5259,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error('http://161.202.19.121/api/editBooking', err.toString());
+                  return console.error('https://api.ebeecare.com/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -5282,7 +5282,7 @@ module.exports =
           case 'address':
             if (this._addressDetailsForm.checkValidity()) {
               this.setState({ updatingAddress: true });
-              this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+              this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/editBooking').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 'case': {
@@ -5295,7 +5295,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error('http://161.202.19.121/api/editBooking', err.toString());
+                  return console.error('https://api.ebeecare.com/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -6434,7 +6434,7 @@ module.exports =
 
         if (this._patientDetailsForm.checkValidity()) {
           event.preventDefault();
-          this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/createPatient').auth(this.props.user.id, this.props.user.token).send({
+          this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/createPatient').auth(this.props.user.id, this.props.user.token).send({
             fullName: this.state.fullName,
             gender: this.state.gender,
             dob: this.state.dob.format('YYYY-MM-DD'),
@@ -6445,7 +6445,7 @@ module.exports =
             }]
           }).end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/createPatient', err.toString());
+              return console.error('https://api.ebeecare.com/api/createPatient', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body.patient) {
@@ -6501,9 +6501,9 @@ module.exports =
         var _this4 = this;
 
         cb = cb || function () {};
-        this.serverRequest = _superagent2['default'].get('http://161.202.19.121/api/getPatients').auth(user.id, user.token).end(function (err, res) {
+        this.serverRequest = _superagent2['default'].get('https://api.ebeecare.com/api/getPatients').auth(user.id, user.token).end(function (err, res) {
           if (err) {
-            return console.error('http://161.202.19.121/api/getPatients', err.toString());
+            return console.error('https://api.ebeecare.com/api/getPatients', err.toString());
           }
           if (res.body && res.body.status === 1) {
             console.log(res.body);
@@ -6825,11 +6825,11 @@ module.exports =
             pending: true
           });
           // Execute paypal payment since this is returned from Paypal
-          this.serverRequest1 = _superagent2['default'].post('http://161.202.19.121/api/verifyPaypalTransaction').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+          this.serverRequest1 = _superagent2['default'].post('https://api.ebeecare.com/api/verifyPaypalTransaction').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
             ppid: this.state.paymentId
           }).end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/verifyPaypalTransaction', status, err.toString());
+              return console.error('https://api.ebeecare.com/api/verifyPaypalTransaction', status, err.toString());
             }
             console.log(res.body);
             if (res.body && res.body.status) {
@@ -6935,7 +6935,7 @@ module.exports =
           pending: true
         });
 
-        this.serverRequest2 = _superagent2['default'].post('http://161.202.19.121/api/makePaypalWebPayment').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+        this.serverRequest2 = _superagent2['default'].post('https://api.ebeecare.com/api/makePaypalWebPayment').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
           amount: this.props.booking['case'].price,
           type: 'case',
           cid: this.props.booking['case'].id,
@@ -6943,7 +6943,7 @@ module.exports =
           cancelUrl: window.location.href.slice(0, window.location.href.indexOf('?')) + '?bid=' + this.props.booking.id
         }).end(function (err, res) {
           if (err) {
-            return console.error('http://161.202.19.121/api/makePaypalWebPayment', status, err.toString());
+            return console.error('https://api.ebeecare.com/api/makePaypalWebPayment', status, err.toString());
           }
           if (res.body && res.body.status) {
             console.log(res.body.url);
@@ -8237,13 +8237,13 @@ module.exports =
 
           this.setState({ pending: true });
 
-          this.serverRequest = _superagent2['default'].post('http://161.202.19.121/api/mlogin').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
+          this.serverRequest = _superagent2['default'].post('https://api.ebeecare.com/api/mlogin').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').send({
             email: this.state.email,
             password: this.state.password
           }).end(function (err, res) {
             _this2.setState({ pending: false });
             if (err) {
-              return console.error('http://161.202.19.121/api/mlogin', status, err.toString());
+              return console.error('https://api.ebeecare.com/api/mlogin', status, err.toString());
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body);
@@ -8646,9 +8646,9 @@ module.exports =
         var _this = this;
 
         if (!this.state.services) {
-          this.serverRequest1 = _superagent2['default'].get('http://161.202.19.121/api/getServices').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
+          this.serverRequest1 = _superagent2['default'].get('https://api.ebeecare.com/api/getServices').auth('secret', 'secret0nlyWeilsonKnowsShhh852~').end(function (err, res) {
             if (err) {
-              return console.error('http://161.202.19.121/api/getServices', err.toString());
+              return console.error('https://api.ebeecare.com/api/getServices', err.toString());
             }
             if (res.body && res.body.services && Array.isArray(res.body.services)) {
               console.log(res.body.services);
