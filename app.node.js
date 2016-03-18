@@ -7936,7 +7936,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'Footer-tel' },
-                  '9733 6938'
+                  '6873 0132'
                 ),
                 _react2['default'].createElement(
                   'div',
