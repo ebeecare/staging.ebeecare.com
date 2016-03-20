@@ -713,7 +713,7 @@ module.exports =
             _react2['default'].createElement(
               'ul',
               { className: 'BookingNavigation' },
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking1', link: 'booking1', icon: '1', text: 'Select Services' }),
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking1', link: 'booking1', icon: '1', text: 'Select Service' }),
               _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking2', link: 'booking2', icon: '2', text: 'Select Location' }),
               _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking3', link: 'booking3a', icon: '3', text: 'Select Date & Time' })
             )
