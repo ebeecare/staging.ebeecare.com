@@ -1363,12 +1363,21 @@ module.exports =
                 return _this._alertPopup = c;
               } },
             'Please fill up all required fields.'
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this._noBookingAlertPopup = c;
+              } },
+            'Sorry, we can\'t find your booking.'
           )
         );
       }
     }, {
       key: '_onClickFindBooking',
       value: function _onClickFindBooking(event) {
+        var _this2 = this;
+
         if (this._accountManageBookingForm.checkValidity()) {
           event.preventDefault();
 
@@ -1387,6 +1396,7 @@ module.exports =
               }
             } else {
               console.error('Failed to obtain booking data.');
+              _this2._noBookingAlertPopup.show();
             }
           });
         } else {
