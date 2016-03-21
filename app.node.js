@@ -4318,21 +4318,21 @@ module.exports =
                 _react2['default'].createElement(
                   'b',
                   null,
-                  'POSB'
+                  'UOB'
                 ),
                 _react2['default'].createElement('br', null),
                 'Type: ',
                 _react2['default'].createElement(
                   'b',
                   null,
-                  'Savings'
+                  'Current'
                 ),
                 _react2['default'].createElement('br', null),
                 'Account Number: ',
                 _react2['default'].createElement(
                   'b',
                   null,
-                  '150-27506-7'
+                  '341-306-307-6'
                 ),
                 _react2['default'].createElement('br', null)
               ),
