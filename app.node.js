@@ -7058,10 +7058,10 @@ module.exports =
               redirecting: true
             });
             console.log('Redirecting to ' + res.body.url);
-            window.location = res.body.url;
+            // window.location = res.body.url;
           } else {
-            console.error('Failed to create paypal payment.');
-          }
+              console.error('Failed to create paypal payment.');
+            }
         });
       }
     }]);
