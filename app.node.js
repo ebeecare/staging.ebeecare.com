@@ -7032,8 +7032,6 @@ module.exports =
     }, {
       key: '_onConfirm',
       value: function _onConfirm(event) {
-        var _this = this;
-
         // Link.handleClick(event);
         event.preventDefault();
 
@@ -7041,28 +7039,33 @@ module.exports =
           pending: true
         });
 
-        this.serverRequest2 = _superagent2['default'].post(_libUtil2['default'].host + '/api/makePaypalWebPayment').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
-          amount: this.props.booking['case'].price,
-          type: 'case',
-          cid: this.props.booking['case'].id,
-          returnUrl: window.location.href.slice(0, window.location.href.indexOf('?') + 1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail,
-          cancelUrl: window.location.href.slice(0, window.location.href.indexOf('?') + 1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail
-        }).end(function (err, res) {
-          if (err) {
-            return console.error(_libUtil2['default'].host + '/api/makePaypalWebPayment', status, err.toString());
-          }
-          if (res.body && res.body.status) {
-            console.log(res.body.url);
-            console.log(res.body.payment_id);
-            _this.setState({
-              redirecting: true
-            });
-            console.log('Redirecting to ' + res.body.url);
-            window.location = res.body.url;
-          } else {
-            console.error('Failed to create paypal payment.');
-          }
-        });
+        // this.serverRequest2 = request
+        //   .post(Util.host + '/api/makePaypalWebPayment')
+        //   .auth(Util.authKey, Util.authSecret)
+        //   .send({
+        //     amount: this.props.booking.case.price,
+        //     type: 'case',
+        //     cid: this.props.booking.case.id,
+        //     returnUrl: window.location.href.slice(0, window.location.href.indexOf('?')+1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail,
+        //     cancelUrl: window.location.href.slice(0, window.location.href.indexOf('?')+1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail
+        //   })
+        //   .end((err, res) => {
+        //     if (err) {
+        //       return console.error(Util.host + '/api/makePaypalWebPayment', status, err.toString());
+        //     }
+        //     if (res.body && res.body.status) {
+        //       console.log(res.body.url);
+        //       console.log(res.body.payment_id);
+        //       this.setState({
+        //         redirecting: true
+        //       });
+        //       console.log('Redirecting to ' + res.body.url);
+        //       window.location = res.body.url;
+        //     } else {
+        //       console.error('Failed to create paypal payment.');
+        //     }
+        //   });
+        console.log(window.location.href.slice(0, window.location.href.indexOf('?') + 1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail);
       }
     }]);
 
