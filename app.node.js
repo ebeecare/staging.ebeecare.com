@@ -7039,6 +7039,8 @@ module.exports =
           pending: true
         });
 
+        var url = (window.location.href.indexOf('?') ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
+
         // this.serverRequest2 = request
         //   .post(Util.host + '/api/makePaypalWebPayment')
         //   .auth(Util.authKey, Util.authSecret)
@@ -7065,7 +7067,7 @@ module.exports =
         //       console.error('Failed to create paypal payment.');
         //     }
         //   });
-        console.log(window.location.href.slice(0, window.location.href.indexOf('?') + 1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail);
+        console.log(url);
       }
     }]);
 
