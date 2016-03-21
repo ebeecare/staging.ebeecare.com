@@ -6946,6 +6946,7 @@ module.exports =
             }
           });
         }
+        console.log(window.location.href.slice(0, window.location.href.indexOf('?')) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail);
       }
     }, {
       key: 'componentWillUnmount',
