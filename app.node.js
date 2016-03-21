@@ -6946,7 +6946,6 @@ module.exports =
             }
           });
         }
-        console.log(window.location.href.slice(0, window.location.href.indexOf('?')) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail);
       }
     }, {
       key: 'componentWillUnmount',
@@ -7046,8 +7045,8 @@ module.exports =
           amount: this.props.booking['case'].price,
           type: 'case',
           cid: this.props.booking['case'].id,
-          returnUrl: window.location.href.slice(0, window.location.href.indexOf('?')) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail,
-          cancelUrl: window.location.href.slice(0, window.location.href.indexOf('?')) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail
+          returnUrl: window.location.href.slice(0, window.location.href.indexOf('?') + 1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail,
+          cancelUrl: window.location.href.slice(0, window.location.href.indexOf('?') + 1) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail
         }).end(function (err, res) {
           if (err) {
             return console.error(_libUtil2['default'].host + '/api/makePaypalWebPayment', status, err.toString());
@@ -7059,10 +7058,10 @@ module.exports =
               redirecting: true
             });
             console.log('Redirecting to ' + res.body.url);
-            // window.location = res.body.url;
+            window.location = res.body.url;
           } else {
-              console.error('Failed to create paypal payment.');
-            }
+            console.error('Failed to create paypal payment.');
+          }
         });
       }
     }]);
