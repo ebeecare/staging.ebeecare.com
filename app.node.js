@@ -7039,7 +7039,7 @@ module.exports =
           pending: true
         });
 
-        var url = (window.location.href.indexOf('?') ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
+        var url = (window.location.href.indexOf('?') > -1 ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
 
         // this.serverRequest2 = request
         //   .post(Util.host + '/api/makePaypalWebPayment')
