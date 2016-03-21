@@ -1761,7 +1761,7 @@ module.exports =
                 null,
                 'Additional Info:'
               ),
-              _react2['default'].createElement('textarea', { name: 'additionalInfo', valueLink: (0, _reactLinkState2['default'])(this, 'additionalInfo') })
+              _react2['default'].createElement('textarea', { name: 'additionalInfo', valueLink: (0, _reactLinkState2['default'])(this, 'additionalInfo'), placeholder: 'Please provide important notes about patient here.' })
             )
           ),
           _react2['default'].createElement(
@@ -2986,6 +2986,13 @@ module.exports =
 
         this.serverRequest1 && this.serverRequest1.abort();
         this.serverRequest2 && this.serverRequest2.abort();
+      }
+    }, {
+      key: 'componentWillReceiveProps',
+      value: function componentWillReceiveProps(props) {
+        if (props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(props.path)) {
+          _libLocation2['default'].replace('');
+        }
       }
     }, {
       key: 'render',
@@ -4672,7 +4679,7 @@ module.exports =
             _react2['default'].createElement(
               'div',
               null,
-              'TOTAL AMOUNT : SGD ',
+              'ESTIMATED AMOUNT : SGD ',
               this.state.bookingAmt
             ),
             _react2['default'].createElement(
@@ -4684,7 +4691,7 @@ module.exports =
                 { href: 'mailto:contact@ebeecare.com' },
                 'contact@ebeecare.com'
               ),
-              ' or call us at 9733 6938, Mon-Fri (9.00am - 6.00pm).'
+              ' or call us at 6873 0132, Mon-Fri (9.00am - 6.00pm).'
             ),
             _react2['default'].createElement(
               'div',
@@ -4719,7 +4726,7 @@ module.exports =
                 { href: 'mailto:contact@ebeecare.com' },
                 'contact@ebeecare.com'
               ),
-              ' or 9733 6938 immediately.'
+              ' or 6873 0132 immediately.'
             )
           );
         } else {
@@ -6004,7 +6011,7 @@ module.exports =
                   null,
                   'Additional Info:'
                 ),
-                _react2['default'].createElement('textarea', { name: 'additionalInfo', valueLink: (0, _reactLinkState2['default'])(this, 'additionalInfo') })
+                _react2['default'].createElement('textarea', { name: 'additionalInfo', valueLink: (0, _reactLinkState2['default'])(this, 'additionalInfo'), placeholder: 'Please provide important notes about patient here.' })
               )
             );
           } else {
@@ -7053,7 +7060,7 @@ module.exports =
           if (err) {
             return console.error(_libUtil2['default'].host + '/api/makePaypalWebPayment', status, err.toString());
           }
-          if (res.body && res.body.status) {
+          if (res.body && res.body.status === 1) {
             console.log(res.body.url);
             console.log(res.body.payment_id);
             _this.setState({
