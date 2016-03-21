@@ -798,10 +798,10 @@ module.exports =
 
         var styles = {
           dialogStyles: {
-            width: '25%',
+            width: '50%',
             height: 'auto',
             marginTop: '0',
-            marginLeft: '-12.5%',
+            marginLeft: '-25%',
             top: '100px',
             textAlign: 'center'
           },
@@ -1369,7 +1369,7 @@ module.exports =
             { ref: function (c) {
                 return _this._noBookingAlertPopup = c;
               } },
-            'Sorry, we can\'t find your booking.'
+            'Sorry, we are not able to find your booking.'
           )
         );
       }
@@ -4104,7 +4104,7 @@ module.exports =
                     { href: '#', className: 'btn Actions-item-button', onClick: function (e) {
                         e.preventDefault();
                       } },
-                    '9733 6938'
+                    '6873 0132'
                   )
                 )
               )
