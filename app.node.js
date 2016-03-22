@@ -3684,7 +3684,7 @@ module.exports =
             _react2['default'].createElement(
               'div',
               { className: 'TableRowItem3' },
-              this.props.booking.quotes[0].fulName
+              this.props.booking['case'].quotes[0].fulName
             )
           ),
           _react2['default'].createElement(
@@ -3698,7 +3698,7 @@ module.exports =
             _react2['default'].createElement(
               'div',
               { className: 'TableRowItem3' },
-              this.props.booking.quotes[0].user.email
+              this.props.booking['case'].quotes[0].user.email
             )
           ),
           _react2['default'].createElement(
@@ -3712,7 +3712,7 @@ module.exports =
             _react2['default'].createElement(
               'div',
               { className: 'TableRowItem3' },
-              this.props.booking.quotes[0].user.mobilePhone
+              this.props.booking['case'].quotes[0].user.mobilePhone
             )
           )
         );
