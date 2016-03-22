@@ -3671,7 +3671,7 @@ module.exports =
           );
         }
         // show caregiver section only if case has been paid
-        if (this.props.booking['case'].isPaid) {
+        if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].isPaid) {
           caregiverSection = _react2['default'].createElement(
             'div',
             { className: 'BookingDetailsBodySection' },
@@ -3827,7 +3827,7 @@ module.exports =
                       ),
                       _react2['default'].createElement(
                         'a',
-                        { href: '#', className: this.state.editingUser ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
+                        { href: '#', className: this.state.editingUser || this.props.booking['case'].isPaid ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
                         _react2['default'].createElement('img', { src: __webpack_require__(17) })
                       )
                     ),
