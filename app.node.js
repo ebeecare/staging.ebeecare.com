@@ -3263,7 +3263,7 @@ module.exports =
       value: function render() {
         var _this = this;
 
-        var userDetails, patientDetails, addressDetails, paymentButton;
+        var userDetails, patientDetails, addressDetails, caregiverDetails, paymentButton;
         if (this.state.editingUser) {
           userDetails = _react2['default'].createElement(
             'div',
@@ -3570,6 +3570,20 @@ module.exports =
                 { className: 'TableRowItem3' },
                 (0, _moment2['default'])(this.props.booking.patient_dob, 'YYYY-MM-DD').format('ll')
               )
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRow' },
+              _react2['default'].createElement(
+                'div',
+                { className: 'TableRowItem1' },
+                'Additional Notes'
+              ),
+              _react2['default'].createElement(
+                'div',
+                { className: 'TableRowItem3' },
+                this.props.booking['case'].notes
+              )
             )
           );
         }
@@ -3656,6 +3670,52 @@ module.exports =
             )
           );
         }
+        caregiverDetails = _react2['default'].createElement(
+          'div',
+          null,
+          _react2['default'].createElement(
+            'div',
+            { className: 'TableRow' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem1' },
+              'Name'
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem3' },
+              this.props.booking.quotes[0].fulName
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'TableRow' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem1' },
+              'Email'
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem3' },
+              this.props.booking.quotes[0].user.email
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'TableRow' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem1' },
+              'Contact Number'
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem3' },
+              this.props.booking.quotes[0].user.mobilePhone
+            )
+          )
+        );
         // show payment button only if booking is "Closed" and not yet paid, and if not editing
         if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].status === 'Closed' && !this.props.booking['case'].isPaid && !this.state.editingUser && !this.state.editingPatient && !this.state.editingAddress) {
           paymentButton = _react2['default'].createElement(
@@ -3669,7 +3729,7 @@ module.exports =
         var bookingStatus = '';
         if (this.props.booking['case'].status === 'Accepting Quotes') {
           bookingStatus = 'Pending Confirmation';
-        } else if (this.props.booking['case'].status === 'Closed') {
+        } else if (this.props.booking['case'].status === 'Closed' && !this.props.booking['case'].isPaid) {
           bookingStatus = 'Awaiting Payment for Confirmation';
         } else {
           bookingStatus = this.props.booking['case'].status;
@@ -3789,6 +3849,24 @@ module.exports =
                       _reactLoader2['default'],
                       { className: 'spinner', loaded: !this.state.updatingAddress ? true : false },
                       addressDetails
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'div',
+                    { className: 'BookingDetailsBodySection' },
+                    _react2['default'].createElement(
+                      'div',
+                      { className: 'BookingDetailsBodySectionTitle' },
+                      _react2['default'].createElement(
+                        'h3',
+                        null,
+                        'Caregiver Details'
+                      )
+                    ),
+                    _react2['default'].createElement(
+                      _reactLoader2['default'],
+                      { className: 'spinner', loaded: !this.state.updatingAddress ? true : false },
+                      caregiverDetails
                     )
                   ),
                   _react2['default'].createElement(
@@ -4015,7 +4093,7 @@ module.exports =
      <input type="email" id="client_contactEmail" name="client_contactEmail" value={this.props.booking.client_contactEmail} placeholder="Email*" maxLength="50" required />
    </div>
   </div>
-  */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/
+  */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
 /* 31 */
