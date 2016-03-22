@@ -644,22 +644,16 @@ module.exports =
 /* 6 */
 /***/ function(module, exports) {
 
-  module.exports = require("classNames");
+  module.exports = require("react-loader");
 
 /***/ },
 /* 7 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-loader");
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
   module.exports = require("superagent");
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -729,7 +723,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
   'use strict';
@@ -747,13 +741,13 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
   module.exports = require("react-link-state");
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -852,6 +846,12 @@ module.exports =
 
   exports['default'] = AlertPopup;
   module.exports = exports['default'];
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+  module.exports = require("classNames");
 
 /***/ },
 /* 13 */
@@ -1079,10 +1079,6 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
-
   __webpack_require__(97);
 
   var _Container = __webpack_require__(3);
@@ -1219,15 +1215,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1241,7 +1237,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1249,7 +1245,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -1467,7 +1463,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1595,17 +1591,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
-
-  var _classNames = __webpack_require__(6);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
 
   var _reactDatepicker = __webpack_require__(25);
 
@@ -1629,7 +1621,7 @@ module.exports =
 
   var _LoginPopup2 = _interopRequireDefault(_LoginPopup);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2011,7 +2003,7 @@ module.exports =
 
   var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2019,11 +2011,11 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -2033,7 +2025,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2049,7 +2041,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -2332,7 +2324,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -2340,7 +2332,7 @@ module.exports =
 
   var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -2354,7 +2346,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2628,7 +2620,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -2638,7 +2630,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2835,7 +2827,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2845,7 +2837,7 @@ module.exports =
 
   var _Container2 = _interopRequireDefault(_Container);
 
-  var _BookingNavigation = __webpack_require__(9);
+  var _BookingNavigation = __webpack_require__(8);
 
   var _BookingNavigation2 = _interopRequireDefault(_BookingNavigation);
 
@@ -2937,7 +2929,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -3201,23 +3193,19 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
-
-  var _classNames = __webpack_require__(6);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
 
   var _moment = __webpack_require__(16);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -3239,7 +3227,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -3263,7 +3251,7 @@ module.exports =
       value: function render() {
         var _this = this;
 
-        var userDetails, patientDetails, addressDetails, caregiverSection, paymentButton;
+        var userDetails, patientDetails, addressDetails, sessionDetails, caregiverSection, paymentButton;
         if (this.state.editingUser) {
           userDetails = _react2['default'].createElement(
             'div',
@@ -3670,6 +3658,52 @@ module.exports =
             )
           );
         }
+        sessionDetails = _react2['default'].createElement(
+          'div',
+          null,
+          _react2['default'].createElement(
+            'div',
+            { className: 'TableRow TableRowHeader' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem1' },
+              'Date'
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem1' },
+              'Session'
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'TableRowItem1' },
+              this.props.booking['case'].isPaid ? '' : 'Estimated ',
+              'Costs'
+            )
+          ),
+          this.props.booking['case'].dates.map(function (session) {
+            return _react2['default'].createElement(
+              'div',
+              { className: 'TableRow', key: session.id },
+              _react2['default'].createElement(
+                'div',
+                { className: 'TableRowItem1' },
+                (0, _moment2['default'])(session.dateTimeStart).format('D MMM')
+              ),
+              _react2['default'].createElement(
+                'div',
+                { className: 'TableRowItem1' },
+                session.estTime
+              ),
+              _react2['default'].createElement(
+                'div',
+                { className: 'TableRowItem1' },
+                '$ ',
+                session.price
+              )
+            );
+          })
+        );
         // show caregiver section only if case has been paid
         if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].isPaid) {
           caregiverSection = _react2['default'].createElement(
@@ -3814,60 +3848,86 @@ module.exports =
                       )
                     )
                   ),
-                  caregiverSection,
                   _react2['default'].createElement(
                     'div',
-                    { className: 'BookingDetailsBodySection' },
+                    { className: 'BookingDetailsBodyColumnWrapper' },
                     _react2['default'].createElement(
                       'div',
-                      { className: 'BookingDetailsBodySectionTitle' },
+                      { className: 'BookingDetailsBodyColumn' },
                       _react2['default'].createElement(
-                        'h3',
-                        null,
-                        'Contact Person Details'
+                        'div',
+                        { className: 'BookingDetailsBodySection' },
+                        _react2['default'].createElement(
+                          'div',
+                          { className: 'BookingDetailsBodySectionTitle' },
+                          _react2['default'].createElement(
+                            'h3',
+                            null,
+                            'Contact Person Details'
+                          ),
+                          _react2['default'].createElement(
+                            'a',
+                            { href: '#', className: this.state.editingUser || this.props.booking['case'].isPaid ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
+                            _react2['default'].createElement('img', { src: __webpack_require__(17) })
+                          )
+                        ),
+                        _react2['default'].createElement(
+                          _reactLoader2['default'],
+                          { className: 'spinner', loaded: !this.state.updatingUser ? true : false },
+                          userDetails
+                        )
                       ),
                       _react2['default'].createElement(
-                        'a',
-                        { href: '#', className: this.state.editingUser || this.props.booking['case'].isPaid ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                        _react2['default'].createElement('img', { src: __webpack_require__(17) })
+                        'div',
+                        { className: 'BookingDetailsBodySection' },
+                        _react2['default'].createElement(
+                          'div',
+                          { className: 'BookingDetailsBodySectionTitle' },
+                          _react2['default'].createElement(
+                            'h3',
+                            null,
+                            'Patient Details'
+                          )
+                        ),
+                        patientDetails
+                      ),
+                      _react2['default'].createElement(
+                        'div',
+                        { className: 'BookingDetailsBodySection' },
+                        _react2['default'].createElement(
+                          'div',
+                          { className: 'BookingDetailsBodySectionTitle' },
+                          _react2['default'].createElement(
+                            'h3',
+                            null,
+                            'Patient Location / Address'
+                          )
+                        ),
+                        _react2['default'].createElement(
+                          _reactLoader2['default'],
+                          { className: 'spinner', loaded: !this.state.updatingAddress ? true : false },
+                          addressDetails
+                        )
                       )
                     ),
-                    _react2['default'].createElement(
-                      _reactLoader2['default'],
-                      { className: 'spinner', loaded: !this.state.updatingUser ? true : false },
-                      userDetails
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'div',
-                    { className: 'BookingDetailsBodySection' },
                     _react2['default'].createElement(
                       'div',
-                      { className: 'BookingDetailsBodySectionTitle' },
+                      { className: 'BookingDetailsBodyColumn' },
+                      caregiverSection,
                       _react2['default'].createElement(
-                        'h3',
-                        null,
-                        'Patient Details'
+                        'div',
+                        { className: 'BookingDetailsBodySection' },
+                        _react2['default'].createElement(
+                          'div',
+                          { className: 'BookingDetailsBodySectionTitle' },
+                          _react2['default'].createElement(
+                            'h3',
+                            null,
+                            'Session Details'
+                          )
+                        ),
+                        sessionDetails
                       )
-                    ),
-                    patientDetails
-                  ),
-                  _react2['default'].createElement(
-                    'div',
-                    { className: 'BookingDetailsBodySection' },
-                    _react2['default'].createElement(
-                      'div',
-                      { className: 'BookingDetailsBodySectionTitle' },
-                      _react2['default'].createElement(
-                        'h3',
-                        null,
-                        'Patient Location / Address'
-                      )
-                    ),
-                    _react2['default'].createElement(
-                      _reactLoader2['default'],
-                      { className: 'spinner', loaded: !this.state.updatingAddress ? true : false },
-                      addressDetails
                     )
                   ),
                   _react2['default'].createElement(
@@ -4094,7 +4154,7 @@ module.exports =
      <input type="email" id="client_contactEmail" name="client_contactEmail" value={this.props.booking.client_contactEmail} placeholder="Email*" maxLength="50" required />
    </div>
   </div>
-  */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/
+  */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
 /* 31 */
@@ -4346,19 +4406,19 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -4368,7 +4428,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -4376,7 +4436,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -4585,15 +4645,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classNames = __webpack_require__(6);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
-
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -4611,7 +4667,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -4891,17 +4947,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
-
-  var _classNames = __webpack_require__(6);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
 
   var _reactDatepicker = __webpack_require__(25);
 
@@ -4911,7 +4963,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -4929,7 +4981,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -5639,7 +5691,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -5750,7 +5802,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -5840,15 +5892,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -5860,7 +5912,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -5874,7 +5926,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -5882,7 +5934,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -6778,7 +6830,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -6876,7 +6928,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -7006,11 +7058,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7024,7 +7076,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -7218,11 +7270,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
-
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7396,7 +7444,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -8337,15 +8385,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(11);
+  var _reactLinkState = __webpack_require__(10);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -8359,7 +8407,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -8602,7 +8650,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -8817,7 +8865,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(6);
+  var _classNames = __webpack_require__(12);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -8825,13 +8873,13 @@ module.exports =
 
   var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(6);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
   var _reactSanfona = __webpack_require__(152);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -8845,7 +8893,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(11);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -8857,7 +8905,7 @@ module.exports =
 
   var _libLocation2 = _interopRequireDefault(_libLocation);
 
-  var _libUtil = __webpack_require__(10);
+  var _libUtil = __webpack_require__(9);
 
   var _libUtil2 = _interopRequireDefault(_libUtil);
 
@@ -9977,7 +10025,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10040,7 +10088,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10107,7 +10155,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10174,7 +10222,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10249,7 +10297,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10324,7 +10372,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10399,7 +10447,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10474,7 +10522,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10549,7 +10597,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -10628,7 +10676,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(9);
+  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
 
   var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
 
@@ -13244,7 +13292,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingDetails {\n  background-color: #f3f3f3;\n  position: relative;\n  min-height: 300px;\n}\n\n.BookingDetails .BookingDetailsWrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  padding-top: 50px;\n  padding-bottom: 100px\n}\n\n.BookingDetails .BookingDetailsBody {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n}\n\n.BookingDetails .BookingDetailsBody input[type=radio] {\n  margin-top: 20px;\n}\n\n.BookingDetails .BookingDetailsBody textarea {\n  width: 100%;\n}\n\n.BookingDetails .BookingDetailsBody .select {\n  display: inline-block;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodyActions {\n  float: right;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodyActions span + span {\n  margin-left: 5px;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection {\n  position: relative;\n  min-height: 150px;\n  padding: 20px 0;\n  // border-top: 1px solid #ccc;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection h3 {\n  font-weight: normal;\n  font-size: 28px;\n  border-bottom: 1px solid #ccc;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection .BookingDetailsBodySectionTitle {\n  position: relative;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection .BookingDetailsBodySectionTitle a {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection .datepicker__input {\n  font: inherit;\n  border-radius: 0;\n  -webkit-box-shadow: none;\n  -ms-box-shadow: none;\n  box-shadow: none;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection form a {\n  margin: 5px 5px 0 0;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsBodySection:first-child {\n  border: 0;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsItem {\n  display: inline-block;\n  color: #444;\n  width: 100%;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsItem .BookingDetailsRadio {\n  // margin-right: 5px;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsItem .BookingDetailsRadioLabel {\n  // cursor: pointer;\n}\n\n.BookingDetails .BookingDetailsBody .PatientAddress {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n.BookingDetails .BookingDetailsBody .PatientAddress .PatientAddressLeft {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 0;\n      -ms-flex: 1 0;\n          flex: 1 0;\n}\n\n.BookingDetails .BookingDetailsBody .PatientAddress .PatientAddressRight {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 0;\n      -ms-flex: 1 0;\n          flex: 1 0;\n}\n\n.BookingDetails .BookingDetailsBody .BookingDetailsFooter span + span {\n  margin-left: 5px;\n}\n\n.BookingDetails .BookingDetailsSidebar {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsWrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .BookingDetails .BookingDetailsBody .BookingDetailsItem {\n    width: 50%;\n  }\n      }\n\n@media (min-width: 1200px) {\n\n  .BookingDetails .BookingDetailsBody .BookingDetailsItem {\n    width: calc(100% / 3);\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsBody .PatientAddress {\n    -webkit-flex-flow: row wrap;\n        -ms-flex-flow: row wrap;\n            flex-flow: row wrap;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsBody .BookingDetailsFooter {\n    text-align: center;\n  }\n      }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingDetails {\n  background-color: #f3f3f3;\n  position: relative;\n  min-height: 300px;\n}\n\n.BookingDetails .BookingDetailsWrapper {\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody {\n  font-size: 21px;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyColumnWrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyColumnWrapper .BookingDetailsBodyColumn {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyColumnWrapper .BookingDetailsBodyColumn + .BookingDetailsBodyColumn {\n  margin-left: 20px;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyColumnWrapper .BookingDetailsBodyColumn + .BookingDetailsBodyColumn .TableRowHeader {\n  color: #fdbc1d;\n  font-style: italic;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody input[type=radio] {\n  margin-top: 20px;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody textarea {\n  width: 100%;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .select {\n  display: inline-block;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyActions {\n  float: right;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyActions span + span {\n  margin-left: 5px;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection {\n  position: relative;\n  min-height: 150px;\n  padding: 20px 0;\n  // border-top: 1px solid #ccc;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection h3 {\n  font-weight: normal;\n  font-size: 28px;\n  border-bottom: 1px solid #ccc;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection .BookingDetailsBodySectionTitle {\n  position: relative;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection .BookingDetailsBodySectionTitle a {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection .datepicker__input {\n  font: inherit;\n  border-radius: 0;\n  -webkit-box-shadow: none;\n  -ms-box-shadow: none;\n  box-shadow: none;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection form a {\n  margin: 5px 5px 0 0;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodySection:first-child {\n  border: 0;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsItem {\n  display: inline-block;\n  color: #444;\n  width: 100%;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsItem .BookingDetailsRadio {\n  // margin-right: 5px;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsItem .BookingDetailsRadioLabel {\n  // cursor: pointer;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .PatientAddress {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .PatientAddress .PatientAddressLeft {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 0;\n      -ms-flex: 1 0;\n          flex: 1 0;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .PatientAddress .PatientAddressRight {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 0;\n      -ms-flex: 1 0;\n          flex: 1 0;\n}\n\n.BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsFooter a {\n  margin: 5px;\n}\n\n.BookingDetails .BookingDetailsSidebar {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyColumnWrapper .BookingDetailsBodyColumn + .BookingDetailsBodyColumn {\n    margin-left: 0;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsBodyColumnWrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n  }\n        }\n\n@media (min-width: 768px) {\n\n  .BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsItem {\n    width: 50%;\n  }\n        }\n\n@media (min-width: 1200px) {\n\n  .BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsItem {\n    width: calc(100% / 3);\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsWrapper .BookingDetailsBody .PatientAddress {\n    -webkit-flex-flow: row wrap;\n        -ms-flex-flow: row wrap;\n            flex-flow: row wrap;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingDetails .BookingDetailsWrapper .BookingDetailsBody .BookingDetailsFooter {\n    text-align: center;\n  }\n        }", ""]);
 
   // exports
 
