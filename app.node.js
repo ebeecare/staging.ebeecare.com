@@ -3814,6 +3814,7 @@ module.exports =
                       )
                     )
                   ),
+                  caregiverSection,
                   _react2['default'].createElement(
                     'div',
                     { className: 'BookingDetailsBodySection' },
@@ -3869,7 +3870,6 @@ module.exports =
                       addressDetails
                     )
                   ),
-                  caregiverSection,
                   _react2['default'].createElement(
                     'div',
                     { className: 'BookingDetailsFooter' },
