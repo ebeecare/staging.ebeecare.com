@@ -6751,7 +6751,13 @@ module.exports =
                   if (patient.id === patientId) {
                     _this3.setState({
                       patientId: index,
-                      savingPatient: false
+                      savingPatient: false,
+                      fullName: undefined,
+                      gender: undefined,
+                      dob: undefined,
+                      address: undefined,
+                      postalCode: undefined,
+                      unitNumber: undefined
                     });
                   }
                 });
