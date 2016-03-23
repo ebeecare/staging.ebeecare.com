@@ -4840,7 +4840,7 @@ module.exports =
                 null,
                 _react2['default'].createElement(
                   'a',
-                  { href: 'https://www.ebeecare.com/cases/' + this.state.caseId },
+                  { href: 'https://app.ebeecare.com/cases/' + this.state.caseId },
                   'View Case'
                 )
               )
