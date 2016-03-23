@@ -1291,11 +1291,24 @@ module.exports =
                   _react2['default'].createElement(
                     'h3',
                     null,
-                    'Have Booking ID?'
+                    'Have Guest Booking ID?'
                   ),
                   _react2['default'].createElement('input', { className: 'BookingIdInput', type: 'text', valueLink: (0, _reactLinkState2['default'])(this, 'bid'), placeholder: 'Booking ID*', required: true }),
                   _react2['default'].createElement('input', { className: 'EmailInput', type: 'email', valueLink: (0, _reactLinkState2['default'])(this, 'email'), placeholder: 'Enter Email*', required: true }),
-                  _react2['default'].createElement('div', { className: 'Account-container-item-middle' }),
+                  _react2['default'].createElement(
+                    'div',
+                    { className: 'Account-container-item-middle' },
+                    _react2['default'].createElement(
+                      'div',
+                      { className: 'LoginInsteadContainer' },
+                      'Have account? ',
+                      _react2['default'].createElement(
+                        'a',
+                        { href: 'https://app.ebeecare.com/login/', className: 'LoginInsteadLink' },
+                        'Login instead'
+                      )
+                    )
+                  ),
                   _react2['default'].createElement(
                     'button',
                     { className: 'btn btn-primary', onClick: this._onClickFindBooking.bind(this) },
@@ -13155,7 +13168,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Account {\n  background-image: url(" + __webpack_require__(124) + ");\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat;\n  padding: 60px 0;\n}\n\n.Account .Account-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.Account .Account-container .Account-container-item {\n  position: relative;\n  min-height: 350px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: rgba(255, 255, 255, 0.9);\n  margin: 5px;\n  padding: 40px;\n}\n\n.Account .Account-container .Account-container-item form {\n  display: inline-block;\n}\n\n.Account .Account-container .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n}\n\n.Account .Account-container .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n}\n\n.Account .Account-container .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.Account .Account-container .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.Account .Account-container .Account-login {}\n\n.Account .Account-container .Account-find {}\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Account {\n  background-image: url(" + __webpack_require__(124) + ");\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat;\n  padding: 60px 0;\n}\n\n.Account .Account-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.Account .Account-container .Account-container-item {\n  position: relative;\n  min-height: 350px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: rgba(255, 255, 255, 0.9);\n  margin: 5px;\n  padding: 40px;\n}\n\n.Account .Account-container .Account-container-item form {\n  display: inline-block;\n}\n\n.Account .Account-container .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n}\n\n.Account .Account-container .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n}\n\n.Account .Account-container .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.Account .Account-container .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer .LoginInsteadLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.Account .Account-container .Account-login {}\n\n.Account .Account-container .Account-find {}\n", ""]);
 
   // exports
 
