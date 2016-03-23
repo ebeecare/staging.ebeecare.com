@@ -1718,6 +1718,7 @@ module.exports =
               _react2['default'].createElement('input', { type: 'text', id: 'patient_firstName', name: 'patient_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
               _react2['default'].createElement('input', { type: 'text', id: 'patient_lastName', name: 'patient_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
               _react2['default'].createElement(_reactDatepicker2['default'], { selected: this.state.patient_dob, maxDate: (0, _moment2['default'])(), dateFormat: 'YYYY-MM-DD', showYearDropdown: true, onChange: this._onSelectDob.bind(this), placeholderText: 'Date of Birth* (Y-M-D)' }),
+              _react2['default'].createElement('input', { type: 'text', value: this.state.patient_dob, required: true, style: { 'display': 'none' } }),
               _react2['default'].createElement(
                 'div',
                 { className: 'radio radio-inline' },
@@ -2997,6 +2998,21 @@ module.exports =
             }
           });
         }
+
+        // if "uid" query parameter exists, login automatically
+        if (this.props.location && this.props.location.query && this.props.location.query.uid && this.props.location.query.token) {
+          this.serverRequest3 = _superagent2['default'].get(_libUtil2['default'].host + '/api/getUser').auth(this.props.location.query.uid, this.props.location.query.token).end(function (err, res) {
+            if (err) {
+              return console.error(_libUtil2['default'].host + '/api/getUser', status, err.toString());
+            }
+            if (res.body && res.body.status === 1) {
+              console.log(res.body.user);
+              _actionsBookingActions2['default'].setUser(res.body.user);
+            } else {
+              console.error('Failed to get user data.');
+            }
+          });
+        }
       }
     }, {
       key: 'componentWillUnmount',
@@ -3005,6 +3021,7 @@ module.exports =
 
         this.serverRequest1 && this.serverRequest1.abort();
         this.serverRequest2 && this.serverRequest2.abort();
+        this.serverRequest3 && this.serverRequest3.abort();
       }
     }, {
       key: 'componentWillReceiveProps',
@@ -6774,7 +6791,9 @@ module.exports =
         var _this4 = this;
 
         cb = cb || function () {};
-        this.serverRequest = _superagent2['default'].get(_libUtil2['default'].host + '/api/getPatients').auth(user.id, user.token).end(function (err, res) {
+        this.serverRequest = _superagent2['default'].get(_libUtil2['default'].host + '/api/getPatients').query({
+          cid: user.client.id
+        }).auth(user.id, user.token).end(function (err, res) {
           if (err) {
             return console.error(_libUtil2['default'].host + '/api/getPatients', err.toString());
           }
