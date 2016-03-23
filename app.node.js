@@ -5966,6 +5966,7 @@ module.exports =
         editingUser: false,
         editingPatient: false,
         editingAddress: false,
+        savingPatient: false,
 
         patients: undefined,
         patientId: undefined
@@ -6525,7 +6526,7 @@ module.exports =
             ),
             _react2['default'].createElement(
               _reactLoader2['default'],
-              { className: 'spinner', loaded: this.state.patients ? true : false },
+              { className: 'spinner', loaded: this.state.patients && !this.state.savingPatient ? true : false },
               patientDetails
             ),
             _react2['default'].createElement(
@@ -6725,6 +6726,9 @@ module.exports =
 
         if (this._patientDetailsForm.checkValidity()) {
           event.preventDefault();
+          this.setState({
+            savingPatient: true
+          });
           this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/createPatient').auth(this.props.user.id, this.props.user.token).send({
             fullName: this.state.fullName,
             gender: this.state.gender,
@@ -6746,7 +6750,8 @@ module.exports =
                 _this3.state.patients.forEach(function (patient, index) {
                   if (patient.id === patientId) {
                     _this3.setState({
-                      patientId: index
+                      patientId: index,
+                      savingPatient: false
                     });
                   }
                 });
