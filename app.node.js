@@ -6145,6 +6145,7 @@ module.exports =
                 _react2['default'].createElement('input', { type: 'text', id: 'patient_firstName', name: 'patient_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
                 _react2['default'].createElement('input', { type: 'text', id: 'patient_lastName', name: 'patient_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
                 _react2['default'].createElement(_reactDatepicker2['default'], { selected: this.state.patient_dob, maxDate: (0, _moment2['default'])(), dateFormat: 'YYYY-MM-DD', showYearDropdown: true, onChange: this._onSelectDob.bind(this), placeholderText: 'Date of Birth* (Y-M-D)' }),
+                _react2['default'].createElement('input', { type: 'text', value: this.state.patient_dob, required: true, style: { 'display': 'none' } }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'radio radio-inline' },
