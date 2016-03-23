@@ -6792,7 +6792,7 @@ module.exports =
 
         cb = cb || function () {};
         this.serverRequest = _superagent2['default'].get(_libUtil2['default'].host + '/api/getPatients').query({
-          cid: user.client.id
+          cid: user.clients[0].id
         }).auth(user.id, user.token).end(function (err, res) {
           if (err) {
             return console.error(_libUtil2['default'].host + '/api/getPatients', err.toString());
