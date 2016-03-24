@@ -59,15 +59,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDom = __webpack_require__(148);
+  var _reactDom = __webpack_require__(141);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
-  var _fbjsLibExecutionEnvironment = __webpack_require__(34);
+  var _fbjsLibExecutionEnvironment = __webpack_require__(27);
 
-  var _libLocation = __webpack_require__(15);
+  var _coreLocation = __webpack_require__(13);
 
-  var _libLocation2 = _interopRequireDefault(_libLocation);
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
   var _componentsLayout = __webpack_require__(55);
 
@@ -80,52 +80,36 @@ module.exports =
       return __webpack_require__(62);
     }, '/about': function about() {
       return __webpack_require__(63);
-    }, '/blog': function blog() {
-      return __webpack_require__(64);
-    }, '/blog/test-article-one': function blogTestArticleOne() {
-      return __webpack_require__(65);
-    }, '/blog/test-article-two': function blogTestArticleTwo() {
-      return __webpack_require__(66);
     }, '/booking-confirmation': function bookingConfirmation() {
-      return __webpack_require__(67);
+      return __webpack_require__(64);
     }, '/booking-manage': function bookingManage() {
-      return __webpack_require__(68);
+      return __webpack_require__(65);
     }, '/booking': function booking() {
-      return __webpack_require__(69);
+      return __webpack_require__(66);
     }, '/booking1': function booking1() {
-      return __webpack_require__(70);
-    }, '/booking2-bak': function booking2Bak() {
-      return __webpack_require__(71);
+      return __webpack_require__(67);
     }, '/booking2': function booking2() {
-      return __webpack_require__(72);
-    }, '/booking3a-bak': function booking3aBak() {
-      return __webpack_require__(73);
+      return __webpack_require__(68);
     }, '/booking3a': function booking3a() {
-      return __webpack_require__(74);
-    }, '/booking3b-bak': function booking3bBak() {
-      return __webpack_require__(75);
+      return __webpack_require__(69);
     }, '/booking3b': function booking3b() {
-      return __webpack_require__(76);
-    }, '/booking3c-ba': function booking3cBa() {
-      return __webpack_require__(77);
+      return __webpack_require__(70);
     }, '/booking3c': function booking3c() {
-      return __webpack_require__(78);
-    }, '/booking4-bak': function booking4Bak() {
-      return __webpack_require__(79);
+      return __webpack_require__(71);
     }, '/contact': function contact() {
-      return __webpack_require__(80);
+      return __webpack_require__(72);
     }, '/faq': function faq() {
-      return __webpack_require__(81);
+      return __webpack_require__(73);
     }, '/forgot-password': function forgotPassword() {
-      return __webpack_require__(82);
+      return __webpack_require__(74);
     }, '/': function _() {
-      return __webpack_require__(83);
+      return __webpack_require__(75);
     }, '/privacy-policy': function privacyPolicy() {
-      return __webpack_require__(84);
+      return __webpack_require__(76);
     }, '/services': function services() {
-      return __webpack_require__(85);
+      return __webpack_require__(77);
     }, '/terms-of-service': function termsOfService() {
-      return __webpack_require__(86);
+      return __webpack_require__(78);
     } }; // Auto-generated on build. See tools/lib/routes-loader.js
 
   var route = function route(location, callback) {
@@ -158,7 +142,7 @@ module.exports =
     var _this2 = this;
 
     var container = document.getElementById('app');
-    _libLocation2['default'].listen(function (location) {
+    _coreLocation2['default'].listen(function (location) {
       // console.log(location);
       route(location, function callee$2$0(component) {
         return regeneratorRuntime.async(function callee$2$0$(context$3$0) {
@@ -179,12 +163,11 @@ module.exports =
   }
 
   if (_fbjsLibExecutionEnvironment.canUseDOM) {
-    // Run the application when both DOM is ready
-    // and page content is loaded
-    if (window.addEventListener) {
-      window.addEventListener('DOMContentLoaded', run);
+    // Run the application when both DOM is ready and page content is loaded
+    if (['complete', 'loaded', 'interactive'].includes(document.readyState) && document.body) {
+      run();
     } else {
-      window.attachEvent('onload', run);
+      document.addEventListener('DOMContentLoaded', run, false);
     }
   }
 
@@ -277,7 +260,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(114);
+  __webpack_require__(106);
 
   var Container = (function (_Component) {
     _inherits(Container, _Component);
@@ -340,11 +323,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(118);
+  __webpack_require__(110);
 
-  var _libLocation = __webpack_require__(15);
+  var _coreLocation = __webpack_require__(13);
 
-  var _libLocation2 = _interopRequireDefault(_libLocation);
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
   function isLeftClickEvent(event) {
     return event.button === 0;
@@ -409,7 +392,7 @@ module.exports =
 
         if (allowTransition) {
           var link = event.currentTarget;
-          _libLocation2['default'].pushState(_this.props && _this.props.state || null, _this.props && _this.props.to || link.pathname + link.search);
+          _coreLocation2['default'].pushState(_this.props && _this.props.state || null, _this.props && _this.props.to || link.pathname + link.search);
         }
       },
       enumerable: true
@@ -425,8 +408,8 @@ module.exports =
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var AppDispatcher = __webpack_require__(28);
-  var BookingConstants = __webpack_require__(27);
+  var AppDispatcher = __webpack_require__(22);
+  var BookingConstants = __webpack_require__(21);
 
   var BookingActions = {
 
@@ -654,76 +637,6 @@ module.exports =
 
 /***/ },
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  __webpack_require__(102);
-
-  var _Container = __webpack_require__(3);
-
-  var _Container2 = _interopRequireDefault(_Container);
-
-  var _BookingNavigationItem = __webpack_require__(45);
-
-  var _BookingNavigationItem2 = _interopRequireDefault(_BookingNavigationItem);
-
-  var BookingNavigation = (function (_Component) {
-    _inherits(BookingNavigation, _Component);
-
-    function BookingNavigation() {
-      _classCallCheck(this, BookingNavigation);
-
-      _get(Object.getPrototypeOf(BookingNavigation.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(BookingNavigation, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingNavigation-wrapper' },
-          _react2['default'].createElement(
-            _Container2['default'],
-            null,
-            _react2['default'].createElement(
-              'ul',
-              { className: 'BookingNavigation' },
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking1', link: 'booking1', icon: '1', text: 'Select Service' }),
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking2', link: 'booking2', icon: '2', text: 'Select Location' }),
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking3', link: 'booking3a', icon: '3', text: 'Select Date & Time' })
-            )
-          )
-        );
-      }
-    }]);
-
-    return BookingNavigation;
-  })(_react.Component);
-
-  exports['default'] = BookingNavigation;
-  module.exports = exports['default'];
-
-/***/ },
-/* 9 */
 /***/ function(module, exports) {
 
   'use strict';
@@ -732,7 +645,7 @@ module.exports =
     value: true
   });
   var util = {
-    host: window.location.hostname.indexOf('ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
+    host: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
     authKey: 'secret',
     authSecret: 'secret0nlyWeilsonKnowsShhh852~'
   };
@@ -741,13 +654,13 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
   module.exports = require("react-link-state");
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -770,11 +683,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSkylight = __webpack_require__(26);
+  var _reactSkylight = __webpack_require__(20);
 
   var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
 
-  __webpack_require__(89);
+  __webpack_require__(81);
 
   var AlertPopup = (function (_Component) {
     _inherits(AlertPopup, _Component);
@@ -848,19 +761,450 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
   module.exports = require("classNames");
 
 /***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _superagent = __webpack_require__(7);
+
+  var _superagent2 = _interopRequireDefault(_superagent);
+
+  __webpack_require__(83);
+
+  var _Container = __webpack_require__(3);
+
+  var _Container2 = _interopRequireDefault(_Container);
+
+  var _BookingNavigation = __webpack_require__(41);
+
+  var _BookingNavigation2 = _interopRequireDefault(_BookingNavigation);
+
+  var _BookingServices = __webpack_require__(49);
+
+  var _BookingServices2 = _interopRequireDefault(_BookingServices);
+
+  var _BookingLocation = __webpack_require__(39);
+
+  var _BookingLocation2 = _interopRequireDefault(_BookingLocation);
+
+  var _BookingLocationUser = __webpack_require__(40);
+
+  var _BookingLocationUser2 = _interopRequireDefault(_BookingLocationUser);
+
+  var _BookingDateTime = __webpack_require__(37);
+
+  var _BookingDateTime2 = _interopRequireDefault(_BookingDateTime);
+
+  var _BookingDate = __webpack_require__(36);
+
+  var _BookingDate2 = _interopRequireDefault(_BookingDate);
+
+  var _BookingTime = __webpack_require__(51);
+
+  var _BookingTime2 = _interopRequireDefault(_BookingTime);
+
+  var _BookingResults = __webpack_require__(48);
+
+  var _BookingResults2 = _interopRequireDefault(_BookingResults);
+
+  var _BookingComplete = __webpack_require__(33);
+
+  var _BookingComplete2 = _interopRequireDefault(_BookingComplete);
+
+  var _BookingPostNavigation = __webpack_require__(46);
+
+  var _BookingPostNavigation2 = _interopRequireDefault(_BookingPostNavigation);
+
+  var _BookingConfirmation = __webpack_require__(34);
+
+  var _BookingConfirmation2 = _interopRequireDefault(_BookingConfirmation);
+
+  var _BookingPayment = __webpack_require__(43);
+
+  var _BookingPayment2 = _interopRequireDefault(_BookingPayment);
+
+  var _BookingPaypal = __webpack_require__(44);
+
+  var _BookingPaypal2 = _interopRequireDefault(_BookingPaypal);
+
+  var _BookingBankTransfer = __webpack_require__(32);
+
+  var _BookingBankTransfer2 = _interopRequireDefault(_BookingBankTransfer);
+
+  var _BookingCredits = __webpack_require__(35);
+
+  var _BookingCredits2 = _interopRequireDefault(_BookingCredits);
+
+  var _BookingPostComplete = __webpack_require__(45);
+
+  var _BookingPostComplete2 = _interopRequireDefault(_BookingPostComplete);
+
+  var _BookingSidebar = __webpack_require__(50);
+
+  var _BookingSidebar2 = _interopRequireDefault(_BookingSidebar);
+
+  var _BookingPostSidebar = __webpack_require__(47);
+
+  var _BookingPostSidebar2 = _interopRequireDefault(_BookingPostSidebar);
+
+  var _BookingDetails = __webpack_require__(23);
+
+  var _BookingDetails2 = _interopRequireDefault(_BookingDetails);
+
+  var _Account = __webpack_require__(18);
+
+  var _Account2 = _interopRequireDefault(_Account);
+
+  var _actionsBookingActions = __webpack_require__(5);
+
+  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+
+  var _storesBookingStore = __webpack_require__(17);
+
+  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
+
+  var _coreLocation = __webpack_require__(13);
+
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
+
+  var _coreUtil = __webpack_require__(8);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
+
+  var BookingApp = (function (_Component) {
+    _inherits(BookingApp, _Component);
+
+    function BookingApp(props) {
+      _classCallCheck(this, BookingApp);
+
+      _get(Object.getPrototypeOf(BookingApp.prototype), 'constructor', this).call(this, props);
+      if (this.props.path && this.props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(this.props.path)) {
+        _coreLocation2['default'].replace('');
+      } else {
+        this.state = _storesBookingStore2['default'].getState();
+      }
+    }
+
+    _createClass(BookingApp, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        var _this = this;
+
+        _storesBookingStore2['default'].addChangeListener(this._onChange.bind(this));
+
+        if (!_storesBookingStore2['default'].getServices()) {
+          this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getServices').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
+            if (err) {
+              return console.error(_coreUtil2['default'].host + '/api/getServices', err.toString());
+            }
+            if (res.body && res.body.services && Array.isArray(res.body.services)) {
+              // console.log(res.body.services);
+              _actionsBookingActions2['default'].setServices(res.body.services);
+            } else {
+              console.error('Failed to obtain services data.');
+            }
+          });
+        }
+
+        // if "bid" query parameter exists, must be booking confirmation
+        if (this.props.location && this.props.location.query && this.props.location.query.bid && this.props.location.query.email) {
+          if (this.props.location.query.token) {
+            _actionsBookingActions2['default'].setPostStatus('payment-paypal');
+          }
+
+          this.serverRequest2 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getBooking').query({
+            bid: this.props.location.query.bid,
+            email: this.props.location.query.email
+          }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
+            if (err) {
+              return console.error(_coreUtil2['default'].host + '/api/getBooking', status, err.toString());
+            }
+            if (res.body && res.body.booking && res.body.status) {
+              console.log(res.body.booking);
+              if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].isPaid) {
+                // if booking has already been completed
+                _actionsBookingActions2['default'].setPostStatus('success');
+              } else if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].status === 'Accepting Quotes') {
+                // if booking is still pending service providers
+                _coreLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: _this.props.location.query.bid, email: _this.props.location.query.email } });
+                // Location.replace({ pathname: '/manage-booking', query: { bid: this.props.location.query.bid, email: this.props.location.query.email } });
+              }
+              _actionsBookingActions2['default'].setBooking(res.body.booking);
+            } else {
+              console.error('Failed to obtain booking data.');
+            }
+          });
+        }
+
+        // if "uid" query parameter exists, login automatically
+        if (this.props.location && this.props.location.query && this.props.location.query.uid && this.props.location.query.token) {
+          this.serverRequest3 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getUser').auth(this.props.location.query.uid, this.props.location.query.token).end(function (err, res) {
+            if (err) {
+              return console.error(_coreUtil2['default'].host + '/api/getUser', status, err.toString());
+            }
+            if (res.body && res.body.status === 1) {
+              console.log(res.body.user);
+              _actionsBookingActions2['default'].setUser(res.body.user);
+            } else {
+              console.error('Failed to get user data.');
+            }
+          });
+        }
+      }
+    }, {
+      key: 'componentWillUnmount',
+      value: function componentWillUnmount() {
+        _storesBookingStore2['default'].removeChangeListener(this._onChange.bind(this));
+
+        this.serverRequest1 && this.serverRequest1.abort();
+        this.serverRequest2 && this.serverRequest2.abort();
+        this.serverRequest3 && this.serverRequest3.abort();
+      }
+    }, {
+      key: 'componentWillReceiveProps',
+      value: function componentWillReceiveProps(props) {
+        if (props.path && props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(props.path)) {
+          _coreLocation2['default'].replace('');
+        }
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        // console.log('rendered ' + this.props.path + ' ' + this.state.postStatus);
+        var component;
+        if (this.state) {
+          if (this.props.location && this.props.path === '/booking1') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
+              _react2['default'].createElement(_BookingServices2['default'], { location: this.props.location, allServices: this.state.allServices, booking: this.state.booking })
+            );
+          } else if (this.props.location && this.props.path === '/booking2') {
+            if (this.state.user) {
+              component = _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
+                _react2['default'].createElement(
+                  _BookingLocationUser2['default'],
+                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, user: this.state.user, patient: this.state.patient },
+                  _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+                )
+              );
+            } else {
+              component = _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
+                _react2['default'].createElement(
+                  _BookingLocation2['default'],
+                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking },
+                  _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+                )
+              );
+            }
+          } else if (this.props.location && (this.props.path === '/booking3' || this.props.path === '/booking3a')) {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
+              _react2['default'].createElement(
+                _BookingDateTime2['default'],
+                { booking: this.state.booking, path: this.props.path },
+                _react2['default'].createElement(_BookingDate2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking3b') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
+              _react2['default'].createElement(
+                _BookingDateTime2['default'],
+                { booking: this.state.booking, path: this.props.path },
+                _react2['default'].createElement(_BookingTime2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking3c') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
+              _react2['default'].createElement(
+                _BookingDateTime2['default'],
+                { booking: this.state.booking, path: this.props.path },
+                _react2['default'].createElement(_BookingResults2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking4') {
+            component = _react2['default'].createElement(_BookingComplete2['default'], { booking: this.state.booking, user: this.state.user, patient: this.state.patient });
+          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'confirmation') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
+              _react2['default'].createElement(
+                _BookingConfirmation2['default'],
+                { location: this.props.location, booking: this.state.booking },
+                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-paypal') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
+              _react2['default'].createElement(
+                _BookingPayment2['default'],
+                { path: this.props.path, postStatus: this.state.postStatus },
+                _react2['default'].createElement(_BookingPaypal2['default'], { location: this.props.location, booking: this.state.booking }),
+                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-bank') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
+              _react2['default'].createElement(
+                _BookingPayment2['default'],
+                { path: this.props.path, postStatus: this.state.postStatus },
+                _react2['default'].createElement(_BookingBankTransfer2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-credits') {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
+              _react2['default'].createElement(
+                _BookingPayment2['default'],
+                { path: this.props.path, postStatus: this.state.postStatus },
+                _react2['default'].createElement(_BookingCredits2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
+              )
+            );
+          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'success') {
+            component = _react2['default'].createElement(_BookingPostComplete2['default'], { booking: this.state.booking });
+          } else if (this.props.location && this.props.path === '/booking-manage') {
+            if (this.state.booking && this.state.booking.id) {
+              component = _react2['default'].createElement(_BookingDetails2['default'], { location: this.props.location, booking: this.state.booking });
+            } else {
+              component = _react2['default'].createElement(_Account2['default'], { type: 'login', location: this.props.location, booking: this.props.booking });
+            }
+          }
+        }
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingApp' },
+          component
+        );
+      }
+
+      /**
+       * Event handler for 'change' events coming from the BookingStore
+       */
+    }, {
+      key: '_onChange',
+      value: function _onChange() {
+        this.setState(_storesBookingStore2['default'].getState());
+        // console.log(this.state);
+      }
+    }]);
+
+    return BookingApp;
+  })(_react.Component);
+
+  exports['default'] = BookingApp;
+  module.exports = exports['default'];
+
+/***/ },
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var AppDispatcher = __webpack_require__(28);
-  var EventEmitter = __webpack_require__(141).EventEmitter;
-  var BookingConstants = __webpack_require__(27);
-  var assign = __webpack_require__(35);
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  var _fbjsLibExecutionEnvironment = __webpack_require__(27);
+
+  var _historyLibCreateBrowserHistory = __webpack_require__(135);
+
+  var _historyLibCreateBrowserHistory2 = _interopRequireDefault(_historyLibCreateBrowserHistory);
+
+  var _historyLibCreateMemoryHistory = __webpack_require__(136);
+
+  var _historyLibCreateMemoryHistory2 = _interopRequireDefault(_historyLibCreateMemoryHistory);
+
+  var _historyLibUseQueries = __webpack_require__(137);
+
+  var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
+
+  var location = (0, _historyLibUseQueries2['default'])(_fbjsLibExecutionEnvironment.canUseDOM ? _historyLibCreateBrowserHistory2['default'] : _historyLibCreateMemoryHistory2['default'])();
+
+  exports['default'] = location;
+  module.exports = exports['default'];
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+  module.exports = require("moment");
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "43f565f8e0ed24ca60f85dc6ce1c48b4.png";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "0def4601a4b1a46863c80ddaadc3eb3a.png";
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var AppDispatcher = __webpack_require__(22);
+  var EventEmitter = __webpack_require__(133).EventEmitter;
+  var BookingConstants = __webpack_require__(21);
+  var assign = __webpack_require__(28);
 
   var CHANGE_EVENT = 'change';
 
@@ -1056,143 +1400,7 @@ module.exports =
 
 
 /***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  __webpack_require__(97);
-
-  var _Container = __webpack_require__(3);
-
-  var _Container2 = _interopRequireDefault(_Container);
-
-  var _Link = __webpack_require__(4);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _BookingDateTimeNavItem = __webpack_require__(43);
-
-  var _BookingDateTimeNavItem2 = _interopRequireDefault(_BookingDateTimeNavItem);
-
-  var BookingDateTime = (function (_Component) {
-    _inherits(BookingDateTime, _Component);
-
-    function BookingDateTime() {
-      _classCallCheck(this, BookingDateTime);
-
-      _get(Object.getPrototypeOf(BookingDateTime.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(BookingDateTime, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingDateTime' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'BookingDateTimeNav-wrapper' },
-            _react2['default'].createElement(
-              _Container2['default'],
-              null,
-              _react2['default'].createElement(
-                'ul',
-                { className: 'BookingDateTimeNav' },
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3a', link: 'booking3a', name: 'Select Service Dates' }),
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3b', link: 'booking3b', name: 'Select Timeslots' }),
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3c', link: 'booking3c', name: 'Select Sessions' })
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(
-              _Container2['default'],
-              null,
-              _react2['default'].createElement(
-                'div',
-                { className: 'BookingDateTimeBody' },
-                this.props.children
-              )
-            )
-          )
-        );
-      }
-    }]);
-
-    return BookingDateTime;
-  })(_react.Component);
-
-  exports['default'] = BookingDateTime;
-  module.exports = exports['default'];
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  var _fbjsLibExecutionEnvironment = __webpack_require__(34);
-
-  var _historyLibCreateBrowserHistory = __webpack_require__(143);
-
-  var _historyLibCreateBrowserHistory2 = _interopRequireDefault(_historyLibCreateBrowserHistory);
-
-  var _historyLibUseQueries = __webpack_require__(144);
-
-  var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
-
-  var location = _fbjsLibExecutionEnvironment.canUseDOM ? (0, _historyLibUseQueries2['default'])(_historyLibCreateBrowserHistory2['default'])() : {};
-
-  exports['default'] = location;
-  module.exports = exports['default'];
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-  module.exports = require("moment");
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "43f565f8e0ed24ca60f85dc6ce1c48b4.png";
-
-/***/ },
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "0def4601a4b1a46863c80ddaadc3eb3a.png";
-
-/***/ },
-/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1219,7 +1427,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -1227,7 +1435,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  __webpack_require__(87);
+  __webpack_require__(79);
 
   var _Container = __webpack_require__(3);
 
@@ -1237,7 +1445,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(10);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1245,9 +1453,9 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var Account = (function (_Component) {
     _inherits(Account, _Component);
@@ -1282,7 +1490,7 @@ module.exports =
               { className: 'Account-find Account-container-item' },
               _react2['default'].createElement(
                 _reactLoader2['default'],
-                { className: 'spinner', loaded: !(this.props.booking && this.props.booking.id) && this.props.location.query.bid && this.props.location.query.email ? false : true },
+                { className: 'spinner', loaded: !(this.props.booking && this.props.booking.id) && this.props.location && this.props.location.query && this.props.location.query.bid && this.props.location.query.email ? false : true },
                 _react2['default'].createElement(
                   'form',
                   { ref: function (c) {
@@ -1390,12 +1598,12 @@ module.exports =
         if (this._accountManageBookingForm.checkValidity()) {
           event.preventDefault();
 
-          this.serverRequest1 = _superagent2['default'].get(_libUtil2['default'].host + '/api/getBooking').query({
+          this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getBooking').query({
             bid: this.state.bid,
             email: this.state.email
-          }).auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).end(function (err, res) {
+          }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/getBooking', status, err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/getBooking', status, err.toString());
             }
             if (res.body && res.body.booking && res.body.status) {
               console.log(res.body.booking);
@@ -1443,876 +1651,49 @@ module.exports =
   */
 
 /***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-datepicker");
+
+/***/ },
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactDaterangePicker = __webpack_require__(147);
-
-  var _reactDaterangePicker2 = _interopRequireDefault(_reactDaterangePicker);
-
-  __webpack_require__(96);
-
-  var _Link = __webpack_require__(4);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _AlertPopup = __webpack_require__(11);
-
-  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
-
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var BookingDate = (function (_Component) {
-    _inherits(BookingDate, _Component);
-
-    function BookingDate(props) {
-      _classCallCheck(this, BookingDate);
-
-      _get(Object.getPrototypeOf(BookingDate.prototype), 'constructor', this).call(this, props);
-      this.state = {
-        range: this.props.booking && this.props.booking.range // { start: Moment, end: Moment }
-      };
-    }
-
-    _createClass(BookingDate, [{
-      key: 'render',
-      value: function render() {
-        var _this = this;
-
-        var minimumDate = new Date();
-        minimumDate.setDate(minimumDate.getDate() + 3);
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingDate' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            _react2['default'].createElement(_reactDaterangePicker2['default'], { numberOfCalendars: 2, selectionType: 'range', singleDateRange: true, minimumDate: minimumDate, value: this.state.range, onSelect: this._handleSelect.bind(this) })
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            _react2['default'].createElement(
-              'form',
-              { id: 'BookingDateForm' },
-              _react2['default'].createElement('input', { className: 'btn-inline', type: 'text', id: 'startDate', name: 'startDate', value: this.state.range && this.state.range.start && this.state.range.start.format('ll'), required: true, readOnly: true }),
-              _react2['default'].createElement(
-                'div',
-                { className: 'BookingDateTo' },
-                _react2['default'].createElement(
-                  'i',
-                  null,
-                  'to'
-                )
-              ),
-              _react2['default'].createElement('input', { className: 'btn-inline', type: 'text', id: 'endDate', name: 'endDate', value: this.state.range && this.state.range.end && this.state.range.end.format('ll'), required: true, readOnly: true })
-            )
-          ),
-          _react2['default'].createElement('p', null),
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            _react2['default'].createElement(
-              'a',
-              { href: '/booking3b', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
-              'NEXT'
-            )
-          ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please select a date range.'
-          )
-        );
-      }
-    }, {
-      key: '_handleSelect',
-      value: function _handleSelect(range) {
-        this.setState({
-          range: range
-        });
-      }
-    }, {
-      key: '_onNext',
-      value: function _onNext(event) {
-        var form = document.getElementById('BookingDateForm');
-        if (form.checkValidity()) {
-          _Link2['default'].handleClick(event);
-
-          // this.props.booking.range = this.state.range;
-          _actionsBookingActions2['default'].setDates(this.state.range);
-          _actionsBookingActions2['default'].setLast('booking3a');
-        } else {
-          event.preventDefault();
-          // alert('Please select a date range.');
-          this._alertPopup.show();
-        }
-      }
-    }]);
-
-    return BookingDate;
-  })(_react.Component);
-
-  exports['default'] = BookingDate;
-  module.exports = exports['default'];
+  module.exports = require("react-skylight");
 
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-  'use strict';
+  var keyMirror = __webpack_require__(138);
 
-  Object.defineProperty(exports, '__esModule', {
-    value: true
+  module.exports = keyMirror({
+    BOOKING_SET_SERVICE: null,
+    BOOKING_SET_BOOKER: null,
+    BOOKING_SET_LOCATION: null,
+    BOOKING_SET_DATES: null,
+    BOOKING_SET_TIMINGS: null,
+    BOOKING_SET_SERVICES: null,
+    BOOKING_SET_SESSIONS: null,
+    BOOKING_SET_SUM: null,
+    BOOKING_SET_BOOKING: null,
+    BOOKING_SET_LAST: null,
+    BOOKING_SET_USER: null,
+    BOOKING_SET_PATIENT: null,
+    BOOKING_DESTROY: null,
+    BOOKING_SET_POST_STATUS: null
   });
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactLinkState = __webpack_require__(10);
-
-  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
-
-  var _superagent = __webpack_require__(7);
-
-  var _superagent2 = _interopRequireDefault(_superagent);
-
-  var _reactDatepicker = __webpack_require__(25);
-
-  var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
-
-  var _moment = __webpack_require__(16);
-
-  var _moment2 = _interopRequireDefault(_moment);
-
-  __webpack_require__(100);
-
-  var _Container = __webpack_require__(3);
-
-  var _Container2 = _interopRequireDefault(_Container);
-
-  var _Link = __webpack_require__(4);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _LoginPopup = __webpack_require__(56);
-
-  var _LoginPopup2 = _interopRequireDefault(_LoginPopup);
-
-  var _AlertPopup = __webpack_require__(11);
-
-  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
-
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var BookingLocation = (function (_Component) {
-    _inherits(BookingLocation, _Component);
-
-    function BookingLocation(props) {
-      _classCallCheck(this, BookingLocation);
-
-      _get(Object.getPrototypeOf(BookingLocation.prototype), 'constructor', this).call(this, props);
-      this.state = {
-        client_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
-        client_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
-        client_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_firstName,
-        client_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_lastName,
-        patient_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
-        patient_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
-        patient_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_firstName,
-        patient_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_lastName,
-        patient_dob: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_dob,
-        patient_gender: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_gender,
-        additionalInfo: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
-        postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
-        address: this.props.booking && this.props.booking.location && this.props.booking.location.address,
-        unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
-      };
-    }
-
-    _createClass(BookingLocation, [{
-      key: 'render',
-      value: function render() {
-        var _this = this;
-
-        var component, userDetails, patientDetails;
-        component = _react2['default'].createElement(
-          'form',
-          { ref: function (c) {
-              return _this._bookingLocationForm = c;
-            } },
-          _react2['default'].createElement(
-            'div',
-            { className: 'BookingLocationBodySection' },
-            _react2['default'].createElement(
-              'span',
-              null,
-              'I\'m an existing customer'
-            ),
-            _react2['default'].createElement(
-              'a',
-              { href: '#', className: 'btn btn-primary btn-small btn-inline', onClick: this._onClickLogin.bind(this) },
-              'LOGIN'
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'BookingLocationBodySection' },
-            _react2['default'].createElement(
-              'div',
-              null,
-              'Continue booking as guest'
-            ),
-            _react2['default'].createElement('input', { type: 'text', id: 'client_firstName', name: 'client_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'client_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
-            _react2['default'].createElement('input', { type: 'text', id: 'client_lastName', name: 'client_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'client_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
-            _react2['default'].createElement('input', { type: 'email', id: 'client_contactEmail', name: 'client_contactEmail', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactEmail'), placeholder: 'Email*', maxLength: '50', required: true }),
-            _react2['default'].createElement('input', { type: 'text', id: 'client_contactNumber', name: 'client_contactNumber', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactNumber'), placeholder: 'Contact Number*', maxLength: '8', required: true })
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'BookingLocationBodySection' },
-            _react2['default'].createElement(
-              'div',
-              null,
-              'Patient Details (',
-              _react2['default'].createElement('input', { className: 'RememberMeCheckbox', type: 'checkbox', id: 'isPatient', name: 'isPatient', onChange: this._onCheckedPatient.bind(this) }),
-              _react2['default'].createElement(
-                'label',
-                { className: 'RememberMeCheckboxLabel', htmlFor: 'isPatient' },
-                _react2['default'].createElement('span', null),
-                _react2['default'].createElement(
-                  'span',
-                  null,
-                  'Are you the patient?'
-                )
-              ),
-              ' )'
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement('input', { type: 'text', id: 'patient_firstName', name: 'patient_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
-              _react2['default'].createElement('input', { type: 'text', id: 'patient_lastName', name: 'patient_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
-              _react2['default'].createElement(_reactDatepicker2['default'], { selected: this.state.patient_dob, maxDate: (0, _moment2['default'])(), dateFormat: 'YYYY-MM-DD', showYearDropdown: true, onChange: this._onSelectDob.bind(this), placeholderText: 'Date of Birth* (Y-M-D)' }),
-              _react2['default'].createElement('input', { type: 'text', value: this.state.patient_dob, required: true, style: { 'display': 'none' } }),
-              _react2['default'].createElement(
-                'div',
-                { className: 'radio radio-inline' },
-                _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_male', name: 'patient_gender', checked: this.state.patient_gender === 'Male', onChange: this._onSelectGender.bind(this), value: 'Male', required: true }),
-                _react2['default'].createElement(
-                  'label',
-                  { htmlFor: 'patient_gender_male' },
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    _react2['default'].createElement('span', null)
-                  ),
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    'Male'
-                  )
-                )
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'radio radio-inline' },
-                _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_female', name: 'patient_gender', checked: this.state.patient_gender === 'Female', onChange: this._onSelectGender.bind(this), value: 'Female', required: true }),
-                _react2['default'].createElement(
-                  'label',
-                  { htmlFor: 'patient_gender_female' },
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    _react2['default'].createElement('span', null)
-                  ),
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    'Female'
-                  )
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { style: { marginTop: '40px' } },
-              _react2['default'].createElement(
-                'div',
-                null,
-                'Additional Info:'
-              ),
-              _react2['default'].createElement('textarea', { name: 'additionalInfo', valueLink: (0, _reactLinkState2['default'])(this, 'additionalInfo'), placeholder: 'Please provide important notes about patient here.' })
-            )
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'BookingLocationBodySection' },
-            _react2['default'].createElement(
-              'div',
-              null,
-              'Patient Location / Address'
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'PatientAddress' },
-              _react2['default'].createElement(
-                'div',
-                { className: 'PatientAddressLeft inline' },
-                _react2['default'].createElement('input', { type: 'text', id: 'postalCode', name: 'postalCode', value: this.state.postalCode, onChange: this._onChangePostalCode.bind(this), placeholder: 'Enter Postal Code*', required: true }),
-                _react2['default'].createElement('input', { type: 'text', id: 'unitNumber', name: 'unitNumber', valueLink: (0, _reactLinkState2['default'])(this, 'unitNumber'), placeholder: 'Enter Unit Number' })
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'PatientAddressRight inline' },
-                _react2['default'].createElement('textarea', { id: 'address', name: 'address', valueLink: (0, _reactLinkState2['default'])(this, 'address'), placeholder: 'Enter Address*', required: true })
-              )
-            ),
-            _react2['default'].createElement(
-              'p',
-              { className: 'small' },
-              'This information will only be used to contact you regarding your booking.'
-            ),
-            _react2['default'].createElement(
-              'a',
-              { href: '/booking3a', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
-              'NEXT'
-            )
-          )
-        );
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingLocation' },
-          _react2['default'].createElement(
-            _Container2['default'],
-            null,
-            _react2['default'].createElement(
-              'div',
-              { className: 'BookingLocationWrapper' },
-              _react2['default'].createElement(
-                'div',
-                { className: 'BookingLocationBody' },
-                component
-              ),
-              this.props.children
-            )
-          ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please fill up all required fields.'
-          ),
-          _react2['default'].createElement(_LoginPopup2['default'], { ref: function (c) {
-              return _this._loginPopup = c;
-            } })
-        );
-      }
-    }, {
-      key: '_onSelectDob',
-      value: function _onSelectDob(date) {
-        this.setState({
-          patient_dob: date
-        });
-      }
-    }, {
-      key: '_onSelectGender',
-      value: function _onSelectGender(event) {
-        this.setState({
-          patient_gender: event.target.value
-        });
-      }
-    }, {
-      key: '_onChangePostalCode',
-      value: function _onChangePostalCode(event) {
-        var that = this;
-        var postalCodeInput = event.target;
-        this.setState({
-          postalCode: postalCodeInput.value
-        });
-        if (postalCodeInput.value.length === 6) {
-          // console.log(postalCodeInput.value);
-          try {
-            // postalCodeInput.disabled = true;
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({
-              'address': postalCodeInput.value,
-              'region': 'SG'
-            }, function (results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                var position = results[0].geometry.location;
-                geocoder.geocode({
-                  latLng: position
-                }, function (responses) {
-                  if (responses && responses.length > 0) {
-                    that.setState({
-                      address: responses[0].formatted_address
-                    });
-                    // postalCodeInput.disabled = false;
-                  } else {
-                      // postalCodeInput.disabled = false;
-                      console.error('Invalid postal code.');
-                    }
-                });
-              } else {
-                // postalCodeInput.disabled = false;
-                console.error('Invalid postal code.');
-              }
-            });
-          } catch (e) {
-            // postalCodeInput.disabled = false;
-            console.error('Unable to find your address.');
-          }
-        }
-      }
-    }, {
-      key: '_onClickLogin',
-      value: function _onClickLogin(event) {
-        var _this2 = this;
-
-        event.preventDefault();
-
-        this._loginPopup.show(function (user) {
-          if (user.type === 'Client') {
-            _actionsBookingActions2['default'].setUser(user);
-          } else {
-            _this2.setState({
-              error: true
-            });
-            console.error('Failed to login as you do not have a caregiver account.');
-          }
-        });
-      }
-    }, {
-      key: '_onCheckedPatient',
-      value: function _onCheckedPatient(event) {
-        if (event.target.checked === true) {
-          this.setState({
-            patient_firstName: this.state.client_firstName,
-            patient_lastName: this.state.client_lastName
-          });
-        } else {
-          this.setState({
-            patient_firstName: undefined,
-            patient_lastName: undefined
-          });
-        }
-      }
-    }, {
-      key: '_onNext',
-      value: function _onNext(event) {
-        if (this._bookingLocationForm.checkValidity()) {
-          _Link2['default'].handleClick(event);
-
-          var user = {
-            client_contactEmail: this.state.client_contactEmail,
-            client_contactNumber: this.state.client_contactNumber,
-            client_firstName: this.state.client_firstName,
-            client_lastName: this.state.client_lastName,
-            patient_contactEmail: this.state.client_contactEmail,
-            patient_contactNumber: this.state.client_contactNumber,
-            patient_firstName: this.state.patient_firstName,
-            patient_lastName: this.state.patient_lastName,
-            patient_dob: this.state.patient_dob,
-            patient_gender: this.state.patient_gender,
-            additionalInfo: this.state.additionalInfo
-          };
-          // console.log(user);
-          var location = {
-            postalCode: this.state.postalCode,
-            address: this.state.address,
-            unitNumber: this.state.unitNumber
-          };
-          _actionsBookingActions2['default'].setBooker(user);
-          _actionsBookingActions2['default'].setLocation(location);
-          _actionsBookingActions2['default'].setLast('booking2');
-        } else {
-          event.preventDefault();
-          // alert('Please fill up all required fields.');
-          this._alertPopup.show();
-        }
-      }
-    }]);
-
-    return BookingLocation;
-  })(_react.Component);
-
-  exports['default'] = BookingLocation;
-  module.exports = exports['default'];
-  /*
-  <span>or</span>
-  <a href="/booking2" className="btn btn-primary btn-small btn-inline">REGISTER</a>
-  */ /*
-     <div className="select">
-      <span></span>
-      <select name="salutation">
-        <option value="">Salutation</option>
-      </select>
-     </div>
-     */
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-  'use strict';
+  var Dispatcher = __webpack_require__(134).Dispatcher;
 
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
+  module.exports = new Dispatcher();
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _objectAssign = __webpack_require__(35);
-
-  var _objectAssign2 = _interopRequireDefault(_objectAssign);
-
-  var _superagent = __webpack_require__(7);
-
-  var _superagent2 = _interopRequireDefault(_superagent);
-
-  var _moment = __webpack_require__(16);
-
-  var _moment2 = _interopRequireDefault(_moment);
-
-  var _reactLinkState = __webpack_require__(10);
-
-  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
-
-  var _reactLoader = __webpack_require__(6);
-
-  var _reactLoader2 = _interopRequireDefault(_reactLoader);
-
-  __webpack_require__(109);
-
-  var _Link = __webpack_require__(4);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _AlertPopup = __webpack_require__(11);
-
-  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
-
-  var _ConfirmPopup = __webpack_require__(52);
-
-  var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
-
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _libLocation = __webpack_require__(15);
-
-  var _libLocation2 = _interopRequireDefault(_libLocation);
-
-  var _libUtil = __webpack_require__(9);
-
-  var _libUtil2 = _interopRequireDefault(_libUtil);
-
-  var BookingResults = (function (_Component) {
-    _inherits(BookingResults, _Component);
-
-    function BookingResults(props) {
-      _classCallCheck(this, BookingResults);
-
-      _get(Object.getPrototypeOf(BookingResults.prototype), 'constructor', this).call(this, props);
-      this.state = {
-        sessions: undefined,
-        slots: undefined
-      };
-    }
-
-    _createClass(BookingResults, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        var _this = this;
-
-        // Reset sum displayed on sidebar
-        _actionsBookingActions2['default'].setSum();
-
-        this.serverRequest = _superagent2['default'].get(_libUtil2['default'].host + '/api/getAvailableSchedule').query({
-          service: this.props.booking.service,
-          dateStart: this.props.booking.range.start.format('YYYY-MM-DD'),
-          dateEnd: this.props.booking.range.end.format('YYYY-MM-DD'),
-          preferredPostalCode: this.props.booking.location.postalCode,
-          'preferredTimes[]': this.props.booking.timeslots // hack to send PHP style arrays
-        }).auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).end(function (err, res) {
-          if (err) {
-            return console.error(_libUtil2['default'].host + '/api/getAvailableSchedule', status, err.toString());
-          }
-          if (res.body && res.body.timeSlots && Array.isArray(res.body.timeSlots)) {
-            // console.log(res.body.timeSlots);
-            var sessions = [],
-                checkedData = [],
-                sum = 0;
-            for (var i = 0; i < res.body.timeSlots.length; i++) {
-              var timeslot = res.body.timeSlots[i];
-              var session = {};
-              for (var j = 0; j < timeslot.slots.length; j++) {
-                if (timeslot.slots[j]['selected'] && timeslot.slots[j]['preferred']) {
-                  session = timeslot.slots[j];
-                  break;
-                }
-              }
-              if (!session.time) {
-                for (var j = 0; j < timeslot.slots.length; j++) {
-                  if (timeslot.slots[j]['selected']) {
-                    session = timeslot.slots[j];
-                    break;
-                  }
-                }
-              }
-              sessions[i] = (0, _objectAssign2['default'])(session, { date: timeslot.date });
-              if (session.time) {
-                checkedData['session' + i] = true;
-                sum += parseFloat(sessions[i]['price']);
-              } else {
-                session.disabled = true;
-              }
-            }
-            var state = (0, _objectAssign2['default'])({
-              slots: res.body.timeSlots,
-              sessions: sessions
-            }, checkedData);
-            _this.setState(state);
-            _actionsBookingActions2['default'].setSum(sum);
-          } else {
-            console.error('Failed to obtain timeslots data.');
-          }
-        });
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        this.serverRequest && this.serverRequest.abort();
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-
-        var checkedLink = function checkedLink(key) {
-          return (0, _reactLinkState2['default'])(_this2, key);
-        };
-        var handleChange = function handleChange(key) {
-          return function (e) {
-            checkedLink(key).requestChange(e.target.checked);
-
-            var sum = 0;
-            for (var i = 0; i < _this2.state.sessions.length; i++) {
-              if (_this2.state['session' + i]) {
-                sum += parseFloat(_this2.state.sessions[i].price);
-              }
-            }
-            // this.props.booking.sum = this.state.sum;
-            _actionsBookingActions2['default'].setSum(sum);
-          };
-        };
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingResults' },
-          _react2['default'].createElement(
-            _reactLoader2['default'],
-            { className: 'spinner', loaded: this.state.sessions ? true : false },
-            _react2['default'].createElement(
-              'div',
-              null,
-              this.state.sessions && this.state.sessions.map(function (session, index) {
-                return _react2['default'].createElement(
-                  'div',
-                  { className: 'BookingResultsItem', key: index },
-                  _react2['default'].createElement('input', { className: 'BookingResultsCheckbox', type: 'checkbox', id: index, name: 'time', checked: checkedLink('session' + index).value, disabled: session.disabled, onChange: handleChange('session' + index) }),
-                  _react2['default'].createElement(
-                    'label',
-                    { className: 'BookingResultsCheckboxLabel', htmlFor: index },
-                    _react2['default'].createElement('span', null),
-                    _react2['default'].createElement(
-                      'div',
-                      { className: 'BookingResultsCheckboxLabelMetaWrapper' },
-                      _react2['default'].createElement(
-                        'div',
-                        { className: 'BookingResultsCheckboxLabelMeta' },
-                        _react2['default'].createElement(
-                          'span',
-                          null,
-                          session ? (0, _moment2['default'])(session.date, 'YYYY-MM-DD').format('DD MMM') : ''
-                        ),
-                        _react2['default'].createElement(
-                          'span',
-                          null,
-                          session.time ? session.time : 'Not Available'
-                        ),
-                        _react2['default'].createElement(
-                          'span',
-                          null,
-                          session.time ? '$ ' + session.price : ''
-                        )
-                      )
-                    )
-                  )
-                );
-              })
-            ),
-            _react2['default'].createElement('p', null),
-            _react2['default'].createElement(
-              'div',
-              { className: 'text-center' },
-              _react2['default'].createElement(
-                'a',
-                { href: '/booking4', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
-                'BOOK NOW'
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this2._alertPopup = c;
-              } },
-            'Please select at least one session.'
-          ),
-          _react2['default'].createElement(
-            _ConfirmPopup2['default'],
-            { ref: function (c) {
-                return _this2._confirmPopup = c;
-              } },
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(
-                'form',
-                { ref: function (c) {
-                    return _this2._agreeForm = c;
-                  } },
-                _react2['default'].createElement('input', { className: 'AgreeCheckbox', type: 'checkbox', id: 'agree', name: 'agree', value: false, required: true }),
-                _react2['default'].createElement(
-                  'label',
-                  { className: 'AgreeCheckboxLabel', htmlFor: 'agree' },
-                  _react2['default'].createElement('span', null),
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    'By making this booking, I agree to the ',
-                    _react2['default'].createElement(
-                      'a',
-                      { href: '/terms-of-service', target: '_blank' },
-                      'Terms of Service'
-                    ),
-                    ' and ',
-                    _react2['default'].createElement(
-                      'a',
-                      { href: '/privacy-policy', target: '_blank' },
-                      'Privacy Policy'
-                    ),
-                    '.'
-                  )
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this2._rejectPopup = c;
-              } },
-            'To continue, please accept our Terms of Service and Privacy Policy.'
-          )
-        );
-      }
-    }, {
-      key: '_onNext',
-      value: function _onNext(event) {
-        var _this3 = this;
-
-        var sessions = [];
-        for (var i = 0; i < this.state.sessions.length; i++) {
-          if (this.state['session' + i]) {
-            sessions.push(this.state.sessions[i]);
-          }
-        }
-
-        if (sessions.length === 0) {
-          // alert('Please choose at least one session.');
-          this._alertPopup.show();
-          return event.preventDefault();
-        }
-
-        // if (confirm('Would you like to confirm the sessions?')) {
-        this._confirmPopup.show(function () {
-          if (_this3._agreeForm.checkValidity()) {
-            // Link.handleClick(event);
-            _libLocation2['default'].push({ pathname: '/booking4' });
-
-            // console.log(sessions);
-            _actionsBookingActions2['default'].setSessions(sessions);
-            // console.log(this.state);
-            _actionsBookingActions2['default'].setLast('booking3c');
-          } else {
-            _this3._rejectPopup.show();
-          }
-        });
-
-        // } else {
-        event.preventDefault();
-        // }
-      }
-    }]);
-
-    return BookingResults;
-  })(_react.Component);
-
-  exports['default'] = BookingResults;
-  module.exports = exports['default'];
 
 /***/ },
 /* 23 */
@@ -2338,892 +1719,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
-
-  var _reactIconsLibFaSpinner = __webpack_require__(36);
-
-  var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
-
-  var _reactLoader = __webpack_require__(6);
-
-  var _reactLoader2 = _interopRequireDefault(_reactLoader);
-
-  __webpack_require__(110);
-
-  var _Container = __webpack_require__(3);
-
-  var _Container2 = _interopRequireDefault(_Container);
-
-  var _Link = __webpack_require__(4);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _AlertPopup = __webpack_require__(11);
-
-  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
-
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var ALL_SERVICES = 'All Services';
-
-  var BookingServices = (function (_Component) {
-    _inherits(BookingServices, _Component);
-
-    function BookingServices(props) {
-      _classCallCheck(this, BookingServices);
-
-      _get(Object.getPrototypeOf(BookingServices.prototype), 'constructor', this).call(this, props);
-      this.state = {
-        filter: ALL_SERVICES,
-        selectedService: undefined
-      };
-      if (this.props.booking && this.props.booking.service) {
-        this.state.selectedService = this.props.booking.service;
-      } else if (this.props.allServices && this.props.location.query && this.props.location.query.sid) {
-        for (var i = 0; i < this.props.allServices.length; i++) {
-          if (parseInt(this.props.allServices[i].id) === parseInt(this.props.location.query.sid)) {
-            this.state.selectedService = this.props.allServices[i].id;
-            break;
-          }
-        }
-      }
-    }
-
-    _createClass(BookingServices, [{
-      key: 'componentWillReceiveProps',
-      value: function componentWillReceiveProps(props) {
-        if (props.booking && props.booking.service) {
-          this.setState({
-            selectedService: props.booking.service
-          });
-        } else if (props.allServices && props.location.query && props.location.query.sid) {
-          for (var i = 0; i < props.allServices.length; i++) {
-            if (parseInt(props.allServices[i].id) === parseInt(props.location.query.sid)) {
-              this.setState({
-                selectedService: props.allServices[i].id
-              });
-              break;
-            }
-          }
-        }
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this = this;
-
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingServices' },
-          _react2['default'].createElement(
-            _reactLoader2['default'],
-            { className: 'spinner', loaded: this.props.allServices ? true : false },
-            _react2['default'].createElement(
-              'div',
-              { className: 'BookingServicesNav-wrapper' },
-              _react2['default'].createElement(
-                _Container2['default'],
-                null,
-                _react2['default'].createElement(
-                  'ul',
-                  { className: 'BookingServicesNav' },
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'BookingServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === ALL_SERVICES ? 'active' : ''), href: '/', onClick: this._onClickFilter.bind(this, ALL_SERVICES) },
-                      'All Services',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'BookingServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'BookingServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Nursing' ? 'active' : ''), href: '/about', onClick: this._onClickFilter.bind(this, 'Home Nursing') },
-                      'Home Nursing',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'BookingServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'BookingServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Social Care' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home Social Care') },
-                      'Home Social Care',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'BookingServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'BookingServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Medical' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home Medical') },
-                      'Home Medical',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'BookingServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'BookingServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home TCM' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home TCM') },
-                      'Home TCM',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'BookingServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  )
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(
-                _Container2['default'],
-                null,
-                _react2['default'].createElement(
-                  'div',
-                  { className: 'BookingServicesBody' },
-                  _react2['default'].createElement(
-                    'form',
-                    { ref: function (c) {
-                        return _this._bookingServicesForm = c;
-                      } },
-                    this.props.allServices && this._filterServices(this.props.allServices, this.state.filter).map(function (service) {
-                      var id = "BookingServicesRadio" + service.id;
-                      return _react2['default'].createElement(
-                        'div',
-                        { className: 'BookingServicesItem', key: service.id },
-                        _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === _this.state.selectedService, onChange: _this._onSelect.bind(_this), required: true }),
-                        _react2['default'].createElement(
-                          'label',
-                          { className: 'BookingServicesRadioLabel', htmlFor: id },
-                          _react2['default'].createElement(
-                            'span',
-                            null,
-                            _react2['default'].createElement('span', null)
-                          ),
-                          _react2['default'].createElement(
-                            'span',
-                            null,
-                            service.name
-                          )
-                        )
-                      );
-                    })
-                  )
-                ),
-                _react2['default'].createElement(
-                  'div',
-                  { className: 'BookingServicesFooter' },
-                  _react2['default'].createElement(
-                    'a',
-                    { href: '/booking2', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
-                    'NEXT'
-                  )
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please select a service.'
-          )
-        );
-      }
-    }, {
-      key: '_onClickFilter',
-      value: function _onClickFilter(filter, event) {
-        event.preventDefault();
-
-        this.setState({
-          filter: filter
-        });
-      }
-    }, {
-      key: '_onSelect',
-      value: function _onSelect(event) {
-        this.setState({
-          selectedService: parseInt(event.target.value)
-        });
-      }
-    }, {
-      key: '_onNext',
-      value: function _onNext(event) {
-        if (this._bookingServicesForm.checkValidity()) {
-          _Link2['default'].handleClick(event);
-          _actionsBookingActions2['default'].setService(this.state.selectedService);
-          _actionsBookingActions2['default'].setLast('booking1');
-        } else {
-          event.preventDefault();
-          // alert('Please select a service');
-          this._alertPopup.show();
-        }
-      }
-    }, {
-      key: '_filterServices',
-      value: function _filterServices(services, filter) {
-        return services.filter(function (service) {
-          if (filter === ALL_SERVICES) return true;
-          return service.category === filter;
-        }).sort(function (a, b) {
-          return a.name.localeCompare(b.name);
-        });
-      }
-    }]);
-
-    return BookingServices;
-  })(_react.Component);
-
-  exports['default'] = BookingServices;
-  module.exports = exports['default'];
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactLinkState = __webpack_require__(10);
-
-  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
-
-  __webpack_require__(112);
-
-  var _Link = __webpack_require__(4);
-
-  var _Link2 = _interopRequireDefault(_Link);
-
-  var _AlertPopup = __webpack_require__(11);
-
-  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
-
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var BookingTime = (function (_Component) {
-    _inherits(BookingTime, _Component);
-
-    function BookingTime(props) {
-      _classCallCheck(this, BookingTime);
-
-      _get(Object.getPrototypeOf(BookingTime.prototype), 'constructor', this).call(this, props);
-      this.state = {
-        Morning: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Morning') > -1,
-        Afternoon: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Afternoon') > -1,
-        Evening: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Evening') > -1
-      };
-    }
-
-    _createClass(BookingTime, [{
-      key: 'render',
-      value: function render() {
-        var _this = this;
-
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingTime' },
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(
-              'div',
-              { className: 'BookingTimeItem' },
-              _react2['default'].createElement('input', { className: 'BookingTimeCheckbox', type: 'checkbox', id: 'timeMorning', name: 'time', checkedLink: (0, _reactLinkState2['default'])(this, 'Morning'), value: 'Morning' }),
-              _react2['default'].createElement(
-                'label',
-                { className: 'BookingTimeCheckboxLabel', htmlFor: 'timeMorning' },
-                _react2['default'].createElement('span', null),
-                _react2['default'].createElement(
-                  'span',
-                  null,
-                  'Morning: 8.00am - 11:00am'
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'BookingTimeItem' },
-              _react2['default'].createElement('input', { className: 'BookingTimeCheckbox', type: 'checkbox', id: 'timeAfternoon', name: 'time', checkedLink: (0, _reactLinkState2['default'])(this, 'Afternoon'), value: 'Afternoon' }),
-              _react2['default'].createElement(
-                'label',
-                { className: 'BookingTimeCheckboxLabel', htmlFor: 'timeAfternoon' },
-                _react2['default'].createElement('span', null),
-                _react2['default'].createElement(
-                  'span',
-                  null,
-                  'Afternoon: 12:00pm - 5:00pm'
-                )
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'BookingTimeItem' },
-              _react2['default'].createElement('input', { className: 'BookingTimeCheckbox', type: 'checkbox', id: 'timeEvening', name: 'time', checkedLink: (0, _reactLinkState2['default'])(this, 'Evening'), value: 'Evening' }),
-              _react2['default'].createElement(
-                'label',
-                { className: 'BookingTimeCheckboxLabel', htmlFor: 'timeEvening' },
-                _react2['default'].createElement('span', null),
-                _react2['default'].createElement(
-                  'span',
-                  null,
-                  'Evening: 7:00pm - 10:00pm'
-                )
-              )
-            )
-          ),
-          _react2['default'].createElement('p', null),
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            _react2['default'].createElement(
-              'a',
-              { href: '/booking3c', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
-              'NEXT'
-            )
-          ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please select at least one timeslot.'
-          )
-        );
-      }
-    }, {
-      key: '_onNext',
-      value: function _onNext(event) {
-        var timeslots = [];
-        for (var timeslot in this.state) {
-          if (this.state[timeslot]) {
-            timeslots.push(timeslot);
-          }
-        }
-
-        if (timeslots.length === 0) {
-          // alert('Please choose at least one timeslot.');
-          this._alertPopup.show();
-          return event.preventDefault();
-        }
-
-        _Link2['default'].handleClick(event);
-
-        // this.props.booking.timeslots = timeslots;
-        _actionsBookingActions2['default'].setTimeslots(timeslots);
-        _actionsBookingActions2['default'].setLast('booking3b');
-      }
-    }]);
-
-    return BookingTime;
-  })(_react.Component);
-
-  exports['default'] = BookingTime;
-  module.exports = exports['default'];
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-  module.exports = require("react-datepicker");
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-  module.exports = require("react-skylight");
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-  var keyMirror = __webpack_require__(145);
-
-  module.exports = keyMirror({
-    BOOKING_SET_SERVICE: null,
-    BOOKING_SET_BOOKER: null,
-    BOOKING_SET_LOCATION: null,
-    BOOKING_SET_DATES: null,
-    BOOKING_SET_TIMINGS: null,
-    BOOKING_SET_SERVICES: null,
-    BOOKING_SET_SESSIONS: null,
-    BOOKING_SET_SUM: null,
-    BOOKING_SET_BOOKING: null,
-    BOOKING_SET_LAST: null,
-    BOOKING_SET_USER: null,
-    BOOKING_SET_PATIENT: null,
-    BOOKING_DESTROY: null,
-    BOOKING_SET_POST_STATUS: null
-  });
-
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-  var Dispatcher = __webpack_require__(142).Dispatcher;
-
-  module.exports = new Dispatcher();
-
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _superagent = __webpack_require__(7);
-
-  var _superagent2 = _interopRequireDefault(_superagent);
-
-  __webpack_require__(91);
-
-  var _Container = __webpack_require__(3);
-
-  var _Container2 = _interopRequireDefault(_Container);
-
-  var _BookingNavigation = __webpack_require__(8);
-
-  var _BookingNavigation2 = _interopRequireDefault(_BookingNavigation);
-
-  var _BookingServices = __webpack_require__(23);
-
-  var _BookingServices2 = _interopRequireDefault(_BookingServices);
-
-  var _BookingLocation = __webpack_require__(21);
-
-  var _BookingLocation2 = _interopRequireDefault(_BookingLocation);
-
-  var _BookingLocationUser = __webpack_require__(44);
-
-  var _BookingLocationUser2 = _interopRequireDefault(_BookingLocationUser);
-
-  var _BookingDateTime = __webpack_require__(14);
-
-  var _BookingDateTime2 = _interopRequireDefault(_BookingDateTime);
-
-  var _BookingDate = __webpack_require__(20);
-
-  var _BookingDate2 = _interopRequireDefault(_BookingDate);
-
-  var _BookingTime = __webpack_require__(24);
-
-  var _BookingTime2 = _interopRequireDefault(_BookingTime);
-
-  var _BookingResults = __webpack_require__(22);
-
-  var _BookingResults2 = _interopRequireDefault(_BookingResults);
-
-  var _BookingComplete = __webpack_require__(40);
-
-  var _BookingComplete2 = _interopRequireDefault(_BookingComplete);
-
-  var _BookingPostNavigation = __webpack_require__(49);
-
-  var _BookingPostNavigation2 = _interopRequireDefault(_BookingPostNavigation);
-
-  var _BookingConfirmation = __webpack_require__(41);
-
-  var _BookingConfirmation2 = _interopRequireDefault(_BookingConfirmation);
-
-  var _BookingPayment = __webpack_require__(46);
-
-  var _BookingPayment2 = _interopRequireDefault(_BookingPayment);
-
-  var _BookingPaypal = __webpack_require__(47);
-
-  var _BookingPaypal2 = _interopRequireDefault(_BookingPaypal);
-
-  var _BookingBankTransfer = __webpack_require__(39);
-
-  var _BookingBankTransfer2 = _interopRequireDefault(_BookingBankTransfer);
-
-  var _BookingCredits = __webpack_require__(42);
-
-  var _BookingCredits2 = _interopRequireDefault(_BookingCredits);
-
-  var _BookingPostComplete = __webpack_require__(48);
-
-  var _BookingPostComplete2 = _interopRequireDefault(_BookingPostComplete);
-
-  var _BookingSidebar = __webpack_require__(51);
-
-  var _BookingSidebar2 = _interopRequireDefault(_BookingSidebar);
-
-  var _BookingPostSidebar = __webpack_require__(50);
-
-  var _BookingPostSidebar2 = _interopRequireDefault(_BookingPostSidebar);
-
-  var _BookingDetails = __webpack_require__(30);
-
-  var _BookingDetails2 = _interopRequireDefault(_BookingDetails);
-
-  var _Account = __webpack_require__(19);
-
-  var _Account2 = _interopRequireDefault(_Account);
-
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _storesBookingStore = __webpack_require__(13);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
-
-  var _libLocation = __webpack_require__(15);
-
-  var _libLocation2 = _interopRequireDefault(_libLocation);
-
-  var _libUtil = __webpack_require__(9);
-
-  var _libUtil2 = _interopRequireDefault(_libUtil);
-
-  var BookingApp = (function (_Component) {
-    _inherits(BookingApp, _Component);
-
-    function BookingApp(props) {
-      _classCallCheck(this, BookingApp);
-
-      _get(Object.getPrototypeOf(BookingApp.prototype), 'constructor', this).call(this, props);
-      if (this.props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(this.props.path)) {
-        _libLocation2['default'].replace('');
-      } else {
-        this.state = _storesBookingStore2['default'].getState();
-      }
-    }
-
-    _createClass(BookingApp, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        var _this = this;
-
-        _storesBookingStore2['default'].addChangeListener(this._onChange.bind(this));
-
-        if (!_storesBookingStore2['default'].getServices()) {
-          this.serverRequest1 = _superagent2['default'].get(_libUtil2['default'].host + '/api/getServices').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).end(function (err, res) {
-            if (err) {
-              return console.error(_libUtil2['default'].host + '/api/getServices', err.toString());
-            }
-            if (res.body && res.body.services && Array.isArray(res.body.services)) {
-              // console.log(res.body.services);
-              _actionsBookingActions2['default'].setServices(res.body.services);
-            } else {
-              console.error('Failed to obtain services data.');
-            }
-          });
-        }
-
-        // if "bid" query parameter exists, must be booking confirmation
-        if (this.props.location && this.props.location.query && this.props.location.query.bid && this.props.location.query.email) {
-          if (this.props.location.query.token) {
-            _actionsBookingActions2['default'].setPostStatus('payment-paypal');
-          }
-
-          this.serverRequest2 = _superagent2['default'].get(_libUtil2['default'].host + '/api/getBooking').query({
-            bid: this.props.location.query.bid,
-            email: this.props.location.query.email
-          }).auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).end(function (err, res) {
-            if (err) {
-              return console.error(_libUtil2['default'].host + '/api/getBooking', status, err.toString());
-            }
-            if (res.body && res.body.booking && res.body.status) {
-              console.log(res.body.booking);
-              if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].isPaid) {
-                // if booking has already been completed
-                _actionsBookingActions2['default'].setPostStatus('success');
-              } else if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].status === 'Accepting Quotes') {
-                // if booking is still pending service providers
-                _libLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: _this.props.location.query.bid, email: _this.props.location.query.email } });
-                // Location.replace({ pathname: '/manage-booking', query: { bid: this.props.location.query.bid, email: this.props.location.query.email } });
-              }
-              _actionsBookingActions2['default'].setBooking(res.body.booking);
-            } else {
-              console.error('Failed to obtain booking data.');
-            }
-          });
-        }
-
-        // if "uid" query parameter exists, login automatically
-        if (this.props.location && this.props.location.query && this.props.location.query.uid && this.props.location.query.token) {
-          this.serverRequest3 = _superagent2['default'].get(_libUtil2['default'].host + '/api/getUser').auth(this.props.location.query.uid, this.props.location.query.token).end(function (err, res) {
-            if (err) {
-              return console.error(_libUtil2['default'].host + '/api/getUser', status, err.toString());
-            }
-            if (res.body && res.body.status === 1) {
-              console.log(res.body.user);
-              _actionsBookingActions2['default'].setUser(res.body.user);
-            } else {
-              console.error('Failed to get user data.');
-            }
-          });
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        _storesBookingStore2['default'].removeChangeListener(this._onChange.bind(this));
-
-        this.serverRequest1 && this.serverRequest1.abort();
-        this.serverRequest2 && this.serverRequest2.abort();
-        this.serverRequest3 && this.serverRequest3.abort();
-      }
-    }, {
-      key: 'componentWillReceiveProps',
-      value: function componentWillReceiveProps(props) {
-        if (props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(props.path)) {
-          _libLocation2['default'].replace('');
-        }
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        // console.log('rendered ' + this.props.path + ' ' + this.state.postStatus);
-        var component;
-        if (this.state) {
-          if (this.props.location && this.props.path === '/booking1') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(_BookingServices2['default'], { location: this.props.location, allServices: this.state.allServices, booking: this.state.booking })
-            );
-          } else if (this.props.location && this.props.path === '/booking2') {
-            if (this.state.user) {
-              component = _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-                _react2['default'].createElement(
-                  _BookingLocationUser2['default'],
-                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, user: this.state.user, patient: this.state.patient },
-                  _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-                )
-              );
-            } else {
-              component = _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-                _react2['default'].createElement(
-                  _BookingLocation2['default'],
-                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking },
-                  _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-                )
-              );
-            }
-          } else if (this.props.location && (this.props.path === '/booking3' || this.props.path === '/booking3a')) {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(
-                _BookingDateTime2['default'],
-                { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingDate2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking3b') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(
-                _BookingDateTime2['default'],
-                { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingTime2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking3c') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(
-                _BookingDateTime2['default'],
-                { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingResults2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking4') {
-            component = _react2['default'].createElement(_BookingComplete2['default'], { booking: this.state.booking, user: this.state.user, patient: this.state.patient });
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'confirmation') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingConfirmation2['default'],
-                { location: this.props.location, booking: this.state.booking },
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-paypal') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus },
-                _react2['default'].createElement(_BookingPaypal2['default'], { location: this.props.location, booking: this.state.booking }),
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-bank') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus },
-                _react2['default'].createElement(_BookingBankTransfer2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-credits') {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus },
-                _react2['default'].createElement(_BookingCredits2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'success') {
-            component = _react2['default'].createElement(_BookingPostComplete2['default'], { booking: this.state.booking });
-          } else if (this.props.location && this.props.path === '/booking-manage') {
-            if (this.state.booking && this.state.booking.id) {
-              component = _react2['default'].createElement(_BookingDetails2['default'], { location: this.props.location, booking: this.state.booking });
-            } else {
-              component = _react2['default'].createElement(_Account2['default'], { type: 'login', location: this.props.location, booking: this.props.booking });
-            }
-          }
-        }
-        return _react2['default'].createElement(
-          'div',
-          { className: 'BookingApp' },
-          component
-        );
-      }
-
-      /**
-       * Event handler for 'change' events coming from the BookingStore
-       */
-    }, {
-      key: '_onChange',
-      value: function _onChange() {
-        this.setState(_storesBookingStore2['default'].getState());
-        // console.log(this.state);
-      }
-    }]);
-
-    return BookingApp;
-  })(_react.Component);
-
-  exports['default'] = BookingApp;
-  module.exports = exports['default'];
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -3231,7 +1727,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(16);
+  var _moment = __webpack_require__(14);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -3239,7 +1735,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  __webpack_require__(99);
+  __webpack_require__(91);
 
   var _Container = __webpack_require__(3);
 
@@ -3253,13 +1749,13 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libLocation = __webpack_require__(15);
+  var _coreLocation = __webpack_require__(13);
 
-  var _libLocation2 = _interopRequireDefault(_libLocation);
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingDetails = (function (_Component) {
     _inherits(BookingDetails, _Component);
@@ -3898,7 +2394,7 @@ module.exports =
                           _react2['default'].createElement(
                             'a',
                             { href: '#', className: this.state.editingUser || this.props.booking['case'].isPaid ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                            _react2['default'].createElement('img', { src: __webpack_require__(17) })
+                            _react2['default'].createElement('img', { src: __webpack_require__(15) })
                           )
                         ),
                         _react2['default'].createElement(
@@ -4041,7 +2537,7 @@ module.exports =
           case 'user':
             if (this._userDetailsForm.checkValidity()) {
               this.setState({ updatingUser: true });
-              this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/editBooking').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+              this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/editBooking').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 booking: {
@@ -4051,7 +2547,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error(_libUtil2['default'].host + '/api/editBooking', err.toString());
+                  return console.error(_coreUtil2['default'].host + '/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -4074,7 +2570,7 @@ module.exports =
           case 'address':
             if (this._addressDetailsForm.checkValidity()) {
               this.setState({ updatingAddress: true });
-              this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/editBooking').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+              this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/editBooking').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 'case': {
@@ -4087,7 +2583,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error(_libUtil2['default'].host + '/api/editBooking', err.toString());
+                  return console.error(_coreUtil2['default'].host + '/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -4166,7 +2662,7 @@ module.exports =
       value: function _onClickPay(event) {
         // Link.handleClick(event);
         event.preventDefault();
-        _libLocation2['default'].push({ pathname: '/booking-confirmation', query: this.props.location.query });
+        _coreLocation2['default'].push({ pathname: '/booking-confirmation', query: this.props.location.query });
 
         _actionsBookingActions2['default'].setPostStatus('confirmation');
       }
@@ -4187,43 +2683,43 @@ module.exports =
   */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
-/* 31 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "7ad2245e83d3de7f615169027e4b23b5.png";
 
 /***/ },
-/* 32 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "45d2446a2feec0d18320019ff910580f.png";
 
 /***/ },
-/* 33 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "dd233d698a06a19cbf8c6aca0990d310.png";
 
 /***/ },
-/* 34 */
+/* 27 */
 /***/ function(module, exports) {
 
   module.exports = require("fbjs/lib/ExecutionEnvironment");
 
 /***/ },
-/* 35 */
+/* 28 */
 /***/ function(module, exports) {
 
   module.exports = require("object-assign");
 
 /***/ },
-/* 36 */
+/* 29 */
 /***/ function(module, exports) {
 
   module.exports = require("react-icons/lib/fa/spinner");
 
 /***/ },
-/* 37 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4246,7 +2742,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(88);
+  __webpack_require__(80);
 
   var _Container = __webpack_require__(3);
 
@@ -4280,7 +2776,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'Actions-item' },
-                _react2['default'].createElement('img', { src: __webpack_require__(125) }),
+                _react2['default'].createElement('img', { src: __webpack_require__(117) }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'Actions-item-title' },
@@ -4299,7 +2795,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'Actions-item' },
-                _react2['default'].createElement('img', { src: __webpack_require__(126) }),
+                _react2['default'].createElement('img', { src: __webpack_require__(118) }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'Actions-item-title' },
@@ -4330,7 +2826,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 38 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4353,7 +2849,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(90);
+  __webpack_require__(82);
 
   var _Link = __webpack_require__(4);
 
@@ -4413,7 +2909,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 39 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4440,11 +2936,11 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classNames = __webpack_require__(12);
+  var _classNames = __webpack_require__(11);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -4452,13 +2948,13 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  __webpack_require__(92);
+  __webpack_require__(84);
 
   var _Link = __webpack_require__(4);
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(10);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -4466,9 +2962,9 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingBankTransfer = (function (_Component) {
     _inherits(BookingBankTransfer, _Component);
@@ -4618,14 +3114,14 @@ module.exports =
             ref: undefined
           });
 
-          this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/verifyBankTransaction').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/verifyBankTransaction').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
             amount: this.props.booking['case'].price,
             type: 'Payment',
             ref: this.state.ref,
             sku: 'ebc-case-' + this.props.booking['case'].id
           }).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/verifyBankTransaction', status, err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/verifyBankTransaction', status, err.toString());
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body);
@@ -4652,7 +3148,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 40 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4683,7 +3179,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  __webpack_require__(93);
+  __webpack_require__(85);
 
   var _Container = __webpack_require__(3);
 
@@ -4697,9 +3193,9 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingComplete = (function (_Component) {
     _inherits(BookingComplete, _Component);
@@ -4731,7 +3227,7 @@ module.exports =
               price: this.props.booking.sessions[i].price
             });
           }
-          this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/createCase').auth(this.props.user.id, this.props.user.token).send({
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createCase').auth(this.props.user.id, this.props.user.token).send({
             notes: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
             price: this.props.booking && this.props.booking.sum && this.props.booking.sum.toFixed(2),
             pid: this.props.patient.id,
@@ -4744,7 +3240,7 @@ module.exports =
             }]
           }).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/createCase', err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/createCase', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body['case']) {
@@ -4770,7 +3266,7 @@ module.exports =
               price: this.props.booking.sessions[i].price
             });
           }
-          this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/createBooking').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createBooking').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
             booking: {
               client_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
               client_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
@@ -4796,7 +3292,7 @@ module.exports =
             }
           }).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/createBooking', err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/createBooking', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body.booking && res.body.booking['case']) {
@@ -4954,7 +3450,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 41 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4977,7 +3473,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -4985,11 +3481,11 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactDatepicker = __webpack_require__(25);
+  var _reactDatepicker = __webpack_require__(19);
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(16);
+  var _moment = __webpack_require__(14);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4997,7 +3493,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  __webpack_require__(94);
+  __webpack_require__(86);
 
   var _Container = __webpack_require__(3);
 
@@ -5011,9 +3507,9 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingConfirmation = (function (_Component) {
     _inherits(BookingConfirmation, _Component);
@@ -5443,7 +3939,7 @@ module.exports =
                       _react2['default'].createElement(
                         'a',
                         { href: '#', className: this.state.editingUser ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                        _react2['default'].createElement('img', { src: __webpack_require__(17) })
+                        _react2['default'].createElement('img', { src: __webpack_require__(15) })
                       )
                     ),
                     _react2['default'].createElement(
@@ -5550,7 +4046,7 @@ module.exports =
           case 'user':
             if (this._userDetailsForm.checkValidity()) {
               this.setState({ updatingUser: true });
-              this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/editBooking').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+              this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/editBooking').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 booking: {
@@ -5558,7 +4054,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error(_libUtil2['default'].host + '/api/editBooking', err.toString());
+                  return console.error(_coreUtil2['default'].host + '/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -5581,7 +4077,7 @@ module.exports =
           case 'address':
             if (this._addressDetailsForm.checkValidity()) {
               this.setState({ updatingAddress: true });
-              this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/editBooking').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+              this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/editBooking').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
                 bid: this.props.booking && this.props.booking.id,
                 token: this.props.booking && this.props.booking.token,
                 'case': {
@@ -5594,7 +4090,7 @@ module.exports =
                 }
               }).end(function (err, res) {
                 if (err) {
-                  return console.error(_libUtil2['default'].host + '/api/editBooking', err.toString());
+                  return console.error(_coreUtil2['default'].host + '/api/editBooking', err.toString());
                 }
                 // console.log(res.body);
                 if (res.body && res.body.status === 1) {
@@ -5698,7 +4194,7 @@ module.exports =
   */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
-/* 42 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5721,11 +4217,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  __webpack_require__(95);
+  __webpack_require__(87);
 
   var _Link = __webpack_require__(4);
 
@@ -5754,8 +4250,8 @@ module.exports =
           _react2['default'].createElement(
             'div',
             null,
-            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(31) }),
-            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(33) })
+            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(24) }),
+            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(26) })
           ),
           _react2['default'].createElement(
             'p',
@@ -5809,7 +4305,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 43 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5832,17 +4328,246 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
+  var _reactDaterangePicker = __webpack_require__(140);
 
-  var _classNames2 = _interopRequireDefault(_classNames);
+  var _reactDaterangePicker2 = _interopRequireDefault(_reactDaterangePicker);
 
-  __webpack_require__(98);
+  __webpack_require__(88);
 
   var _Link = __webpack_require__(4);
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _storesBookingStore = __webpack_require__(13);
+  var _AlertPopup = __webpack_require__(10);
+
+  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
+
+  var _actionsBookingActions = __webpack_require__(5);
+
+  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+
+  var BookingDate = (function (_Component) {
+    _inherits(BookingDate, _Component);
+
+    function BookingDate(props) {
+      _classCallCheck(this, BookingDate);
+
+      _get(Object.getPrototypeOf(BookingDate.prototype), 'constructor', this).call(this, props);
+      this.state = {
+        range: this.props.booking && this.props.booking.range // { start: Moment, end: Moment }
+      };
+    }
+
+    _createClass(BookingDate, [{
+      key: 'render',
+      value: function render() {
+        var _this = this;
+
+        var minimumDate = new Date();
+        minimumDate.setDate(minimumDate.getDate() + 3);
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingDate' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'text-center' },
+            _react2['default'].createElement(_reactDaterangePicker2['default'], { numberOfCalendars: 2, selectionType: 'range', singleDateRange: true, minimumDate: minimumDate, value: this.state.range, onSelect: this._handleSelect.bind(this) })
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'text-center' },
+            _react2['default'].createElement(
+              'form',
+              { id: 'BookingDateForm' },
+              _react2['default'].createElement('input', { className: 'btn-inline', type: 'text', id: 'startDate', name: 'startDate', value: this.state.range && this.state.range.start && this.state.range.start.format('ll'), required: true, readOnly: true }),
+              _react2['default'].createElement(
+                'div',
+                { className: 'BookingDateTo' },
+                _react2['default'].createElement(
+                  'i',
+                  null,
+                  'to'
+                )
+              ),
+              _react2['default'].createElement('input', { className: 'btn-inline', type: 'text', id: 'endDate', name: 'endDate', value: this.state.range && this.state.range.end && this.state.range.end.format('ll'), required: true, readOnly: true })
+            )
+          ),
+          _react2['default'].createElement('p', null),
+          _react2['default'].createElement(
+            'div',
+            { className: 'text-center' },
+            _react2['default'].createElement(
+              'a',
+              { href: '/booking3b', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
+              'NEXT'
+            )
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this._alertPopup = c;
+              } },
+            'Please select a date range.'
+          )
+        );
+      }
+    }, {
+      key: '_handleSelect',
+      value: function _handleSelect(range) {
+        this.setState({
+          range: range
+        });
+      }
+    }, {
+      key: '_onNext',
+      value: function _onNext(event) {
+        var form = document.getElementById('BookingDateForm');
+        if (form.checkValidity()) {
+          _Link2['default'].handleClick(event);
+
+          // this.props.booking.range = this.state.range;
+          _actionsBookingActions2['default'].setDates(this.state.range);
+          _actionsBookingActions2['default'].setLast('booking3a');
+        } else {
+          event.preventDefault();
+          // alert('Please select a date range.');
+          this._alertPopup.show();
+        }
+      }
+    }]);
+
+    return BookingDate;
+  })(_react.Component);
+
+  exports['default'] = BookingDate;
+  module.exports = exports['default'];
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  __webpack_require__(89);
+
+  var _Container = __webpack_require__(3);
+
+  var _Container2 = _interopRequireDefault(_Container);
+
+  var _Link = __webpack_require__(4);
+
+  var _Link2 = _interopRequireDefault(_Link);
+
+  var _BookingDateTimeNavItem = __webpack_require__(38);
+
+  var _BookingDateTimeNavItem2 = _interopRequireDefault(_BookingDateTimeNavItem);
+
+  var BookingDateTime = (function (_Component) {
+    _inherits(BookingDateTime, _Component);
+
+    function BookingDateTime() {
+      _classCallCheck(this, BookingDateTime);
+
+      _get(Object.getPrototypeOf(BookingDateTime.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(BookingDateTime, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingDateTime' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'BookingDateTimeNav-wrapper' },
+            _react2['default'].createElement(
+              _Container2['default'],
+              null,
+              _react2['default'].createElement(
+                'ul',
+                { className: 'BookingDateTimeNav' },
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3a', link: 'booking3a', name: 'Select Service Dates' }),
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3b', link: 'booking3b', name: 'Select Timeslots' }),
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3c', link: 'booking3c', name: 'Select Sessions' })
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(
+              _Container2['default'],
+              null,
+              _react2['default'].createElement(
+                'div',
+                { className: 'BookingDateTimeBody' },
+                this.props.children
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return BookingDateTime;
+  })(_react.Component);
+
+  exports['default'] = BookingDateTime;
+  module.exports = exports['default'];
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _classNames = __webpack_require__(11);
+
+  var _classNames2 = _interopRequireDefault(_classNames);
+
+  __webpack_require__(90);
+
+  var _Link = __webpack_require__(4);
+
+  var _Link2 = _interopRequireDefault(_Link);
+
+  var _storesBookingStore = __webpack_require__(17);
 
   var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
 
@@ -5864,7 +4589,7 @@ module.exports =
             { className: 'BookingDateTimeNavItem' },
             _react2['default'].createElement(
               'a',
-              { className: (0, _classNames2['default'])('BookingDateTimeNav-link', this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : ''), href: '/' + this.props.link, onClick: _Link2['default'].handleClick },
+              { className: (0, _classNames2['default'])('BookingDateTimeNav-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : ''), href: '/' + this.props.link, onClick: _Link2['default'].handleClick },
               this.props.name,
               _react2['default'].createElement(
                 'span',
@@ -5879,7 +4604,7 @@ module.exports =
             { className: 'BookingDateTimeNavItem' },
             _react2['default'].createElement(
               'span',
-              { className: (0, _classNames2['default'])('BookingDateTimeNav-link', this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : '') },
+              { className: (0, _classNames2['default'])('BookingDateTimeNav-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : '') },
               this.props.name,
               _react2['default'].createElement(
                 'span',
@@ -5899,7 +4624,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 44 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5922,7 +4647,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -5930,23 +4655,15 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classNames = __webpack_require__(12);
-
-  var _classNames2 = _interopRequireDefault(_classNames);
-
-  var _reactDatepicker = __webpack_require__(25);
+  var _reactDatepicker = __webpack_require__(19);
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(16);
+  var _moment = __webpack_require__(14);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(6);
-
-  var _reactLoader2 = _interopRequireDefault(_reactLoader);
-
-  __webpack_require__(101);
+  __webpack_require__(92);
 
   var _Container = __webpack_require__(3);
 
@@ -5956,7 +4673,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _LoginPopup = __webpack_require__(56);
+
+  var _LoginPopup2 = _interopRequireDefault(_LoginPopup);
+
+  var _AlertPopup = __webpack_require__(10);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -5964,9 +4685,422 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(9);
+  var BookingLocation = (function (_Component) {
+    _inherits(BookingLocation, _Component);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+    function BookingLocation(props) {
+      _classCallCheck(this, BookingLocation);
+
+      _get(Object.getPrototypeOf(BookingLocation.prototype), 'constructor', this).call(this, props);
+      this.state = {
+        client_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
+        client_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
+        client_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_firstName,
+        client_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_lastName,
+        patient_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
+        patient_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
+        patient_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_firstName,
+        patient_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_lastName,
+        patient_dob: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_dob,
+        patient_gender: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_gender,
+        additionalInfo: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
+        postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
+        address: this.props.booking && this.props.booking.location && this.props.booking.location.address,
+        unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
+      };
+    }
+
+    _createClass(BookingLocation, [{
+      key: 'render',
+      value: function render() {
+        var _this = this;
+
+        var component, userDetails, patientDetails;
+        component = _react2['default'].createElement(
+          'form',
+          { ref: function (c) {
+              return _this._bookingLocationForm = c;
+            } },
+          _react2['default'].createElement(
+            'div',
+            { className: 'BookingLocationBodySection' },
+            _react2['default'].createElement(
+              'span',
+              null,
+              'I\'m an existing customer'
+            ),
+            _react2['default'].createElement(
+              'a',
+              { href: '#', className: 'btn btn-primary btn-small btn-inline', onClick: this._onClickLogin.bind(this) },
+              'LOGIN'
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'BookingLocationBodySection' },
+            _react2['default'].createElement(
+              'div',
+              null,
+              'Continue booking as guest'
+            ),
+            _react2['default'].createElement('input', { type: 'text', id: 'client_firstName', name: 'client_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'client_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
+            _react2['default'].createElement('input', { type: 'text', id: 'client_lastName', name: 'client_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'client_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
+            _react2['default'].createElement('input', { type: 'email', id: 'client_contactEmail', name: 'client_contactEmail', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactEmail'), placeholder: 'Email*', maxLength: '50', required: true }),
+            _react2['default'].createElement('input', { type: 'text', id: 'client_contactNumber', name: 'client_contactNumber', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactNumber'), placeholder: 'Contact Number*', maxLength: '8', required: true })
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'BookingLocationBodySection' },
+            _react2['default'].createElement(
+              'div',
+              null,
+              'Patient Details (',
+              _react2['default'].createElement('input', { className: 'RememberMeCheckbox', type: 'checkbox', id: 'isPatient', name: 'isPatient', onChange: this._onCheckedPatient.bind(this) }),
+              _react2['default'].createElement(
+                'label',
+                { className: 'RememberMeCheckboxLabel', htmlFor: 'isPatient' },
+                _react2['default'].createElement('span', null),
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  'Are you the patient?'
+                )
+              ),
+              ' )'
+            ),
+            _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement('input', { type: 'text', id: 'patient_firstName', name: 'patient_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
+              _react2['default'].createElement('input', { type: 'text', id: 'patient_lastName', name: 'patient_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'patient_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
+              _react2['default'].createElement(_reactDatepicker2['default'], { selected: this.state.patient_dob, maxDate: (0, _moment2['default'])(), dateFormat: 'YYYY-MM-DD', showYearDropdown: true, onChange: this._onSelectDob.bind(this), placeholderText: 'Date of Birth* (Y-M-D)' }),
+              _react2['default'].createElement('input', { type: 'text', value: this.state.patient_dob, required: true, style: { 'display': 'none' } }),
+              _react2['default'].createElement(
+                'div',
+                { className: 'radio radio-inline' },
+                _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_male', name: 'patient_gender', checked: this.state.patient_gender === 'Male', onChange: this._onSelectGender.bind(this), value: 'Male', required: true }),
+                _react2['default'].createElement(
+                  'label',
+                  { htmlFor: 'patient_gender_male' },
+                  _react2['default'].createElement(
+                    'span',
+                    null,
+                    _react2['default'].createElement('span', null)
+                  ),
+                  _react2['default'].createElement(
+                    'span',
+                    null,
+                    'Male'
+                  )
+                )
+              ),
+              _react2['default'].createElement(
+                'div',
+                { className: 'radio radio-inline' },
+                _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_female', name: 'patient_gender', checked: this.state.patient_gender === 'Female', onChange: this._onSelectGender.bind(this), value: 'Female', required: true }),
+                _react2['default'].createElement(
+                  'label',
+                  { htmlFor: 'patient_gender_female' },
+                  _react2['default'].createElement(
+                    'span',
+                    null,
+                    _react2['default'].createElement('span', null)
+                  ),
+                  _react2['default'].createElement(
+                    'span',
+                    null,
+                    'Female'
+                  )
+                )
+              )
+            ),
+            _react2['default'].createElement(
+              'div',
+              { style: { marginTop: '40px' } },
+              _react2['default'].createElement(
+                'div',
+                null,
+                'Additional Info:'
+              ),
+              _react2['default'].createElement('textarea', { name: 'additionalInfo', valueLink: (0, _reactLinkState2['default'])(this, 'additionalInfo'), placeholder: 'Please provide important notes about patient here.' })
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'BookingLocationBodySection' },
+            _react2['default'].createElement(
+              'div',
+              null,
+              'Patient Location / Address'
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'PatientAddress' },
+              _react2['default'].createElement(
+                'div',
+                { className: 'PatientAddressLeft inline' },
+                _react2['default'].createElement('input', { type: 'text', id: 'postalCode', name: 'postalCode', value: this.state.postalCode, onChange: this._onChangePostalCode.bind(this), placeholder: 'Enter Postal Code*', required: true }),
+                _react2['default'].createElement('input', { type: 'text', id: 'unitNumber', name: 'unitNumber', valueLink: (0, _reactLinkState2['default'])(this, 'unitNumber'), placeholder: 'Enter Unit Number' })
+              ),
+              _react2['default'].createElement(
+                'div',
+                { className: 'PatientAddressRight inline' },
+                _react2['default'].createElement('textarea', { id: 'address', name: 'address', valueLink: (0, _reactLinkState2['default'])(this, 'address'), placeholder: 'Enter Address*', required: true })
+              )
+            ),
+            _react2['default'].createElement(
+              'p',
+              { className: 'small' },
+              'This information will only be used to contact you regarding your booking.'
+            ),
+            _react2['default'].createElement(
+              'a',
+              { href: '/booking3a', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
+              'NEXT'
+            )
+          )
+        );
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingLocation' },
+          _react2['default'].createElement(
+            _Container2['default'],
+            null,
+            _react2['default'].createElement(
+              'div',
+              { className: 'BookingLocationWrapper' },
+              _react2['default'].createElement(
+                'div',
+                { className: 'BookingLocationBody' },
+                component
+              ),
+              this.props.children
+            )
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this._alertPopup = c;
+              } },
+            'Please fill up all required fields.'
+          ),
+          _react2['default'].createElement(_LoginPopup2['default'], { ref: function (c) {
+              return _this._loginPopup = c;
+            } })
+        );
+      }
+    }, {
+      key: '_onSelectDob',
+      value: function _onSelectDob(date) {
+        this.setState({
+          patient_dob: date
+        });
+      }
+    }, {
+      key: '_onSelectGender',
+      value: function _onSelectGender(event) {
+        this.setState({
+          patient_gender: event.target.value
+        });
+      }
+    }, {
+      key: '_onChangePostalCode',
+      value: function _onChangePostalCode(event) {
+        var that = this;
+        var postalCodeInput = event.target;
+        this.setState({
+          postalCode: postalCodeInput.value
+        });
+        if (postalCodeInput.value.length === 6) {
+          // console.log(postalCodeInput.value);
+          try {
+            // postalCodeInput.disabled = true;
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+              'address': postalCodeInput.value,
+              'region': 'SG'
+            }, function (results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                var position = results[0].geometry.location;
+                geocoder.geocode({
+                  latLng: position
+                }, function (responses) {
+                  if (responses && responses.length > 0) {
+                    that.setState({
+                      address: responses[0].formatted_address
+                    });
+                    // postalCodeInput.disabled = false;
+                  } else {
+                      // postalCodeInput.disabled = false;
+                      console.error('Invalid postal code.');
+                    }
+                });
+              } else {
+                // postalCodeInput.disabled = false;
+                console.error('Invalid postal code.');
+              }
+            });
+          } catch (e) {
+            // postalCodeInput.disabled = false;
+            console.error('Unable to find your address.');
+          }
+        }
+      }
+    }, {
+      key: '_onClickLogin',
+      value: function _onClickLogin(event) {
+        var _this2 = this;
+
+        event.preventDefault();
+
+        this._loginPopup.show(function (user) {
+          if (user.type === 'Client') {
+            _actionsBookingActions2['default'].setUser(user);
+          } else {
+            _this2.setState({
+              error: true
+            });
+            console.error('Failed to login as you do not have a caregiver account.');
+          }
+        });
+      }
+    }, {
+      key: '_onCheckedPatient',
+      value: function _onCheckedPatient(event) {
+        if (event.target.checked === true) {
+          this.setState({
+            patient_firstName: this.state.client_firstName,
+            patient_lastName: this.state.client_lastName
+          });
+        } else {
+          this.setState({
+            patient_firstName: undefined,
+            patient_lastName: undefined
+          });
+        }
+      }
+    }, {
+      key: '_onNext',
+      value: function _onNext(event) {
+        if (this._bookingLocationForm.checkValidity()) {
+          _Link2['default'].handleClick(event);
+
+          var user = {
+            client_contactEmail: this.state.client_contactEmail,
+            client_contactNumber: this.state.client_contactNumber,
+            client_firstName: this.state.client_firstName,
+            client_lastName: this.state.client_lastName,
+            patient_contactEmail: this.state.client_contactEmail,
+            patient_contactNumber: this.state.client_contactNumber,
+            patient_firstName: this.state.patient_firstName,
+            patient_lastName: this.state.patient_lastName,
+            patient_dob: this.state.patient_dob,
+            patient_gender: this.state.patient_gender,
+            additionalInfo: this.state.additionalInfo
+          };
+          // console.log(user);
+          var location = {
+            postalCode: this.state.postalCode,
+            address: this.state.address,
+            unitNumber: this.state.unitNumber
+          };
+          _actionsBookingActions2['default'].setBooker(user);
+          _actionsBookingActions2['default'].setLocation(location);
+          _actionsBookingActions2['default'].setLast('booking2');
+        } else {
+          event.preventDefault();
+          // alert('Please fill up all required fields.');
+          this._alertPopup.show();
+        }
+      }
+    }]);
+
+    return BookingLocation;
+  })(_react.Component);
+
+  exports['default'] = BookingLocation;
+  module.exports = exports['default'];
+  /*
+  <span>or</span>
+  <a href="/booking2" className="btn btn-primary btn-small btn-inline">REGISTER</a>
+  */ /*
+     <div className="select">
+      <span></span>
+      <select name="salutation">
+        <option value="">Salutation</option>
+      </select>
+     </div>
+     */
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactLinkState = __webpack_require__(9);
+
+  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
+
+  var _superagent = __webpack_require__(7);
+
+  var _superagent2 = _interopRequireDefault(_superagent);
+
+  var _classNames = __webpack_require__(11);
+
+  var _classNames2 = _interopRequireDefault(_classNames);
+
+  var _reactDatepicker = __webpack_require__(19);
+
+  var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
+  var _moment = __webpack_require__(14);
+
+  var _moment2 = _interopRequireDefault(_moment);
+
+  var _reactLoader = __webpack_require__(6);
+
+  var _reactLoader2 = _interopRequireDefault(_reactLoader);
+
+  __webpack_require__(93);
+
+  var _Container = __webpack_require__(3);
+
+  var _Container2 = _interopRequireDefault(_Container);
+
+  var _Link = __webpack_require__(4);
+
+  var _Link2 = _interopRequireDefault(_Link);
+
+  var _AlertPopup = __webpack_require__(10);
+
+  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
+
+  var _actionsBookingActions = __webpack_require__(5);
+
+  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+
+  var _coreUtil = __webpack_require__(8);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingLocationUser = (function (_Component) {
     _inherits(BookingLocationUser, _Component);
@@ -6472,7 +5606,7 @@ module.exports =
               _react2['default'].createElement(
                 'a',
                 { href: '#', className: this.state.editingUser ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                _react2['default'].createElement('img', { src: __webpack_require__(17) })
+                _react2['default'].createElement('img', { src: __webpack_require__(15) })
               )
             ),
             userDetails
@@ -6742,7 +5876,7 @@ module.exports =
           this.setState({
             savingPatient: true
           });
-          this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/createPatient').auth(this.props.user.id, this.props.user.token).send({
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createPatient').auth(this.props.user.id, this.props.user.token).send({
             fullName: this.state.fullName,
             gender: this.state.gender,
             dob: this.state.dob.format('YYYY-MM-DD'),
@@ -6753,7 +5887,7 @@ module.exports =
             }]
           }).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/createPatient', err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/createPatient', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body.patient) {
@@ -6816,11 +5950,11 @@ module.exports =
         var _this4 = this;
 
         cb = cb || function () {};
-        this.serverRequest = _superagent2['default'].get(_libUtil2['default'].host + '/api/getPatients').query({
+        this.serverRequest = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getPatients').query({
           cid: user.clients[0].id
         }).auth(user.id, user.token).end(function (err, res) {
           if (err) {
-            return console.error(_libUtil2['default'].host + '/api/getPatients', err.toString());
+            return console.error(_coreUtil2['default'].host + '/api/getPatients', err.toString());
           }
           if (res.body && res.body.status === 1) {
             console.log(res.body);
@@ -6851,7 +5985,7 @@ module.exports =
   */ /*<a href="#" className={this.state.editingPatient || !this.state.patientId ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
-/* 45 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6874,17 +6008,87 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
+  __webpack_require__(94);
+
+  var _Container = __webpack_require__(3);
+
+  var _Container2 = _interopRequireDefault(_Container);
+
+  var _BookingNavigationItem = __webpack_require__(42);
+
+  var _BookingNavigationItem2 = _interopRequireDefault(_BookingNavigationItem);
+
+  var BookingNavigation = (function (_Component) {
+    _inherits(BookingNavigation, _Component);
+
+    function BookingNavigation() {
+      _classCallCheck(this, BookingNavigation);
+
+      _get(Object.getPrototypeOf(BookingNavigation.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(BookingNavigation, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingNavigation-wrapper' },
+          _react2['default'].createElement(
+            _Container2['default'],
+            null,
+            _react2['default'].createElement(
+              'ul',
+              { className: 'BookingNavigation' },
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking1', link: 'booking1', icon: '1', text: 'Select Service' }),
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking2', link: 'booking2', icon: '2', text: 'Select Location' }),
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { path: this.props.path, active: 'booking3', link: 'booking3a', icon: '3', text: 'Select Date & Time' })
+            )
+          )
+        );
+      }
+    }]);
+
+    return BookingNavigation;
+  })(_react.Component);
+
+  exports['default'] = BookingNavigation;
+  module.exports = exports['default'];
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _classNames = __webpack_require__(11);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  __webpack_require__(103);
+  __webpack_require__(95);
 
   var _Link = __webpack_require__(4);
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _storesBookingStore = __webpack_require__(13);
+  var _storesBookingStore = __webpack_require__(17);
 
   var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
 
@@ -6906,7 +6110,7 @@ module.exports =
             { className: 'BookingNavigationItem' },
             _react2['default'].createElement(
               'a',
-              { className: (0, _classNames2['default'])('BookingNavigation-link', this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : ''), href: '/' + this.props.link, onClick: _Link2['default'].handleClick },
+              { className: (0, _classNames2['default'])('BookingNavigation-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : ''), href: '/' + this.props.link, onClick: _Link2['default'].handleClick },
               _react2['default'].createElement(
                 'div',
                 { className: 'BookingNavigationItem-icon' },
@@ -6925,7 +6129,7 @@ module.exports =
             { className: 'BookingNavigationItem' },
             _react2['default'].createElement(
               'span',
-              { className: (0, _classNames2['default'])('BookingNavigation-link', this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : '') },
+              { className: (0, _classNames2['default'])('BookingNavigation-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : '') },
               _react2['default'].createElement(
                 'div',
                 { className: 'BookingNavigationItem-icon' },
@@ -6949,7 +6153,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 46 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6972,11 +6176,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
+  var _classNames = __webpack_require__(11);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  __webpack_require__(104);
+  __webpack_require__(96);
 
   var _Container = __webpack_require__(3);
 
@@ -7079,7 +6283,7 @@ module.exports =
   </li>*/
 
 /***/ },
-/* 47 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7110,7 +6314,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  __webpack_require__(105);
+  __webpack_require__(97);
 
   var _Link = __webpack_require__(4);
 
@@ -7120,9 +6324,9 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingPaypal = (function (_Component) {
     _inherits(BookingPaypal, _Component);
@@ -7146,11 +6350,11 @@ module.exports =
             pending: true
           });
           // Execute paypal payment since this is returned from Paypal
-          this.serverRequest1 = _superagent2['default'].post(_libUtil2['default'].host + '/api/verifyPaypalTransaction').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+          this.serverRequest1 = _superagent2['default'].post(_coreUtil2['default'].host + '/api/verifyPaypalTransaction').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
             ppid: this.state.paymentId
           }).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/verifyPaypalTransaction', status, err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/verifyPaypalTransaction', status, err.toString());
             }
             console.log(res.body);
             if (res.body && res.body.status) {
@@ -7210,8 +6414,8 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(31) }),
-                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(33) })
+                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(24) }),
+                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(26) })
               ),
               _react2['default'].createElement(
                 'p',
@@ -7256,9 +6460,12 @@ module.exports =
           pending: true
         });
 
-        var url = (window.location.href.indexOf('?') > -1 ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
+        var url;
+        if (typeof window !== 'undefined') {
+          url = (window.location.href.indexOf('?') > -1 ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
+        }
 
-        this.serverRequest2 = _superagent2['default'].post(_libUtil2['default'].host + '/api/makePaypalWebPayment').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+        this.serverRequest2 = _superagent2['default'].post(_coreUtil2['default'].host + '/api/makePaypalWebPayment').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
           amount: this.props.booking['case'].price,
           type: 'case',
           cid: this.props.booking['case'].id,
@@ -7266,7 +6473,7 @@ module.exports =
           cancelUrl: url
         }).end(function (err, res) {
           if (err) {
-            return console.error(_libUtil2['default'].host + '/api/makePaypalWebPayment', status, err.toString());
+            return console.error(_coreUtil2['default'].host + '/api/makePaypalWebPayment', status, err.toString());
           }
           if (res.body && res.body.status === 1) {
             console.log(res.body.url);
@@ -7275,7 +6482,9 @@ module.exports =
               redirecting: true
             });
             console.log('Redirecting to ' + res.body.url);
-            window.location = res.body.url;
+            if (typeof window !== 'undefined') {
+              window.location = res.body.url;
+            }
           } else {
             console.error('Failed to create paypal payment.');
           }
@@ -7291,7 +6500,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 48 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7318,7 +6527,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  __webpack_require__(106);
+  __webpack_require__(98);
 
   var _Container = __webpack_require__(3);
 
@@ -7465,7 +6674,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 49 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7488,11 +6697,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
+  var _classNames = __webpack_require__(11);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  __webpack_require__(107);
+  __webpack_require__(99);
 
   var _Container = __webpack_require__(3);
 
@@ -7583,7 +6792,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 50 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7606,11 +6815,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(16);
+  var _moment = __webpack_require__(14);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  __webpack_require__(108);
+  __webpack_require__(100);
 
   var BookingPostSidebar = (function (_Component) {
     _inherits(BookingPostSidebar, _Component);
@@ -7732,7 +6941,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 51 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7755,7 +6964,628 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(111);
+  var _objectAssign = __webpack_require__(28);
+
+  var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+  var _superagent = __webpack_require__(7);
+
+  var _superagent2 = _interopRequireDefault(_superagent);
+
+  var _moment = __webpack_require__(14);
+
+  var _moment2 = _interopRequireDefault(_moment);
+
+  var _reactLinkState = __webpack_require__(9);
+
+  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
+
+  var _reactLoader = __webpack_require__(6);
+
+  var _reactLoader2 = _interopRequireDefault(_reactLoader);
+
+  __webpack_require__(101);
+
+  var _Link = __webpack_require__(4);
+
+  var _Link2 = _interopRequireDefault(_Link);
+
+  var _AlertPopup = __webpack_require__(10);
+
+  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
+
+  var _ConfirmPopup = __webpack_require__(52);
+
+  var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
+
+  var _actionsBookingActions = __webpack_require__(5);
+
+  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+
+  var _coreLocation = __webpack_require__(13);
+
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
+
+  var _coreUtil = __webpack_require__(8);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
+
+  var BookingResults = (function (_Component) {
+    _inherits(BookingResults, _Component);
+
+    function BookingResults(props) {
+      _classCallCheck(this, BookingResults);
+
+      _get(Object.getPrototypeOf(BookingResults.prototype), 'constructor', this).call(this, props);
+      this.state = {
+        sessions: undefined,
+        slots: undefined
+      };
+    }
+
+    _createClass(BookingResults, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        var _this = this;
+
+        // Reset sum displayed on sidebar
+        _actionsBookingActions2['default'].setSum();
+
+        this.serverRequest = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getAvailableSchedule').query({
+          service: this.props.booking.service,
+          dateStart: this.props.booking.range.start.format('YYYY-MM-DD'),
+          dateEnd: this.props.booking.range.end.format('YYYY-MM-DD'),
+          preferredPostalCode: this.props.booking.location.postalCode,
+          'preferredTimes[]': this.props.booking.timeslots // hack to send PHP style arrays
+        }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
+          if (err) {
+            return console.error(_coreUtil2['default'].host + '/api/getAvailableSchedule', status, err.toString());
+          }
+          if (res.body && res.body.timeSlots && Array.isArray(res.body.timeSlots)) {
+            // console.log(res.body.timeSlots);
+            var sessions = [],
+                checkedData = [],
+                sum = 0;
+            for (var i = 0; i < res.body.timeSlots.length; i++) {
+              var timeslot = res.body.timeSlots[i];
+              var session = {};
+              for (var j = 0; j < timeslot.slots.length; j++) {
+                if (timeslot.slots[j]['selected'] && timeslot.slots[j]['preferred']) {
+                  session = timeslot.slots[j];
+                  break;
+                }
+              }
+              if (!session.time) {
+                for (var j = 0; j < timeslot.slots.length; j++) {
+                  if (timeslot.slots[j]['selected']) {
+                    session = timeslot.slots[j];
+                    break;
+                  }
+                }
+              }
+              sessions[i] = (0, _objectAssign2['default'])(session, { date: timeslot.date });
+              if (session.time) {
+                checkedData['session' + i] = true;
+                sum += parseFloat(sessions[i]['price']);
+              } else {
+                session.disabled = true;
+              }
+            }
+            var state = (0, _objectAssign2['default'])({
+              slots: res.body.timeSlots,
+              sessions: sessions
+            }, checkedData);
+            _this.setState(state);
+            _actionsBookingActions2['default'].setSum(sum);
+          } else {
+            console.error('Failed to obtain timeslots data.');
+          }
+        });
+      }
+    }, {
+      key: 'componentWillUnmount',
+      value: function componentWillUnmount() {
+        this.serverRequest && this.serverRequest.abort();
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+
+        var checkedLink = function checkedLink(key) {
+          return (0, _reactLinkState2['default'])(_this2, key);
+        };
+        var handleChange = function handleChange(key) {
+          return function (e) {
+            checkedLink(key).requestChange(e.target.checked);
+
+            var sum = 0;
+            for (var i = 0; i < _this2.state.sessions.length; i++) {
+              if (_this2.state['session' + i]) {
+                sum += parseFloat(_this2.state.sessions[i].price);
+              }
+            }
+            // this.props.booking.sum = this.state.sum;
+            _actionsBookingActions2['default'].setSum(sum);
+          };
+        };
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingResults' },
+          _react2['default'].createElement(
+            _reactLoader2['default'],
+            { className: 'spinner', loaded: this.state.sessions ? true : false },
+            _react2['default'].createElement(
+              'div',
+              null,
+              this.state.sessions && this.state.sessions.map(function (session, index) {
+                return _react2['default'].createElement(
+                  'div',
+                  { className: 'BookingResultsItem', key: index },
+                  _react2['default'].createElement('input', { className: 'BookingResultsCheckbox', type: 'checkbox', id: index, name: 'time', checked: checkedLink('session' + index).value, disabled: session.disabled, onChange: handleChange('session' + index) }),
+                  _react2['default'].createElement(
+                    'label',
+                    { className: 'BookingResultsCheckboxLabel', htmlFor: index },
+                    _react2['default'].createElement('span', null),
+                    _react2['default'].createElement(
+                      'div',
+                      { className: 'BookingResultsCheckboxLabelMetaWrapper' },
+                      _react2['default'].createElement(
+                        'div',
+                        { className: 'BookingResultsCheckboxLabelMeta' },
+                        _react2['default'].createElement(
+                          'span',
+                          null,
+                          session ? (0, _moment2['default'])(session.date, 'YYYY-MM-DD').format('DD MMM') : ''
+                        ),
+                        _react2['default'].createElement(
+                          'span',
+                          null,
+                          session.time ? session.time : 'Not Available'
+                        ),
+                        _react2['default'].createElement(
+                          'span',
+                          null,
+                          session.time ? '$ ' + session.price : ''
+                        )
+                      )
+                    )
+                  )
+                );
+              })
+            ),
+            _react2['default'].createElement('p', null),
+            _react2['default'].createElement(
+              'div',
+              { className: 'text-center' },
+              _react2['default'].createElement(
+                'a',
+                { href: '/booking4', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
+                'BOOK NOW'
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this2._alertPopup = c;
+              } },
+            'Please select at least one session.'
+          ),
+          _react2['default'].createElement(
+            _ConfirmPopup2['default'],
+            { ref: function (c) {
+                return _this2._confirmPopup = c;
+              } },
+            _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(
+                'form',
+                { ref: function (c) {
+                    return _this2._agreeForm = c;
+                  } },
+                _react2['default'].createElement('input', { className: 'AgreeCheckbox', type: 'checkbox', id: 'agree', name: 'agree', value: false, required: true }),
+                _react2['default'].createElement(
+                  'label',
+                  { className: 'AgreeCheckboxLabel', htmlFor: 'agree' },
+                  _react2['default'].createElement('span', null),
+                  _react2['default'].createElement(
+                    'span',
+                    null,
+                    'By making this booking, I agree to the ',
+                    _react2['default'].createElement(
+                      'a',
+                      { href: '/terms-of-service', target: '_blank' },
+                      'Terms of Service'
+                    ),
+                    ' and ',
+                    _react2['default'].createElement(
+                      'a',
+                      { href: '/privacy-policy', target: '_blank' },
+                      'Privacy Policy'
+                    ),
+                    '.'
+                  )
+                )
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this2._rejectPopup = c;
+              } },
+            'To continue, please accept our Terms of Service and Privacy Policy.'
+          )
+        );
+      }
+    }, {
+      key: '_onNext',
+      value: function _onNext(event) {
+        var _this3 = this;
+
+        var sessions = [];
+        for (var i = 0; i < this.state.sessions.length; i++) {
+          if (this.state['session' + i]) {
+            sessions.push(this.state.sessions[i]);
+          }
+        }
+
+        if (sessions.length === 0) {
+          // alert('Please choose at least one session.');
+          this._alertPopup.show();
+          return event.preventDefault();
+        }
+
+        // if (confirm('Would you like to confirm the sessions?')) {
+        this._confirmPopup.show(function () {
+          if (_this3._agreeForm.checkValidity()) {
+            // Link.handleClick(event);
+            _coreLocation2['default'].push({ pathname: '/booking4' });
+
+            // console.log(sessions);
+            _actionsBookingActions2['default'].setSessions(sessions);
+            // console.log(this.state);
+            _actionsBookingActions2['default'].setLast('booking3c');
+          } else {
+            _this3._rejectPopup.show();
+          }
+        });
+
+        // } else {
+        event.preventDefault();
+        // }
+      }
+    }]);
+
+    return BookingResults;
+  })(_react.Component);
+
+  exports['default'] = BookingResults;
+  module.exports = exports['default'];
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _classNames = __webpack_require__(11);
+
+  var _classNames2 = _interopRequireDefault(_classNames);
+
+  var _reactIconsLibFaSpinner = __webpack_require__(29);
+
+  var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
+
+  var _reactLoader = __webpack_require__(6);
+
+  var _reactLoader2 = _interopRequireDefault(_reactLoader);
+
+  __webpack_require__(102);
+
+  var _Container = __webpack_require__(3);
+
+  var _Container2 = _interopRequireDefault(_Container);
+
+  var _Link = __webpack_require__(4);
+
+  var _Link2 = _interopRequireDefault(_Link);
+
+  var _AlertPopup = __webpack_require__(10);
+
+  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
+
+  var _actionsBookingActions = __webpack_require__(5);
+
+  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+
+  var ALL_SERVICES = 'All Services';
+
+  var BookingServices = (function (_Component) {
+    _inherits(BookingServices, _Component);
+
+    function BookingServices(props) {
+      _classCallCheck(this, BookingServices);
+
+      _get(Object.getPrototypeOf(BookingServices.prototype), 'constructor', this).call(this, props);
+      this.state = {
+        filter: ALL_SERVICES,
+        selectedService: undefined
+      };
+      if (this.props.booking && this.props.booking.service) {
+        this.state.selectedService = this.props.booking.service;
+      } else if (this.props.allServices && this.props.location.query && this.props.location.query.sid) {
+        for (var i = 0; i < this.props.allServices.length; i++) {
+          if (parseInt(this.props.allServices[i].id) === parseInt(this.props.location.query.sid)) {
+            this.state.selectedService = this.props.allServices[i].id;
+            break;
+          }
+        }
+      }
+    }
+
+    _createClass(BookingServices, [{
+      key: 'componentWillReceiveProps',
+      value: function componentWillReceiveProps(props) {
+        if (props.booking && props.booking.service) {
+          this.setState({
+            selectedService: props.booking.service
+          });
+        } else if (props.allServices && props.location.query && props.location.query.sid) {
+          for (var i = 0; i < props.allServices.length; i++) {
+            if (parseInt(props.allServices[i].id) === parseInt(props.location.query.sid)) {
+              this.setState({
+                selectedService: props.allServices[i].id
+              });
+              break;
+            }
+          }
+        }
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this = this;
+
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingServices' },
+          _react2['default'].createElement(
+            _reactLoader2['default'],
+            { className: 'spinner', loaded: this.props.allServices ? true : false },
+            _react2['default'].createElement(
+              'div',
+              { className: 'BookingServicesNav-wrapper' },
+              _react2['default'].createElement(
+                _Container2['default'],
+                null,
+                _react2['default'].createElement(
+                  'ul',
+                  { className: 'BookingServicesNav' },
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'BookingServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === ALL_SERVICES ? 'active' : ''), href: '/', onClick: this._onClickFilter.bind(this, ALL_SERVICES) },
+                      'All Services',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'BookingServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'BookingServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Nursing' ? 'active' : ''), href: '/about', onClick: this._onClickFilter.bind(this, 'Home Nursing') },
+                      'Home Nursing',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'BookingServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'BookingServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Social Care' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home Social Care') },
+                      'Home Social Care',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'BookingServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'BookingServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Medical' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home Medical') },
+                      'Home Medical',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'BookingServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'BookingServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classNames2['default'])('BookingServicesNav-link', this.state.filter === 'Home TCM' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home TCM') },
+                      'Home TCM',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'BookingServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(
+                _Container2['default'],
+                null,
+                _react2['default'].createElement(
+                  'div',
+                  { className: 'BookingServicesBody' },
+                  _react2['default'].createElement(
+                    'form',
+                    { ref: function (c) {
+                        return _this._bookingServicesForm = c;
+                      } },
+                    this.props.allServices && this._filterServices(this.props.allServices, this.state.filter).map(function (service) {
+                      var id = "BookingServicesRadio" + service.id;
+                      return _react2['default'].createElement(
+                        'div',
+                        { className: 'BookingServicesItem', key: service.id },
+                        _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === _this.state.selectedService, onChange: _this._onSelect.bind(_this), required: true }),
+                        _react2['default'].createElement(
+                          'label',
+                          { className: 'BookingServicesRadioLabel', htmlFor: id },
+                          _react2['default'].createElement(
+                            'span',
+                            null,
+                            _react2['default'].createElement('span', null)
+                          ),
+                          _react2['default'].createElement(
+                            'span',
+                            null,
+                            service.name
+                          )
+                        )
+                      );
+                    })
+                  )
+                ),
+                _react2['default'].createElement(
+                  'div',
+                  { className: 'BookingServicesFooter' },
+                  _react2['default'].createElement(
+                    'a',
+                    { href: '/booking2', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
+                    'NEXT'
+                  )
+                )
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this._alertPopup = c;
+              } },
+            'Please select a service.'
+          )
+        );
+      }
+    }, {
+      key: '_onClickFilter',
+      value: function _onClickFilter(filter, event) {
+        event.preventDefault();
+
+        this.setState({
+          filter: filter
+        });
+      }
+    }, {
+      key: '_onSelect',
+      value: function _onSelect(event) {
+        this.setState({
+          selectedService: parseInt(event.target.value)
+        });
+      }
+    }, {
+      key: '_onNext',
+      value: function _onNext(event) {
+        if (this._bookingServicesForm.checkValidity()) {
+          _Link2['default'].handleClick(event);
+          _actionsBookingActions2['default'].setService(this.state.selectedService);
+          _actionsBookingActions2['default'].setLast('booking1');
+        } else {
+          event.preventDefault();
+          // alert('Please select a service');
+          this._alertPopup.show();
+        }
+      }
+    }, {
+      key: '_filterServices',
+      value: function _filterServices(services, filter) {
+        return services.filter(function (service) {
+          if (filter === ALL_SERVICES) return true;
+          return service.category === filter;
+        }).sort(function (a, b) {
+          return a.name.localeCompare(b.name);
+        });
+      }
+    }]);
+
+    return BookingServices;
+  })(_react.Component);
+
+  exports['default'] = BookingServices;
+  module.exports = exports['default'];
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  __webpack_require__(103);
 
   var _Link = __webpack_require__(4);
 
@@ -7917,6 +7747,168 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactLinkState = __webpack_require__(9);
+
+  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
+
+  __webpack_require__(104);
+
+  var _Link = __webpack_require__(4);
+
+  var _Link2 = _interopRequireDefault(_Link);
+
+  var _AlertPopup = __webpack_require__(10);
+
+  var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
+
+  var _actionsBookingActions = __webpack_require__(5);
+
+  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+
+  var BookingTime = (function (_Component) {
+    _inherits(BookingTime, _Component);
+
+    function BookingTime(props) {
+      _classCallCheck(this, BookingTime);
+
+      _get(Object.getPrototypeOf(BookingTime.prototype), 'constructor', this).call(this, props);
+      this.state = {
+        Morning: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Morning') > -1,
+        Afternoon: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Afternoon') > -1,
+        Evening: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Evening') > -1
+      };
+    }
+
+    _createClass(BookingTime, [{
+      key: 'render',
+      value: function render() {
+        var _this = this;
+
+        return _react2['default'].createElement(
+          'div',
+          { className: 'BookingTime' },
+          _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(
+              'div',
+              { className: 'BookingTimeItem' },
+              _react2['default'].createElement('input', { className: 'BookingTimeCheckbox', type: 'checkbox', id: 'timeMorning', name: 'time', checkedLink: (0, _reactLinkState2['default'])(this, 'Morning'), value: 'Morning' }),
+              _react2['default'].createElement(
+                'label',
+                { className: 'BookingTimeCheckboxLabel', htmlFor: 'timeMorning' },
+                _react2['default'].createElement('span', null),
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  'Morning: 8.00am - 11:00am'
+                )
+              )
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'BookingTimeItem' },
+              _react2['default'].createElement('input', { className: 'BookingTimeCheckbox', type: 'checkbox', id: 'timeAfternoon', name: 'time', checkedLink: (0, _reactLinkState2['default'])(this, 'Afternoon'), value: 'Afternoon' }),
+              _react2['default'].createElement(
+                'label',
+                { className: 'BookingTimeCheckboxLabel', htmlFor: 'timeAfternoon' },
+                _react2['default'].createElement('span', null),
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  'Afternoon: 12:00pm - 5:00pm'
+                )
+              )
+            ),
+            _react2['default'].createElement(
+              'div',
+              { className: 'BookingTimeItem' },
+              _react2['default'].createElement('input', { className: 'BookingTimeCheckbox', type: 'checkbox', id: 'timeEvening', name: 'time', checkedLink: (0, _reactLinkState2['default'])(this, 'Evening'), value: 'Evening' }),
+              _react2['default'].createElement(
+                'label',
+                { className: 'BookingTimeCheckboxLabel', htmlFor: 'timeEvening' },
+                _react2['default'].createElement('span', null),
+                _react2['default'].createElement(
+                  'span',
+                  null,
+                  'Evening: 7:00pm - 10:00pm'
+                )
+              )
+            )
+          ),
+          _react2['default'].createElement('p', null),
+          _react2['default'].createElement(
+            'div',
+            { className: 'text-center' },
+            _react2['default'].createElement(
+              'a',
+              { href: '/booking3c', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
+              'NEXT'
+            )
+          ),
+          _react2['default'].createElement(
+            _AlertPopup2['default'],
+            { ref: function (c) {
+                return _this._alertPopup = c;
+              } },
+            'Please select at least one timeslot.'
+          )
+        );
+      }
+    }, {
+      key: '_onNext',
+      value: function _onNext(event) {
+        var timeslots = [];
+        for (var timeslot in this.state) {
+          if (this.state[timeslot]) {
+            timeslots.push(timeslot);
+          }
+        }
+
+        if (timeslots.length === 0) {
+          // alert('Please choose at least one timeslot.');
+          this._alertPopup.show();
+          return event.preventDefault();
+        }
+
+        _Link2['default'].handleClick(event);
+
+        // this.props.booking.timeslots = timeslots;
+        _actionsBookingActions2['default'].setTimeslots(timeslots);
+        _actionsBookingActions2['default'].setLast('booking3b');
+      }
+    }]);
+
+    return BookingTime;
+  })(_react.Component);
+
+  exports['default'] = BookingTime;
+  module.exports = exports['default'];
+
+/***/ },
 /* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -7940,11 +7932,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSkylight = __webpack_require__(26);
+  var _reactSkylight = __webpack_require__(20);
 
   var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
 
-  __webpack_require__(113);
+  __webpack_require__(105);
 
   var ConfirmPopup = (function (_Component) {
     _inherits(ConfirmPopup, _Component);
@@ -8053,7 +8045,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(115);
+  __webpack_require__(107);
 
   var _Container = __webpack_require__(3);
 
@@ -8093,7 +8085,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'Features-item' },
-                _react2['default'].createElement('img', { src: __webpack_require__(128), className: 'Features-item-icon' }),
+                _react2['default'].createElement('img', { src: __webpack_require__(120), className: 'Features-item-icon' }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'Features-item-title' },
@@ -8108,7 +8100,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'Features-item' },
-                _react2['default'].createElement('img', { src: __webpack_require__(129), className: 'Features-item-icon' }),
+                _react2['default'].createElement('img', { src: __webpack_require__(121), className: 'Features-item-icon' }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'Features-item-title' },
@@ -8123,7 +8115,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'Features-item' },
-                _react2['default'].createElement('img', { src: __webpack_require__(130), className: 'Features-item-icon' }),
+                _react2['default'].createElement('img', { src: __webpack_require__(122), className: 'Features-item-icon' }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'Features-item-title' },
@@ -8138,7 +8130,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'Features-item' },
-                _react2['default'].createElement('img', { src: __webpack_require__(131), className: 'Features-item-icon' }),
+                _react2['default'].createElement('img', { src: __webpack_require__(123), className: 'Features-item-icon' }),
                 _react2['default'].createElement(
                   'div',
                   { className: 'Features-item-title' },
@@ -8186,19 +8178,19 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactIconsLibFaFacebook = __webpack_require__(149);
+  var _reactIconsLibFaFacebook = __webpack_require__(142);
 
   var _reactIconsLibFaFacebook2 = _interopRequireDefault(_reactIconsLibFaFacebook);
 
-  var _reactIconsLibFaTwitter = __webpack_require__(151);
+  var _reactIconsLibFaTwitter = __webpack_require__(144);
 
   var _reactIconsLibFaTwitter2 = _interopRequireDefault(_reactIconsLibFaTwitter);
 
-  var _reactIconsLibFaInstagram = __webpack_require__(150);
+  var _reactIconsLibFaInstagram = __webpack_require__(143);
 
   var _reactIconsLibFaInstagram2 = _interopRequireDefault(_reactIconsLibFaInstagram);
 
-  __webpack_require__(116);
+  __webpack_require__(108);
 
   var _Container = __webpack_require__(3);
 
@@ -8243,7 +8235,7 @@ module.exports =
                 _react2['default'].createElement(
                   'a',
                   { href: 'https://www.google.com.sg/maps/place/71+Ayer+Rajah+Crescent,+Singapore+139951/@1.2967471,103.7844749,17z/data=!3m1!4b1!4m2!3m1!1s0x31da1a4fd6a29643:0x1cbb8a56dd8c9ccf!6m1!1e1', className: 'btn Footer-maps-button', target: '_blank' },
-                  _react2['default'].createElement('img', { src: __webpack_require__(132) }),
+                  _react2['default'].createElement('img', { src: __webpack_require__(124) }),
                   _react2['default'].createElement(
                     'span',
                     { className: 'Footer-maps-label' },
@@ -8353,7 +8345,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(117);
+  __webpack_require__(109);
 
   var _Container = __webpack_require__(3);
 
@@ -8429,7 +8421,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(9);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -8441,19 +8433,19 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactSkylight = __webpack_require__(26);
+  var _reactSkylight = __webpack_require__(20);
 
   var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
 
-  __webpack_require__(119);
+  __webpack_require__(111);
 
   var _Link = __webpack_require__(4);
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var LoginPopup = (function (_Component) {
     _inherits(LoginPopup, _Component);
@@ -8562,13 +8554,13 @@ module.exports =
 
           this.setState({ pending: true });
 
-          this.serverRequest = _superagent2['default'].post(_libUtil2['default'].host + '/api/mlogin').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).send({
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/mlogin').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
             email: this.state.email,
             password: this.state.password
           }).end(function (err, res) {
             _this2.setState({ pending: false });
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/mlogin', status, err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/mlogin', status, err.toString());
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body);
@@ -8638,7 +8630,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(120);
+  __webpack_require__(112);
 
   var _default = (function (_Component) {
     _inherits(_default, _Component);
@@ -8658,7 +8650,7 @@ module.exports =
           _react2['default'].createElement(
             'a',
             { href: '/' },
-            _react2['default'].createElement('img', { src: __webpack_require__(134) })
+            _react2['default'].createElement('img', { src: __webpack_require__(126) })
           )
         );
       }
@@ -8694,13 +8686,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
+  var _classNames = __webpack_require__(11);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  var _reactBurgerMenu = __webpack_require__(146);
+  var _reactBurgerMenu = __webpack_require__(139);
 
-  __webpack_require__(121);
+  __webpack_require__(113);
 
   var _Container = __webpack_require__(3);
 
@@ -8909,11 +8901,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classNames = __webpack_require__(12);
+  var _classNames = __webpack_require__(11);
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  var _reactIconsLibFaSpinner = __webpack_require__(36);
+  var _reactIconsLibFaSpinner = __webpack_require__(29);
 
   var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
 
@@ -8921,13 +8913,13 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactSanfona = __webpack_require__(152);
+  var _reactSanfona = __webpack_require__(145);
 
   var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  __webpack_require__(122);
+  __webpack_require__(114);
 
   var _Container = __webpack_require__(3);
 
@@ -8937,7 +8929,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(10);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -8945,13 +8937,13 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _libLocation = __webpack_require__(15);
+  var _coreLocation = __webpack_require__(13);
 
-  var _libLocation2 = _interopRequireDefault(_libLocation);
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _libUtil = __webpack_require__(9);
+  var _coreUtil = __webpack_require__(8);
 
-  var _libUtil2 = _interopRequireDefault(_libUtil);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var ALL_SERVICES = 'All Services';
 
@@ -8975,9 +8967,9 @@ module.exports =
         var _this = this;
 
         if (!this.state.services) {
-          this.serverRequest1 = _superagent2['default'].get(_libUtil2['default'].host + '/api/getServices').auth(_libUtil2['default'].authKey, _libUtil2['default'].authSecret).end(function (err, res) {
+          this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getServices').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
             if (err) {
-              return console.error(_libUtil2['default'].host + '/api/getServices', err.toString());
+              return console.error(_coreUtil2['default'].host + '/api/getServices', err.toString());
             }
             if (res.body && res.body.services && Array.isArray(res.body.services)) {
               // console.log(res.body.services);
@@ -9200,7 +9192,7 @@ module.exports =
       value: function _onClickBook(service, event) {
         event.preventDefault();
 
-        _libLocation2['default'].push({ pathname: '/booking1', query: { sid: service.id } });
+        _coreLocation2['default'].push({ pathname: '/booking1', query: { sid: service.id } });
       }
     }]);
 
@@ -9234,7 +9226,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  __webpack_require__(123);
+  __webpack_require__(115);
 
   var _Container = __webpack_require__(3);
 
@@ -9302,7 +9294,7 @@ module.exports =
                           _react2['default'].createElement('polygon', { fill: '#ff0000', points: '60,0 120,30 120,90 60,120 0,90 0,30' })
                         )
                       ),
-                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(137) })
+                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(129) })
                     )
                   )
                 ),
@@ -9341,7 +9333,7 @@ module.exports =
                           _react2['default'].createElement('polygon', { fill: '#ff0000', points: '60,0 120,30 120,90 60,120 0,90 0,30' })
                         )
                       ),
-                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(136) })
+                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(128) })
                     )
                   )
                 ),
@@ -9380,7 +9372,7 @@ module.exports =
                           _react2['default'].createElement('polygon', { fill: '#ff0000', points: '60,0 120,30 120,90 60,120 0,90 0,30' })
                         )
                       ),
-                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(135) })
+                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(127) })
                     )
                   )
                 ),
@@ -9695,6 +9687,10 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
+
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
+
   var _default = (function (_Component) {
     _inherits(_default, _Component);
 
@@ -9707,20 +9703,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'h1',
-            null,
-            'Blog'
-          ),
-          _react2['default'].createElement(
-            'p',
-            null,
-            'Coming soon.'
-          )
-        );
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
       }
     }]);
 
@@ -9754,187 +9737,19 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'h1',
-            null,
-            'Test Article 1'
-          ),
-          _react2['default'].createElement(
-            'p',
-            null,
-            'Coming soon.'
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'h1',
-            null,
-            'Test Article 2'
-          ),
-          _react2['default'].createElement(
-            'p',
-            null,
-            'Coming soon.'
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsBookingAppBookingApp = __webpack_require__(29);
-
-  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
   var _componentsContainerContainer = __webpack_require__(3);
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsAccountAccount = __webpack_require__(19);
+  var _componentsAccountAccount = __webpack_require__(18);
 
   var _componentsAccountAccount2 = _interopRequireDefault(_componentsAccountAccount);
 
-  var _componentsBookingDetailsBookingDetails = __webpack_require__(30);
+  var _componentsBookingDetailsBookingDetails = __webpack_require__(23);
 
   var _componentsBookingDetailsBookingDetails2 = _interopRequireDefault(_componentsBookingDetailsBookingDetails);
 
-  var _storesBookingStore = __webpack_require__(13);
+  var _storesBookingStore = __webpack_require__(17);
 
   var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
 
@@ -9996,6 +9811,156 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
+
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
+
+  var _default = (function (_Component) {
+    _inherits(_default, _Component);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+      }
+    }]);
+
+    return _default;
+  })(_react.Component);
+
+  exports['default'] = _default;
+  module.exports = exports['default'];
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
+
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
+
+  var _default = (function (_Component) {
+    _inherits(_default, _Component);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+      }
+    }]);
+
+    return _default;
+  })(_react.Component);
+
+  exports['default'] = _default;
+  module.exports = exports['default'];
+
+/***/ },
+/* 68 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
+
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
+
+  var _default = (function (_Component) {
+    _inherits(_default, _Component);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+      }
+    }]);
+
+    return _default;
+  })(_react.Component);
+
+  exports['default'] = _default;
+  module.exports = exports['default'];
+
+/***/ },
 /* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -10019,7 +9984,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(29);
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10069,13 +10034,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
 
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingServicesBookingServices = __webpack_require__(23);
-
-  var _componentsBookingServicesBookingServices2 = _interopRequireDefault(_componentsBookingServicesBookingServices);
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
   var _default = (function (_Component) {
     _inherits(_default, _Component);
@@ -10089,16 +10050,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(_componentsBookingServicesBookingServices2['default'], null)
-          )
-        );
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
       }
     }]);
 
@@ -10132,13 +10084,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
+  var _componentsBookingAppBookingApp = __webpack_require__(12);
 
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingLocationBookingLocation = __webpack_require__(21);
-
-  var _componentsBookingLocationBookingLocation2 = _interopRequireDefault(_componentsBookingLocationBookingLocation);
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
   var _default = (function (_Component) {
     _inherits(_default, _Component);
@@ -10152,16 +10100,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(_componentsBookingLocationBookingLocation2['default'], null)
-          )
-        );
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
       }
     }]);
 
@@ -10173,603 +10112,6 @@ module.exports =
 
 /***/ },
 /* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsContainerContainer = __webpack_require__(3);
-
-  var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingLocationBookingLocation = __webpack_require__(21);
-
-  var _componentsBookingLocationBookingLocation2 = _interopRequireDefault(_componentsBookingLocationBookingLocation);
-
-  var _storesBookingStore = __webpack_require__(13);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(_componentsBookingLocationBookingLocation2['default'], null)
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingDateTimeBookingDateTime = __webpack_require__(14);
-
-  var _componentsBookingDateTimeBookingDateTime2 = _interopRequireDefault(_componentsBookingDateTimeBookingDateTime);
-
-  var _componentsBookingDateBookingDate = __webpack_require__(20);
-
-  var _componentsBookingDateBookingDate2 = _interopRequireDefault(_componentsBookingDateBookingDate);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(
-              _componentsBookingDateTimeBookingDateTime2['default'],
-              { path: this.props.path },
-              _react2['default'].createElement(_componentsBookingDateBookingDate2['default'], null)
-            )
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 74 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsContainerContainer = __webpack_require__(3);
-
-  var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingDateTimeBookingDateTime = __webpack_require__(14);
-
-  var _componentsBookingDateTimeBookingDateTime2 = _interopRequireDefault(_componentsBookingDateTimeBookingDateTime);
-
-  var _componentsBookingDateBookingDate = __webpack_require__(20);
-
-  var _componentsBookingDateBookingDate2 = _interopRequireDefault(_componentsBookingDateBookingDate);
-
-  var _storesBookingStore = __webpack_require__(13);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(
-              _componentsBookingDateTimeBookingDateTime2['default'],
-              { path: this.props.path },
-              _react2['default'].createElement(_componentsBookingDateBookingDate2['default'], null)
-            )
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingDateTimeBookingDateTime = __webpack_require__(14);
-
-  var _componentsBookingDateTimeBookingDateTime2 = _interopRequireDefault(_componentsBookingDateTimeBookingDateTime);
-
-  var _componentsBookingTimeBookingTime = __webpack_require__(24);
-
-  var _componentsBookingTimeBookingTime2 = _interopRequireDefault(_componentsBookingTimeBookingTime);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(
-              _componentsBookingDateTimeBookingDateTime2['default'],
-              { path: this.props.path },
-              _react2['default'].createElement(_componentsBookingTimeBookingTime2['default'], null)
-            )
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsContainerContainer = __webpack_require__(3);
-
-  var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingDateTimeBookingDateTime = __webpack_require__(14);
-
-  var _componentsBookingDateTimeBookingDateTime2 = _interopRequireDefault(_componentsBookingDateTimeBookingDateTime);
-
-  var _componentsBookingTimeBookingTime = __webpack_require__(24);
-
-  var _componentsBookingTimeBookingTime2 = _interopRequireDefault(_componentsBookingTimeBookingTime);
-
-  var _storesBookingStore = __webpack_require__(13);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(
-              _componentsBookingDateTimeBookingDateTime2['default'],
-              { path: this.props.path },
-              _react2['default'].createElement(_componentsBookingTimeBookingTime2['default'], null)
-            )
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 77 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingDateTimeBookingDateTime = __webpack_require__(14);
-
-  var _componentsBookingDateTimeBookingDateTime2 = _interopRequireDefault(_componentsBookingDateTimeBookingDateTime);
-
-  var _componentsBookingResultsBookingResults = __webpack_require__(22);
-
-  var _componentsBookingResultsBookingResults2 = _interopRequireDefault(_componentsBookingResultsBookingResults);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(
-              _componentsBookingDateTimeBookingDateTime2['default'],
-              { path: this.props.path },
-              _react2['default'].createElement(_componentsBookingResultsBookingResults2['default'], null)
-            )
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsContainerContainer = __webpack_require__(3);
-
-  var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingDateTimeBookingDateTime = __webpack_require__(14);
-
-  var _componentsBookingDateTimeBookingDateTime2 = _interopRequireDefault(_componentsBookingDateTimeBookingDateTime);
-
-  var _componentsBookingResultsBookingResults = __webpack_require__(22);
-
-  var _componentsBookingResultsBookingResults2 = _interopRequireDefault(_componentsBookingResultsBookingResults);
-
-  var _storesBookingStore = __webpack_require__(13);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(_componentsBookingNavigationBookingNavigation2['default'], { path: this.props.path }),
-            _react2['default'].createElement(
-              _componentsBookingDateTimeBookingDateTime2['default'],
-              { path: this.props.path },
-              _react2['default'].createElement(_componentsBookingResultsBookingResults2['default'], null)
-            )
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsContainerContainer = __webpack_require__(3);
-
-  var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
-
-  var _componentsBookingNavigationBookingNavigation = __webpack_require__(8);
-
-  var _componentsBookingNavigationBookingNavigation2 = _interopRequireDefault(_componentsBookingNavigationBookingNavigation);
-
-  var _componentsBookingServicesBookingServices = __webpack_require__(23);
-
-  var _componentsBookingServicesBookingServices2 = _interopRequireDefault(_componentsBookingServicesBookingServices);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            'THANK YOU'
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            'THANK YOU'
-          ),
-          _react2['default'].createElement(
-            'div',
-            { className: 'text-center' },
-            'THANK YOU'
-          )
-        );
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10834,7 +10176,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 81 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11036,7 +10378,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 82 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11063,7 +10405,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsAccountAccount = __webpack_require__(19);
+  var _componentsAccountAccount = __webpack_require__(18);
 
   var _componentsAccountAccount2 = _interopRequireDefault(_componentsAccountAccount);
 
@@ -11209,7 +10551,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 83 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11234,7 +10576,7 @@ module.exports =
 
   // import Container from '../components/Container/Container';
 
-  var _componentsBannerBanner = __webpack_require__(38);
+  var _componentsBannerBanner = __webpack_require__(31);
 
   var _componentsBannerBanner2 = _interopRequireDefault(_componentsBannerBanner);
 
@@ -11242,7 +10584,7 @@ module.exports =
 
   var _componentsFeaturesFeatures2 = _interopRequireDefault(_componentsFeaturesFeatures);
 
-  var _componentsActionsActions = __webpack_require__(37);
+  var _componentsActionsActions = __webpack_require__(30);
 
   var _componentsActionsActions2 = _interopRequireDefault(_componentsActionsActions);
 
@@ -11280,7 +10622,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 84 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -12058,7 +11400,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 85 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -12112,7 +11454,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 86 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -13160,7 +12502,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 87 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13168,13 +12510,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Account {\n  background-image: url(" + __webpack_require__(124) + ");\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat;\n  padding: 60px 0;\n}\n\n.Account .Account-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.Account .Account-container .Account-container-item {\n  position: relative;\n  min-height: 350px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: rgba(255, 255, 255, 0.9);\n  margin: 5px;\n  padding: 40px;\n}\n\n.Account .Account-container .Account-container-item form {\n  display: inline-block;\n}\n\n.Account .Account-container .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n}\n\n.Account .Account-container .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n}\n\n.Account .Account-container .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.Account .Account-container .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer .LoginInsteadLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.Account .Account-container .Account-login {}\n\n.Account .Account-container .Account-find {}\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Account {\n  background-image: url(" + __webpack_require__(116) + ");\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat;\n  padding: 60px 0;\n}\n\n.Account .Account-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.Account .Account-container .Account-container-item {\n  position: relative;\n  min-height: 350px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: rgba(255, 255, 255, 0.9);\n  margin: 5px;\n  padding: 40px;\n}\n\n.Account .Account-container .Account-container-item form {\n  display: inline-block;\n}\n\n.Account .Account-container .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n}\n\n.Account .Account-container .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n}\n\n.Account .Account-container .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.Account .Account-container .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer .LoginInsteadLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.Account .Account-container .Account-login {}\n\n.Account .Account-container .Account-find {}\n", ""]);
 
   // exports
 
 
 /***/ },
-/* 88 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13188,7 +12530,7 @@ module.exports =
 
 
 /***/ },
-/* 89 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13202,7 +12544,7 @@ module.exports =
 
 
 /***/ },
-/* 90 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13210,13 +12552,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Banner .Banner-item {\n  height: 500px;\n  background-color: #ffffff;\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat\n}\n\n.Banner .Banner-item-text-wrapper {\n  position: relative;\n  color: #fff;\n}\n\n.Banner .Banner-item-text-wrapper .Banner-item-text {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n  -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n  -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n  -ms-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n}\n\n.Banner .Banner-item-text-wrapper .Banner-item-button {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-1 {\n  top: 140px;\n  font-size: 25px;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-2 {\n  top: 200px;\n  font-weight: bold;\n  font-size: 60px;\n  text-transform: uppercase;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-3 {\n  top: 272px;\n  font-size: 37px;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-4 {\n  top: 340px;\n}\n\n@media (max-width: 768px) {\n\n  .Banner .Banner-item {\n    background-position: -550px 0px\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Banner #Banner-item-1 .Banner-item-text-1 {\n    top: 70px\n  }\n\n  .Banner #Banner-item-1 .Banner-item-text-2 {\n    top: 140px\n  }\n\n  .Banner #Banner-item-1 .Banner-item-text-3 {\n    top: 300px\n  }\n\n  .Banner #Banner-item-1 .Banner-item-text-4 {\n    top: 400px\n  }\n    }\n\n#Banner-item-1 {\n  background-image: url(" + __webpack_require__(127) + ");\n}", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Banner .Banner-item {\n  height: 500px;\n  background-color: #ffffff;\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat\n}\n\n.Banner .Banner-item-text-wrapper {\n  position: relative;\n  color: #fff;\n}\n\n.Banner .Banner-item-text-wrapper .Banner-item-text {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n  -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n  -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n  -ms-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);\n}\n\n.Banner .Banner-item-text-wrapper .Banner-item-button {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-1 {\n  top: 140px;\n  font-size: 25px;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-2 {\n  top: 200px;\n  font-weight: bold;\n  font-size: 60px;\n  text-transform: uppercase;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-3 {\n  top: 272px;\n  font-size: 37px;\n}\n\n.Banner #Banner-item-1 .Banner-item-text-4 {\n  top: 340px;\n}\n\n@media (max-width: 768px) {\n\n  .Banner .Banner-item {\n    background-position: -550px 0px\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Banner #Banner-item-1 .Banner-item-text-1 {\n    top: 70px\n  }\n\n  .Banner #Banner-item-1 .Banner-item-text-2 {\n    top: 140px\n  }\n\n  .Banner #Banner-item-1 .Banner-item-text-3 {\n    top: 300px\n  }\n\n  .Banner #Banner-item-1 .Banner-item-text-4 {\n    top: 400px\n  }\n    }\n\n#Banner-item-1 {\n  background-image: url(" + __webpack_require__(119) + ");\n}", ""]);
 
   // exports
 
 
 /***/ },
-/* 91 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13230,7 +12572,7 @@ module.exports =
 
 
 /***/ },
-/* 92 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13244,7 +12586,7 @@ module.exports =
 
 
 /***/ },
-/* 93 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13258,7 +12600,7 @@ module.exports =
 
 
 /***/ },
-/* 94 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13272,7 +12614,7 @@ module.exports =
 
 
 /***/ },
-/* 95 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13286,7 +12628,7 @@ module.exports =
 
 
 /***/ },
-/* 96 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13300,7 +12642,7 @@ module.exports =
 
 
 /***/ },
-/* 97 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13314,7 +12656,7 @@ module.exports =
 
 
 /***/ },
-/* 98 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13328,7 +12670,7 @@ module.exports =
 
 
 /***/ },
-/* 99 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13342,7 +12684,7 @@ module.exports =
 
 
 /***/ },
-/* 100 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13356,7 +12698,7 @@ module.exports =
 
 
 /***/ },
-/* 101 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13370,7 +12712,7 @@ module.exports =
 
 
 /***/ },
-/* 102 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13384,7 +12726,7 @@ module.exports =
 
 
 /***/ },
-/* 103 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13392,13 +12734,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingNavigationItem {\n  margin: 0 0.5em;\n}\n\n.BookingNavigationItem .BookingNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(32) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingNavigationItem .BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center;\n}\n\n.BookingNavigationItem a.BookingNavigation-link {}\n\n.BookingNavigationItem a.BookingNavigation-link:hover, .BookingNavigationItem a.BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center;\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem {\n    width: 100%;\n    border-top: 1px solid #fff;\n  }\n\n  .BookingNavigationItem:first-child {\n    border-top: none;\n  }\n  }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingNavigationItem {\n  margin: 0 0.5em;\n}\n\n.BookingNavigationItem .BookingNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(25) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingNavigationItem .BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(16) + ") no-repeat center;\n}\n\n.BookingNavigationItem a.BookingNavigation-link {}\n\n.BookingNavigationItem a.BookingNavigation-link:hover, .BookingNavigationItem a.BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(16) + ") no-repeat center;\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem {\n    width: 100%;\n    border-top: 1px solid #fff;\n  }\n\n  .BookingNavigationItem:first-child {\n    border-top: none;\n  }\n  }", ""]);
 
   // exports
 
 
 /***/ },
-/* 104 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13412,7 +12754,7 @@ module.exports =
 
 
 /***/ },
-/* 105 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13426,7 +12768,7 @@ module.exports =
 
 
 /***/ },
-/* 106 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13440,7 +12782,7 @@ module.exports =
 
 
 /***/ },
-/* 107 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13448,13 +12790,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostNavigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #fdbc1d\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column\n  }\n  }\n\n.BookingPostNavigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item {\n  margin: 0 0.5em;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(32) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link {}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center\n}\n\n@media (max-width: 1200px) {\n\n  .BookingPostNavigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n    margin-left: 10px\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item {\n    width: 100%;\n    border-top: 1px solid #fff\n  }\n\n  .BookingPostNavigation .BookingPostNavigation-item:first-child {\n    border-top: none\n  }\n    }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostNavigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #fdbc1d\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column\n  }\n  }\n\n.BookingPostNavigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item {\n  margin: 0 0.5em;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(25) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(16) + ") no-repeat center\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link {}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(16) + ") no-repeat center\n}\n\n@media (max-width: 1200px) {\n\n  .BookingPostNavigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n    margin-left: 10px\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item {\n    width: 100%;\n    border-top: 1px solid #fff\n  }\n\n  .BookingPostNavigation .BookingPostNavigation-item:first-child {\n    border-top: none\n  }\n    }", ""]);
 
   // exports
 
 
 /***/ },
-/* 108 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13462,13 +12804,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingPostSidebar .BookingPostSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  // background: url(" + __webpack_require__(17) + ") no-repeat top right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem .BookingPostSidebarItemRight {\n  float: right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div {\n  margin-top: 10px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div:first-child {\n  margin-top: 0;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter .BookingPostSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostSidebar {\n    margin: 50px 0 0 0;\n  }\n  }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingPostSidebar .BookingPostSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  // background: url(" + __webpack_require__(15) + ") no-repeat top right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem .BookingPostSidebarItemRight {\n  float: right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div {\n  margin-top: 10px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div:first-child {\n  margin-top: 0;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter .BookingPostSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostSidebar {\n    margin: 50px 0 0 0;\n  }\n  }", ""]);
 
   // exports
 
 
 /***/ },
-/* 109 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13482,7 +12824,7 @@ module.exports =
 
 
 /***/ },
-/* 110 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13496,7 +12838,7 @@ module.exports =
 
 
 /***/ },
-/* 111 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13504,13 +12846,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingSidebar .BookingSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  background: url(" + __webpack_require__(17) + ") no-repeat top right;\n}\n\n.BookingSidebar .BookingSidebarContent a {\n  color: #969696\n}\n\n.BookingSidebar .BookingSidebarContent a:hover {\n  text-decoration: none;\n}\n\n.BookingSidebar .BookingSidebarContent > a {}\n\n.BookingSidebar .BookingSidebarContent > a > div {\n  margin-top: 10px;\n}\n\n.BookingSidebar .BookingSidebarContent > a:first-child {\n  margin-top: 0;\n}\n\n.BookingSidebar .BookingSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarFooter .BookingSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingSidebar {\n    margin: 50px 0 0 0;\n    width: 100%;\n  }\n  }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingSidebar .BookingSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  background: url(" + __webpack_require__(15) + ") no-repeat top right;\n}\n\n.BookingSidebar .BookingSidebarContent a {\n  color: #969696\n}\n\n.BookingSidebar .BookingSidebarContent a:hover {\n  text-decoration: none;\n}\n\n.BookingSidebar .BookingSidebarContent > a {}\n\n.BookingSidebar .BookingSidebarContent > a > div {\n  margin-top: 10px;\n}\n\n.BookingSidebar .BookingSidebarContent > a:first-child {\n  margin-top: 0;\n}\n\n.BookingSidebar .BookingSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarFooter .BookingSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingSidebar {\n    margin: 50px 0 0 0;\n    width: 100%;\n  }\n  }", ""]);
 
   // exports
 
 
 /***/ },
-/* 112 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13524,7 +12866,7 @@ module.exports =
 
 
 /***/ },
-/* 113 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13538,7 +12880,7 @@ module.exports =
 
 
 /***/ },
-/* 114 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13552,7 +12894,7 @@ module.exports =
 
 
 /***/ },
-/* 115 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13566,7 +12908,7 @@ module.exports =
 
 
 /***/ },
-/* 116 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13580,7 +12922,7 @@ module.exports =
 
 
 /***/ },
-/* 117 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13588,13 +12930,13 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(133) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(139) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(138) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(140) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}", ""]);
+  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(125) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(131) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(130) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(132) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}", ""]);
 
   // exports
 
 
 /***/ },
-/* 118 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13608,7 +12950,7 @@ module.exports =
 
 
 /***/ },
-/* 119 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13622,7 +12964,7 @@ module.exports =
 
 
 /***/ },
-/* 120 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13636,7 +12978,7 @@ module.exports =
 
 
 /***/ },
-/* 121 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13650,7 +12992,7 @@ module.exports =
 
 
 /***/ },
-/* 122 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13664,7 +13006,7 @@ module.exports =
 
 
 /***/ },
-/* 123 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(2)();
@@ -13678,175 +13020,181 @@ module.exports =
 
 
 /***/ },
-/* 124 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "97e83ef71d77e96111add3cbb6bb34bc.jpg";
 
 /***/ },
-/* 125 */
+/* 117 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5Q0I4ODcwMEMwRUExMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5Q0I4ODcwMUMwRUExMUU1QTgwN0E1MEI5RkJENzA0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlDQjg4NkZFQzBFQTExRTVBODA3QTUwQjlGQkQ3MDQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlDQjg4NkZGQzBFQTExRTVBODA3QTUwQjlGQkQ3MDQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3oFbogAABqpJREFUeNrEmnls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"
 
 /***/ },
-/* 126 */
+/* 118 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5Q0I4ODcwNEMwRUExMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyMTQ1RjdGNEMwRjAxMUU1QTgwN0E1MEI5RkJENzA0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlDQjg4NzAyQzBFQTExRTVBODA3QTUwQjlGQkQ3MDQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlDQjg4NzAzQzBFQTExRTVBODA3QTUwQjlGQkQ3MDQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+17UFbgAABrdJREFUeNrMmgls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"
 
 /***/ },
-/* 127 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "23b5a58a762a53105c7084d9553cefa1.jpg";
 
 /***/ },
-/* 128 */
+/* 120 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpENzYzMTBGRkMwRTkxMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpENzYzMTEwMEMwRTkxMUU1QTgwN0E1MEI5RkJENzA0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ3NjMxMEZEQzBFOTExRTVBODA3QTUwQjlGQkQ3MDQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ3NjMxMEZFQzBFOTExRTVBODA3QTUwQjlGQkQ3MDQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+B4HrowAAB11JREFUeNrsnf9Z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"
 
 /***/ },
-/* 129 */
+/* 121 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpENzYzMTEwM0MwRTkxMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpENzYzMTEwNEMwRTkxMUU1QTgwN0E1MEI5RkJENzA0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ3NjMxMTAxQzBFOTExRTVBODA3QTUwQjlGQkQ3MDQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ3NjMxMTAyQzBFOTExRTVBODA3QTUwQjlGQkQ3MDQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Djtr7gAACutJREFUeNrsXf9t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"
 
 /***/ },
-/* 130 */
+/* 122 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5Q0I4ODZGQ0MwRUExMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5Q0I4ODZGREMwRUExMUU1QTgwN0E1MEI5RkJENzA0MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlDQjg4NkZBQzBFQTExRTVBODA3QTUwQjlGQkQ3MDQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlDQjg4NkZCQzBFQTExRTVBODA3QTUwQjlGQkQ3MDQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+g0+KNQAACmtJREFUeNrsXGuI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"
 
 /***/ },
-/* 131 */
+/* 123 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowNzgwMTE3NDA3MjA2ODExODA4M0Y3OTgzQzVCNkU5QyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGQjhERkI3MEMwRTgxMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGQjhERkI2RkMwRTgxMUU1QTgwN0E1MEI5RkJENzA0MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjA4ODAxMTc0MDcyMDY4MTE4MDgzRjc5ODNDNUI2RTlDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjA3ODAxMTc0MDcyMDY4MTE4MDgzRjc5ODNDNUI2RTlDIi8+IDwvcmRmOkRlc2NyaXB0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"
 
 /***/ },
-/* 132 */
+/* 124 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4RUNGM0I2OUMxOTIxMUU1OTJEOEIxQ0E5QzQyMTNGOSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4RUNGM0I2QUMxOTIxMUU1OTJEOEIxQ0E5QzQyMTNGOSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0YzQjY3QzE5MjExRTU5MkQ4QjFDQTlDNDIxM0Y5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0YzQjY4QzE5MjExRTU5MkQ4QjFDQTlDNDIxM0Y5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+FD2zRwAAB5JJREFUeNp8Vmts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"
 
 /***/ },
-/* 133 */
+/* 125 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABFkAAAAGCAYAAAAYCkEPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDIvMjQvMTP88lKFAAAB50lEQVR4nO2c23LDIAxExUz//5fJk6eYxAaDLgve89RppNUiux1QnKScs4iIpJSk4usXnbTyenU14jRrrRSjUQOp/xpeve+F0XhL7ZF4rVxtLU0vlpqRdVqg+KhB9bUa7OO7yY3XU0fMm0HtTbQvr/radWb1NPzMaDzJfVqnN15bt0dPw5tGnavXLbV7Y2b1Z3vXG2ftw+teuc055ioiIn9fkf9Dl9F/Bk/zLDeCEQdKjzwvb1bxKEMKhFgk7afxUQMbz8GSRr6VlrWu9yF9haHACh5nuDt47772SKIPzpGgr91zqGAx+LLwr6XpPfjwOteM5O04RLH0ENlbhD6h6s/kzOR5a54L5PzrYRVJ5cSFtEkpnaZUv5pqVdqrkGFNVD0NHSQv0TpIQ4nofCstK010PZRaSLV7WcEjGQd9Mxfpb8WnLzhs8fEQuQYE7wjXUCNfSwNdK7xW/QkYzhGu4ZCFuOE4kGpRv1sEY6zC+4Cai5+92bFm1H11XEuU+xrFx0HpB6lPI6zsncSw8qav/HtFWweCH6unYXprr6yPUM/z2iHcryX1njzUH8/GRAMOWQh5MVeDr5vvatqFbRc2Cftyhv0gxJfIQQESb19/zVb9aO2xeDYjZH04ZCGEEEIIIYQQQghR4AOrl5z54BICNwAAAABJRU5ErkJggg=="
 
 /***/ },
-/* 134 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "879ee2eff79dc4834cf3327f083ecd1e.png";
 
 /***/ },
-/* 135 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "88d5c08f9e1286151a9d22c466418a80.png";
 
 /***/ },
-/* 136 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "4315d90f77ccd83eeff8c7c8f7ab7ee4.png";
 
 /***/ },
-/* 137 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "7092aac981cf9324f6c657f5b500388d.png";
 
 /***/ },
-/* 138 */
+/* 130 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4M0U4OTcwQURFQkQxMUU1QUYxQ0I4ODhFOTM1OTdEMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4M0U4OTcwQkRFQkQxMUU1QUYxQ0I4ODhFOTM1OTdEMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU5RUNGRkZGREVBRDExRTVBRjFDQjg4OEU5MzU5N0QxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkU5RUQwMDAwREVBRDExRTVBRjFDQjg4OEU5MzU5N0QxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+cW/BJAAAAbZJREFUeNq0lj0sBEEUx2/PRwQRJEShoBClcMmVwkWjUWh0VCJxBY1GpRCNgkpzFZ3GyV2hEfFRikgoNOIjkSvIOSckzmH9JnmFXG52dvfWJL/Mbmb2/ee9mfdmLdu2Q//dqt1Melm32ukWYQIa4Q22YaV53n40fW+ZPEFgiG4VHiAFd9AFY9AJCwgdOhpRIjpya6F+yEBcMx6X8YiTHa0neKBCeQZJVrrk4KkaG4cB5n2VmxN2cDIGVZAwhDwhdmK6CU4iUbiGrEEkK/OifkTqoEAIPpwUZLwg8z2LeE0g29URZhP76GagSWLcAvtQlP0pbd9QAyOQgwPpN/DwSpeMSTiHUzgW423icbmVWvADOyLWChHYhV6dSDdMsYoTvyWEaAzSHTntyTs0VFiq6sWOVsQyHAa10laDSFjseCuQYlzFfFKFk+dN+i3CWgysCktTB2AZOqAH9iDj5sOwB5FnSMtzWt5DgYpIZl/K64WpEvj1RLV7uIHbwG/GP96k5OLy1MIV1itXdaxcnuQrFMib8uQJRskDVbZrfQh8wrDY0YrMyk03V7oaD2F6hWlPfytBtF8BBgC5Q709CkjL5QAAAABJRU5ErkJggg=="
 
 /***/ },
-/* 139 */
+/* 131 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFOUVDRkZGRERFQUQxMUU1QUYxQ0I4ODhFOTM1OTdEMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFOUVDRkZGRURFQUQxMUU1QUYxQ0I4ODhFOTM1OTdEMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU5RUNGRkZCREVBRDExRTVBRjFDQjg4OEU5MzU5N0QxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkU5RUNGRkZDREVBRDExRTVBRjFDQjg4OEU5MzU5N0QxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+PzJBHQAAAZxJREFUeNrslr1LQmEUh73q2FBQa0G5ORUENkpgQ1FDBA7RxyA0RB9DQ0sUuRX0MbdkFPQF9Qc0FkaDQTSEEGRDmwUtIZY9N37KHbS8F2809MLDea/vvefnOeeeo0ahUPC4vbyeX1i/IuJ/WTdcz5dfdhpuXfAfhI2iiBnNmRMv9TOVE0GWgtaarMJiLUNAYBmzYhWJQS8c1MC5Fw7Z9shvSSQNIWiCCzMLDgUaMOfQKH9pq0gdvENYB1fQalMgoOfuqFMYPuS3bJ+Mwq4eCFUp0KX7d3A+Vm0zmi/BFJi5HfxBYAhzDBMILNnteDOaRzhSH5Vbc3pZ0gjs2x0rATVnBsxUzMIW+HTu0/Wkzp+I6EZ1qUqkH5JKQVT7DmiGlL55StftRJCEqCK+RKivksibbBz2VPwFy31ZiMA8XMtG9Hmx8816DEMCobjVr/G89jVSBmAE2rTPOB0rCLRgTuAetuG0GEkCXqHTjkAF0Qf5ycpvKV3mnBmHfC3mFkJ5iMlvadTnoNvhKPnuOGcV2XTzR8v4/yPx50Q+BRgAPWt9pTBGLEMAAAAASUVORK5CYII="
 
 /***/ },
-/* 140 */
+/* 132 */
 /***/ function(module, exports) {
 
   module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4M0U4OTcwRURFQkQxMUU1QUYxQ0I4ODhFOTM1OTdEMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4M0U4OTcwRkRFQkQxMUU1QUYxQ0I4ODhFOTM1OTdEMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzRTg5NzBDREVCRDExRTVBRjFDQjg4OEU5MzU5N0QxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjgzRTg5NzBEREVCRDExRTVBRjFDQjg4OEU5MzU5N0QxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+28NGzQAAAYBJREFUeNq8ls8rBVEUx2duUoqyEGWjsbCSH4mFpcJOFmJhS1hhqRSysdJTWFhYKUVvYyHZ+APoZYWweAsLimIhGzU+R/cVuu/NjLn3nfp0Zuae7veec2fOHT8MQ8+1Vbxm/FQT1M6ZF8m8G7ghxgPlYuUIBLgJuJN75ahCWciRxcB3uRxkMYPrhKDwTFkWqMdtwzJZ5J2IYPuQR2Dl19tlMYsxXB90/R1TlgRqcHuwSRY5JyLYLrzBvPFjtJBFP25ESkUWn6aYtJlUwoFsOAJnxYLSikjrqILJUkEicgnHOjiJdcM0jJPFe5TIKrRLG4C6BCKHcIpANipQ6T7Tpq+voDmGgCysSbKIs5rCnrxAB9zDjemD+mEtsAhT8JxEROwDevX+XMBgiQ57Djtx62p6u4b1BCeGcsxCK4wmOhmLPJdSPOpW0QDr0AgZWJAmaENEbAmeYAuqdSlvYS3xGR8xLmfDg94HpUvl2RYROwI5H3rg+j8ifjl+iZRXBvsSYAAyblewhoYdNgAAAABJRU5ErkJggg=="
 
 /***/ },
-/* 141 */
+/* 133 */
 /***/ function(module, exports) {
 
   module.exports = require("events");
 
 /***/ },
-/* 142 */
+/* 134 */
 /***/ function(module, exports) {
 
   module.exports = require("flux");
 
 /***/ },
-/* 143 */
+/* 135 */
 /***/ function(module, exports) {
 
   module.exports = require("history/lib/createBrowserHistory");
 
 /***/ },
-/* 144 */
+/* 136 */
+/***/ function(module, exports) {
+
+  module.exports = require("history/lib/createMemoryHistory");
+
+/***/ },
+/* 137 */
 /***/ function(module, exports) {
 
   module.exports = require("history/lib/useQueries");
 
 /***/ },
-/* 145 */
+/* 138 */
 /***/ function(module, exports) {
 
   module.exports = require("keymirror");
 
 /***/ },
-/* 146 */
+/* 139 */
 /***/ function(module, exports) {
 
   module.exports = require("react-burger-menu");
 
 /***/ },
-/* 147 */
+/* 140 */
 /***/ function(module, exports) {
 
   module.exports = require("react-daterange-picker");
 
 /***/ },
-/* 148 */
+/* 141 */
 /***/ function(module, exports) {
 
   module.exports = require("react-dom");
 
 /***/ },
-/* 149 */
+/* 142 */
 /***/ function(module, exports) {
 
   module.exports = require("react-icons/lib/fa/facebook");
 
 /***/ },
-/* 150 */
+/* 143 */
 /***/ function(module, exports) {
 
   module.exports = require("react-icons/lib/fa/instagram");
 
 /***/ },
-/* 151 */
+/* 144 */
 /***/ function(module, exports) {
 
   module.exports = require("react-icons/lib/fa/twitter");
 
 /***/ },
-/* 152 */
+/* 145 */
 /***/ function(module, exports) {
 
   module.exports = require("react-sanfona");
