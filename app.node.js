@@ -59,13 +59,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDom = __webpack_require__(141);
+  var _reactDom = __webpack_require__(143);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
   var _fbjsLibExecutionEnvironment = __webpack_require__(27);
 
-  var _coreLocation = __webpack_require__(13);
+  var _coreLocation = __webpack_require__(14);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -325,7 +325,7 @@ module.exports =
 
   __webpack_require__(110);
 
-  var _coreLocation = __webpack_require__(13);
+  var _coreLocation = __webpack_require__(14);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -444,12 +444,12 @@ module.exports =
     },
 
     /**
-     * @param  {string} dates { dateStart, dateEnd }
+     * @param  {string} dates List of date objects
      */
     setDates: function(dates) {
       AppDispatcher.dispatch({
         actionType: BookingConstants.BOOKING_SET_DATES,
-        range: dates
+        dates: dates
       });
     },
 
@@ -768,6 +768,12 @@ module.exports =
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+  module.exports = require("moment");
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -888,7 +894,7 @@ module.exports =
 
   var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
 
-  var _coreLocation = __webpack_require__(13);
+  var _coreLocation = __webpack_require__(14);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -1149,7 +1155,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1178,12 +1184,6 @@ module.exports =
 
   exports['default'] = location;
   module.exports = exports['default'];
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-  module.exports = require("moment");
 
 /***/ },
 /* 15 */
@@ -1333,7 +1333,7 @@ module.exports =
         break;
 
       case BookingConstants.BOOKING_SET_DATES:
-        _booking.range = action.range;
+        _booking.dates = action.dates;
         BookingStore.emitChange();
         break;
 
@@ -1727,7 +1727,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(14);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -1749,7 +1749,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreLocation = __webpack_require__(13);
+  var _coreLocation = __webpack_require__(14);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -3485,7 +3485,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(14);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4328,9 +4328,21 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDaterangePicker = __webpack_require__(140);
+  var _reactDayPicker = __webpack_require__(142);
 
-  var _reactDaterangePicker2 = _interopRequireDefault(_reactDaterangePicker);
+  var _reactDayPicker2 = _interopRequireDefault(_reactDayPicker);
+
+  var _lodashSome = __webpack_require__(140);
+
+  var _lodashSome2 = _interopRequireDefault(_lodashSome);
+
+  var _lodashRemove = __webpack_require__(139);
+
+  var _lodashRemove2 = _interopRequireDefault(_lodashRemove);
+
+  var _moment = __webpack_require__(12);
+
+  var _moment2 = _interopRequireDefault(_moment);
 
   __webpack_require__(88);
 
@@ -4354,7 +4366,7 @@ module.exports =
 
       _get(Object.getPrototypeOf(BookingDate.prototype), 'constructor', this).call(this, props);
       this.state = {
-        range: this.props.booking && this.props.booking.range // { start: Moment, end: Moment }
+        selectedDates: this.props.booking && this.props.booking.dates || []
       };
     }
 
@@ -4363,34 +4375,44 @@ module.exports =
       value: function render() {
         var _this = this;
 
-        var minimumDate = new Date();
-        minimumDate.setDate(minimumDate.getDate() + 3);
+        var selectedDates;
+        if (this.state.selectedDates.length) {
+          selectedDates = _react2['default'].createElement(
+            'h3',
+            null,
+            'Selected Dates:'
+          );
+        }
         return _react2['default'].createElement(
           'div',
           { className: 'BookingDate' },
           _react2['default'].createElement(
             'div',
             { className: 'text-center' },
-            _react2['default'].createElement(_reactDaterangePicker2['default'], { numberOfCalendars: 2, selectionType: 'range', singleDateRange: true, minimumDate: minimumDate, value: this.state.range, onSelect: this._handleSelect.bind(this) })
+            _react2['default'].createElement(_reactDayPicker2['default'], {
+              numberOfMonths: 2,
+              modifiers: {
+                selected: function selected(day) {
+                  return _this.state.selectedDates && (0, _lodashSome2['default'])(_this.state.selectedDates, function (item) {
+                    return _this._isSameDay(item, day);
+                  });
+                },
+                disabled: this._isDisabled
+              },
+              onDayClick: this._onSelectDay.bind(this)
+            })
           ),
           _react2['default'].createElement(
             'div',
             { className: 'text-center' },
-            _react2['default'].createElement(
-              'form',
-              { id: 'BookingDateForm' },
-              _react2['default'].createElement('input', { className: 'btn-inline', type: 'text', id: 'startDate', name: 'startDate', value: this.state.range && this.state.range.start && this.state.range.start.format('ll'), required: true, readOnly: true }),
-              _react2['default'].createElement(
+            selectedDates,
+            this.state.selectedDates && this.state.selectedDates.map(function (day, k) {
+              return _react2['default'].createElement(
                 'div',
-                { className: 'BookingDateTo' },
-                _react2['default'].createElement(
-                  'i',
-                  null,
-                  'to'
-                )
-              ),
-              _react2['default'].createElement('input', { className: 'btn-inline', type: 'text', id: 'endDate', name: 'endDate', value: this.state.range && this.state.range.end && this.state.range.end.format('ll'), required: true, readOnly: true })
-            )
+                { key: day.getTime() },
+                (0, _moment2['default'])(day).format('DD MMM YYYY, dddd')
+              );
+            })
           ),
           _react2['default'].createElement('p', null),
           _react2['default'].createElement(
@@ -4407,9 +4429,50 @@ module.exports =
             { ref: function (c) {
                 return _this._alertPopup = c;
               } },
-            'Please select a date range.'
+            'Please select at least one day.'
           )
         );
+      }
+    }, {
+      key: '_isSameDay',
+      value: function _isSameDay(d1, d2) {
+        d1.setHours(0, 0, 0, 0);
+        d2.setHours(0, 0, 0, 0);
+
+        return d1.getTime() === d2.getTime();
+      }
+    }, {
+      key: '_isDisabled',
+      value: function _isDisabled(day) {
+        var today = new Date();
+        today.setDate(today.getDate() + 3);
+        return day < today;
+      }
+    }, {
+      key: '_onSelectDay',
+      value: function _onSelectDay(e, day) {
+        var _this2 = this;
+
+        if (!this._isDisabled(day)) {
+          var days = this.state.selectedDates;
+
+          if ((0, _lodashSome2['default'])(days, function (item) {
+            return _this2._isSameDay(item, day);
+          })) {
+            (0, _lodashRemove2['default'])(days, function (item) {
+              return _this2._isSameDay(item, day);
+            });
+          } else {
+            days.push(day);
+            days.sort(function (a, b) {
+              return a.getTime() - b.getTime();
+            });
+          }
+
+          this.setState({
+            selectedDates: days
+          });
+        }
       }
     }, {
       key: '_handleSelect',
@@ -4421,12 +4484,11 @@ module.exports =
     }, {
       key: '_onNext',
       value: function _onNext(event) {
-        var form = document.getElementById('BookingDateForm');
-        if (form.checkValidity()) {
+        if (this.state.selectedDates.length) {
           _Link2['default'].handleClick(event);
 
           // this.props.booking.range = this.state.range;
-          _actionsBookingActions2['default'].setDates(this.state.range);
+          _actionsBookingActions2['default'].setDates(this.state.selectedDates);
           _actionsBookingActions2['default'].setLast('booking3a');
         } else {
           event.preventDefault();
@@ -4441,6 +4503,9 @@ module.exports =
 
   exports['default'] = BookingDate;
   module.exports = exports['default'];
+  /*
+  <DateRangePicker numberOfCalendars={2} selectionType="range" singleDateRange={true} minimumDate={minimumDate} value={this.state.range} onSelect={this._handleSelect.bind(this)} />
+  */
 
 /***/ },
 /* 37 */
@@ -4659,7 +4724,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(14);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -5072,7 +5137,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(14);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -6815,7 +6880,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(14);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -6972,7 +7037,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(14);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -7002,7 +7067,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreLocation = __webpack_require__(13);
+  var _coreLocation = __webpack_require__(14);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -7033,8 +7098,9 @@ module.exports =
 
         this.serverRequest = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getAvailableSchedule').query({
           service: this.props.booking.service,
-          dateStart: this.props.booking.range.start.format('YYYY-MM-DD'),
-          dateEnd: this.props.booking.range.end.format('YYYY-MM-DD'),
+          'dates[]': this.props.booking.dates.map(function (date) {
+            return (0, _moment2['default'])(date).format('YYYY-MM-DD');
+          }),
           preferredPostalCode: this.props.booking.location.postalCode,
           'preferredTimes[]': this.props.booking.timeslots // hack to send PHP style arrays
         }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
@@ -7585,6 +7651,10 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
+  var _moment = __webpack_require__(12);
+
+  var _moment2 = _interopRequireDefault(_moment);
+
   __webpack_require__(103);
 
   var _Link = __webpack_require__(4);
@@ -7603,7 +7673,7 @@ module.exports =
     _createClass(BookingSidebar, [{
       key: 'render',
       value: function render() {
-        var service, location, dateRange, timeslots, sum;
+        var service, location, dates, timeslots, sum;
         if (this.props.allServicesHash && this.props.booking && this.props.booking.service) {
           service = this.props.allServicesHash[this.props.booking.service].name;
         }
@@ -7616,8 +7686,9 @@ module.exports =
             this.props.booking.location.unitNumber
           );
         }
-        if (this.props.booking && this.props.booking.range) {
-          dateRange = this.props.booking.range.start.format('DD-MM-YYYY') + ' - ' + this.props.booking.range.end.format('DD-MM-YYYY');
+        if (this.props.booking && this.props.booking.dates) {
+          dates = this.props.booking.dates;
+          // dates = this.props.booking.range.start.format('DD-MM-YYYY') + ' - ' + this.props.booking.range.end.format('DD-MM-YYYY');
         }
         if (this.props.booking && this.props.booking.timeslots) {
           timeslots = this.props.booking.timeslots;
@@ -7671,7 +7742,13 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'BookingSidebarItem' },
-                  dateRange
+                  dates && dates.map(function (date) {
+                    return _react2['default'].createElement(
+                      'div',
+                      { key: date.getTime() },
+                      (0, _moment2['default'])(date).format('DD MMM YYYY, dddd')
+                    );
+                  })
                 )
               )
             ),
@@ -8178,15 +8255,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactIconsLibFaFacebook = __webpack_require__(142);
+  var _reactIconsLibFaFacebook = __webpack_require__(144);
 
   var _reactIconsLibFaFacebook2 = _interopRequireDefault(_reactIconsLibFaFacebook);
 
-  var _reactIconsLibFaTwitter = __webpack_require__(144);
+  var _reactIconsLibFaTwitter = __webpack_require__(146);
 
   var _reactIconsLibFaTwitter2 = _interopRequireDefault(_reactIconsLibFaTwitter);
 
-  var _reactIconsLibFaInstagram = __webpack_require__(143);
+  var _reactIconsLibFaInstagram = __webpack_require__(145);
 
   var _reactIconsLibFaInstagram2 = _interopRequireDefault(_reactIconsLibFaInstagram);
 
@@ -8690,7 +8767,7 @@ module.exports =
 
   var _classNames2 = _interopRequireDefault(_classNames);
 
-  var _reactBurgerMenu = __webpack_require__(139);
+  var _reactBurgerMenu = __webpack_require__(141);
 
   __webpack_require__(113);
 
@@ -8913,7 +8990,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactSanfona = __webpack_require__(145);
+  var _reactSanfona = __webpack_require__(147);
 
   var _superagent = __webpack_require__(7);
 
@@ -8937,7 +9014,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreLocation = __webpack_require__(13);
+  var _coreLocation = __webpack_require__(14);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -9687,7 +9764,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -9834,7 +9911,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -9884,7 +9961,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -9934,7 +10011,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -9984,7 +10061,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10034,7 +10111,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10084,7 +10161,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -12636,7 +12713,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.DateRangePicker {\n  display: inline-block;\n  margin-bottom: 10px;\n  padding: 0;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .DateRangePicker__Legend {\n    color: #52575e;\n    font-size: 14px;\n    line-height: 16px;\n    list-style-type: none;\n    margin: 20px 0;\n    padding: 0; }\n  .DateRangePicker__LegendItem {\n    display: inline-block;\n    margin: 0 20px; }\n  .DateRangePicker__LegendItemColor {\n    border-radius: 50%;\n    display: inline-block;\n    height: 14px;\n    margin-right: 6px;\n    vertical-align: text-bottom;\n    width: 14px;\n    border: 1px solid rgba(0, 0, 0, 0.25); }\n    .DateRangePicker__LegendItemColor--selection {\n      background-color: #ed5434; }\n  .DateRangePicker__PaginationArrow {\n    border: 0;\n    cursor: pointer;\n    display: block;\n    height: 35px;\n    outline: none;\n    overflow: hidden;\n    padding: 0;\n    position: absolute;\n    text-align: center;\n    top: 0;\n    white-space: nowrap;\n    width: 35px;\n    z-index: 1; }\n    .DateRangePicker__PaginationArrow--previous {\n      left: 20px; }\n    .DateRangePicker__PaginationArrow--next {\n      right: 20px; }\n    .DateRangePicker__PaginationArrow:hover {\n      background-color: #ccc; }\n  .DateRangePicker__PaginationArrowIcon {\n    border-bottom: 8px solid transparent;\n    border-top: 8px solid transparent;\n    height: 0;\n    position: absolute;\n    top: 10px;\n    width: 0; }\n    .DateRangePicker__PaginationArrowIcon--is-disabled {\n      opacity: .25; }\n    .DateRangePicker__PaginationArrowIcon--previous {\n      border-left: 8px solid transparent;\n      border-right: 8px solid #aaa;\n      right: 11px; }\n    .DateRangePicker__PaginationArrowIcon--next {\n      border-left: 8px solid #aaa;\n      border-right: 8px solid transparent;\n      left: 11px; }\n  .DateRangePicker__Month {\n    color: #333;\n    display: inline-block;\n    margin: 0 20px;\n    position: relative;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    width: 275px; }\n  .DateRangePicker__MonthHeader {\n    color: #000;\n    font-size: 14px;\n    font-weight: bold;\n    height: 35px;\n    line-height: 35px;\n    position: relative;\n    text-align: center; }\n  .DateRangePicker__MonthHeaderLabel {\n    display: inline-block;\n    position: relative; }\n  .DateRangePicker__MonthHeaderSelect {\n    background: #e4e4e4;\n    border: 0;\n    cursor: pointer;\n    display: inline-block;\n    height: 100%;\n    left: 0;\n    margin: 0;\n    opacity: 0;\n    position: absolute;\n    top: 0;\n    width: 100%;\n    z-index: 5; }\n  .DateRangePicker__MonthDates {\n    border-bottom: 1px solid #f4f5f6;\n    border-collapse: separate;\n    border-spacing: 0 1px;\n    margin: 0;\n    width: 100%; }\n  .DateRangePicker__WeekdayHeading, .DateRangePicker__Date {\n    font-size: 12px;\n    line-height: 1;\n    padding: 10px 0;\n    text-align: center;\n    width: 14.285714285714286%; }\n  .DateRangePicker__WeekdayHeading {\n    border-bottom: 1px solid #f4f5f6;\n    color: #000;\n    font-weight: bold; }\n    .DateRangePicker__WeekdayHeading abbr[title] {\n      border-bottom-width: 0;\n      color: #000;\n      cursor: pointer;\n      font-size: inherit;\n      text-decoration: none; }\n  .DateRangePicker__Date {\n    border: 0 solid #f4f5f6;\n    border-right-width: 1px;\n    cursor: pointer;\n    overflow: hidden;\n    position: relative; }\n    .DateRangePicker__Date:first-child {\n      border-left-width: 1px; }\n    .DateRangePicker__Date--weekend {\n      background-color: #f6f7f9; }\n    .DateRangePicker__Date--otherMonth {\n      opacity: .25; }\n    .DateRangePicker__Date--is-disabled {\n      color: #cdcdd1;\n      cursor: default; }\n    .DateRangePicker__Date--is-selected {\n      color: #fff; }\n    .DateRangePicker__Date--is-highlighted {\n      color: #333; }\n  .DateRangePicker__CalendarDatePeriod {\n    bottom: 0;\n    position: absolute;\n    top: 0; }\n    .DateRangePicker__CalendarDatePeriod--am {\n      left: 0;\n      right: 50%; }\n    .DateRangePicker__CalendarDatePeriod--pm {\n      left: 50%;\n      right: 0; }\n  .DateRangePicker__CalendarSelection {\n    background-color: #ed5434;\n    border: 1px solid #eb401d;\n    bottom: 5px;\n    left: 0;\n    position: absolute;\n    right: 0;\n    top: 5px; }\n    .DateRangePicker__CalendarSelection--inOtherMonth {\n      opacity: .5; }\n    .DateRangePicker__CalendarSelection--start {\n      border-bottom-left-radius: 5px;\n      border-right-width: 0;\n      border-top-left-radius: 5px;\n      left: 5px; }\n    .DateRangePicker__CalendarSelection--end {\n      border-bottom-right-radius: 5px;\n      border-left-width: 0;\n      border-top-right-radius: 5px;\n      right: 5px; }\n    .DateRangePicker__CalendarSelection--segment {\n      border-left-width: 0;\n      border-right-width: 0; }\n    .DateRangePicker__CalendarSelection--single {\n      border-radius: 5px;\n      left: 5px;\n      right: 5px; }\n    .DateRangePicker__CalendarSelection--is-pending {\n      background-color: rgba(237, 84, 52, 0.75);\n      border-width: 0; }\n  .DateRangePicker__CalendarHighlight {\n    background-color: rgba(255, 255, 255, 0.25);\n    border: 1px solid rgba(0, 0, 0, 0.25);\n    bottom: 5px;\n    left: 0;\n    position: absolute;\n    right: 0;\n    top: 5px; }\n    .DateRangePicker__CalendarHighlight--inOtherMonth {\n      opacity: .5; }\n    .DateRangePicker__CalendarHighlight--start {\n      border-bottom-left-radius: 5px;\n      border-right-width: 0;\n      border-top-left-radius: 5px;\n      left: 5px; }\n    .DateRangePicker__CalendarHighlight--end {\n      border-bottom-right-radius: 5px;\n      border-left-width: 0;\n      border-top-right-radius: 5px;\n      right: 5px; }\n    .DateRangePicker__CalendarHighlight--segment {\n      border-left-width: 0;\n      border-right-width: 0; }\n    .DateRangePicker__CalendarHighlight--single {\n      background-color: #fff;\n      border: 1px solid #eb401d;\n      border-radius: 5px;\n      left: 5px;\n      right: 5px; }\n  .DateRangePicker__HalfDateStates {\n    bottom: -50px;\n    left: -50px;\n    position: absolute;\n    right: -50px;\n    top: -50px;\n    -webkit-transform: rotate(30deg);\n        -ms-transform: rotate(30deg);\n            -o-transform: rotate(30deg);\n       transform: rotate(30deg); }\n  .DateRangePicker__FullDateStates {\n    bottom: 0;\n    left: 0;\n    position: absolute;\n    right: 0;\n    top: 0; }\n  .DateRangePicker__DateLabel {\n    display: block;\n    position: relative;\n    text-align: center;\n    width: 100%;\n    z-index: 1; }\n\n.BookingDate {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.BookingDate .btn-inline {\n  margin-left: 20px;\n  margin-right: 20px; }\n\n.BookingDate .BookingDateTo {\n  display: inline-block }\n\n.BookingDate input {\n  text-align: center; }\n\n.BookingDate .DateRangePicker {\n  font-size: 18px; }\n\n.BookingDate .DateRangePicker .DateRangePicker__Month {\n  color: #969696; }\n\n.BookingDate .DateRangePicker .DateRangePicker__MonthHeader {\n  color: #444;\n  font-size: 18px; }\n\n.BookingDate .DateRangePicker .DateRangePicker__WeekdayHeading {\n  color: #444;\n  font-weight: 600; }\n\n.BookingDate .DateRangePicker .DateRangePicker__WeekdayHeading abbr[title] {\n  color: #444; }\n\n.BookingDate .DateRangePicker .DateRangePicker__WeekdayHeading, .BookingDate .DateRangePicker .DateRangePicker__Date {\n  // color: #444;\n  font-size: 16px; }\n\n.BookingDate .DateRangePicker .DateRangePicker__CalendarHighlight {\n  border-color: #f78d00; }\n\n.BookingDate .DateRangePicker .DateRangePicker__CalendarSelection {\n  // color: #000000;\n  background-color: #f78d00;\n  border-color: #f78d00; }\n\n@media (max-width: 992px) {\n\n  .BookingDate .BookingDateTo {\n    display: block;\n    margin-top: 20px; }\n    }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n/* DayPicker styles */\n\n.DayPicker {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n  padding: 1rem 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.DayPicker-Month {\n  display: table;\n  border-collapse: collapse;\n  border-spacing: 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 1rem;\n}\n\n  .DayPicker-NavBar {\n    position: absolute;\n    left: 0;\n    right: 0;\n    padding: 0 .5rem;\n  }\n\n  .DayPicker-NavButton {\n    position: absolute;\n    width: 1.5rem;\n    height: 1.5rem;\n    background-repeat: no-repeat;\n    background-position: center;\n    -webkit-background-size: contain;\n            background-size: contain;\n    cursor: pointer;\n  }\n\n    .DayPicker-NavButton--prev {\n      left: 1rem;\n      background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5wcmV2PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9InByZXYiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzLjM5MzE5MywgMjUuMDAwMDAwKSBzY2FsZSgtMSwgMSkgdHJhbnNsYXRlKC0xMy4zOTMxOTMsIC0yNS4wMDAwMDApIHRyYW5zbGF0ZSgwLjg5MzE5MywgMC4wMDAwMDApIiBmaWxsPSIjNTY1QTVDIj4KICAgICAgICAgICAgPHBhdGggZD0iTTAsNDkuMTIzNzMzMSBMMCw0NS4zNjc0MzQ1IEwyMC4xMzE4NDU5LDI0LjcyMzA2MTIgTDAsNC4yMzEzODMxNCBMMCwwLjQ3NTA4NDQ1OSBMMjUsMjQuNzIzMDYxMiBMMCw0OS4xMjM3MzMxIEwwLDQ5LjEyMzczMzEgWiIgaWQ9InJpZ2h0IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K\");\n    }\n\n    .DayPicker-NavButton--next {\n      right: 1rem;\n      background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5uZXh0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9Im5leHQiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuOTUxNDUxLCAwLjAwMDAwMCkiIGZpbGw9IiM1NjVBNUMiPgogICAgICAgICAgICA8cGF0aCBkPSJNMCw0OS4xMjM3MzMxIEwwLDQ1LjM2NzQzNDUgTDIwLjEzMTg0NTksMjQuNzIzMDYxMiBMMCw0LjIzMTM4MzE0IEwwLDAuNDc1MDg0NDU5IEwyNSwyNC43MjMwNjEyIEwwLDQ5LjEyMzczMzEgTDAsNDkuMTIzNzMzMSBaIiBpZD0icmlnaHQiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=\");\n    }\n\n\n  .DayPicker-Caption {\n    display: table-caption;\n    height: 1.5rem;\n    text-align: center;\n  }\n\n  .DayPicker-Weekdays {\n    display: table-header-group;\n  }\n\n    .DayPicker-WeekdaysRow {\n      display: table-row;\n    }\n\n      .DayPicker-Weekday {\n        display: table-cell;\n        padding: .5rem;\n        font-size: .875em;\n        text-align: center;\n        color: #8b9898;\n      }\n\n  .DayPicker-Body {\n    display: table-row-group;\n  }\n\n    .DayPicker-Week {\n      display: table-row;\n    }\n\n      .DayPicker-Day {\n        display: table-cell;\n        padding: .5rem;\n        border: 1px solid #eaecec;\n        text-align: center;\n        cursor: pointer;\n        vertical-align: middle;\n      }\n\n  .DayPicker--interactionDisabled .DayPicker-Day {\n    cursor: default;\n  }\n\n/* Default modifiers */\n\n.DayPicker-Day--today {\n  color: #d0021b;\n  font-weight: 500;\n}\n\n.DayPicker-Day--disabled {\n  color: #dce0e0;\n  cursor: default;\n  background-color: #eff1f1;\n}\n\n.DayPicker-Day--outside {\n  cursor: default;\n  color: #dce0e0;\n}\n\n/* Example modifiers */\n\n.DayPicker-Day--sunday {\n  color: #dce0e0;\n  background-color: #f7f8f8;\n}\n\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  color: #FFF;\n  background-color: #4A90E2;\n}\n\n.BookingDate {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.BookingDate .btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.BookingDate .BookingDateTo {\n  display: inline-block\n}\n\n.BookingDate input {\n  text-align: center;\n}\n\n.BookingDate .DayPicker .DayPicker-Day.DayPicker-Day--today {\n  color: #f78d00;\n}\n\n.BookingDate .DayPicker .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  background-color: #f78d00;\n}\n\n@media (max-width: 992px) {\n\n  .BookingDate .BookingDateTo {\n    display: block;\n    margin-top: 20px;\n  }\n    }", ""]);
 
   // exports
 
@@ -13161,40 +13238,52 @@ module.exports =
 /* 139 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-burger-menu");
+  module.exports = require("lodash.remove");
 
 /***/ },
 /* 140 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-daterange-picker");
+  module.exports = require("lodash.some");
 
 /***/ },
 /* 141 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-dom");
+  module.exports = require("react-burger-menu");
 
 /***/ },
 /* 142 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/facebook");
+  module.exports = require("react-day-picker");
 
 /***/ },
 /* 143 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/instagram");
+  module.exports = require("react-dom");
 
 /***/ },
 /* 144 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/twitter");
+  module.exports = require("react-icons/lib/fa/facebook");
 
 /***/ },
 /* 145 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-icons/lib/fa/instagram");
+
+/***/ },
+/* 146 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-icons/lib/fa/twitter");
+
+/***/ },
+/* 147 */
 /***/ function(module, exports) {
 
   module.exports = require("react-sanfona");
