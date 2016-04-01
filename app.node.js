@@ -627,18 +627,6 @@ module.exports =
 /* 6 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-loader");
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-  module.exports = require("superagent");
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -647,11 +635,38 @@ module.exports =
   var util = {
     host: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
     authKey: 'secret',
-    authSecret: 'secret0nlyWeilsonKnowsShhh852~'
+    authSecret: 'secret0nlyWeilsonKnowsShhh852~',
+
+    getCookies: function getCookies() {
+      if (typeof document !== 'undefined' && document && document.cookie) {
+        var pairs = document.cookie.split(';');
+        var cookies = {};
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+          if (pair[0]) pair[0] = pair[0].trim();
+          cookies[pair[0]] = unescape(pair[1]);
+        }
+        return cookies;
+      } else {
+        return {};
+      }
+    }
   };
 
   exports['default'] = util;
   module.exports = exports['default'];
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-loader");
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+  module.exports = require("superagent");
 
 /***/ },
 /* 9 */
@@ -796,7 +811,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -898,7 +913,7 @@ module.exports =
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -1423,7 +1438,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -1431,7 +1446,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1453,7 +1468,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -1723,7 +1738,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1731,7 +1746,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -1753,7 +1768,7 @@ module.exports =
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -2932,7 +2947,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2944,7 +2959,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -2962,7 +2977,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -3171,11 +3186,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -3193,7 +3208,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -3477,7 +3492,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -3489,7 +3504,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -3507,7 +3522,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -4571,7 +4586,7 @@ module.exports =
                 { className: 'BookingDateTimeNav' },
                 _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3a', link: 'booking3a', name: 'Select Service Dates' }),
                 _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3b', link: 'booking3b', name: 'Select Timeslots' }),
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3c', link: 'booking3c', name: 'Select Sessions' })
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3c', name: 'Select Sessions' })
               )
             )
           ),
@@ -4648,7 +4663,7 @@ module.exports =
     _createClass(BookingDateTimeNavItem, [{
       key: 'render',
       value: function render() {
-        if (_storesBookingStore2['default'].isNavigationAllowed(this.props.link)) {
+        if (this.props.link && _storesBookingStore2['default'].isNavigationAllowed(this.props.link)) {
           return _react2['default'].createElement(
             'li',
             { className: 'BookingDateTimeNavItem' },
@@ -4716,7 +4731,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -5125,7 +5140,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -5141,7 +5156,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -5163,7 +5178,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -6371,11 +6386,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -6389,7 +6404,7 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -6588,7 +6603,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7033,7 +7048,7 @@ module.exports =
 
   var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -7045,7 +7060,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7071,7 +7086,7 @@ module.exports =
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -7363,7 +7378,7 @@ module.exports =
 
   var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -8502,11 +8517,11 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -8520,7 +8535,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
@@ -8783,6 +8798,10 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
+  var _coreUtil = __webpack_require__(6);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
+
   var Navigation = (function (_Component) {
     _inherits(Navigation, _Component);
 
@@ -8798,6 +8817,28 @@ module.exports =
     _createClass(Navigation, [{
       key: 'render',
       value: function render() {
+        var accountLink;
+        if (_coreUtil2['default'].getCookies()['sessionid']) {
+          accountLink = _react2['default'].createElement(
+            'li',
+            { className: 'Navigation-item' },
+            _react2['default'].createElement(
+              'a',
+              { className: 'Navigation-link', href: 'https://app.ebeecare.com/login/' },
+              'Dashboard'
+            )
+          );
+        } else {
+          accountLink = _react2['default'].createElement(
+            'li',
+            { className: 'Navigation-item' },
+            _react2['default'].createElement(
+              'a',
+              { className: 'Navigation-link', href: 'https://app.ebeecare.com/login/' },
+              'Login'
+            )
+          );
+        }
         return _react2['default'].createElement(
           'div',
           { className: 'NavWrapper' },
@@ -8858,15 +8899,7 @@ module.exports =
                 'Manage Booking'
               )
             ),
-            _react2['default'].createElement(
-              'li',
-              { className: 'Navigation-item' },
-              _react2['default'].createElement(
-                'a',
-                { className: 'Navigation-link', href: 'https://app.ebeecare.com/login/' },
-                'Login'
-              )
-            )
+            accountLink
           ),
           _react2['default'].createElement(
             _Container2['default'],
@@ -8932,15 +8965,7 @@ module.exports =
                     'Manage Booking'
                   )
                 ),
-                _react2['default'].createElement(
-                  'li',
-                  { className: 'Navigation-item' },
-                  _react2['default'].createElement(
-                    'a',
-                    { className: 'Navigation-link', href: 'https://app.ebeecare.com/login/' },
-                    'Login'
-                  )
-                )
+                accountLink
               )
             )
           )
@@ -8986,13 +9011,13 @@ module.exports =
 
   var _reactIconsLibFaSpinner2 = _interopRequireDefault(_reactIconsLibFaSpinner);
 
-  var _reactLoader = __webpack_require__(6);
+  var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
   var _reactSanfona = __webpack_require__(147);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -9018,7 +9043,7 @@ module.exports =
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _coreUtil = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(6);
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
