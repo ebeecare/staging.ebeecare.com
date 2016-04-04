@@ -698,9 +698,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSkylight = __webpack_require__(20);
+  var _reactPopup = __webpack_require__(20);
 
-  var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
+  var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
   __webpack_require__(81);
 
@@ -716,57 +716,30 @@ module.exports =
     _createClass(AlertPopup, [{
       key: 'render',
       value: function render() {
-        var _this = this;
-
-        var styles = {
-          dialogStyles: {
-            width: '50%',
-            height: 'auto',
-            marginTop: '0',
-            marginLeft: '-25%',
-            top: '100px',
-            textAlign: 'center'
-          },
-          title: {
-            color: '#f78d00'
-          },
-          closeButtonStyle: {
-            color: '#f78d00',
-            textDecoration: 'none'
-          }
-        };
-
-        return _react2['default'].createElement(
-          _reactSkylight2['default'],
-          { dialogStyles: styles.dialogStyles, title: styles.title, closeButtonStyle: styles.closeButtonStyle, hideOnOverlayClicked: true, ref: function (c) {
-              return _this._alertDialog = c;
-            }, title: 'Alert' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'AlertPopup' },
-            this.props.children,
-            _react2['default'].createElement(
-              'div',
-              { className: 'AlertPopup-footer' },
-              _react2['default'].createElement(
-                'a',
-                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickClose.bind(this) },
-                'OK'
-              )
-            )
-          )
-        );
+        return _react2['default'].createElement(_reactPopup2['default'], {
+          btnClass: 'btn btn-primary btn-small',
+          closeHtml: _react2['default'].createElement(
+            'span',
+            { role: 'button' },
+            '×'
+          ),
+          defaultOk: 'OK',
+          wildClasses: true });
       }
     }, {
-      key: '_onClickClose',
-      value: function _onClickClose(event) {
-        this._alertDialog.hide();
+      key: 'alert',
+      value: function alert(message) {
+        _reactPopup2['default'].alert(message, 'Oops...');
       }
-    }, {
-      key: 'show',
-      value: function show() {
-        this._alertDialog.show();
-      }
+
+      // _onClickClose(event) {
+      //   this._alertDialog.hide();
+      // }
+
+      // show() {
+      //   this._alertDialog.show();
+      // }
+
     }]);
 
     return AlertPopup;
@@ -1675,7 +1648,7 @@ module.exports =
 /* 20 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-skylight");
+  module.exports = require("react-popup");
 
 /***/ },
 /* 21 */
@@ -3106,13 +3079,9 @@ module.exports =
               )
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please fill up your bank transfer reference number.'
-          )
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this._alertPopup = c;
+            } })
         );
       }
     }, {
@@ -3151,7 +3120,7 @@ module.exports =
           });
         } else {
           event.preventDefault();
-          this._alertPopup.show();
+          this._alertPopup.alert('Please fill up your bank transfer reference number.');
         }
       }
     }]);
@@ -4439,13 +4408,9 @@ module.exports =
               'NEXT'
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please select at least one day.'
-          )
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this._alertPopup = c;
+            } })
         );
       }
     }, {
@@ -4508,7 +4473,7 @@ module.exports =
         } else {
           event.preventDefault();
           // alert('Please select a date range.');
-          this._alertPopup.show();
+          this._alertPopup.alert('Please select at least one day.');
         }
       }
     }]);
@@ -4957,13 +4922,9 @@ module.exports =
               this.props.children
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please fill up all required fields.'
-          ),
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this._alertPopup = c;
+            } }),
           _react2['default'].createElement(_LoginPopup2['default'], { ref: function (c) {
               return _this._loginPopup = c;
             } })
@@ -5090,7 +5051,7 @@ module.exports =
         } else {
           event.preventDefault();
           // alert('Please fill up all required fields.');
-          this._alertPopup.show();
+          this._alertPopup.alert('Please fill up all required fields.');
         }
       }
     }]);
@@ -5798,13 +5759,9 @@ module.exports =
               this.props.children
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this2._alertPopup = c;
-              } },
-            'Please fill up all required fields.'
-          )
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this2._alertPopup = c;
+            } })
         );
       }
     }, {
@@ -5996,7 +5953,7 @@ module.exports =
         } else {
           event.preventDefault();
           // alert('Please fill up all required fields.');
-          this._alertPopup.show();
+          this._alertPopup.alert('Please fill up all required fields.');
         }
       }
     }, {
@@ -6021,7 +5978,7 @@ module.exports =
         } else {
           event.preventDefault();
           // alert('Please fill up all required fields.');
-          this._alertPopup.show();
+          this._alertPopup.alert('Please fill up all required fields.');
         }
       }
     }, {
@@ -7246,13 +7203,9 @@ module.exports =
               )
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this2._alertPopup = c;
-              } },
-            'Please select at least one session.'
-          ),
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this2._alertPopup = c;
+            } }),
           _react2['default'].createElement(
             _ConfirmPopup2['default'],
             { ref: function (c) {
@@ -7292,13 +7245,9 @@ module.exports =
               )
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this2._rejectPopup = c;
-              } },
-            'To continue, please accept our Terms of Service and Privacy Policy.'
-          )
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this2._rejectPopup = c;
+            } })
         );
       }
     }, {
@@ -7315,7 +7264,7 @@ module.exports =
 
         if (sessions.length === 0) {
           // alert('Please choose at least one session.');
-          this._alertPopup.show();
+          this._alertPopup.alert('Please select at least one session.');
           return event.preventDefault();
         }
 
@@ -7330,7 +7279,7 @@ module.exports =
             // console.log(this.state);
             _actionsBookingActions2['default'].setLast('booking3c');
           } else {
-            _this3._rejectPopup.show();
+            _this3._rejectPopup.alert('To continue, please accept our Terms of Service and Privacy Policy.');
           }
         });
 
@@ -7381,6 +7330,8 @@ module.exports =
   var _reactLoader = __webpack_require__(7);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
+
+  // import Popup from 'react-popup';
 
   __webpack_require__(102);
 
@@ -7586,13 +7537,9 @@ module.exports =
               )
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please select a service.'
-          )
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this._alertPopup = c;
+            } })
         );
       }
     }, {
@@ -7621,7 +7568,8 @@ module.exports =
         } else {
           event.preventDefault();
           // alert('Please select a service');
-          this._alertPopup.show();
+          // this._alertPopup.show();
+          this._alertPopup.alert('Please select a service.');
         }
       }
     }, {
@@ -7961,13 +7909,9 @@ module.exports =
               'NEXT'
             )
           ),
-          _react2['default'].createElement(
-            _AlertPopup2['default'],
-            { ref: function (c) {
-                return _this._alertPopup = c;
-              } },
-            'Please select at least one timeslot.'
-          )
+          _react2['default'].createElement(_AlertPopup2['default'], { ref: function (c) {
+              return _this._alertPopup = c;
+            } })
         );
       }
     }, {
@@ -7982,7 +7926,7 @@ module.exports =
 
         if (timeslots.length === 0) {
           // alert('Please choose at least one timeslot.');
-          this._alertPopup.show();
+          this._alertPopup.alert('Please select at least one timeslot.');
           return event.preventDefault();
         }
 
@@ -8024,9 +7968,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSkylight = __webpack_require__(20);
+  var _reactPopup = __webpack_require__(20);
 
-  var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
+  var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
   __webpack_require__(105);
 
@@ -8042,68 +7986,47 @@ module.exports =
     _createClass(ConfirmPopup, [{
       key: 'render',
       value: function render() {
-        var _this = this;
+        return _react2['default'].createElement(_reactPopup2['default'], {
+          btnClass: 'btn btn-primary btn-small',
+          closeBtn: false,
+          defaultOk: 'OK',
+          wildClasses: true });
+      }
 
-        var styles = {
-          dialogStyles: {
-            width: '50%',
-            height: 'auto',
-            marginTop: '0',
-            marginLeft: '-25%',
-            top: '100px',
-            textAlign: 'center'
-          },
-          title: {
-            color: '#f78d00'
-          },
-          closeButtonStyle: {
-            color: '#f78d00',
-            textDecoration: 'none'
-          }
-        };
+      // _onClickOk(event) {
+      //   this._confirmDialog.hide();
+      //   this._ok();
+      // }
 
-        return _react2['default'].createElement(
-          _reactSkylight2['default'],
-          { dialogStyles: styles.dialogStyles, title: styles.title, closeButtonStyle: styles.closeButtonStyle, hideOnOverlayClicked: true, ref: function (c) {
-              return _this._confirmDialog = c;
-            }, title: 'Confirmation' },
-          _react2['default'].createElement(
-            'div',
-            { className: 'ConfirmPopup' },
-            this.props.children,
-            _react2['default'].createElement(
-              'div',
-              { className: 'ConfirmPopup-footer' },
-              _react2['default'].createElement(
-                'a',
-                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickOk.bind(this) },
-                'OK'
-              ),
-              _react2['default'].createElement(
-                'a',
-                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickCancel.bind(this) },
-                'Cancel'
-              )
-            )
-          )
-        );
-      }
-    }, {
-      key: '_onClickOk',
-      value: function _onClickOk(event) {
-        this._confirmDialog.hide();
-        this._ok();
-      }
-    }, {
-      key: '_onClickCancel',
-      value: function _onClickCancel(event) {
-        this._confirmDialog.hide();
-      }
+      // _onClickCancel(event) {
+      //   this._confirmDialog.hide();
+      // }
+
     }, {
       key: 'show',
-      value: function show(ok) {
+      value: function show(message, ok) {
+        var _this = this;
+
         this._ok = ok || function () {};
-        this._confirmDialog.show();
+        // this._confirmDialog.show();
+        _reactPopup2['default'].create({
+          title: 'Confirm',
+          content: message,
+          buttons: {
+            right: [{
+              text: 'OK',
+              action: function action(popup) {
+                popup.close();
+                _this._ok();
+              }
+            }, {
+              text: 'Cancel',
+              action: function action(popup) {
+                popup.close();
+              }
+            }]
+          }
+        });
       }
     }]);
 
@@ -8525,9 +8448,9 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactSkylight = __webpack_require__(20);
+  var _reactPopup = __webpack_require__(20);
 
-  var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
+  var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
   __webpack_require__(111);
 
@@ -8562,34 +8485,73 @@ module.exports =
     }, {
       key: 'render',
       value: function render() {
+        return _react2['default'].createElement(_reactPopup2['default'], {
+          btnClass: 'btn btn-primary btn-small',
+          closeHtml: _react2['default'].createElement(
+            'span',
+            { role: 'button' },
+            '×'
+          ),
+          wildClasses: true });
+      }
+    }, {
+      key: '_onClickLogin',
+      value: function _onClickLogin(event) {
         var _this = this;
 
-        var styles = {
-          dialogStyles: {
-            width: '340px',
-            marginLeft: '-170px'
-          },
-          title: {
-            display: 'none'
-          },
-          closeButtonStyle: {
-            color: '#f78d00',
-            textDecoration: 'none'
-          }
-        };
+        if (this._accountLoginForm.checkValidity()) {
+          event.preventDefault();
 
-        return _react2['default'].createElement(
-          _reactSkylight2['default'],
-          {
-            dialogStyles: styles.dialogStyles,
-            titleStyle: styles.title,
-            closeButtonStyle: styles.closeButtonStyle,
-            afterOpen: this._executeAfterModalOpen.bind(this),
-            hideOnOverlayClicked: true,
-            ref: function (c) {
-              return _this._loginPopup = c;
-            } },
-          _react2['default'].createElement(
+          this.setState({ pending: true });
+
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/mlogin').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
+            email: this.state.email,
+            password: this.state.password
+          }).end(function (err, res) {
+            _this.setState({ pending: false });
+            if (err) {
+              return console.error(_coreUtil2['default'].host + '/api/mlogin', status, err.toString());
+            }
+            if (res.body && res.body.status === 1) {
+              console.log(res.body);
+              var user = res.body.user;
+
+              _this.setState({
+                error: undefined
+              });
+
+              _reactPopup2['default'].close();
+
+              _this._success(user);
+            } else {
+              _this.setState({
+                error: true
+              });
+              console.error('Failed to login.');
+            }
+          });
+
+          this.setState({
+            email: undefined,
+            password: undefined
+          });
+        }
+      }
+    }, {
+      key: '_executeAfterModalOpen',
+      value: function _executeAfterModalOpen() {
+        this._startInput && this._startInput.focus();
+      }
+    }, {
+      key: 'show',
+      value: function show(success) {
+        var _this2 = this;
+
+        this._success = success || function () {};
+        // this._loginPopup.show();
+        _reactPopup2['default'].create({
+          title: '',
+          content: _react2['default'].createElement(
             _reactLoader2['default'],
             { className: 'spinner', loaded: this.state.pending ? false : true },
             _react2['default'].createElement(
@@ -8601,7 +8563,7 @@ module.exports =
                 _react2['default'].createElement(
                   'form',
                   { id: 'AccountLoginForm', ref: function (c) {
-                      return _this._accountLoginForm = c;
+                      return _this2._accountLoginForm = c;
                     }, autoComplete: 'off' },
                   _react2['default'].createElement(
                     'h3',
@@ -8609,7 +8571,7 @@ module.exports =
                     'eBeeCare Login'
                   ),
                   _react2['default'].createElement('input', { className: 'EmailInput', type: 'email', name: 'email', ref: function (c) {
-                      return _this._startInput = c;
+                      return _this2._startInput = c;
                     }, valueLink: (0, _reactLinkState2['default'])(this, 'email'), placeholder: 'Enter Email', required: true }),
                   _react2['default'].createElement('input', { className: 'PasswordInput', type: 'password', name: 'password', valueLink: (0, _reactLinkState2['default'])(this, 'password'), placeholder: 'Enter Password', required: true }),
                   _react2['default'].createElement(
@@ -8634,61 +8596,7 @@ module.exports =
               )
             )
           )
-        );
-      }
-    }, {
-      key: '_onClickLogin',
-      value: function _onClickLogin(event) {
-        var _this2 = this;
-
-        if (this._accountLoginForm.checkValidity()) {
-          event.preventDefault();
-
-          this.setState({ pending: true });
-
-          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/mlogin').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
-            email: this.state.email,
-            password: this.state.password
-          }).end(function (err, res) {
-            _this2.setState({ pending: false });
-            if (err) {
-              return console.error(_coreUtil2['default'].host + '/api/mlogin', status, err.toString());
-            }
-            if (res.body && res.body.status === 1) {
-              console.log(res.body);
-              var user = res.body.user;
-
-              _this2.setState({
-                error: undefined
-              });
-
-              _this2._loginPopup.hide();
-
-              _this2._success(user);
-            } else {
-              _this2.setState({
-                error: true
-              });
-              console.error('Failed to login.');
-            }
-          });
-
-          this.setState({
-            email: undefined,
-            password: undefined
-          });
-        }
-      }
-    }, {
-      key: '_executeAfterModalOpen',
-      value: function _executeAfterModalOpen() {
-        this._startInput.focus();
-      }
-    }, {
-      key: 'show',
-      value: function show(success) {
-        this._success = success || function () {};
-        this._loginPopup.show();
+        });
       }
     }]);
 
@@ -12766,7 +12674,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingDateTimeNavItem {\n  padding: 0 1em;\n  text-align: center;\n}\n\n.BookingDateTimeNavItem + .BookingDateTimeNavItem {}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link.active {\n  color: #fdbc1d;\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link.active .BookingDateTimeNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link.active .BookingDateTimeNav-arrow .nav-caret {\n  display: block;\n}\n\n.BookingDateTimeNavItem a.BookingDateTimeNav-link {}\n\n.BookingDateTimeNavItem a.BookingDateTimeNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n@media (min-width: 768px) {\n\n  .BookingDateTimeNavItem + .BookingDateTimeNavItem {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingDateTimeNavItem .BookingDateTimeNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingDateTimeNavItem .BookingDateTimeNav-link.active .BookingDateTimeNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingDateTimeNavItem {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n  }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingDateTimeNavItem {\n  padding: 0 1em;\n  text-align: center;\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link.active {\n  color: #fdbc1d;\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link.active .BookingDateTimeNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.BookingDateTimeNavItem .BookingDateTimeNav-link.active .BookingDateTimeNav-arrow .nav-caret {\n  display: block;\n}\n\n.BookingDateTimeNavItem a.BookingDateTimeNav-link {}\n\n.BookingDateTimeNavItem a.BookingDateTimeNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingDateTimeNavItem + .BookingDateTimeNavItem {}\n\n@media (min-width: 768px) {\n\n  .BookingDateTimeNavItem + .BookingDateTimeNavItem {\n    border-left: 1px solid #fdbc1d;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingDateTimeNavItem .BookingDateTimeNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingDateTimeNavItem .BookingDateTimeNav-link.active .BookingDateTimeNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingDateTimeNavItem {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n  }", ""]);
 
   // exports
 
@@ -13032,7 +12940,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(125) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(131) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(130) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(132) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}", ""]);
+  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(125) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(131) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(130) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(132) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}\n\n.mm-popup {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  overflow: auto;\n  display: none;\n  background: rgba(0, 0, 0, .25);\n}\n\n.mm-popup .mm-popup__close {\n  position: absolute;\n  top: 15px;\n  right: 20px;\n  padding: 0;\n  width: 20px;\n  height: 20px;\n  cursor: pointer;\n  outline: none;\n  text-align: center;\n  border: none;\n  background-color: transparent;\n  margin: 0;\n  z-index: 3;\n}\n\n.mm-popup .mm-popup__close span {\n  cursor: pointer;\n  position: absolute;\n  font-size: 1.8em;\n  line-height: 0.75em;\n  top: 0;\n  right: 0;\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.mm-popup .mm-popup__input {\n  display: block;\n  width: 100%;\n  height: 30px;\n  border-radius: 3px;\n  background: #f5f5f5;\n  border: 1px solid #e9ebec;\n  outline: none;\n  -webkit-box-sizing: border-box !important;\n  box-sizing: border-box !important;\n  font-size: 14px;\n  padding: 0 12px;\n  color: #808080;\n}\n\n/*.mm-popup__btn {\n    @mixin border-radius 3px;\n    -moz-box-sizing: border-box;\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    padding: 0 10px;\n    margin: 0;\n    line-height: 32px;\n    height: 32px;\n    border: 1px solid #666;\n    text-align: center;\n    display: inline-block;\n    font-size: 12px;\n    font-weight: 400;\n    color: #333;\n    background: transparent;\n    outline: none;\n    text-decoration: none;\n    cursor: pointer;\n    font-family: \"Open Sans\", sans-serif;\n  }\n\n  .mm-popup__btn--success {\n    background-color: #27ae60;\n    border-color: #27ae60;\n    color: #fff;\n  }*/\n\n.mm-popup .mm-popup__box {\n  width: 350px;\n  position: absolute;\n  top: 10%;\n  left: 50%;\n  margin-left: -175px;\n  background: #fff;\n  -webkit-box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px, rgba(0, 0, 0, 0.278431) 0px 4px 8px;\n          box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px, rgba(0, 0, 0, 0.278431) 0px 4px 8px;\n  border-radius: 3px;\n  overflow: hidden;\n  z-index: 100;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__header {\n  padding: 15px 20px;\n  color: #f78d00;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__header .mm-popup__box__header__title {\n  margin: 0;\n  font-size: 1.5em;\n  text-align: center;\n  font-weight: 400;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__body {\n  padding: 20px;\n  line-height: 1.4;\n  font-size: 18px;\n  background: #fff;\n  position: relative;\n  z-index: 2;\n  text-align: center;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__body .mm-popup__box__body p {\n  margin: 0 0 5px;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__footer {\n  overflow: hidden;\n  padding: 40px 20px 20px;\n  text-align: center;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__footer .mm-popup__box__footer__right-space {\n  float: none;\n}\n\n.mm-popup .mm-popup__box .mm-popup__box__footer .mm-popup__box__footer__left-space {\n  float: none;\n}\n\n.mm-popup .mm-popup__box--popin {\n  width: 300px;\n  margin-left: -150px;\n  overflow: visible;\n}\n\n.mm-popup .mm-popup__box--popin .mm-popup__box--popin .mm-popup__close {\n  border-radius: 10px;\n  background: #000;\n  color: #fff;\n  width: 20px;\n  height: 20px;\n  line-height: 20px;\n  top: -10px;\n  right: -10px;\n  font-size: 16px;\n}\n\n.mm-popup .mm-popup__box--popin .mm-popup__box--popin .mm-popup__box__body {\n  padding: 20px;\n}\n\n.mm-popup .mm-popup__box--popin .mm-popup__box--popin .mm-popup__box__footer {\n  padding: 10px 20px 20px;\n}\n\n.mm-popup--visible {\n  display: block;\n}\n\n@media (max-width: 420px) {\n  .mm-popup__box {\n    width: auto;\n    left: 10px;\n    right: 10px;\n    top: 10px;\n    margin-left: 0;\n  }\n\n  .mm-popup__box__footer__left-space {\n    float: none;\n  }\n\n  .mm-popup__box__footer__right-space {\n    float: none;\n  }\n\n  .mm-popup__box__footer {\n    padding-top: 30px;\n  }\n\n  .mm-popup__box__footer .mm-popup__btn {\n    display: block;\n    width: 100%;\n    text-align: center;\n    margin-top: 10px;\n  }\n}", ""]);
 
   // exports
 
@@ -13060,7 +12968,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.LoginPopup .Account-container-item {\n\n    -webkit-box-sizing: border-box;\n\n            box-sizing: border-box;\n\n    width: 340px;\n\n    background-color: #fff;\n\n    padding: 40px;\n}\n\n.LoginPopup .Account-container-item form {\n\n    display: inline-block;\n}\n\n.LoginPopup .Account-container-item form h3 {\n\n    color: #fdbc1d;\n\n    font-weight: normal;\n\n    font-size: 24px;\n\n    margin: 0 0 24px 0;\n}\n\n.LoginPopup .Account-container-item form input {\n\n    margin: 0;\n\n    font-size: 21px;\n}\n\n.LoginPopup .Account-container-item form input + input {\n\n    border-top: 0;\n}\n\n.LoginPopup .Account-container-item form a.btn {\n\n    width: 100%;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle {\n\n    height: 95px;\n\n    padding: 10px 0;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n\n    padding: 10px 0;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n\n    color: #f78d00;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n\n    border-color: #ccc;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n\n    color: #444;\n}\n\n.LoginPopup-footer {\n\n    text-align: center;\n\n    margin: 20px 0;\n}", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.mm-popup .mm-popup__box {\n  width: 370px;\n  margin-left: -185px;\n}\n\n.LoginPopup .Account-container-item {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: #fff;\n  padding: 40px;\n}\n\n.LoginPopup .Account-container-item form {\n  display: inline-block;\n}\n\n.LoginPopup .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n  text-align: left;\n}\n\n.LoginPopup .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n}\n\n.LoginPopup .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.LoginPopup .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n  padding: 10px 0;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.LoginPopup .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.LoginPopup-footer {\n  text-align: center;\n  margin: 20px 0;\n}", ""]);
 
   // exports
 
