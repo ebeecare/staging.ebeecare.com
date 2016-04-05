@@ -4940,16 +4940,6 @@ module.exports =
               'a',
               { href: '#', className: 'btn btn-primary btn-small btn-inline', onClick: this._onClickLogin.bind(this) },
               'LOGIN'
-            ),
-            _react2['default'].createElement(
-              'span',
-              null,
-              'or'
-            ),
-            _react2['default'].createElement(
-              'a',
-              { href: '/booking2', className: 'btn btn-primary btn-small btn-inline' },
-              'REGISTER'
             )
           ),
           _react2['default'].createElement(
@@ -5234,13 +5224,16 @@ module.exports =
   exports['default'] = BookingLocation;
   module.exports = exports['default'];
   /*
-  <div className="select">
-   <span></span>
-   <select name="salutation">
-     <option value="">Salutation</option>
-   </select>
-  </div>
-  */
+  <span>or</span>
+  <a href="/booking2" className="btn btn-primary btn-small btn-inline">REGISTER</a>
+  */ /*
+     <div className="select">
+      <span></span>
+      <select name="salutation">
+        <option value="">Salutation</option>
+      </select>
+     </div>
+     */
 
 /***/ },
 /* 40 */
