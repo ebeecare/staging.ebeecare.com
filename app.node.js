@@ -12360,37 +12360,37 @@ module.exports =
               _react2['default'].createElement(
                 'h3',
                 null,
-                '1. Introduction'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '1.1. Nurse Agreement'
+                '1. INTRODUCTION'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'This Nurse Terms of Service (the "Agreement") is a contract between you (the "Nurse" or "you") and eBeeCare Pte Ltd ("eBeeCare", "we" or "us"). You must read, agree with and accept all of the terms and conditions contained in this Agreement in order to use our website located at www.eBeeCare.com (the "Site") and related software and services (collectively, the "Platform"). eBeeCare may amend this Agreement at any time by posting a revised version on the Site or by sending out emails to the affected Nurse. Each revised version will state its effective date, which will be on or after the date we post it. If the revised version materially reduces your rights or increases your responsibilities, we may post it in advance of the effective date in order to give you notice. Your continued use of the Platform after the effective date of a revised version of this Agreement constitutes your acceptance of its terms. In the event of a conflict between eBeeCare\'s policies (as stated on the Site and may be amended from time to time) and this Agreement, this Agreement shall prevail. Capitalized terms are defined throughout the Agreement.'
+                'This Policy sets out the manner in which eBeeCare Pte. Ltd. ("eBeeCare") collects, uses, manages and protects personal data (as defined below) in compliance with the provisions of the Personal Data Protection Act 2012.'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'YOU UNDERSTAND THAT BY CHECKING THE BOX AND CLICKING THE "SUBMIT" BUTTON, OR BY USING THE PLATFORM, YOU ARE AGREEING TO BE BOUND BY THIS AGREEMENT. IF YOU DO NOT ACCEPT THIS AGREEMENT IN ITS ENTIRETY, YOU MAY NOT ACCESS OR USE THE PLATFORM.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '1.2. Purpose of the Platform'
+                'This policy applies to all individuals (as defined below) who provide eBeeCare with personal data or whose personal data is otherwise collected, used and/or disclosed by eBeeCare in connection with and/or for the purpose of its operations.'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'The Platform allows Clients and Nurses to identify each other and enable them to buy and sell Services online. Under this Agreement, eBeeCare provides services to both Clients and Nurses, including curating Clients and Nurses, facilitating the formation of contracts between Clients and Nurses, and managing disputes related to those contracts. Clients put up requests for nursing services and invite Nurses to apply. Nurses post profiles and provide quotes on Cases. If a Client and Nurse agree on terms, a Participation Agreement is formed directly between such Client and Nurse subject to the provisions set forth in Annex A (Participation Agreement Between Client and Nurse). eBeeCare collects payment from Client in connection with their receipt of services from Nurse through the Platform. eBeeCare pays Nurse in connection with their delivery of services through the Platform after deducting relevant fees such as Admin Fees.'
+                'This policy supplements but does not supersede or replace any previous consent which an individual may have provided to eBeeCare, nor does it affects any rights that eBeeCare may have at law in connection with the collection, use and/or disclosure of any individual\'s personal data. Subject to that, eBeeCare will not collect any personal data from an individual unless the individual has voluntarily chosen to provide us with it.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare may from time to time update this policy to ensure it is consistent with its future developments or business purposes or to accommodate future changes to applicable legal or regulatory requirements. All updates to this policy will be published at https://ebeecare.sg/privacy and appropriate notifications of any material revisions will be issued to the relevant persons. Subject to an individual\'s rights at law, the prevailing terms of the policy from time to time shall apply. By continuing their relationship with eBeeCare after any amendments have been introduced and published, individuals shall be deemed to have accepted the policy as amended.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'For the avoidance of doubt, this policy forms part of the terms and conditions, if any, governing an individual\'s specific relationship with eBeeCare ("Client Terms of Service", “Nurse Terms of Service”, “Service Contract”) and should be read in conjunction with such terms and conditions. In the event of any conflict or inconsistency between the provisions of this policy and terms and conditions, the provisions of the terms and conditions shall prevail to the fullest extent permissible by law.'
               ),
               _react2['default'].createElement(
                 'h3',
                 null,
-                '2. Key Definitions'
+                '2. KEY DEFINITIONS'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12398,9 +12398,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Admin Fee"'
+                  '"Data Protection Officer"'
                 ),
-                ' means the amount that eBeeCare will deduct from the Service Fee collected, for the use of the Platform and/or any other amounts owed to eBeeCare.'
+                ' means the person designated to be responsible for ensuring that eBeeCare complies with the PDPA;'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12408,9 +12408,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Case"'
+                  '"DNC Registry"'
                 ),
-                'refers to any service request created by Client on the Platform and can be found through the marketplace located at www.ebeecare.com/marketplace (such website address may be subject to change from time to time).'
+                ' means the Do-Not-Call registry maintained by the Personal Data Protection Commission, pursuant to the PDPA;'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12418,9 +12418,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Client"'
+                  '"Event Participants"'
                 ),
-                'means a registered user (under the category of \'Client/Patient\' in the Platform) and includes a Patient, carer, caregiver or any individual who has been authorized by a caregiver or Patient to act on his/her behalf. Client utilizes the Platform to request for Services from Nurses.'
+                ' means persons (whether or not Users) who participate in or attend events or programmes organised or sponsored by eBeeCare from time to time;'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12428,9 +12428,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Client Terms of Service"'
+                  '"Individuals"'
                 ),
-                'means the contract between eBeeCare and Client, contained in the Client Terms of Service contract.'
+                ' means natural persons, whether living or deceased, and "Individual" means any of them;'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12438,9 +12438,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Confidential Information"'
+                  '"Users"'
                 ),
-                ' means any and all of eBeeCare\'s trade secrets, confidential and proprietary information and all other information and data on the Platform that is not generally known to the public or other third parties who could derive value, economic or otherwise, from its use or disclosure. Confidential Information shall be deemed to include but not limited to, Nurse, Client or Patient\'s Personal Information, Health Information, technical data, know-how, developments, processes, formulas, designs, drawings, system hardware configuration information, marketing, finances or other business information disclosed directly or indirectly in writing, orally or by drawings or observation.'
+                ' means any Individual who has successfully registered for an account under the category of Clients or Nurse in eBeeCare from time to time; or other business information disclosed directly or indirectly in writing, orally or by drawings or observation.'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12448,9 +12448,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Content"'
+                  '"PDPA"'
                 ),
-                'means any information entered into the Platform by Nurse.'
+                ' means the Personal Data Protection Act 2012;'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12458,9 +12458,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Dispute Period" '
+                  '"Personal Data"'
                 ),
-                ' means the 7 days after the Nurse has rendered Services to the Client based on the Participation Agreement, where Nurse or Client can raise a dispute case to eBeeCare.'
+                ' means data that is capable of identifying a natural person, whether on its own or in conjunction with other data that is accessible to eBeeCare;'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12468,9 +12468,9 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"External Parties"'
+                  '"Personnel"'
                 ),
-                ' means the companies, agencies, societies and/or associations which eBeeCare is affiliated with, to provide Client services that may or may not be available in eBeeCare. Refer to our list of affiliated parties on our website at www.ebeecare.com/about.'
+                ' shall include any person engaged under a contract of service or contract for service with eBeeCare, management personnel, permanent or temporary employees, as well as advisors, interns and volunteers engaged by eBeeCare from time to time; and'
               ),
               _react2['default'].createElement(
                 'p',
@@ -12478,866 +12478,548 @@ module.exports =
                 _react2['default'].createElement(
                   'strong',
                   null,
-                  '"Full-Time Nurse" '
+                  '"Potential Personnel" '
                 ),
-                ' means the Nurse that has an existing employment contract with another employer that requires him/her to produce prior approval before taking up any additional external assignments .'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Health Information" '
-                ),
-                ' means information or an opinion (whether true or not) pertaining to an individual\'s physical and mental health or disability (at any time) which can include but are not limited to drug allergies, diagnosis, treatment, investigations, records of preventive measures, nursing records, clinical correspondence, referrals for treatment, demographic information, medical history, tests, laboratory results, or any other health related data that is entered into the Platform by the Patient, Client, Nurse, an authorized caregiver, or any other health care professional.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Nurse" '
-                ),
-                ' ("You") means an approved registered user (under the category of \'Nurse\'), contracted under his Agreement who utilizes the Platform to offer nursing Services to Clients.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Nurse Fee"'
-                ),
-                ' means the Service Fee less any applicable deductions (or any other reasonable deductions as determined by eBeeCare in its sole discretion).'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Participation Agreement" '
-                ),
-                ' means the contract between eBeeCare, Client and Nurse as contained in Annex A.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Patient"'
-                ),
-                ' means the individual who is under medical, nursing care or treatment and will be receiving Services provided by a Nurse.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Personal Information"'
-                ),
-                ' means information or an opinion (including information or an opinion forming part of the Platform), whether true or not, and whether recorded in a physical form or not, about an individual whose identity is apparent, or can reasonably be ascertained, from the information or opinion.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Proprietary Rights" '
-                ),
-                ' means any and all rights, data entered into the Platform, title, ownership and interest in and to copyrights, mask works, industrial designs, trademarks, service marks, trade names, trade secrets, patents, and any other rights to intellectual property, recognized in any jurisdiction, whether or not perfected.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Services"'
-                ),
-                ' means nursing related services provided by Nurses, such as but not limited to general nursing care, caregiver training, consultations, respiratory care, wound care, digestive care and urinary care.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Service Fee" '
-                ),
-                ' means the fee that Client has to pay to eBeeCare. This Service fee is the agreed amount between the Nurse and Client on the Platform for the performance of agreed Services by the Nurse.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Singapore Nursing License Certification"'
-                ),
-                ' means any reasonable proof that the Nurse has been accredited from Singapore Nursing Board.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Total Fee" '
-                ),
-                ' means the sum of the Service Fee and the Admin Fee.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '"Universal Precautions"'
-                ),
-                ' means the practice of avoiding contact with Patients\' bodily fluids, by means of wearing of nonporous articles such as medical gloves.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'In the event of any inconsistency between the definitions contained in the Participation Agreement and this Nurse Terms of Service or the Client Terms of Service, the definitions in the Participation Agreement shall prevail.'
+                ' shall include any Individual who has submitted an application to be engaged by eBeeCare as Personnel.'
               ),
               _react2['default'].createElement(
                 'h3',
                 null,
-                '3. Eligibility'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '3.1. General Eligibility'
+                '3. TYPES OF PERSONAL DATA COLLECTED'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'The Platform is available only to persons who are at least eighteen (18) years old and are otherwise capable of forming legally binding contracts under applicable law. Nurse declares that he/she is not a citizen or resident of a country in which use or participation is prohibited by law, decree, regulation, treaty or administrative act.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '3.2. Valid Licence'
+                'eBeeCare will only collect, use or disclose personal data about an individual which it reasonably considers necessary for the relevant purposes underlying such collection, use or disclosure. Depending on the specific nature of an individual\'s interaction with eBeeCare, personal data which eBeeCare collects, uses or discloses concerning an individual may variously include the following:'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurses shall submit a copy of his/her Singapore Nursing License Certification to eBeeCare each time such licence is renewed in order for us to update our records. Upon expiry of the license, Nurses may face immediate suspension from the Platform and/or immediate cessation of any activities on the Platform, at eBeeCare\'s sole discretion.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '3.3. Full Access to Services'
+                'a) the individual\'s name, gender and contact particulars, including telephone number(s), residential/mailing address(es) and email address;'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'The full access to the Platform is conditional upon the successful completion of an interview with eBeeCare authorized personnel. eBeeCare reserves the right to approve or reject such Platform access rights at its sole discretion.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '3.4. Full-Time Nurses'
+                'b) details of the individual\'s identification documents (such as, NRIC or passport numbers), and applicable visa, permits or licenses (such as nursing license, employment pass, work permit, permanent residency status);'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurses who are holding an existing full-time job ("',
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  'Full-Time Nurses'
-                ),
-                '") shall obtain relevant approval from their supervisors or employers before their engagement with Clients on eBeeCare.'
+                'c) details of cultural backgrounds including race, religion, language spoken;'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Upon request by the Full-Time Nurses\' supervisors or employers ("',
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  'Requestors'
-                ),
-                '"), eBeeCare may assist, within commercially reasonable means, in the monitoring of any of the activities of these Full-Time Nurses on the Platform. Nurses may be notified in the event of such requests. Nurse agrees and consents that the information regarding their activities on the Platform may be shared with these Requestors where eBeeCare has determined in its sole discretion to share such information.'
+                'd) details of the individual\'s employment history and academic qualifications;'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'eBeeCare reserves the right, at its sole discretion, to suspend and/or terminate Nurses\' user accounts, or restrict the number of Cases the Full-Time Nurse is allowed to take upon request by the Requestors.'
+                'e) details of the individual\'s CPF, credit card or bank account;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'f) details of the individual\'s personal preferences or other special requests or special conditions applicable to the individual;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'g) the individual\'s network usage data and other information gathered automatically by our computer systems, including the individual\'s computer IP address, links visited and other activities conducted online or using our computer systems;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'h) photographs of the individual; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'i) other information which the individual may provide to eBeeCare, from time to time, in the course of such individual\'s interaction with eBeeCare.'
               ),
               _react2['default'].createElement(
                 'h3',
                 null,
-                '4. Our Relationship'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '4.1. Services'
+                '4. METHODS OF DATA COLLECTION'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'The Nurse expressly acknowledges, agrees and understands that: (i) eBeeCare Platform is merely a venue where Nurses find Clients and vice versa; (ii) The Nurse recognizes, that eBeeCare does not, in any way, supervise, direct, or control Nurse\'s work or Services save for the audits referred to in clause 4.3; (iii) eBeeCare shall not have any liability or obligations under or related to Participation Agreement or any acts or omissions by the Nurse; (iv) eBeeCare has no control over Nurses or over the Services promised or rendered by Nurses; and (v) eBeeCare disclaims any and all liability relating thereto.'
+                'Generally, eBeeCare may collect Personal Data about an Individual in one or more of the following ways:'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurse may not agree to any terms and conditions that affect the rights or responsibilities of eBeeCare.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '4.2. Work Classification'
+                'a) through application or registration forms submitted by the Individual;'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurse agrees and acknowledges that Nurse is engaged as independent contractors by the Client (and not eBeeCare) under the Participation Agreement, and that no agency, partnership, joint venture, employee-employer or franchiser-franchisee relationship is intended or created by this Agreement between eBeeCare and Nurse. Nurse does not have authority to enter into written or oral - whether implied or express - contracts on behalf of Client or eBeeCare.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '4.3. Audit Rights'
+                'b) through correspondence, emails or electronic messages submitted by the Individual to eBeeCare or otherwise posted on eBeeCare’s website(s);'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'eBeeCare reserves the right to validate Nurse information at any time, including but not limited to validation against third party databases or the verification of one or more official government or legal documents. Nurse authorizes eBeeCare, directly or through third parties, to make any inquiries necessary to validate your identity, including but not limited to: (i) Your email address; (ii) Financial related information; (iii) Personal Information. Any failure on your part to provide information about you when requested by eBeeCare is a violation of this Agreement.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '4.4. Indemnification'
+                'c) through the Individual’s verbal communications with eBeeCare Personnel;'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'To the extent permitted by applicable law, Nurse shall indemnify and hold harmless eBeeCare (and its officers, directors, employees and agents) against any and all losses, claims, costs or debt, expenses (including without limitation legal fees) damages (actual or consequential) of every kind and nature, known or unknown, which Nurse may incur or suffer arising from or in connection with any act or omission (including any omission, error of judgement or mistake made in the exercise) relating to (i) Nurse\'s provision of Services, or (ii) any Participation Agreement entered into between Nurse and a Client.'
+                'd) through surveys conducted with and/or feedback received from an Individual;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'e) through the Individual’s access to and/or use or navigation of eBeeCare’s website(s) and its computer network and the use of cookies;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'f) through recordings of the Individual when attending at eBeeCare’s premises or at any events or programmes organised by eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'g) through third party business partners or associates of eBeeCare; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'h) when the Individual submits his/her Personal Data to eBeeCare for any other reason related to eBeeCare’s ordinary course of operations.'
               ),
               _react2['default'].createElement(
                 'h3',
                 null,
-                '5. Nurse Obligations'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.1. Professional Obligations'
+                '5. PURPOSE OF DATA COLLECTION'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurse shall perform Services in a professional and safe manner for all Cases agreed and assigned. This will be in accordance with the Ministry of Health nursing practice guidelines as stated at ',
+                'Generally, eBeeCare may collect, use and/or disclose Personal Data about an Individual for one or more of the following purposes:'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'Users'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) administering and managing Users with eBeeCare, including the provision of services to Users;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) providing Users with information about services, updates, programmes, activities and/or other benefits being offered or made available by eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) providing Users with information about third party and/or promotions, deals and/or other services being offered or made available to Users, through partnerships, associations and/or other collaborations involving such third parties and eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'd) organising and/or facilitating events or programmes involving Users and/or verifying the eligibility of such Users to participate in such events or programmes;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'e) tailoring activities or services available to match User preferences; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'f) transmitting Personal Data to third parties engaged by or working in collaboration with eBeeCare to facilitate any of the above-mentioned purposes.'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'Personnel'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) administering and managing Personnel relationships with eBeeCare, including the provision of services to Personnel;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) evaluating the performance of Personnel;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) undertaking staff training and quality assurance activities;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'd) providing Personnel with services, facilities and/or other benefits being offered or made available by eBeeCare to such Personnel as well as information about such services, facilities and benefits; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'e) transmitting Personal Data to third parties engaged by or working in collaboration with eBeeCare to facilitate any of the above-mentioned purposes.'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'Potential Personnel'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) administering and managing eBeeCare’s relationship with Potential Personnel; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) evaluating the suitability and eligibility of Potential Personnel to be engaged by eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'Event Participants'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) administering and managing the event participant’s relationship with eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) verifying the identity and eligibility of event participants;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) promotional and publicity purposes, including recording videos or taking photographs of participants at events; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'd) transmitting Personal Data to third parties engaged by or working in collaboration with eBeeCare to facilitate any of the above-mentioned purposes.'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'General Business Purposes'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) managing the administrative and business operations of eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) facilitating the completion of transactions with Individuals;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) responding to complaints, queries and/or requests;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'd) conducting market research for statistical profiling and other purposes in order to improve eBeeCare’s services;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'e) safety and security purposes;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'f) preventing, detecting or investigating any actual or crime, fraud, misconduct, unlawful action, breach or dispute;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'g) record-keeping purposes;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'h) accounting or auditing purposes;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'i) legal purposes (including but not limited to obtaining legal advice and dispute resolution); and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'j) complying with laws, regulations, codes or guidelines binding on eBeeCare, including disclosures to regulatory authorities or other public bodies; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'k) transmitting Personal Data to third parties engaged by or working in collaboration with eBeeCare to facilitate any of the above-mentioned purposes.'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'Purposes reasonably related to any of the above purposes'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) for any purposes reasonably related and/or ancillary to any of the abovementioned purposes.'
+              ),
+              _react2['default'].createElement(
+                'h4',
+                null,
+                'Purposes for which specific consent was obtained'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) for any other purposes for which the Individual’s consent was specifically given or obtained.'
+              ),
+              _react2['default'].createElement(
+                'h3',
+                null,
+                '6. CONSENT'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Unless otherwise authorised under the PDPA or any other applicable law, eBeeCare will not collect, use or disclose an Individual’s Personal Data without his/her consent.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare will take reasonable steps to highlight the purposes relevant to an Individual, by appropriate means, at the point or time of collection of the Personal Data from such Individual, including:'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) via express provisions in contracts, application forms and/or hardcopy/online/digital registration forms to be signed with or submitted to eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) via notifications on eBeeCare’s websites; and'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) in the course of verbal communications.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Where feasible, eBeeCare will inform the Individual of purposes that are intrinsic to the relationship between eBeeCare or to the provision of services to such Individual, as well as purposes that are optional.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'In so far as any purpose(s) are intrinsic to the relationship or provision of services, eBeeCare reserves the right to decline to engage in the relevant relationship or to provide the relevant services to the Individual if he or she does not consent to eBeeCare’s collection, use or disclosure of his/her Personal Data for such purpose.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Individuals who:'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) voluntarily provide their Personal Data to eBeeCare for the specified purposes;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) use or access eBeeCare’s website(s) or computer network;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) enter eBeeCare’s premises or using any of the facilities thereon; and/or'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'd) attend or participate in events or programmes organised by eBeeCare.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'e) will be deemed to agree and consent to eBeeCare collecting, using and/or disclosing their Personal Data in the manner and for the purposes set forth in this Privacy Policy.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'An Individual who provides eBeeCare with Personal Data relating to a third party (e.g. information of his/her spouse or children) for any particular purpose, represents to eBeeCare that he/she has obtained the consent of the relevant third party to eBeeCare collecting, using or disclosing such Personal Data for the relevant purpose.'
+              ),
+              _react2['default'].createElement(
+                'h3',
+                null,
+                '7. WITHDRAWAL OF CONSENT'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Any Individual who wishes to withdraw his/her consent to any use or disclosure of his/her Personal Data by eBeeCare as set out in this Policy may do so by notifying eBeeCare’s Data Protection Officer at ',
                 _react2['default'].createElement(
                   'a',
-                  { href: 'https://www.moh.gov.sg/content/moh_web/healthprofessionalsportal/nurses/guidelines/cpg_nursing.html' },
-                  'https://www.moh.gov.sg/content/moh_web/healthprofessionalsportal/nurses/guidelines/cpg_nursing.html '
+                  { href: 'mailto:contact@ebeecare.com' },
+                  'contact@ebeecare.com'
                 ),
-                ', the NURSES AND MIDWIVES ACT (Cap. 209) of Singapore, Singapore Nursing Board\'s Code of Ethics and Professional Conduct, Standards of Practice for Nurses and Midwives and Core Competencies and Generic Skills for Registered Nurse as stated in ',
+                '. eBeeCare may require up to 30 days from the date of the Individual’s notification to respond and effect any change.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Depending on the extent to which an Individual withdraws consent to any or all use or disclosure of his or her Personal Data by eBeeCare, such withdrawal of consent may result in eBeeCare’s inability to provide services to the Individual and may be considered as a termination by the Individual of any agreement between eBeeCare and the Individual. eBeeCare’s legal rights and remedies are expressly reserved in such event.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'In so far as an Individual’s data is being collected by cookies, the Individual may disable the use of cookies on his or her internet browser when accessing eBeeCare’s website. However, this may result in the loss of functionality, restrict the Individual’s use of the website and/or delay or affect the way in which eBeeCare’s website operates.'
+              ),
+              _react2['default'].createElement(
+                'h3',
+                null,
+                '8. DNC REGISTRY'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare is prohibited from sending unsolicited telemarketing messages (“specified messages”) to Singapore telephone numbers through voice calls, text or fax messages registered on the DNC Registers unless eBeeCare has obtained the relevant Individual’s clear and unambiguous consent in written or other accessible forms.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'In compliance with the PDPA, eBeeCare will not send specified messages to telephone numbers that appear on the DNC Registry unless the relevant Individual has given eBeeCare clear and unambiguous consent to do so.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare will continue to contact Individuals at the telephone numbers provided to eBeeCare in the limited circumstances allowed under the DNC Registry even if these telephone number are registered with the DNC Registry. Individuals who do not wish to receive such messages may notify eBeeCare’s Data Protection Officer at ',
                 _react2['default'].createElement(
                   'a',
-                  { href: 'http://www.healthprofessionals.gov.sg/content/hprof/snb/en/topnav/downloads/publications.html.%20Nurse' },
-                  'http://www.healthprofessionals.gov.sg/content/hprof/snb/en/topnav/downloads/publications.html'
+                  { href: 'mailto:contact@ebeecare.com' },
+                  'contact@ebeecare.com'
                 ),
-                '. Nurse agrees that it is his/her duty to refer to the actual publication periodically as it may be amended or updated from time to time.'
+                '.'
               ),
               _react2['default'].createElement(
-                'h4',
+                'h3',
                 null,
-                '5.2. Exposure to Bloodborne Pathogens and Needlestick Injuries'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees that he/she shall treat every Patient on every visit with Universal Precaution until informed otherwise. Nurse agrees and understands that it is his/her sole responsibility to exercise best judgement to avoid exposure, needlestick injuries and any other related complications which may result in bodily harm or injury.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.3. Documentation'
+                '9. ACTIVITIES UNDERTAKEN PRIOR TO 2ND JULY 2014'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'The Nurse agrees to document (in electronic form) any observations, actions, findings, comments, discussions, interventions, recommendations, care plans and any other related nursing notes in accordance with the format of the online nursing documentation system as provided in the Platform ',
+                'eBeeCare may use Personal Data of an Individual that was collected before 2 July 2014 for purposes for which the Personal Data was collected unless consent is withdrawn by that Individual.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare will continue to use Personal Data of Users, which had been collected before 2 July 2014, for its general business purposes and purposes relating to Users. Users who wish to withdraw their consent to eBeeCare’s use of their Personal Data may contact eBeeCare’s Data Protection Officer at ',
                 _react2['default'].createElement(
-                  'strong',
-                  null,
-                  '("Documentation System")'
+                  'a',
+                  { href: 'mailto:contact@ebeecare.com' },
+                  'contact@ebeecare.com'
                 ),
-                ' by 2359 hours on the same day of visit. Nurse agrees to exercise sound professional judgment in the use and application of appropriate nursing forms available.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.4. Correct information'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'The Nurse acknowledges and agrees that he/she is responsible for any information submitted during the interview and in the Platform. Accordingly, the Nurse represents and warrants that the information given is correct and accurate and that he/she has not wilfully suppressed any material facts. If there are any changes, the Nurse shall inform eBeeCare of such changes as soon as possible.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.5. Account Security'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse is solely responsible for ensuring and maintaining the secrecy and security of his/her account information and password. Nurse agrees not to disclose this password to anyone and shall be solely responsible under all circumstances for any use of or action taken through the use of such password on the  Platform. Nurse must notify eBeeCare immediately of any breach of security or unauthorized use of his/her account. By using your eBeeCare account, Nurse acknowledges and agrees that eBeeCare\'s account security procedures are commercially reasonable. If the Nurse is found negligent in ensuring and maintaining the secrecy and security of his/her account password, the Nurse will be liable for any damages for the consequence that may follow. This include but is not limited to events such as the following, (i) Leaking of personal information of any users; (ii) Leaking of any financial information; (iii) the occurrence of unauthorized transactions.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.6. Participation in System'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees not to use the Platform for any of the following uses unless eBeeCare\'s prior written approval is obtained:'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                '1) Any action that encourages or solicits complete or partial payment outside of the Platform. All payments relating to, or in any way connected with a Participation Agreement must be conducted and facilitated through eBeeCare and the Platform.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                '2) Nurse may not use eBeeCare to solicit for any other business, website or service apart from the provision of Services via the Platform. Nurse may not solicit, advertise for, or contact any Client in any form or for any other purpose not related to the provision of further Services through the eBeeCare Platform.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Failure to comply is a violation of this Agreement.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.7. Agreed Appointment With Client'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'When an arrangement is made between the Client and Nurse that includes a specific date and time of the Service delivery, Nurse has to ensure that the Case can be fulfiled at the date and time which has been set. Failure to do so may result in penalties such as, but not limited to, making such incidents visible to the public on their profiles on the Platform.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If the Nurse cancels the visit within 24 hours before the scheduled appointment, the Nurse is liable to compensate eBeeCare for any losses reasonably incurred, such as but not limited to, any expenses incurred within short notice to ensure the agreed Services are performed, and any other special arrangement with the Clients.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '5.8. Site Obligations'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse shall not access (or attempt to access) the Platform by any means other than the interface provided, and Nurse will not use information from the Platform for any purpose other than the purpose for which it was made available. Nurse will not engage in any activity that interferes with or disrupts the functioning of the Site. Nurse will not upload or attach an invalid or malicious or unknown file. Nurse will not insert any external links that may be malicious or unknown to him/her, or used for offering any goods or services other than Services to be provided through the Platform. Nurse agrees not to "scrape" or disaggregate data from the Platform (whether by manual or automated means), for any commercial, marketing, or data compiling or enhancing purpose, or to copy, re-post or re-use data from the Platform for any other service. Nurse agree not to use or provide software (except for general purpose web browsers and email clients, or software expressly licensed by us) or services that interact or interoperate with the Site, e.g. for downloading, uploading, posting, flagging, emailing, search, or mobile use.'
+                '.'
               ),
               _react2['default'].createElement(
                 'h3',
                 null,
-                '6. Payment'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '6.1. Release of Payment Due to Nurse'
+                '10. PROTECTION OF PERSONAL DATA'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurse shall not collect any payment directly from the Client or Patient without the consent and knowledge of eBeeCare.'
+                'eBeeCare shall make reasonable security arrangements to prevent unauthorised access, collection, use, disclosure, copying, modification, disposal or similar risks to Personal Data in its possession.'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurse acknowledges and agrees that Service Fee payments will be made by Client to eBeeCare, and that the portion of the Service Fee that constitutes the Nurse Fee will subsequently be disbursed to Nurse by eBeeCare. eBeeCare may notify Nurse when Client makes payment for the Service Fee, but such notification does not imply any payment with respect to the Nurse Fee has been made or is due to Nurse. The Nurse Fee becomes payable to the Nurse only after all of the following conditions (collectively, the "',
+                'If eBeeCare transfers Personal Data outside Singapore, eBeeCare will take reasonable steps to ensure that such Personal Data transferred receives a standard of protection comparable to the protection received under the PDPA.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare will ensure that third parties who receive Personal Data from eBeeCare protect such Personal Data in a manner consistent with this Policy and not use such Personal Data for any purposes other than those specified by eBeeCare, by incorporating appropriate contractual terms in its written agreements with these third parties.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'eBeeCare is not responsible in any way for the security and/or management of Personal Data shared by Individuals with third party websites accessible via links on eBeeCare’s website.'
+              ),
+              _react2['default'].createElement(
+                'h3',
+                null,
+                '11. ACCESS AND CORRECTION'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Any Individual who:'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'a) has questions or feedback relating to this Policy;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'b) would like to obtain access to his/her Personal Data held by eBeeCare;'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'c) would like to obtain information about the ways in which his/her Personal Data held by eBeeCare has been or may have been used or disclosed by eBeeCare in the year preceding the request; and/or'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'd) would like to update or make corrections to his/her Personal Data held by eBeeCare,'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'should contact eBeeCare’s Data Protection Officer at ',
                 _react2['default'].createElement(
-                  'strong',
-                  null,
-                  'Nurse Fee Conditions'
+                  'a',
+                  { href: 'mailto:contact@ebeecare.com' },
+                  'contact@ebeecare.com'
                 ),
-                '") are met: (i) Case\'s documentation status is deemed as \'Completed\' in the Platform; (ii) the Dispute Period has ended; (iii) all Participation Agreement terms have been fulfilled; and (iv) Client has made the Service Fee payment. Determination of whether the ',
-                _react2['default'].createElement(
-                  'strong',
-                  null,
-                  'Nurse Fee Conditions'
-                ),
-                ' have been met is at the sole discretion of eBeeCare. eBeeCare will disburse the Nurse Fee to Nurse no later than one month from the time it is deemed payable to Nurse.'
+                '.'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'In cases of fraud, abuse or violation of this Agreement, or any dispute between Nurse and Client, all monies due to the Nurse may be held and/or reclaimed by eBeeCare at its sole discretion.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '6.2. Right to Deduct'
+                'Individuals should note that eBeeCare is not required, under the PDPA, to provide access and correction to Personal Data in certain situations.'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'Nurse agrees and consents to pay the Admin Fee to eBeeCare in consideration for the use of the Platform by Nurse, and Nurse further agrees that eBeeCare is entitled to deduct such Admin Fee from the Service Fee payments made by Client to eBeeCare pursuant to Clause 6.1 above. The Admin Fees schedule can be found at www.ebeecare.com/fees or as specified on other pages on the eBeeCare Site, which we may change time to time. Unless otherwise stated, all Admin Fees quoted are in Singapore dollars.'
+                'eBeeCare reserves the right to charge a reasonable fee for the handling and/or processing of access requests by an Individual pursuant to paragraphs (b) or (c) above.'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'eBeeCare may choose to temporarily change the Admin Fee for promotional events or new services, and such changes are effective when we post the temporary promotional event or new service on our Sites.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If Nurse is found to have violated any terms in this Agreement or in the Participation Agreement, Nurse agrees that eBeeCare shall have the right to withhold and/or deduct any amount due to the Nurse at its sole discretion.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees and acknowledges that Nurse\'s right to receive the Nurse Fee is subject to the Nurse Fee Conditions set out in Clause 6.1 above.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse further agrees that eBeeCare shall have the right to deduct other amounts from the Nurse Fee that would otherwise be due to Nurse for reasons including, but not limited to: (i) compensation due to Clients for any unsatisfactory work; and (ii) any amount owed by the Nurse to eBeeCare.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees that in the event Nurse is determined by eBeeCare in its sole discretion to have violated clause 5.6 of this Agreement, Nurse shall pay to eBeeCare an amount (as determined by eBeeCare) in lieu of the loss of revenue from such violations. eBeeCare shall be entitled to set-off such amount against any Nurse Fees that would otherwise have been due to Nurse.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '6.3. Other Charges'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse may ask eBeeCare to expedite payments, and Nurse agrees that eBeeCare shall have the right to refuse any such request at its sole discretion, and may charge a processing fee in connection with such a request. If Nurses elects disbursement through a third party, the third party may charge additional fees  which shall be borne by the Nurse.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If Nurse elects disbursement in foreign currency, eBeeCare adds a conversion fee as quoted by the foreign exchange vendor which Nurse will be made liable for. The conversion fee will be deducted from the payment due to Nurse.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '6.4. Invoices and Taxes'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare shall have no responsibility for determining the necessity of or for issuing any formal invoices, or for determining, remitting, or withholding any taxes applicable to Service Fees. Instead, Nurse shall be solely responsible for determining whether it is required by applicable law to issue any formal invoices for the Service Fees and for issuing any invoices so required. Nurse shall also be solely responsible for: (a) determining whether Nurse or eBeeCare is required by applicable law to remit to the appropriate authorities any value added tax or any other taxes or similar charges applicable to the Service Fees, and remitting any such taxes or charges to the appropriate authorities on behalf of himself/herself or eBeeCare, as appropriate; and (b) determining whether eBeeCare is required by applicable law to withhold any amount of the Service Fees, notifying eBeeCare of any such requirement and indemnifying eBeeCare (either by permitting eBeeCare to offset the relevant amount against a future payment of Service Fees or by refunding to eBeeCare the relevant amount, such choice to be exercised at eBeeCare\'s sole discretion) for any requirement to pay any withholding amount to the appropriate authorities. eBeeCare shall have the right, but not the obligation, to audit and monitor Nurse\'s compliance with applicable tax laws as required by Inland Revenue Authority of Singapore (IRAS). Further, in the event of an audit of eBeeCare, Nurse agrees to promptly cooperate with eBeeCare with other documents as may be reasonably requested for purposes of such audit.'
+                'eBeeCare may require up to 30 days from the date of the Individual’s request to respond and effect any change.'
               ),
               _react2['default'].createElement(
                 'h3',
                 null,
-                '7. Claims'
+                '12. GOVERNING LAW'
               ),
               _react2['default'].createElement(
                 'p',
                 null,
-                'eBeeCare may engage a third party insurance company to indemnify the Nurse for claims against the Nurse. Any claim is only between the Nurse and the third party insurance company. eBeeCare will not be held liable or be involved for any possible claims by the Nurse, that may arise from the Participation Agreement. eBeeCare may, to a reasonable extent, assist the Nurse in any investigations in the event of possible claims.'
-              ),
-              _react2['default'].createElement(
-                'h3',
-                null,
-                '8. Confidential Information'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '8.1. General'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse acknowledges that Confidential Information is a valuable, special and unique asset of eBeeCare and agrees to not disclose, transfer, use (or seek to induce others to disclose, transfer or use) any Confidential Information for any purpose other than to fulfil the Participation Agreement. Nurse shall promptly notify eBeeCare in writing of any circumstances which may constitute unauthorized disclosure, transfer, or use of Confidential Information. Nurse shall use his/her best efforts to protect Confidential Information from unauthorized disclosure, transfer or use. Nurse shall return all originals and any copies of any and all materials containing Confidential Information to eBeeCare upon termination of this Agreement for any reason whatsoever.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '8.2. Access to Health Information'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare hereby grants Nurse, who have an existing relationship with the Client through a valid Participation Agreement, a limited, non-exclusive, revocable (at any time, at eBeeCare and Client\'s sole discretion) right to have access to use information and details of the Patient\'s Health Information and other records kept or entered into eBeeCare, as necessary for the performance of the Participation Agreement.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Upon completion of the Participation Agreement, the Nurse may be allowed to continue to access the Health information for up to 24 hours before such rights are revoked. If there is a subsequent appointment, the Health Information may remain available to Nurse as long as there is an existing Participation Agreement between Nurse and Client.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '8.3. Return of Confidential Information'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If and when Confidential Information is no longer needed for the performance of Services for the relevant contracts such as but not limited to: (i) suspension and/or termination of the Nurse\'s account on the Platform; (ii) Failure to follow up with Client within 30 days from the date the Participation Agreement comes into effect (iii) written request which may be made at any time at Client\'s or eBeeCare\'s sole discretion, Nurse shall promptly destroy or return all Confidential Information and any copies thereof (in any form including, without limitation, written or electronic means) contained in or on his/her premises, systems, or any other equipment otherwise under his/her control or access.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare reserves the right to revoke at its sole discretion the Nurse\'s rights to access Confidential Information if Nurse flouts or is suspected to violate any terms in this Agreement and/or in Participation Agreement.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '8.4. Publication'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Without limiting the generality of the provisions contained in this Clause 8 (Confidential Information), Nurse shall not publish, or cause to be published, any Confidential Information which includes but is not limited to Health Information.'
-              ),
-              _react2['default'].createElement(
-                'h3',
-                null,
-                '9. Proprietary Information'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'The Nurse shall be solely responsible for his/her own Content and the consequences of submitting and publishing his/her Content on eBeeCare\'s platform. He/she affirms, represents, and warrants that he/she owns or have the necessary licenses, rights, consents, and permissions to publish Content he/she submit; and his/her license to eBeeCare, all patent, trademark, trade secret, copyright or other proprietary rights in and to such Content for publication on the Platform pursuant to the Agreement.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'For clarity, Nurse retains all of his/her ownership rights in his/her Content. However, by submitting Content to eBeeCare, Nurse hereby grants eBeeCare a worldwide, non-exclusive, royalty-free, sublicenseable and transferable license to use, reproduce, distribute, prepare derivative works of, display, and perform the Content in connection with the Platform and eBeeCare\'s (and its successors\' and affiliates\') business, including without limitation for promoting and redistributing part or all of the Content (and derivative works thereof) in any media formats and through any media channels known now or in the future. Nurse understands and agrees, however, that eBeeCare may retain, but not display, distribute, or perform, server copies of Nurse\'s Content that has been removed or deleted. eBeeCare may use the de-identified Content for analysis.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare does not endorse any Content submitted to the Platform by Nurse. eBeeCare expressly disclaims any and all liability in connection with Content. eBeeCare reserves the right to remove Content without prior notice and at its sole discretion.'
-              ),
-              _react2['default'].createElement(
-                'h3',
-                null,
-                '10. Account Suspension and Termination'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.1. General'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare reserves the right to terminate or suspend the Nurse account at any time, with or without cause, effective immediately.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Without limiting the generality of the above, eBeeCare has the right, but not the obligation, to suspend or terminate Nurse account in eBeeCare if we believe that Nurse has violated or acted inconsistently with the letter or spirit of this Agreement or violated eBeeCare rights or those of another affiliated party with eBeeCare or violated the law.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Without limiting eBeeCare\'s other remedies, we may suspend or terminate Nurse account as in accordance, but not limited, to clause 10.2 to 10.7. eBeeCare will also take action if Nurse actions may cause legal liability for Clients, and/or eBeeCare and its affiliated parties.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Once suspended or terminated, Nurse SHALL NOT continue to use the Platform under a different account or re-register under a new account. In addition, violations of this Agreement may be prosecuted to the fullest extent of the law and may result in additional penalties and sanctions.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If Nurse attempts to use the Platform under a different account, Nurse agrees that all available funds in such account shall be forfeited, and eBeeCare has the right to deduct all available funds in such account for its own use. Nurse will still be liable for any outstanding payments (after deducting from  available funds in that account) and any other obligations owed to any parties he/she has incurred while under the identity of this new account.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Upon account termination, Nurse will be prohibited from accessing any parts of the Platform, including but not limited to data, messages, files and any other materials obtained, created, retrieved or generated from the Platform. If Nurse wishes to retrieve some data from eBeeCare, Nurse may write in a request to eBeeCare for approval.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.2. License Revocation'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If Nurse\'s license is suspended or revoked by Singapore Nursing Board, Nurse agrees to inform eBeeCare at the earliest possible time, stating the reason for suspension or revocation by Singapore Nursing Board. Nurse agrees to cooperate to the fullest extent possible with any queries eBeeCare may have. eBeeCare may consider the reason of suspension or revocation of the license and assess if it violates any parts of this Agreement or in the Participation Agreement during his/her service in eBeeCare. If Nurse is found to be in violation, Nurse will be made liable for any damages in relation to the violation. eBeeCare may proceed to inform Singapore Nursing Board, Ministry of Health and/or any other related agencies for any actions by them.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.3. Full-Time Nurses'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare does not endorse Full-Time Nurses to participate in the Platform without appropriate approval by their employers. In the event that any Full-Time Nurse is found to have entered any Participation Agreements with Clients in the absence of authorization or approval by the Full-Time Nurse\'s employer, eBeeCare reserves the right to suspend or terminate the Nurse\'s account with immediate effect.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If the employer or supervisor of the Nurse finds that the Nurse is in breach of his/her employment contract, the employer or supervisor may contact us for any actions at our sole discretion.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.4. Limited access'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If the employer or supervisor of the Nurse suspects that the Nurse is overworking in eBeeCare, upon request, eBeeCare may assist in monitoring of the work of these Full-Time Nurses within its reasonable means. eBeeCare reserves the right to suspend or terminate the Nurse\'s accounts or restrict the number of Cases the Full-Time Nurse is allowed to take per week.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare takes patient safety as top priority and will seek all commercially viable methods to ensure that Nurses will not be working under fatigue condition. Within our reasonable means, we will investigate the claims, if any.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.5. Misrepresentation'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Any submission of false particulars or wilful suppression of material facts by the Nurse will result in immediate suspension or termination of accounts. Damages, if any, will be assessed and legal action may be taken against you.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.6. Disintermediation and Solicitation'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Without prejudice to any other rights or remedies that eBeeCare may have, eBeeCare reserves the right to suspend or terminate the Nurse account at eBeeCare\'s sole discretion if Nurse violates clause 5.6. Regardless of circumstance, Nurse will bear FULL LIABILITY for any consequences that may happen.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '10.7. Agreed Appointment with Client'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'With reference to clause 5.7, repeated default of visit or lack of punctuality may result in suspension or termination of the account.'
-              ),
-              _react2['default'].createElement(
-                'h3',
-                null,
-                '11. Miscellaneous'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.1. Resolution of Disputes'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'In the event of any disputes arising between Client, Nurse and/or External Parties, Nurse agrees to release eBeeCare (and our officers, directors, agents, subsidiaries, joint ventures and employees) from claims, demands and damages (actual and consequential) of every kind and nature, known and unknown, arising out of or in any way connected with such disputes.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'However, eBeeCare will assist in the mediation process during such disputes within its reasonable means. eBeeCare reserves the right to but is not obligated to assist in such investigations. eBeeCare may at its discretion supersede the decisions made between both Nurse and Client if any of these conditions are met, including but not limited to: (i) All parties give eBeeCare the permission to make a decision on behalf of all parties involved. eBeeCare will not be made liable for any decisions made then; (ii) If any violation of any contract is found; (iii) Patient\'s safety is of concern. The dispute has to be filed no later than one week upon the completion of the Case concerned.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If required, eBeeCare may report any misdoing, of any parties, to professional bodies (such as the Singapore Nursing Board).'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.2. Consent to Use Your Information'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees and consents that certain information including, but not limited to: (i) Nurse\'s name; (ii) region of stay; (iii) previous work experience; (iv) education profile; (v) culture and race; will be made publicly available for the purpose of allowing Clients to make a sound judgement when selecting a Nurse for a Case.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'For the purpose of allowing the Nurse to receive quicker notifications regarding the status of the Case, Nurse agrees and consents that he/she will receive SMS notifications from eBeeCare.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.3. Nurses Validation'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'eBeeCare requires every Nurse to be verified and interviewed before they can provide their Services to Client on the Platform. During the interview, Nurse agrees to grant consent to eBeeCare to take reasonable steps to ensure that the information Nurse provides is correct. The information includes the following, but not limited to: (i) personal particulars of the Nurse as reflected on the NRIC; (ii) validity of Nurse license with the Singapore Nursing Board on their license cards; (iii) Education certifications; (iv) employment proof, testimonials and related records. Other professional information (working experience, awards etc) may also be used to assess the suitability of the Nurses.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.4. Limitation of Liability'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'IN NO EVENT SHALL EBEECARE, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS, BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES WHATSOEVER RESULTING FROM ANY (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM NURSE ACCESS TO AND USE OF OUR SERVICES, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVICES, (IV) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE, WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICES BY ANY THIRD PARTY, AND/OR (V) ANY ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF NURSE\'S USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SERVICES, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LAW, AND WHETHER OR NOT THE COMPANY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'NURSE SPECIFICALLY ACKNOWLEDGES THAT EBEECARE SHALL NOT BE LIABLE FOR CONTENT OR THE DEFAMATORY, OFFENSIVE, OR ILLEGAL CONDUCT OF ANY THIRD PARTY AND THAT THE RISK OF HARM OR DAMAGE FROM THE FOREGOING RESTS ENTIRELY WITH NURSE.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'BY USING THE SERVICE, NURSE EXPRESSLY RELIEVES EBEECARE FROM ANY AND ALL LIABILITY ARISING FROM YOUR USE OF ANY THIRD-PARTY WEBSITE/ THIRD-PARTIES SERVICES.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'ALTHOUGH EBEECARE WILL NOT BE LIABLE FOR NURSE LOSSES CAUSED BY UNAUTHORIZED USE OF HIS/HER ACCOUNT, NURSE MAY BE LIABLE FOR THE LOSSES OF EBEECARE, OTHER CLIENTS, NURSES AND/OR EXTERNAL PARTIES DUE TO SUCH UNAUTHORIZED USE.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'THE SERVICE IS CONTROLLED AND OFFERED BY EBEECARE FROM ITS FACILITIES IN SINGAPORE. EBEECARE MAKES NO REPRESENTATIONS THAT THE SERVICE IS APPROPRIATE OR AVAILABLE FOR USE IN OTHER LOCATIONS. NURSES ACCESSING OR USING THE SERVICE FROM OTHER JURISDICTIONS DO SO AT THEIR OWN VOLITION AND ARE RESPONSIBLE FOR COMPLIANCE WITH LOCAL LAW.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.5. Warranty Disclaimer'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'YOU AGREE THAT YOUR USE OF THE PLATFORM SHALL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, EBEECARE, ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE PLATFORM AND NURSE\'S USE THEREOF. EBEECARE MAKES NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE PLATFORM\'S CONTENT OR THE CONTENT OF ANY SITES LINKED TO THE PLATFORM AND ASSUMES NO LIABILITY OR RESPONSIBILITY FOR ANY (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM NURSE\'S ACCESS TO AND USE OF EBEECARE SERVICES, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVICES, (IV) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICES BY ANY THIRD PARTY, AND/OR (V) ANY ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE PLATFORM. EBEECARE DOES NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY SERVICE OFFERED BY A THIRD PARTY THROUGH THE PLATFORM OR ANY HYPERLINKED SERVICES OR FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND EBEECARE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN NURSE AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH PROVIDING SERVICES THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, NURSE SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.6. Compliance'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse shall not violate any laws or third party rights on or related to the Platform. Without limiting the generality of the foregoing, Nurse agrees to comply with all Singapore laws and third parties\' Proprietary Rights.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.7. Notices: Consent to Electronic Notice'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse consents to the use of (a) electronic means to complete this Agreement and receive any notices pursuant to this Agreement; and (b) electronic records to store information related to this Agreement or Nurse use of the Platform.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.8. Modifications of Terms of Service'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'No modification or amendment to this Agreement shall be binding upon eBeeCare unless in a written instrument signed by a duly authorized representative of eBeeCare.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.9. No Waiver'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'The failure or delay of eBeeCare to exercise or enforce any right or claim does not constitute a waiver of such right or claim and shall in no way affect eBeeCare\'s right to later enforce or exercise it, unless eBeeCare\'s duly authorized representative issues and signed an express written waiver.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.10. Prevailing Language'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'The English language version of this Agreement shall be controlling in all respects and shall prevail in case of any inconsistencies with translated versions, if any.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.11. General Use of the Service - Permissions and Restrictions'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees not to use or launch any automated system, including without limitation, "robots," "spiders," or "offline readers," that accesses the Platform in a manner that sends more request messages to the eBeeCare servers in a given period of time than a human can reasonably produce in the same period by using a conventional on-line web browser. Notwithstanding the foregoing, eBeeCare grants the operators of public search engines permission to use spiders to copy materials from the site for the sole purpose of and solely to the extent necessary for creating publicly available searchable indices of the materials, but not caches or archives of such materials. eBeeCare reserves the right to revoke these exceptions either generally or in specific cases.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees not to collect or harvest any personally identifiable information, including account names, from the Platform, nor to use the communication systems provided by it (e.g., comments, email) for any commercial solicitation purposes. Nurse agrees not to solicit, for commercial purposes, any users of the Platform with respect to their personal and their Patient\'s information.'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'Nurse agrees not to circumvent, disable or otherwise interfere with security-related features of the Platform or features that prevent or restrict use or copying of any Content or enforce limitations on use of the Platform or the Content therein.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.12. Entire Agreement'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'This Agreement supersedes and cancels all previous agreements, warranties and undertakings whether oral or written, express or implied, given or made by or between Nurse and eBeeCare, and constitutes the entire agreement between the Nurse and eBeeCare in respect of the matters set out herein, and no other terms and conditions shall be included or implied.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.13. Invalidity'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'If at any time any provision of this Agreement is or becomes invalid, illegal or unenforceable in any respect, the validity, legality or enforceability of the remaining provisions of this Agreement shall not in any way be affected or impaired thereby. Nurse and eBeeCare agree to amend or replace any invalid, illegal or unenforceable provision of this Agreement by a valid, legal and enforceable provision which achieves, to the greatest extent possible all purposes of the invalid, illegal or unenforceable provision.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.14. Third Party Rights'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'A person who or which is not party to this Agreement shall not have any right under the Contracts (Rights of Third Parties) Act (Chapter 53B of Singapore) to enforce any provision of this Agreement.'
-              ),
-              _react2['default'].createElement(
-                'h4',
-                null,
-                '11.15. Jurisdiction and Governing Law'
-              ),
-              _react2['default'].createElement(
-                'p',
-                null,
-                'This Agreement shall be governed by the laws and the Republic of Singapore. The parties irrevocably submit to the non-exclusive jurisdiction of the courts of the Republic of Singapore.'
+                'This Policy shall be governed by and construed in accordance with the laws of Singapore. Any dispute arising out of or in connection with this Policy including any question regarding its existence, validity or termination, shall be referred to and finally resolved by the Courts of Singapore.'
               )
             )
           )
