@@ -634,27 +634,47 @@ module.exports =
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
+  function isProduction() {
+    return typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1;
+  }
+
+  function isLoggedInBackend() {
+    if (isProduction() && getCookies()['sessionid']) {
+      return true;
+    } else if (!isProduction() && getCookies()['ebeecare_session_dev']) {
+      return true;
+    } else return false;
+  }
+
+  function getCookies() {
+    if (typeof document !== 'undefined' && document && document.cookie) {
+      var pairs = document.cookie.split(';');
+      var cookies = {};
+      for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        if (pair[0]) pair[0] = pair[0].trim();
+        cookies[pair[0]] = unescape(pair[1]);
+      }
+      console.log(cookies);
+      return cookies;
+    } else {
+      return {};
+    }
+  }
+
   var util = {
     host: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
     authKey: 'secret',
     authSecret: 'secret0nlyWeilsonKnowsShhh852~',
 
     backend: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://app.ebeecare.com' : 'http://dev.ebeecare.com',
+    partners: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeepartners.com') > -1 ? 'https://www.ebeecare.com' : 'http://staging.ebeepartners.com',
 
-    getCookies: function getCookies() {
-      if (typeof document !== 'undefined' && document && document.cookie) {
-        var pairs = document.cookie.split(';');
-        var cookies = {};
-        for (var i = 0; i < pairs.length; i++) {
-          var pair = pairs[i].split('=');
-          if (pair[0]) pair[0] = pair[0].trim();
-          cookies[pair[0]] = unescape(pair[1]);
-        }
-        return cookies;
-      } else {
-        return {};
-      }
-    }
+    isProduction: isProduction,
+
+    isLoggedInBackend: isLoggedInBackend,
+
+    getCookies: getCookies
   };
 
   exports['default'] = util;
@@ -9543,29 +9563,11 @@ module.exports =
     _createClass(Navigation, [{
       key: 'render',
       value: function render() {
-        var accountLink;
-        var accountHref = typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://app.ebeecare.com' : 'http://dev.ebeecare.com';
-        var partnersHref = typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://www.ebeepartners.com' : 'http://staging.ebeepartners.com';
-        if (_coreUtil2['default'].getCookies()['sessionid']) {
-          accountLink = _react2['default'].createElement(
-            'li',
-            { className: 'Navigation-item' },
-            _react2['default'].createElement(
-              'a',
-              { className: 'Navigation-link', href: accountHref },
-              'Dashboard'
-            )
-          );
+        var accountText;
+        if (_coreUtil2['default'].isLoggedInBackend()) {
+          accountText = 'Dashboard';
         } else {
-          accountLink = _react2['default'].createElement(
-            'li',
-            { className: 'Navigation-item' },
-            _react2['default'].createElement(
-              'a',
-              { className: 'Navigation-link', href: accountHref },
-              'Login'
-            )
-          );
+          accountText = 'Login';
         }
         return _react2['default'].createElement(
           'div',
@@ -9614,7 +9616,7 @@ module.exports =
               { className: 'Navigation-item' },
               _react2['default'].createElement(
                 'a',
-                { className: 'Navigation-link', href: partnersHref },
+                { className: 'Navigation-link', href: _coreUtil2['default'].partners },
                 'Become a Partner'
               )
             ),
@@ -9627,7 +9629,15 @@ module.exports =
                 'Manage Booking'
               )
             ),
-            accountLink
+            _react2['default'].createElement(
+              'li',
+              { className: 'Navigation-item' },
+              _react2['default'].createElement(
+                'a',
+                { className: 'Navigation-link', href: _coreUtil2['default'].backend },
+                accountText
+              )
+            )
           ),
           _react2['default'].createElement(
             _Container2['default'],
@@ -9680,7 +9690,7 @@ module.exports =
                   { className: 'Navigation-item' },
                   _react2['default'].createElement(
                     'a',
-                    { className: 'Navigation-link', href: partnersHref },
+                    { className: 'Navigation-link', href: _coreUtil2['default'].partners },
                     'Become a Partner'
                   )
                 ),
@@ -9693,7 +9703,15 @@ module.exports =
                     'Manage Booking'
                   )
                 ),
-                accountLink
+                _react2['default'].createElement(
+                  'li',
+                  { className: 'Navigation-item' },
+                  _react2['default'].createElement(
+                    'a',
+                    { className: 'Navigation-link', href: _coreUtil2['default'].backend },
+                    accountText
+                  )
+                )
               )
             )
           )
