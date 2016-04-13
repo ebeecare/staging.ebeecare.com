@@ -554,72 +554,6 @@ module.exports =
         actionType: BookingConstants.BOOKING_SET_POST_STATUS,
         postStatus: postStatus
       });
-    },
-
-    /**
-     * @param  {string} text
-     */
-    create: function(text) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.TODO_CREATE,
-        text: text
-      });
-    },
-
-    /**
-     * @param  {string} id The ID of the ToDo item
-     * @param  {string} text
-     */
-    updateText: function(id, text) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.TODO_UPDATE_TEXT,
-        id: id,
-        text: text
-      });
-    },
-
-    /**
-     * Toggle whether a single ToDo is complete
-     * @param  {object} todo
-     */
-    toggleComplete: function(todo) {
-      var id = todo.id;
-      var actionType = todo.complete ?
-          BookingConstants.TODO_UNDO_COMPLETE :
-          BookingConstants.TODO_COMPLETE;
-
-      AppDispatcher.dispatch({
-        actionType: actionType,
-        id: id
-      });
-    },
-
-    /**
-     * Mark all ToDos as complete
-     */
-    toggleCompleteAll: function() {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.TODO_TOGGLE_COMPLETE_ALL
-      });
-    },
-
-    /**
-     * @param  {string} id
-     */
-    destroy: function(id) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.TODO_DESTROY,
-        id: id
-      });
-    },
-
-    /**
-     * Delete all the completed ToDos
-     */
-    destroyCompleted: function() {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.TODO_DESTROY_COMPLETED
-      });
     }
 
   };
@@ -4212,7 +4146,7 @@ module.exports =
               modifiers: {
                 selected: function selected(day) {
                   return _this.state.selectedDates && (0, _lodashSome2['default'])(_this.state.selectedDates, function (item) {
-                    return _this._isSameDay(item, day);
+                    return _reactDayPicker.DateUtils.isSameDay(item, day);
                   });
                 },
                 disabled: this._isDisabled
@@ -4248,33 +4182,23 @@ module.exports =
         );
       }
     }, {
-      key: '_isSameDay',
-      value: function _isSameDay(d1, d2) {
-        d1.setHours(0, 0, 0, 0);
-        d2.setHours(0, 0, 0, 0);
-
-        return d1.getTime() === d2.getTime();
-      }
-    }, {
       key: '_isDisabled',
       value: function _isDisabled(day) {
-        var today = new Date();
-        today.setDate(today.getDate() + 3);
-        return day < today;
+        var d = _reactDayPicker.DateUtils.clone(day);
+        d.setDate(d.getDate() - 4);
+        return _reactDayPicker.DateUtils.isPastDay(d);
       }
     }, {
       key: '_onSelectDay',
       value: function _onSelectDay(e, day) {
-        var _this2 = this;
-
         if (!this._isDisabled(day)) {
           var days = this.state.selectedDates;
 
           if ((0, _lodashSome2['default'])(days, function (item) {
-            return _this2._isSameDay(item, day);
+            return _reactDayPicker.DateUtils.isSameDay(item, day);
           })) {
             (0, _lodashRemove2['default'])(days, function (item) {
-              return _this2._isSameDay(item, day);
+              return _reactDayPicker.DateUtils.isSameDay(item, day);
             });
           } else {
             days.push(day);
@@ -14211,7 +14135,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n/* DayPicker styles */\n\n.DayPicker {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n  padding: 1rem 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.DayPicker-Month {\n  display: table;\n  border-collapse: collapse;\n  border-spacing: 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 1rem;\n}\n\n  .DayPicker-NavBar {\n    position: absolute;\n    left: 0;\n    right: 0;\n    padding: 0 .5rem;\n  }\n\n  .DayPicker-NavButton {\n    position: absolute;\n    width: 1.5rem;\n    height: 1.5rem;\n    background-repeat: no-repeat;\n    background-position: center;\n    -webkit-background-size: contain;\n            background-size: contain;\n    cursor: pointer;\n  }\n\n    .DayPicker-NavButton--prev {\n      left: 1rem;\n      background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5wcmV2PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9InByZXYiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzLjM5MzE5MywgMjUuMDAwMDAwKSBzY2FsZSgtMSwgMSkgdHJhbnNsYXRlKC0xMy4zOTMxOTMsIC0yNS4wMDAwMDApIHRyYW5zbGF0ZSgwLjg5MzE5MywgMC4wMDAwMDApIiBmaWxsPSIjNTY1QTVDIj4KICAgICAgICAgICAgPHBhdGggZD0iTTAsNDkuMTIzNzMzMSBMMCw0NS4zNjc0MzQ1IEwyMC4xMzE4NDU5LDI0LjcyMzA2MTIgTDAsNC4yMzEzODMxNCBMMCwwLjQ3NTA4NDQ1OSBMMjUsMjQuNzIzMDYxMiBMMCw0OS4xMjM3MzMxIEwwLDQ5LjEyMzczMzEgWiIgaWQ9InJpZ2h0IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K\");\n    }\n\n    .DayPicker-NavButton--next {\n      right: 1rem;\n      background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5uZXh0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9Im5leHQiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuOTUxNDUxLCAwLjAwMDAwMCkiIGZpbGw9IiM1NjVBNUMiPgogICAgICAgICAgICA8cGF0aCBkPSJNMCw0OS4xMjM3MzMxIEwwLDQ1LjM2NzQzNDUgTDIwLjEzMTg0NTksMjQuNzIzMDYxMiBMMCw0LjIzMTM4MzE0IEwwLDAuNDc1MDg0NDU5IEwyNSwyNC43MjMwNjEyIEwwLDQ5LjEyMzczMzEgTDAsNDkuMTIzNzMzMSBaIiBpZD0icmlnaHQiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=\");\n    }\n\n\n  .DayPicker-Caption {\n    display: table-caption;\n    height: 1.5rem;\n    text-align: center;\n  }\n\n  .DayPicker-Weekdays {\n    display: table-header-group;\n  }\n\n    .DayPicker-WeekdaysRow {\n      display: table-row;\n    }\n\n      .DayPicker-Weekday {\n        display: table-cell;\n        padding: .5rem;\n        font-size: .875em;\n        text-align: center;\n        color: #8b9898;\n      }\n\n  .DayPicker-Body {\n    display: table-row-group;\n  }\n\n    .DayPicker-Week {\n      display: table-row;\n    }\n\n      .DayPicker-Day {\n        display: table-cell;\n        padding: .5rem;\n        border: 1px solid #eaecec;\n        text-align: center;\n        cursor: pointer;\n        vertical-align: middle;\n      }\n\n  .DayPicker--interactionDisabled .DayPicker-Day {\n    cursor: default;\n  }\n\n/* Default modifiers */\n\n.DayPicker-Day--today {\n  color: #d0021b;\n  font-weight: 500;\n}\n\n.DayPicker-Day--disabled {\n  color: #dce0e0;\n  cursor: default;\n  background-color: #eff1f1;\n}\n\n.DayPicker-Day--outside {\n  cursor: default;\n  color: #dce0e0;\n}\n\n/* Example modifiers */\n\n.DayPicker-Day--sunday {\n  color: #dce0e0;\n  background-color: #f7f8f8;\n}\n\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  color: #FFF;\n  background-color: #4A90E2;\n}\n\n.BookingDate {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.BookingDate .btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.BookingDate .BookingDateTo {\n  display: inline-block\n}\n\n.BookingDate input {\n  text-align: center;\n}\n\n.BookingDate .DayPicker .DayPicker-Day.DayPicker-Day--today {\n  color: #f78d00;\n}\n\n.BookingDate .DayPicker .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  background-color: #f78d00;\n}\n\n.BookingDate .DayPicker .DayPicker-Month + .DayPicker-Month {}\n\n@media (max-width: 992px) {\n\n  .BookingDate .BookingDateTo {\n    display: block;\n    margin-top: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingDate .DayPicker .DayPicker-Month + .DayPicker-Month {\n    margin-top: 1rem;\n  }\n      }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n/* DayPicker styles */\n\n.DayPicker {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n  padding: 1rem 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.DayPicker-Month {\n  display: table;\n  border-collapse: collapse;\n  border-spacing: 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin: 0 1rem;\n}\n\n  .DayPicker-NavBar {\n    position: absolute;\n    left: 0;\n    right: 0;\n    padding: 0 .5rem;\n  }\n\n  .DayPicker-NavButton {\n    position: absolute;\n    width: 1.5rem;\n    height: 1.5rem;\n    background-repeat: no-repeat;\n    background-position: center;\n    -webkit-background-size: contain;\n            background-size: contain;\n    cursor: pointer;\n  }\n\n    .DayPicker-NavButton--prev {\n      left: 1rem;\n      background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5wcmV2PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9InByZXYiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzLjM5MzE5MywgMjUuMDAwMDAwKSBzY2FsZSgtMSwgMSkgdHJhbnNsYXRlKC0xMy4zOTMxOTMsIC0yNS4wMDAwMDApIHRyYW5zbGF0ZSgwLjg5MzE5MywgMC4wMDAwMDApIiBmaWxsPSIjNTY1QTVDIj4KICAgICAgICAgICAgPHBhdGggZD0iTTAsNDkuMTIzNzMzMSBMMCw0NS4zNjc0MzQ1IEwyMC4xMzE4NDU5LDI0LjcyMzA2MTIgTDAsNC4yMzEzODMxNCBMMCwwLjQ3NTA4NDQ1OSBMMjUsMjQuNzIzMDYxMiBMMCw0OS4xMjM3MzMxIEwwLDQ5LjEyMzczMzEgWiIgaWQ9InJpZ2h0IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K\");\n    }\n\n    .DayPicker-NavButton--next {\n      right: 1rem;\n      background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5uZXh0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9Im5leHQiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuOTUxNDUxLCAwLjAwMDAwMCkiIGZpbGw9IiM1NjVBNUMiPgogICAgICAgICAgICA8cGF0aCBkPSJNMCw0OS4xMjM3MzMxIEwwLDQ1LjM2NzQzNDUgTDIwLjEzMTg0NTksMjQuNzIzMDYxMiBMMCw0LjIzMTM4MzE0IEwwLDAuNDc1MDg0NDU5IEwyNSwyNC43MjMwNjEyIEwwLDQ5LjEyMzczMzEgTDAsNDkuMTIzNzMzMSBaIiBpZD0icmlnaHQiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=\");\n    }\n\n\n  .DayPicker-Caption {\n    display: table-caption;\n    height: 1.5rem;\n    text-align: center;\n  }\n\n  .DayPicker-Weekdays {\n    display: table-header-group;\n  }\n\n    .DayPicker-WeekdaysRow {\n      display: table-row;\n    }\n\n      .DayPicker-Weekday {\n        display: table-cell;\n        padding: .5rem;\n        font-size: .875em;\n        text-align: center;\n        color: #8b9898;\n      }\n\n  .DayPicker-Body {\n    display: table-row-group;\n  }\n\n    .DayPicker-Week {\n      display: table-row;\n    }\n\n      .DayPicker-Day {\n        display: table-cell;\n        padding: .5rem;\n        border: 1px solid #eaecec;\n        text-align: center;\n        cursor: pointer;\n        vertical-align: middle;\n      }\n\n  .DayPicker--interactionDisabled .DayPicker-Day {\n    cursor: default;\n  }\n\n/* Default modifiers */\n\n.DayPicker-Day--today {\n  color: #d0021b;\n  font-weight: 500;\n}\n\n.DayPicker-Day--disabled {\n  color: #dce0e0;\n  cursor: default;\n  background-color: #eff1f1;\n}\n\n.DayPicker-Day--outside {\n  cursor: default;\n  color: #dce0e0;\n}\n\n/* Example modifiers */\n\n.DayPicker-Day--sunday {\n  color: #dce0e0;\n  background-color: #f7f8f8;\n}\n\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  color: #FFF;\n  background-color: #4A90E2;\n}\n\n.BookingDate {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.BookingDate .btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.BookingDate .BookingDateTo {\n  display: inline-block\n}\n\n.BookingDate input {\n  text-align: center;\n}\n\n.BookingDate .DayPicker .DayPicker-Day.DayPicker-Day--today {\n  color: #f78d00;\n}\n\n.BookingDate .DayPicker .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  background-color: #f78d00;\n}\n\n.BookingDate .DayPicker .DayPicker-Day:focus {\n  outline: none;\n}\n\n.BookingDate .DayPicker .DayPicker-Month + .DayPicker-Month {}\n\n@media (max-width: 992px) {\n\n  .BookingDate .BookingDateTo {\n    display: block;\n    margin-top: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingDate .DayPicker .DayPicker-Month + .DayPicker-Month {\n    margin-top: 1rem;\n  }\n      }", ""]);
 
   // exports
 
