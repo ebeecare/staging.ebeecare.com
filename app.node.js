@@ -570,6 +570,8 @@ module.exports =
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
+  var ALL_SERVICES = 'All Services';
+
   function isProduction() {
     return typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1;
   }
@@ -597,6 +599,31 @@ module.exports =
     }
   }
 
+  function filterServices(services, filter) {
+    return services.filter(function (service) {
+      if (filter === ALL_SERVICES) return true;
+      return service.category === filter;
+    }).sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  function subFilterServices(services) {
+    var hash = {},
+        arr = [];
+    services.forEach(function (service) {
+      if (hash[service.subType]) {
+        hash[service.subType].push(service);
+      } else {
+        hash[service.subType] = [service];
+      }
+    });
+    for (var subType in hash) {
+      arr.push(hash[subType]);
+    }
+    return arr;
+  }
+
   var util = {
     host: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
     authKey: 'secret',
@@ -609,7 +636,11 @@ module.exports =
 
     isLoggedInBackend: isLoggedInBackend,
 
-    getCookies: getCookies
+    getCookies: getCookies,
+
+    ALL_SERVICES: ALL_SERVICES,
+    filterServices: filterServices,
+    subFilterServices: subFilterServices, subFilterServices: subFilterServices
   };
 
   exports['default'] = util;
@@ -8082,8 +8113,6 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  // import Popup from 'react-popup';
-
   __webpack_require__(105);
 
   var _Container = __webpack_require__(3);
@@ -8102,7 +8131,9 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
-  var ALL_SERVICES = 'All Services';
+  var _coreUtil = __webpack_require__(6);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingServices = (function (_Component) {
     _inherits(BookingServices, _Component);
@@ -8112,7 +8143,7 @@ module.exports =
 
       _get(Object.getPrototypeOf(BookingServices.prototype), 'constructor', this).call(this, props);
       this.state = {
-        filter: ALL_SERVICES,
+        filter: _coreUtil2['default'].ALL_SERVICES,
         selectedService: undefined
       };
       if (this.props.booking && this.props.booking.service) {
@@ -8170,22 +8201,8 @@ module.exports =
                     { className: 'BookingServicesNav-item' },
                     _react2['default'].createElement(
                       'a',
-                      { className: (0, _classnames2['default'])('BookingServicesNav-link', this.state.filter === ALL_SERVICES ? 'active' : ''), href: '/', onClick: this._onClickFilter.bind(this, ALL_SERVICES) },
+                      { className: (0, _classnames2['default'])('BookingServicesNav-link', this.state.filter === _coreUtil2['default'].ALL_SERVICES ? 'active' : ''), href: '/', onClick: this._onClickFilter.bind(this, _coreUtil2['default'].ALL_SERVICES) },
                       'All Services',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'BookingServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'BookingServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classnames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Nursing' ? 'active' : ''), href: '/about', onClick: this._onClickFilter.bind(this, 'Home Nursing') },
-                      'Home Nursing',
                       _react2['default'].createElement(
                         'span',
                         { className: 'BookingServicesNav-arrow' },
@@ -8200,6 +8217,20 @@ module.exports =
                       'a',
                       { className: (0, _classnames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Social Care' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home Social Care') },
                       'Home Social Care',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'BookingServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'BookingServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classnames2['default'])('BookingServicesNav-link', this.state.filter === 'Home Nursing' ? 'active' : ''), href: '/about', onClick: this._onClickFilter.bind(this, 'Home Nursing') },
+                      'Home Nursing Care',
                       _react2['default'].createElement(
                         'span',
                         { className: 'BookingServicesNav-arrow' },
@@ -8245,33 +8276,60 @@ module.exports =
                 _Container2['default'],
                 null,
                 _react2['default'].createElement(
-                  'div',
-                  { className: 'BookingServicesBody' },
+                  'form',
+                  { ref: function (c) {
+                      return _this._bookingServicesForm = c;
+                    } },
                   _react2['default'].createElement(
-                    'form',
-                    { ref: function (c) {
-                        return _this._bookingServicesForm = c;
-                      } },
-                    this.props.allServices && this._filterServices(this.props.allServices, this.state.filter).map(function (service) {
-                      var id = "BookingServicesRadio" + service.id;
+                    'div',
+                    { className: 'BookingServicesBody' },
+                    this.props.allServices && _coreUtil2['default'].subFilterServices(_coreUtil2['default'].filterServices(this.props.allServices, this.state.filter)).map(function (services) {
+                      var header;
+                      if (_this.state.filter === _coreUtil2['default'].ALL_SERVICES) {
+                        header = _react2['default'].createElement(
+                          'h3',
+                          null,
+                          _react2['default'].createElement(
+                            'a',
+                            { href: '#', onClick: _this._onClickFilter.bind(_this, services[0].category) },
+                            services[0].category
+                          ),
+                          ' > ',
+                          services[0].subType
+                        );
+                      } else {
+                        header = _react2['default'].createElement(
+                          'h3',
+                          null,
+                          services[0].subType
+                        );
+                      }
                       return _react2['default'].createElement(
                         'div',
-                        { className: 'BookingServicesItem', key: service.id },
-                        _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === _this.state.selectedService, onChange: _this._onSelect.bind(_this), required: true }),
-                        _react2['default'].createElement(
-                          'label',
-                          { className: 'BookingServicesRadioLabel', htmlFor: id },
-                          _react2['default'].createElement(
-                            'span',
-                            null,
-                            _react2['default'].createElement('span', null)
-                          ),
-                          _react2['default'].createElement(
-                            'span',
-                            null,
-                            service.name
-                          )
-                        )
+                        { key: services[0].subType },
+                        services.map(function (service, index) {
+                          var id = "BookingServicesRadio" + service.id;
+                          return _react2['default'].createElement(
+                            'div',
+                            { className: 'BookingServicesItem', key: service.id },
+                            index === 0 ? header : '',
+                            _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === _this.state.selectedService, onChange: _this._onSelect.bind(_this), required: true }),
+                            _react2['default'].createElement(
+                              'label',
+                              { className: 'BookingServicesRadioLabel', htmlFor: id },
+                              _react2['default'].createElement(
+                                'span',
+                                null,
+                                _react2['default'].createElement('span', null)
+                              ),
+                              _react2['default'].createElement(
+                                'span',
+                                null,
+                                service.name
+                              )
+                            )
+                          );
+                        })
                       );
                     })
                   )
@@ -8321,16 +8379,6 @@ module.exports =
           // alert('Please select a service');
           this._alertPopup.show('Please select a service.');
         }
-      }
-    }, {
-      key: '_filterServices',
-      value: function _filterServices(services, filter) {
-        return services.filter(function (service) {
-          if (filter === ALL_SERVICES) return true;
-          return service.category === filter;
-        }).sort(function (a, b) {
-          return a.name.localeCompare(b.name);
-        });
       }
     }]);
 
@@ -9711,8 +9759,6 @@ module.exports =
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
-  var ALL_SERVICES = 'All Services';
-
   var Services = (function (_Component) {
     _inherits(Services, _Component);
 
@@ -9722,7 +9768,7 @@ module.exports =
       _get(Object.getPrototypeOf(Services.prototype), 'constructor', this).call(this, props);
       this.state = {
         services: undefined,
-        filter: ALL_SERVICES,
+        filter: _coreUtil2['default'].ALL_SERVICES,
         selectedService: undefined
       };
     }
@@ -9791,22 +9837,8 @@ module.exports =
                     { className: 'ServicesNav-item' },
                     _react2['default'].createElement(
                       'a',
-                      { className: (0, _classnames2['default'])('ServicesNav-link', this.state.filter === ALL_SERVICES ? 'active' : ''), href: '/', onClick: this._onClickFilter.bind(this, ALL_SERVICES) },
+                      { className: (0, _classnames2['default'])('ServicesNav-link', this.state.filter === _coreUtil2['default'].ALL_SERVICES ? 'active' : ''), href: '/', onClick: this._onClickFilter.bind(this, _coreUtil2['default'].ALL_SERVICES) },
                       'All Services',
-                      _react2['default'].createElement(
-                        'span',
-                        { className: 'ServicesNav-arrow' },
-                        _react2['default'].createElement('div', { className: 'nav-caret' })
-                      )
-                    )
-                  ),
-                  _react2['default'].createElement(
-                    'li',
-                    { className: 'ServicesNav-item' },
-                    _react2['default'].createElement(
-                      'a',
-                      { className: (0, _classnames2['default'])('ServicesNav-link', this.state.filter === 'Home Nursing' ? 'active' : ''), href: '/about', onClick: this._onClickFilter.bind(this, 'Home Nursing') },
-                      'Home Nursing',
                       _react2['default'].createElement(
                         'span',
                         { className: 'ServicesNav-arrow' },
@@ -9821,6 +9853,20 @@ module.exports =
                       'a',
                       { className: (0, _classnames2['default'])('ServicesNav-link', this.state.filter === 'Home Social Care' ? 'active' : ''), href: '/faq', onClick: this._onClickFilter.bind(this, 'Home Social Care') },
                       'Home Social Care',
+                      _react2['default'].createElement(
+                        'span',
+                        { className: 'ServicesNav-arrow' },
+                        _react2['default'].createElement('div', { className: 'nav-caret' })
+                      )
+                    )
+                  ),
+                  _react2['default'].createElement(
+                    'li',
+                    { className: 'ServicesNav-item' },
+                    _react2['default'].createElement(
+                      'a',
+                      { className: (0, _classnames2['default'])('ServicesNav-link', this.state.filter === 'Home Nursing' ? 'active' : ''), href: '/about', onClick: this._onClickFilter.bind(this, 'Home Nursing') },
+                      'Home Nursing Care',
                       _react2['default'].createElement(
                         'span',
                         { className: 'ServicesNav-arrow' },
@@ -9868,14 +9914,14 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'ServicesBody' },
-                  this.state.services && this._subFilterServices(this._filterServices(this.state.services, this.state.filter)).map(function (services) {
+                  this.state.services && _coreUtil2['default'].subFilterServices(_coreUtil2['default'].filterServices(this.state.services, this.state.filter)).map(function (services) {
                     return _react2['default'].createElement(
                       'div',
                       { key: services[0].subType },
                       _react2['default'].createElement(
                         'h3',
                         null,
-                        _this2.state.filter === ALL_SERVICES ? services[0].category + ' > ' : '',
+                        _this2.state.filter === _coreUtil2['default'].ALL_SERVICES ? services[0].category + ' > ' : '',
                         services[0].subType
                       ),
                       _react2['default'].createElement(
@@ -9925,33 +9971,6 @@ module.exports =
         this.setState({
           selectedService: parseInt(event.target.value)
         });
-      }
-    }, {
-      key: '_filterServices',
-      value: function _filterServices(services, filter) {
-        return services.filter(function (service) {
-          if (filter === ALL_SERVICES) return true;
-          return service.category === filter;
-        }).sort(function (a, b) {
-          return a.name.localeCompare(b.name);
-        });
-      }
-    }, {
-      key: '_subFilterServices',
-      value: function _subFilterServices(services) {
-        var hash = {},
-            arr = [];
-        services.forEach(function (service) {
-          if (hash[service.subType]) {
-            hash[service.subType].push(service);
-          } else {
-            hash[service.subType] = [service];
-          }
-        });
-        for (var subType in hash) {
-          arr.push(hash[subType]);
-        }
-        return arr;
       }
     }, {
       key: '_onClickBook',
@@ -14331,7 +14350,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingServices {\n  background-color: #f3f3f3;\n  min-height: 400px;\n  position: relative;\n}\n\n.BookingServices .BookingServicesNav-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #f78d00\n}\n\n.BookingServices .BookingServicesNav {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 10px 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n.BookingServices .BookingServicesNav-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 0 0.5em;\n  text-align: center\n}\n\n.BookingServices .BookingServicesNav-item + .BookingServicesNav-item {}\n\n.BookingServices .BookingServicesNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.BookingServices .BookingServicesNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingServices .BookingServicesNav-link.active {\n  color: #fdbc1d;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow .nav-caret {\n  display: block;\n}\n\n.BookingServices .BookingServicesBody {\n  margin-top: 50px;\n  margin-bottom: 100px;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesItem {\n  display: inline-block;\n  color: #444;\n  font-size: 15px;\n  width: 100%;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesItem .BookingServicesRadio {\n  // margin-right: 5px;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesItem .BookingServicesRadioLabel {\n  // cursor: pointer;\n}\n\n.BookingServices .BookingServicesFooter {\n  padding-bottom: 100px;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    border-bottom: none;\n  }\n    }\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item + .BookingServicesNav-item {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n    display: none;\n  }\n}\n\n@media (min-width: 768px) {\n\n  .BookingServices .BookingServicesBody .BookingServicesItem {\n    width: 50%;\n  }\n      }\n\n@media (min-width: 1200px) {\n\n  .BookingServices .BookingServicesBody .BookingServicesItem {\n    width: calc(100% / 3);\n  }\n      }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingServices {\n  background-color: #f3f3f3;\n  min-height: 400px;\n  position: relative;\n}\n\n.BookingServices .BookingServicesNav-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #f78d00\n}\n\n.BookingServices .BookingServicesNav {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 10px 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n.BookingServices .BookingServicesNav-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 0 0.5em;\n  text-align: center\n}\n\n.BookingServices .BookingServicesNav-item + .BookingServicesNav-item {}\n\n.BookingServices .BookingServicesNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.BookingServices .BookingServicesNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingServices .BookingServicesNav-link.active {\n  color: #fdbc1d;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow .nav-caret {\n  display: block;\n}\n\n.BookingServices .BookingServicesBody {\n  margin-top: 50px;\n  margin-bottom: 100px;\n  -webkit-column-count: 3;\n     -moz-column-count: 3;\n          column-count: 3;\n}\n\n.BookingServices .BookingServicesBody h3, .BookingServices .BookingServicesBody h3 a {\n  color: #f78d00;\n  font-weight: 600;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesItem {\n  display: inline-block;\n  color: #444;\n  font-size: 15px;\n  width: 100%;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesItem .BookingServicesRadio {\n  // margin-right: 5px;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesItem .BookingServicesRadioLabel {\n  // cursor: pointer;\n}\n\n.BookingServices .BookingServicesFooter {\n  padding-bottom: 100px;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    border-bottom: none;\n  }\n    }\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item + .BookingServicesNav-item {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesBody {\n    -webkit-column-count: 2;\n       -moz-column-count: 2;\n            column-count: 2;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesBody {\n    -webkit-column-count: 1;\n       -moz-column-count: 1;\n            column-count: 1;\n  }\n    }", ""]);
 
   // exports
 
