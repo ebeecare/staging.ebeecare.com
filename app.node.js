@@ -1078,7 +1078,7 @@ module.exports =
               _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
               _react2['default'].createElement(
                 _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus },
+                { path: this.props.path, postStatus: this.state.postStatus, booking: this.state.booking },
                 _react2['default'].createElement(_BookingPaypal2['default'], { location: this.props.location, booking: this.state.booking }),
                 _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
               )
@@ -1090,7 +1090,7 @@ module.exports =
               _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
               _react2['default'].createElement(
                 _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus },
+                { path: this.props.path, postStatus: this.state.postStatus, booking: this.state.booking },
                 _react2['default'].createElement(_BookingBankTransfer2['default'], { booking: this.state.booking }),
                 _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
               )
@@ -1102,7 +1102,7 @@ module.exports =
               _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
               _react2['default'].createElement(
                 _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus },
+                { path: this.props.path, postStatus: this.state.postStatus, booking: this.state.booking },
                 _react2['default'].createElement(_BookingCredits2['default'], { booking: this.state.booking }),
                 _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
               )
@@ -3110,7 +3110,7 @@ module.exports =
                 null,
                 _react2['default'].createElement(
                   'a',
-                  { href: _coreUtil2['default'].backend + '/cases/' + this.state.caseId },
+                  { href: _coreUtil2['default'].backend + '/case/' + this.state.caseId },
                   'View Case'
                 )
               )
@@ -4216,7 +4216,7 @@ module.exports =
       key: '_isDisabled',
       value: function _isDisabled(day) {
         var d = _reactDayPicker.DateUtils.clone(day);
-        d.setDate(d.getDate() - 4);
+        d.setDate(d.getDate() - 1);
         return _reactDayPicker.DateUtils.isPastDay(d);
       }
     }, {
@@ -7019,6 +7019,38 @@ module.exports =
     _createClass(BookingPayment, [{
       key: 'render',
       value: function render() {
+        var bankTransferItem;
+        var dates = this.props.booking && this.props.booking['case'] && this.props.booking['case'].dates;
+        if (dates) {
+          var earliestDate;
+          for (var i = 0; i < dates.length; i++) {
+            if (earliestDate) {
+              var d = new Date(dates[i]['dateTimeStart']);
+              if (earliestDate > d) {
+                earliestDate = d;
+              }
+            } else {
+              earliestDate = new Date(dates[i]['dateTimeStart']);
+            }
+          }
+          earliestDate.setDate(earliestDate.getDate() - 3);
+          if (earliestDate > new Date()) {
+            bankTransferItem = _react2['default'].createElement(
+              'li',
+              { className: 'BookingPaymentNav-item' },
+              _react2['default'].createElement(
+                'a',
+                { className: (0, _classnames2['default'])('BookingPaymentNav-link', this.props.path === '/booking-confirmation' && this.props.postStatus === 'payment-bank' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this, 'bank') },
+                'Bank Transfer',
+                _react2['default'].createElement(
+                  'span',
+                  { className: 'BookingPaymentNav-arrow' },
+                  _react2['default'].createElement('div', { className: 'nav-caret' })
+                )
+              )
+            );
+          }
+        }
         return _react2['default'].createElement(
           'div',
           { className: 'BookingPayment' },
@@ -7045,20 +7077,7 @@ module.exports =
                     )
                   )
                 ),
-                _react2['default'].createElement(
-                  'li',
-                  { className: 'BookingPaymentNav-item' },
-                  _react2['default'].createElement(
-                    'a',
-                    { className: (0, _classnames2['default'])('BookingPaymentNav-link', this.props.path === '/booking-confirmation' && this.props.postStatus === 'payment-bank' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this, 'bank') },
-                    'Bank Transfer',
-                    _react2['default'].createElement(
-                      'span',
-                      { className: 'BookingPaymentNav-arrow' },
-                      _react2['default'].createElement('div', { className: 'nav-caret' })
-                    )
-                  )
-                )
+                bankTransferItem
               )
             )
           ),
