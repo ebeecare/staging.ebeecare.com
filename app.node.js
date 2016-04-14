@@ -945,7 +945,6 @@ module.exports =
               } else if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].status === 'Accepting Quotes') {
                 // if booking is still pending service providers
                 _coreLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: _this.props.location.query.bid, email: _this.props.location.query.email } });
-                // Location.replace({ pathname: '/manage-booking', query: { bid: this.props.location.query.bid, email: this.props.location.query.email } });
               }
               _actionsBookingActions2['default'].setBooking(res.body.booking);
             } else {
@@ -5055,7 +5054,7 @@ module.exports =
           );
         }
         // show payment button only if booking is "Closed" and not yet paid, and if not editing
-        if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].status === 'Closed' && !this.props.booking['case'].isPaid && !this.state.editingUser && !this.state.editingPatient && !this.state.editingAddress) {
+        if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].status === 'Closed' && !this.props.booking['case'].isPaid && this.props.booking['case'].transactions && !this.props.booking['case'].transactions.length && !this.state.editingUser && !this.state.editingPatient && !this.state.editingAddress) {
           paymentButton = _react2['default'].createElement(
             'a',
             { href: '#', className: 'btn btn-primary', onClick: this._onClickPay.bind(this) },
@@ -7454,7 +7453,7 @@ module.exports =
             { className: 'BookingPostCompleteFooter' },
             _react2['default'].createElement(
               'a',
-              { href: '/manage-booking', className: 'btn btn-primary', onClick: _Link2['default'].handleClick },
+              { href: '/booking-manage', className: 'btn btn-primary', onClick: _Link2['default'].handleClick },
               'Manage Booking'
             ),
             _react2['default'].createElement(
