@@ -650,13 +650,13 @@ module.exports =
 /* 7 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-loader");
+  module.exports = require("superagent");
 
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-  module.exports = require("superagent");
+  module.exports = require("react-loader");
 
 /***/ },
 /* 9 */
@@ -783,7 +783,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1602,7 +1602,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -1610,7 +1610,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1918,11 +1918,11 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2127,11 +2127,11 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2451,6 +2451,10 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
+  var _superagent = __webpack_require__(7);
+
+  var _superagent2 = _interopRequireDefault(_superagent);
+
   __webpack_require__(83);
 
   var _Container = __webpack_require__(3);
@@ -2461,24 +2465,57 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
+  var _coreUtil = __webpack_require__(6);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
+
   var Features = (function (_Component) {
     _inherits(Features, _Component);
 
-    function Features() {
+    function Features(props) {
       _classCallCheck(this, Features);
 
-      _get(Object.getPrototypeOf(Features.prototype), 'constructor', this).apply(this, arguments);
+      _get(Object.getPrototypeOf(Features.prototype), 'constructor', this).call(this, props);
+      this.state = {
+        sessionsCount: undefined
+      };
     }
 
     _createClass(Features, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        this._startCounter();
+      }
+    }, {
+      key: 'componentWillUnmount',
+      value: function componentWillUnmount() {
+        this.serverRequest1 && this.serverRequest1.abort();
+      }
+    }, {
       key: 'render',
       value: function render() {
+        var sessionsCountText;
+        if (this.state.sessionsCount) {
+          sessionsCountText = _react2['default'].createElement(
+            'h1',
+            { className: 'text-center' },
+            this.state.sessionsCount,
+            ' appointments booked',
+            _react2['default'].createElement('br', null),
+            'and counting!'
+          );
+        }
         return _react2['default'].createElement(
           'div',
           { className: 'Actions' },
           _react2['default'].createElement(
             _Container2['default'],
             null,
+            _react2['default'].createElement(
+              'div',
+              { className: 'Actions-statistics' },
+              sessionsCountText
+            ),
             _react2['default'].createElement(
               'div',
               { className: 'Actions-list' },
@@ -2525,6 +2562,32 @@ module.exports =
             )
           )
         );
+      }
+    }, {
+      key: '_startCounter',
+      value: function _startCounter() {
+        if (typeof window !== 'undefined') {
+          window.setInterval(this._getStatistics.bind(this), 5000);
+        }
+      }
+    }, {
+      key: '_getStatistics',
+      value: function _getStatistics() {
+        var _this = this;
+
+        this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getTotalSessionsCount').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
+          if (err) {
+            return console.error(_coreUtil2['default'].host + '/api/getTotalSessionsCount', err.toString());
+          }
+          // console.log(res.body);
+          if (res.body && res.body.status) {
+            _this.setState({
+              sessionsCount: res.body.count
+            });
+          } else {
+            console.error('Failed to obtain statistics data.');
+          }
+        });
       }
     }]);
 
@@ -2641,7 +2704,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2653,7 +2716,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -2876,11 +2939,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -3259,7 +3322,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -3271,7 +3334,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -4484,7 +4547,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -4492,7 +4555,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -5471,7 +5534,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -5876,7 +5939,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -5892,7 +5955,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7137,11 +7200,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7354,7 +7417,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7799,7 +7862,7 @@ module.exports =
 
   var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -7811,7 +7874,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -8127,7 +8190,7 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -9271,11 +9334,11 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -9741,13 +9804,13 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactLoader = __webpack_require__(7);
+  var _reactLoader = __webpack_require__(8);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
   var _reactSanfona = __webpack_require__(167);
 
-  var _superagent = __webpack_require__(8);
+  var _superagent = __webpack_require__(7);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -14060,7 +14123,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n.Actions .Actions-list .Actions-item-title, .Actions .Actions-list .Actions-item-button {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.Actions {\n  background-color: #fdbc1d;\n}\n\n.Actions .Actions-list {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0 0 5em 0;\n  padding-top: 60px;\n  padding-bottom: 60px;\n  list-style: none;\n  -webkit-justify-content: space-around;\n      -ms-flex-pack: distribute;\n          justify-content: space-around;\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n}\n\n.Actions .Actions-list .Actions-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 20px 60px;\n  text-align: center;\n}\n\n.Actions .Actions-list .Actions-item-title {\n  color: #ffffff;\n  font-weight: 100;\n  font-size: 40px;\n  text-transform: uppercase;\n  padding: 5px;\n}\n\n.Actions .Actions-list .Actions-item-button {\n  display: inline-block;\n  padding: 5px;\n  color: #ffffff;\n  font-weight: 600;\n  font-size: 26px;\n  text-transform: uppercase;\n  width: 260px;\n  border: 1px solid #ffffff;\n  border-radius: 5px\n}\n\n.Actions .Actions-list .Actions-item-button:hover {\n  background-color: rgba(255, 255, 255, 0.25);\n}\n\n@media (max-width: 768px) {\n  .Actions .Actions-list {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (min-width: 768px) {\n  .Actions .Actions-list .Actions-item + .Actions-item {\n    border-left: 1px solid #ffffff;\n  }\n    }\n\n@media (max-width: 768px) {\n  .Actions .Actions-list .Actions-item + .Actions-item {\n    border-top: 1px solid #ffffff;\n  }\n    }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n.Actions .Actions-list .Actions-item-title, .Actions .Actions-list .Actions-item-button {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.Actions {\n  background-color: #fdbc1d;\n}\n\n.Actions .Actions-statistics {\n  padding-top: 60px;\n}\n\n.Actions .Actions-statistics h1 {\n  color: #fff;\n  font-weight: 100;\n  font-size: 60px;\n  margin: 0;\n}\n\n.Actions .Actions-list {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0 0 5em 0;\n  padding-top: 60px;\n  padding-bottom: 60px;\n  list-style: none;\n  -webkit-justify-content: space-around;\n      -ms-flex-pack: distribute;\n          justify-content: space-around;\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n}\n\n.Actions .Actions-list .Actions-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 20px 60px;\n  text-align: center;\n}\n\n.Actions .Actions-list .Actions-item-title {\n  color: #ffffff;\n  font-weight: 100;\n  font-size: 40px;\n  text-transform: uppercase;\n  padding: 5px;\n}\n\n.Actions .Actions-list .Actions-item-button {\n  display: inline-block;\n  padding: 5px;\n  color: #ffffff;\n  font-weight: 600;\n  font-size: 26px;\n  text-transform: uppercase;\n  width: 260px;\n  border: 1px solid #ffffff;\n  border-radius: 5px\n}\n\n.Actions .Actions-list .Actions-item-button:hover {\n  background-color: rgba(255, 255, 255, 0.25);\n}\n\n@media (max-width: 768px) {\n  .Actions .Actions-list {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (min-width: 768px) {\n  .Actions .Actions-list .Actions-item + .Actions-item {\n    border-left: 1px solid #ffffff;\n  }\n    }\n\n@media (max-width: 768px) {\n  .Actions .Actions-list .Actions-item + .Actions-item {\n    border-top: 1px solid #ffffff;\n  }\n    }", ""]);
 
   // exports
 
