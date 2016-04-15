@@ -59,7 +59,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDom = __webpack_require__(163);
+  var _reactDom = __webpack_require__(164);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2723,6 +2723,14 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
+  var _moment = __webpack_require__(13);
+
+  var _moment2 = _interopRequireDefault(_moment);
+
+  var _reactDatetime = __webpack_require__(162);
+
+  var _reactDatetime2 = _interopRequireDefault(_reactDatetime);
+
   __webpack_require__(87);
 
   var _Link = __webpack_require__(4);
@@ -2751,6 +2759,7 @@ module.exports =
       this.state = {
         pending: false,
         error: false,
+        transferTime: undefined,
         ref: undefined
       };
     }
@@ -2758,7 +2767,8 @@ module.exports =
     _createClass(BookingBankTransfer, [{
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
-        this.serverRequest && this.serverRequest.abort();
+        this.serverRequest1 && this.serverRequest1.abort();
+        this.serverRequest2 && this.serverRequest2.abort();
       }
     }, {
       key: 'render',
@@ -2838,7 +2848,13 @@ module.exports =
                 _react2['default'].createElement(
                   'li',
                   null,
-                  'Fill in the input box below with the ',
+                  'Fill in the input boxes below with the ',
+                  _react2['default'].createElement(
+                    'b',
+                    null,
+                    'estimated time of transfer'
+                  ),
+                  ' and ',
                   _react2['default'].createElement(
                     'b',
                     null,
@@ -2852,6 +2868,7 @@ module.exports =
                   'It will take around 1 working day to verify your payment. We will notify you via email.'
                 )
               ),
+              _react2['default'].createElement(_reactDatetime2['default'], { closeOnSelect: true, onChange: this._onSelectTransferTime.bind(this), value: this.state.transferTime, strictParsing: true, inputProps: { 'placeholder': 'Transfer Time*', 'required': 'required' } }),
               _react2['default'].createElement('input', { type: 'text', id: 'ref', name: 'ref', valueLink: (0, _reactLinkState2['default'])(this, 'ref'), placeholder: 'Reference Number*', required: true }),
               _react2['default'].createElement('p', null),
               _react2['default'].createElement('p', null),
@@ -2861,7 +2878,7 @@ module.exports =
                 _react2['default'].createElement(
                   'a',
                   { href: '#', className: 'btn btn-primary', onClick: this._onConfirm.bind(this) },
-                  'CONFIRM BOOKING'
+                  'CONFIRM PAYMENT'
                 )
               )
             )
@@ -2870,6 +2887,11 @@ module.exports =
               return _this._alertPopup = c;
             } })
         );
+      }
+    }, {
+      key: '_onSelectTransferTime',
+      value: function _onSelectTransferTime(moment) {
+        this.setState({ transferTime: moment });
       }
     }, {
       key: '_onConfirm',
@@ -2885,17 +2907,34 @@ module.exports =
             ref: undefined
           });
 
-          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/verifyBankTransaction').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
+          this.serverRequest1 = _superagent2['default'].post(_coreUtil2['default'].host + '/api/verifyBankTransaction').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
             amount: this.props.booking['case'].price,
             type: 'Payment',
             ref: this.state.ref,
-            sku: 'ebc-case-' + this.props.booking['case'].id
+            sku: 'ebc-case-' + this.props.booking['case'].id,
+            transactionDate: this.state.transferTime.format('YYYY-MM-DD HH:mm:ss')
           }).end(function (err, res) {
             if (err) {
               return console.error(_coreUtil2['default'].host + '/api/verifyBankTransaction', status, err.toString());
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body);
+
+              _this2.serverRequest2 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getBooking').query({
+                bid: _this2.props.booking.id,
+                email: _this2.props.booking.client_contactEmail
+              }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
+                if (err) {
+                  return console.error(_coreUtil2['default'].host + '/api/getBooking', status, err.toString());
+                }
+                if (res.body && res.body.booking && res.body.status) {
+                  console.log(res.body.booking);
+                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                } else {
+                  console.error('Failed to obtain booking data.');
+                }
+              });
+
               _actionsBookingActions2['default'].setPostStatus('success');
             } else {
               _this2.setState({
@@ -2907,7 +2946,7 @@ module.exports =
           });
         } else {
           event.preventDefault();
-          this._alertPopup.show('Please fill up your bank transfer reference number.');
+          this._alertPopup.show('Please fill up all required fields.');
         }
       }
     }]);
@@ -4176,7 +4215,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDayPicker = __webpack_require__(162);
+  var _reactDayPicker = __webpack_require__(163);
 
   var _reactDayPicker2 = _interopRequireDefault(_reactDayPicker);
 
@@ -7327,7 +7366,12 @@ module.exports =
               _react2['default'].createElement(
                 'p',
                 null,
-                'Please confirm your booking by clicking the "Confirm Booking" button below.',
+                'There will be an additional 3% transaction charge.'
+              ),
+              _react2['default'].createElement(
+                'p',
+                null,
+                'Please initiate your payment by clicking the "Pay Now" button below.',
                 _react2['default'].createElement('br', null),
                 'You will be redirected to Paypal to complete your payment.'
               ),
@@ -7338,7 +7382,7 @@ module.exports =
                 _react2['default'].createElement(
                   'a',
                   { href: '#', className: 'btn btn-primary', onClick: this._onConfirm.bind(this) },
-                  'CONFIRM BOOKING'
+                  'PAY NOW'
                 )
               )
             )
@@ -7480,7 +7524,7 @@ module.exports =
           _react2['default'].createElement(
             'div',
             { className: 'BookingPostCompleteHeader' },
-            'THANK YOU'
+            'THANK YOU FOR YOUR PAYMENT'
           ),
           _react2['default'].createElement(
             'div',
@@ -9090,15 +9134,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactIconsLibFaFacebook = __webpack_require__(164);
+  var _reactIconsLibFaFacebook = __webpack_require__(165);
 
   var _reactIconsLibFaFacebook2 = _interopRequireDefault(_reactIconsLibFaFacebook);
 
-  var _reactIconsLibFaTwitter = __webpack_require__(166);
+  var _reactIconsLibFaTwitter = __webpack_require__(167);
 
   var _reactIconsLibFaTwitter2 = _interopRequireDefault(_reactIconsLibFaTwitter);
 
-  var _reactIconsLibFaInstagram = __webpack_require__(165);
+  var _reactIconsLibFaInstagram = __webpack_require__(166);
 
   var _reactIconsLibFaInstagram2 = _interopRequireDefault(_reactIconsLibFaInstagram);
 
@@ -9811,7 +9855,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactSanfona = __webpack_require__(167);
+  var _reactSanfona = __webpack_require__(168);
 
   var _superagent = __webpack_require__(7);
 
@@ -14182,7 +14226,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingBankTransfer {\n  position: relative;\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.BookingBankTransfer .BookingBankTransferLogo {\n  margin: 0 10px;\n}", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n/*!\r\n * https://github.com/arqex/react-datetime\r\n */\r\n\r\n.rdt {\r\n\tposition: relative;\r\n}\r\n.rdtPicker {\r\n\tdisplay: none;\r\n\tposition: absolute;\r\n  width: 250px;\r\n  padding: 4px;\r\n  margin-top: 1px;\r\n  z-index: 99999 !important;\r\n  background: #fff;\r\n  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.1);\r\n          box-shadow: 0 1px 3px rgba(0,0,0,.1);\r\n  border: 1px solid #f9f9f9;\r\n}\r\n.rdtOpen .rdtPicker {\r\n\tdisplay: block;\r\n}\r\n.rdtStatic .rdtPicker {\r\n\t-webkit-box-shadow: none;\r\n\t        box-shadow: none;\r\n\tposition: static;\r\n}\r\n\r\n.rdtPicker .rdtTimeToggle {\r\n\ttext-align: center;\r\n}\r\n\r\n.rdtPicker table {\r\n  width: 100%;\r\n  margin: 0;\r\n}\r\n.rdtPicker td, .rdtPicker th {\r\n  text-align: center;\r\n  height: 28px;\r\n}\r\n.rdtPicker td.rdtToday:hover, .rdtPicker td.rdtHour:hover, .rdtPicker td.rdtMinute:hover, .rdtPicker td.rdtSecond:hover, .rdtPicker .rdtTimeToggle:hover {\r\n  background: #eeeeee;\r\n  cursor: pointer;\r\n}\r\n.rdtPicker td.rdtOld, .rdtPicker td.rdtNew {\r\n  color: #999999;\r\n}\r\n.rdtPicker td.rdtToday {\r\n  position: relative;\r\n}\r\n.rdtPicker td.rdtToday:before {\r\n  content: '';\r\n  display: inline-block;\r\n  border-left: 7px solid transparent;\r\n  border-bottom: 7px solid #428bca;\r\n  border-top-color: rgba(0, 0, 0, 0.2);\r\n  position: absolute;\r\n  bottom: 4px;\r\n  right: 4px;\r\n}\r\n.rdtPicker td.rdtActive, .rdtPicker td.rdtActive:hover {\r\n  background-color: #428bca;\r\n  color: #fff;\r\n  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);\r\n}\r\n.rdtPicker td.rdtActive.rdtToday:before {\r\n  border-bottom-color: #fff;\r\n}\r\n.rdtPicker td.rdtDisabled, .rdtPicker td.rdtDisabled:hover {\r\n  background: none;\r\n  color: #999999;\r\n  cursor: not-allowed;\r\n}\r\n\r\n.rdtPicker td span.rdtOld {\r\n  color: #999999;\r\n}\r\n.rdtPicker td span.rdtDisabled, .rdtPicker td span.rdtDisabled:hover {\r\n  background: none;\r\n  color: #999999;\r\n  cursor: not-allowed;\r\n}\r\n.rdtPicker th {\r\n\tborder-bottom: 1px solid #f9f9f9;\r\n}\r\n.rdtPicker .dow {\r\n  width: 14.2857%;\r\n  border-bottom: none;\r\n}\r\n.rdtPicker th.rdtSwitch {\r\n  width: 100px;\r\n}\r\n.rdtPicker th.rdtNext, .rdtPicker th.rdtPrev {\r\n  font-size: 21px;\r\n  vertical-align: top;\r\n}\r\n.rdtPicker th.rdtDisabled, .rdtPicker th.rdtDisabled:hover {\r\n  background: none;\r\n  color: #999999;\r\n  cursor: not-allowed;\r\n}\r\n.rdtPicker thead tr:first-child th {\r\n  cursor: pointer;\r\n}\r\n.rdtPicker thead tr:first-child th:hover {\r\n  background: #eeeeee;\r\n}\r\n\r\n.rdtPicker tfoot{\r\n\tborder-top: 1px solid #f9f9f9;\r\n}\r\n\r\n.rdtPicker button {\r\n\tborder: none;\r\n\tbackground: none;\r\n\tcursor: pointer;\r\n}\r\n.rdtPicker button:hover {\r\n\tbackground-color: #eee;\r\n}\r\n\r\n.rdtPicker thead button {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n}\r\n\r\ntd.rdtMonth, td.rdtYear {\r\n\theight: 50px;\r\n\twidth: 25%;\r\n\tcursor: pointer;\r\n}\r\ntd.rdtMonth:hover, td.rdtYear:hover {\r\n\tbackground: #eee;\r\n}\r\n\r\n.rdtCounters {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n.rdtCounters > div{\r\n\tfloat: left;\r\n}\r\n\r\n.rdtCounter {\r\n\theight: 100px;\r\n}\r\n\r\n.rdtCounter {\r\n\twidth: 40px;\r\n}\r\n\r\n.rdtCounterSeparator {\r\n\tline-height: 100px;\r\n}\r\n\r\n.rdtCounter .rdtBtn {\r\n\theight: 40%;\r\n  \tline-height: 40px;\r\n  \tcursor: pointer;\r\n}\r\n.rdtCounter .rdtBtn:hover {\r\n\tbackground: #eee;\r\n}\r\n.rdtCounter .rdtCount {\r\n\theight: 20%;\r\n\tfont-size: 1.2em;\r\n}\r\n\r\n.rdtMilli {\r\n\tvertical-align: middle;\r\n\tpadding-left: 8px;\r\n\twidth: 48px;\r\n}\r\n\r\n.rdtMilli input {\r\n\twidth: 100%;\r\n\tfont-size: 1.2em;\r\n\tmargin-top: 37px;\r\n}\n\n.BookingBankTransfer {\n  position: relative;\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.BookingBankTransfer .BookingBankTransferLogo {\r\n\tmargin: 0 10px;\r\n}\n\n.BookingBankTransfer .rdt {\r\n\tdisplay: inline-block;\r\n}\n\n.BookingBankTransfer .rdt .rdtPicker .rdtDay {\r\n\tcursor: pointer;\r\n}", ""]);
 
   // exports
 
@@ -14907,34 +14951,40 @@ module.exports =
 /* 162 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-day-picker");
+  module.exports = require("react-datetime");
 
 /***/ },
 /* 163 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-dom");
+  module.exports = require("react-day-picker");
 
 /***/ },
 /* 164 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/facebook");
+  module.exports = require("react-dom");
 
 /***/ },
 /* 165 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/instagram");
+  module.exports = require("react-icons/lib/fa/facebook");
 
 /***/ },
 /* 166 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/twitter");
+  module.exports = require("react-icons/lib/fa/instagram");
 
 /***/ },
 /* 167 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-icons/lib/fa/twitter");
+
+/***/ },
+/* 168 */
 /***/ function(module, exports) {
 
   module.exports = require("react-sanfona");
