@@ -2558,7 +2558,7 @@ module.exports =
                     { href: '#', className: 'btn Actions-item-button', onClick: function (e) {
                         e.preventDefault();
                       } },
-                    '6873 0132'
+                    '6514 9729'
                   )
                 )
               )
@@ -2832,7 +2832,13 @@ module.exports =
                 _react2['default'].createElement(
                   'li',
                   null,
-                  'Transfer the total amount via bank transfer (ATM / iBanking).'
+                  'Transfer the total amount via bank transfer (ATM / iBanking). If you are using internet banking, please set your booking ID ',
+                  _react2['default'].createElement(
+                    'b',
+                    null,
+                    this.props.booking.id
+                  ),
+                  ' as transaction reference for faster verification.'
                 ),
                 _react2['default'].createElement(
                   'li',
@@ -3250,7 +3256,7 @@ module.exports =
                 { href: 'mailto:contact@ebeecare.com' },
                 'contact@ebeecare.com'
               ),
-              ' or call us at 6873 0132, Mon-Fri (9.00am - 6.00pm).'
+              ' or call us at 6514 9729, Mon-Fri (9.00am - 6.00pm).'
             ),
             _react2['default'].createElement(
               'div',
@@ -3285,7 +3291,7 @@ module.exports =
                 { href: 'mailto:contact@ebeecare.com' },
                 'contact@ebeecare.com'
               ),
-              ' or 6873 0132 immediately.'
+              ' or 6514 9729 immediately.'
             )
           );
         } else {
@@ -9205,7 +9211,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'Footer-tel' },
-                  '6873 0132'
+                  '6514 9729'
                 ),
                 _react2['default'].createElement(
                   'div',
