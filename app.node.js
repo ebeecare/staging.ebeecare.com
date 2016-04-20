@@ -488,6 +488,16 @@ module.exports =
     },
 
     /**
+     * @param  {string} promoCode The promo code
+     */
+    setPromoCode: function(promoCode) {
+      AppDispatcher.dispatch({
+        actionType: BookingConstants.BOOKING_SET_PROMO,
+        promoCode: promoCode
+      });
+    },
+
+    /**
      * @param  {string} booker The booker object containing contact and patient details
      */
     setBooker: function(booker) {
@@ -563,13 +573,20 @@ module.exports =
 
 /***/ },
 /* 6 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  var _moment = __webpack_require__(12);
+
+  var _moment2 = _interopRequireDefault(_moment);
+
   var ALL_SERVICES = 'All Services';
 
   function isProduction() {
@@ -624,13 +641,33 @@ module.exports =
     return arr;
   }
 
+  function calcRate(session, promo, sid) {
+    if (promo && promo.discountedRate) {
+      // verify promo is applicable to session
+      var isPromoApplicable = promo.services.some(function (elem) {
+        return elem === sid;
+      }) && promo.dates.some(function (elem) {
+        return elem.type === 'Scheduled' && elem.status === 'Active' && (0, _moment2['default'])(session.date) >= (0, _moment2['default'])(elem.dateTimeStart.substr(0, 10)) && (0, _moment2['default'])(session.date) <= (0, _moment2['default'])(elem.dateTimeEnd.substr(0, 10));
+      }) && !promo.dates.some(function (elem) {
+        return elem.type === 'Void' && elem.status === 'Active' && !(0, _moment2['default'])(session.date).isSame((0, _moment2['default'])(elem.dateTimeStart.substr(0, 10)));
+      });
+      if (isPromoApplicable) {
+        return parseFloat(session.price) * (100 - parseFloat(promo.discountedRate)) / 100;
+      } else {
+        return parseFloat(session.price);
+      }
+    } else {
+      return parseFloat(session.price);
+    }
+  }
+
   var util = {
     host: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://api.ebeecare.com' : 'http://dev.ebeecare.com',
     authKey: 'secret',
     authSecret: 'secret0nlyWeilsonKnowsShhh852~',
 
     backend: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://app.ebeecare.com' : 'http://dev.ebeecare.com',
-    partners: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeepartners.com') > -1 ? 'https://www.ebeecare.com' : 'http://staging.ebeepartners.com',
+    partners: typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1 ? 'https://www.ebeepartners.com' : 'http://staging.ebeepartners.com',
 
     isProduction: isProduction,
 
@@ -640,7 +677,9 @@ module.exports =
 
     ALL_SERVICES: ALL_SERVICES,
     filterServices: filterServices,
-    subFilterServices: subFilterServices
+    subFilterServices: subFilterServices,
+
+    calcRate: calcRate
   };
 
   exports['default'] = util;
@@ -761,6 +800,12 @@ module.exports =
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+  module.exports = require("moment");
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1141,12 +1186,6 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-  module.exports = require("moment");
-
-/***/ },
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -1373,6 +1412,7 @@ module.exports =
     'booking3a',
     'booking3b',
     'booking3c',
+    'booking4',
     'booking-confirmation',
     'booking-payment'
   ];
@@ -1506,6 +1546,11 @@ module.exports =
         BookingStore.emitChange();
         break;
 
+      case BookingConstants.BOOKING_SET_PROMO:
+        _booking.promoCode = action.promoCode;
+        BookingStore.emitChange();
+        break;
+
       case BookingConstants.BOOKING_SET_BOOKING:
         _booking = action.booking;
         BookingStore.emitChange();
@@ -1574,7 +1619,8 @@ module.exports =
     BOOKING_SET_USER: null,
     BOOKING_SET_PATIENT: null,
     BOOKING_DESTROY: null,
-    BOOKING_SET_POST_STATUS: null
+    BOOKING_SET_POST_STATUS: null,
+    BOOKING_SET_PROMO: null
   });
 
 
@@ -2469,19 +2515,19 @@ module.exports =
 
   var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
-  var Features = (function (_Component) {
-    _inherits(Features, _Component);
+  var Actions = (function (_Component) {
+    _inherits(Actions, _Component);
 
-    function Features(props) {
-      _classCallCheck(this, Features);
+    function Actions(props) {
+      _classCallCheck(this, Actions);
 
-      _get(Object.getPrototypeOf(Features.prototype), 'constructor', this).call(this, props);
+      _get(Object.getPrototypeOf(Actions.prototype), 'constructor', this).call(this, props);
       this.state = {
         sessionsCount: undefined
       };
     }
 
-    _createClass(Features, [{
+    _createClass(Actions, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
         this._startCounter();
@@ -2570,7 +2616,12 @@ module.exports =
       key: '_startCounter',
       value: function _startCounter() {
         if (typeof window !== 'undefined') {
-          window.setInterval(this._getStatistics.bind(this), 5000);
+          if (window.location.hostname.indexOf('localhost') > -1) {
+            // just retrieve once only during development, to prevent annoying multiple GET requests
+            this._getStatistics();
+          } else {
+            window.setInterval(this._getStatistics.bind(this), 5000);
+          }
         }
       }
     }, {
@@ -2594,10 +2645,10 @@ module.exports =
       }
     }]);
 
-    return Features;
+    return Actions;
   })(_react.Component);
 
-  exports['default'] = Features;
+  exports['default'] = Actions;
   module.exports = exports['default'];
 
 /***/ },
@@ -2723,7 +2774,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -3063,7 +3114,8 @@ module.exports =
               address: this.props.booking && this.props.booking.location && this.props.booking.location.address,
               postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
               unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
-            }]
+            }],
+            promoCode: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code
           }).end(function (err, res) {
             if (err) {
               return console.error(_coreUtil2['default'].host + '/api/createCase', err.toString());
@@ -3115,7 +3167,8 @@ module.exports =
                 postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
                 unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
               }]
-            }
+            },
+            promoCode: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code
           }).end(function (err, res) {
             if (err) {
               return console.error(_coreUtil2['default'].host + '/api/createBooking', err.toString());
@@ -3245,7 +3298,7 @@ module.exports =
               'div',
               null,
               'ESTIMATED AMOUNT : SGD ',
-              this.state.bookingAmt
+              parseFloat(this.state.bookingAmt).toFixed(2)
             ),
             _react2['default'].createElement(
               'div',
@@ -3378,7 +3431,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4233,7 +4286,7 @@ module.exports =
 
   var _lodashRemove2 = _interopRequireDefault(_lodashRemove);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4599,7 +4652,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -5097,7 +5150,7 @@ module.exports =
                 'div',
                 { className: 'TableRowItem1' },
                 '$ ',
-                session.price
+                session.pdiscount ? ((100 - parseFloat(session.pdiscount)) * parseFloat(session.price) / 100).toFixed(2) : session.price
               )
             );
           })
@@ -5590,7 +5643,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -5999,7 +6052,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -7762,7 +7815,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -7847,7 +7900,7 @@ module.exports =
                       'span',
                       { className: 'BookingPostSidebarItemRight' },
                       '$ ',
-                      session.price
+                      session.pdiscount ? ((100 - parseFloat(session.pdiscount)) * parseFloat(session.price) / 100).toFixed(2) : session.price
                     )
                   );
                 })
@@ -7919,7 +7972,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -7967,6 +8020,9 @@ module.exports =
       this.state = {
         sessions: undefined,
         slots: undefined,
+        promoCode: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code,
+        showPromoButton: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code && this.props.booking.promoCode.code.length ? true : false,
+        disablePromo: this.props.booking && this.props.booking.promoCode ? true : false,
         agree: false
       };
     }
@@ -7979,7 +8035,7 @@ module.exports =
         // Reset sum displayed on sidebar
         _actionsBookingActions2['default'].setSum();
 
-        this.serverRequest = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getAvailableSchedule').query({
+        this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getAvailableSchedule').query({
           service: this.props.booking.service,
           'dates[]': this.props.booking.dates.map(function (date) {
             return (0, _moment2['default'])(date).format('YYYY-MM-DD');
@@ -8015,7 +8071,7 @@ module.exports =
               sessions[i] = (0, _objectAssign2['default'])(session, { date: timeslot.date });
               if (session.time) {
                 checkedData['session' + i] = true;
-                sum += parseFloat(sessions[i]['price']);
+                sum += _coreUtil2['default'].calcRate(sessions[i], _this.props.booking.promoCode, _this.props.booking.service);
               } else {
                 session.disabled = true;
               }
@@ -8034,7 +8090,7 @@ module.exports =
     }, {
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
-        this.serverRequest && this.serverRequest.abort();
+        this.serverRequest1 && this.serverRequest1.abort();
       }
     }, {
       key: 'render',
@@ -8048,16 +8104,25 @@ module.exports =
           return function (e) {
             checkedLink(key).requestChange(e.target.checked);
 
-            var sum = 0;
-            for (var i = 0; i < _this2.state.sessions.length; i++) {
-              if (_this2.state['session' + i]) {
-                sum += parseFloat(_this2.state.sessions[i].price);
-              }
-            }
-            // this.props.booking.sum = this.state.sum;
-            _actionsBookingActions2['default'].setSum(sum);
+            _this2._updateSum();
           };
         };
+        var promoButton;
+        if (this.state.showPromoButton) {
+          if (this.props.booking.promoCode) {
+            promoButton = _react2['default'].createElement(
+              'button',
+              { className: 'btn btn-primary btn-small', onClick: this._onRemovePromo.bind(this) },
+              'Remove'
+            );
+          } else {
+            promoButton = _react2['default'].createElement(
+              'button',
+              { className: 'btn btn-primary btn-small', onClick: this._onApplyPromo.bind(this) },
+              'Apply'
+            );
+          }
+        }
         return _react2['default'].createElement(
           'div',
           { className: 'BookingResults' },
@@ -8068,6 +8133,41 @@ module.exports =
               'div',
               null,
               this.state.sessions && this.state.sessions.map(function (session, index) {
+                var promo, rate, discountedRate, priceText;
+                promo = _this2.props.booking.promoCode;
+                rate = session.price;
+                if (promo) {
+                  discountedRate = _coreUtil2['default'].calcRate(session, _this2.props.booking.promoCode, _this2.props.booking.service).toFixed(2);
+                  if (discountedRate == rate) {
+                    // empty discountedRate if there is actually no discount
+                    discountedRate = null;
+                  }
+                }
+                if (promo && discountedRate) {
+                  priceText = _react2['default'].createElement(
+                    'span',
+                    null,
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'strike-through nowrap' },
+                      '$ ',
+                      rate
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      { className: 'nowrap' },
+                      ' $ ',
+                      discountedRate
+                    )
+                  );
+                } else {
+                  priceText = _react2['default'].createElement(
+                    'span',
+                    { className: 'nowrap' },
+                    '$ ',
+                    rate
+                  );
+                }
                 return _react2['default'].createElement(
                   'div',
                   { className: 'BookingResultsItem', key: index },
@@ -8095,13 +8195,33 @@ module.exports =
                         _react2['default'].createElement(
                           'span',
                           null,
-                          session.time ? '$ ' + session.price : ''
+                          session.time ? priceText : ''
                         )
                       )
                     )
                   )
                 );
               })
+            ),
+            _react2['default'].createElement(
+              'form',
+              { ref: function (c) {
+                  return _this2._promoForm = c;
+                }, autoComplete: 'off' },
+              _react2['default'].createElement(
+                'div',
+                { className: 'BookingPromoSection' },
+                _react2['default'].createElement(
+                  'div',
+                  null,
+                  _react2['default'].createElement('input', { type: 'text', id: 'promoCode', name: 'promoCode', value: this.state.promoCode, onChange: this._onKeyPromo.bind(this), placeholder: 'Promotion Code (Optional)', maxLength: '50', disabled: this.state.disablePromo, required: true })
+                ),
+                _react2['default'].createElement(
+                  'div',
+                  null,
+                  promoButton
+                )
+              )
             ),
             _react2['default'].createElement('p', null),
             _react2['default'].createElement(
@@ -8162,6 +8282,70 @@ module.exports =
         );
       }
     }, {
+      key: '_onKeyPromo',
+      value: function _onKeyPromo(event) {
+        if (event.target.value && event.target.value.length) {
+          this.setState({
+            promoCode: event.target.value,
+            showPromoButton: true
+          });
+        } else {
+          this.setState({
+            promoCode: event.target.value,
+            showPromoButton: false
+          });
+        }
+      }
+    }, {
+      key: '_onApplyPromo',
+      value: function _onApplyPromo(event) {
+        var _this3 = this;
+
+        if (this._promoForm.checkValidity()) {
+          event.preventDefault();
+
+          this.serverRequest2 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/checkPromocode').query({
+            code: this.state.promoCode
+          }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
+            if (err) {
+              return console.error(_coreUtil2['default'].host + '/api/checkPromocode', status, err.toString());
+            }
+            // console.log(res.body);
+            if (res.body && res.body.status === 1 && res.body.promoCode && res.body.promoCode.status === 'Active') {
+              // console.log(res.body.timeSlots);
+              _this3.setState({
+                promoCode: res.body.promoCode.code,
+                disablePromo: true
+              });
+              _actionsBookingActions2['default'].setPromoCode(res.body.promoCode);
+
+              _this3._updateSum();
+            } else {
+              _this3._alertPopup.show('Your promotion code is not valid.');
+              console.error('Failed to obtain promo code data.');
+
+              _this3.setState({ promoCode: undefined });
+            }
+          });
+        } else {
+          this._alertPopup.show('Please enter your promotion code.');
+
+          this.setState({ promoCode: undefined });
+        }
+      }
+    }, {
+      key: '_onRemovePromo',
+      value: function _onRemovePromo(event) {
+        event.preventDefault();
+        this.setState({
+          promoCode: undefined,
+          disablePromo: false
+        });
+        _actionsBookingActions2['default'].setPromoCode();
+
+        this._updateSum();
+      }
+    }, {
       key: '_onCheckedAgree',
       value: function _onCheckedAgree(event) {
         this.setState({
@@ -8171,7 +8355,7 @@ module.exports =
     }, {
       key: '_onNext',
       value: function _onNext(event) {
-        var _this3 = this;
+        var _this4 = this;
 
         var sessions = [];
         for (var i = 0; i < this.state.sessions.length; i++) {
@@ -8190,7 +8374,7 @@ module.exports =
 
         // if (confirm('Would you like to confirm the sessions?')) {
         this._confirmPopup.show(function () {
-          if (_this3._agreeForm.checkValidity()) {
+          if (_this4._agreeForm.checkValidity()) {
             // Link.handleClick(event);
             _coreLocation2['default'].push({ pathname: '/booking4' });
 
@@ -8199,13 +8383,25 @@ module.exports =
             // console.log(this.state);
             _actionsBookingActions2['default'].setLast('booking3c');
           } else {
-            _this3._rejectPopup.show('To continue, please accept our Terms of Service and Privacy Policy.');
+            _this4._rejectPopup.show('To continue, please accept our Terms of Service and Privacy Policy.');
           }
         });
 
         // } else {
         event.preventDefault();
         // }
+      }
+    }, {
+      key: '_updateSum',
+      value: function _updateSum() {
+        var sum = 0;
+        for (var i = 0; i < this.state.sessions.length; i++) {
+          if (this.state['session' + i]) {
+            sum += _coreUtil2['default'].calcRate(this.state.sessions[i], this.props.booking.promoCode, this.props.booking.service);
+          }
+        }
+        // this.props.booking.sum = this.state.sum;
+        _actionsBookingActions2['default'].setSum(sum);
       }
     }]);
 
@@ -8546,7 +8742,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(13);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -10606,7 +10802,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10656,7 +10852,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10706,7 +10902,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10756,7 +10952,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10806,7 +11002,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10856,7 +11052,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10906,7 +11102,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -10956,7 +11152,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11006,7 +11202,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(12);
+  var _componentsBookingAppBookingApp = __webpack_require__(13);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -14470,7 +14666,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingResults {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n}\n\n.BookingResults .BookingResultsItem {\n  padding: 10px 0;\n  border-top: 1px solid #ccc;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckbox {\n  width: 0;\n  float: left\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckbox:checked + label {\n  color: #f78d00;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckbox:disabled + label {\n  color: #969696;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel {\n  display: block;\n  // margin-left: 100px;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper {\n  display: block;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta span:nth-child(1) {\n  width: 75px;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta span:nth-child(3) {\n  width: 100px;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel > span {\n  float: left;\n}\n\n.BookingResults .BookingResultsItem:first-child {\n  border-top: 0;\n}", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingResults {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n}\n\n.BookingResults .BookingResultsItem {\n  padding: 10px 0;\n  border-top: 1px solid #ccc;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckbox {\n  width: 0;\n  float: left\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckbox:checked + label {\n  color: #f78d00;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckbox:disabled + label {\n  color: #969696;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel {\n  display: block;\n  // margin-left: 100px;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper {\n  display: block;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta span:nth-child(1) {\n  width: 75px;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta span:nth-child(3) {\n  width: 150px;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel .BookingResultsCheckboxLabelMetaWrapper .BookingResultsCheckboxLabelMeta .strike-through {\n  color: #fdbc1d;\n}\n\n.BookingResults .BookingResultsItem .BookingResultsCheckboxLabel > span {\n  float: left;\n}\n\n.BookingResults .BookingResultsItem:first-child {\n  border-top: 0;\n}\n\n.BookingResults .BookingPromoSection div {\n  text-align: left;\n}\n\n.BookingResults .BookingPromoSection div input {\n  margin-right: 0;\n}\n\n.BookingResults .BookingPromoSection div button.btn {\n  margin-top: 10px;\n}\n\n@media (max-width: 768px) {\n\n  .BookingResults .BookingPromoSection div {\n    text-align: center;\n  }\n      }", ""]);
 
   // exports
 
@@ -14582,7 +14778,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(123) + ");\n  font-style: normal;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(122) + ");\n  font-style: italic;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(125) + ");\n  font-style: normal;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(124) + ");\n  font-style: italic;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(127) + ");\n  font-style: normal;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(126) + ");\n  font-style: italic;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(135) + ");\n  font-style: normal;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(134) + ");\n  font-style: italic;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(132) + ");\n  font-style: italic;\n  font-weight: 600;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(131) + ");\n  font-style: normal;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(130) + ");\n  font-style: italic;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(129) + ");\n  font-style: normal;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(128) + ");\n  font-style: italic;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(133) + ");\n  font-style: normal;\n  font-weight: 600;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(145) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(151) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(150) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(152) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}", ""]);
+  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(123) + ");\n  font-style: normal;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(122) + ");\n  font-style: italic;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(125) + ");\n  font-style: normal;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(124) + ");\n  font-style: italic;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(127) + ");\n  font-style: normal;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(126) + ");\n  font-style: italic;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(135) + ");\n  font-style: normal;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(134) + ");\n  font-style: italic;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(132) + ");\n  font-style: italic;\n  font-weight: 600;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(131) + ");\n  font-style: normal;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(130) + ");\n  font-style: italic;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(129) + ");\n  font-style: normal;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(128) + ");\n  font-style: italic;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: url(" + __webpack_require__(133) + ");\n  font-style: normal;\n  font-weight: 600;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(145) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(151) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(150) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(152) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput:disabled, textarea:disabled {\n  color: #969696;\n  background-color: #f3f3f3;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.strike-through {\n  text-decoration: line-through;\n}\n\n.nowrap {\n  white-space: nowrap;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}", ""]);
 
   // exports
 
