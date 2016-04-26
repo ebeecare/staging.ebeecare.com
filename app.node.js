@@ -6509,39 +6509,43 @@ module.exports =
                 ),
                 _react2['default'].createElement(
                   'div',
-                  { className: 'radio radio-inline' },
-                  _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_male', name: 'patient_gender', checked: this.state.patient_gender === 'Male', onChange: this._onSelectGender.bind(this, 'patient_gender'), value: 'Male', required: true }),
+                  null,
                   _react2['default'].createElement(
-                    'label',
-                    { htmlFor: 'patient_gender_male' },
+                    'div',
+                    { className: 'radio radio-inline' },
+                    _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_male', name: 'patient_gender', checked: this.state.patient_gender === 'Male', onChange: this._onSelectGender.bind(this, 'patient_gender'), value: 'Male', required: true }),
                     _react2['default'].createElement(
-                      'span',
-                      null,
-                      _react2['default'].createElement('span', null)
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      null,
-                      'Male'
+                      'label',
+                      { htmlFor: 'patient_gender_male' },
+                      _react2['default'].createElement(
+                        'span',
+                        null,
+                        _react2['default'].createElement('span', null)
+                      ),
+                      _react2['default'].createElement(
+                        'span',
+                        null,
+                        'Male'
+                      )
                     )
-                  )
-                ),
-                _react2['default'].createElement(
-                  'div',
-                  { className: 'radio radio-inline' },
-                  _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_female', name: 'patient_gender', checked: this.state.patient_gender === 'Female', onChange: this._onSelectGender.bind(this, 'patient_gender'), value: 'Female', required: true }),
+                  ),
                   _react2['default'].createElement(
-                    'label',
-                    { htmlFor: 'patient_gender_female' },
+                    'div',
+                    { className: 'radio radio-inline' },
+                    _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_female', name: 'patient_gender', checked: this.state.patient_gender === 'Female', onChange: this._onSelectGender.bind(this, 'patient_gender'), value: 'Female', required: true }),
                     _react2['default'].createElement(
-                      'span',
-                      null,
-                      _react2['default'].createElement('span', null)
-                    ),
-                    _react2['default'].createElement(
-                      'span',
-                      null,
-                      'Female'
+                      'label',
+                      { htmlFor: 'patient_gender_female' },
+                      _react2['default'].createElement(
+                        'span',
+                        null,
+                        _react2['default'].createElement('span', null)
+                      ),
+                      _react2['default'].createElement(
+                        'span',
+                        null,
+                        'Female'
+                      )
                     )
                   )
                 )
@@ -6736,39 +6740,43 @@ module.exports =
               ),
               _react2['default'].createElement(
                 'div',
-                { className: 'radio radio-inline' },
-                _react2['default'].createElement('input', { type: 'radio', id: 'gender_male', name: 'gender', checked: this.state.gender === 'Male', onChange: this._onSelectGender.bind(this, 'gender'), value: 'Male', required: true }),
+                null,
                 _react2['default'].createElement(
-                  'label',
-                  { htmlFor: 'gender_male' },
+                  'div',
+                  { className: 'radio radio-inline' },
+                  _react2['default'].createElement('input', { type: 'radio', id: 'gender_male', name: 'gender', checked: this.state.gender === 'Male', onChange: this._onSelectGender.bind(this, 'gender'), value: 'Male', required: true }),
                   _react2['default'].createElement(
-                    'span',
-                    null,
-                    _react2['default'].createElement('span', null)
-                  ),
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    'Male'
+                    'label',
+                    { htmlFor: 'gender_male' },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      _react2['default'].createElement('span', null)
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Male'
+                    )
                   )
-                )
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'radio radio-inline' },
-                _react2['default'].createElement('input', { type: 'radio', id: 'gender_female', name: 'gender', checked: this.state.gender === 'Female', onChange: this._onSelectGender.bind(this, 'gender'), value: 'Female', required: true }),
+                ),
                 _react2['default'].createElement(
-                  'label',
-                  { htmlFor: 'gender_female' },
+                  'div',
+                  { className: 'radio radio-inline' },
+                  _react2['default'].createElement('input', { type: 'radio', id: 'gender_female', name: 'gender', checked: this.state.gender === 'Female', onChange: this._onSelectGender.bind(this, 'gender'), value: 'Female', required: true }),
                   _react2['default'].createElement(
-                    'span',
-                    null,
-                    _react2['default'].createElement('span', null)
-                  ),
-                  _react2['default'].createElement(
-                    'span',
-                    null,
-                    'Female'
+                    'label',
+                    { htmlFor: 'gender_female' },
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      _react2['default'].createElement('span', null)
+                    ),
+                    _react2['default'].createElement(
+                      'span',
+                      null,
+                      'Female'
+                    )
                   )
                 )
               )
@@ -7137,7 +7145,7 @@ module.exports =
           this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createPatient').auth(this.props.user.id, this.props.user.token).send({
             fullName: this.state.fullName,
             gender: this.state.gender,
-            dob: this.state.dob.format('YYYY-MM-DD'),
+            dob: (0, _moment2['default'])(this.state.dob).format('YYYY-MM-DD'),
             addresses: [{
               address: this.state.address,
               postalCode: this.state.postalCode,
