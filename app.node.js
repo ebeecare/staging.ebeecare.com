@@ -10122,9 +10122,9 @@ module.exports =
       value: function render() {
         var accountText;
         if (_coreUtil2['default'].isLoggedInBackend()) {
-          accountText = 'Dashboard';
+          accountText = 'DASHBOARD';
         } else {
-          accountText = 'Login';
+          accountText = 'LOGIN';
         }
         return _react2['default'].createElement(
           'div',
@@ -10138,7 +10138,7 @@ module.exports =
               _react2['default'].createElement(
                 'a',
                 { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/about' ? 'active' : ''), href: '/about', onClick: _Link2['default'].handleClick },
-                'About'
+                'ABOUT'
               )
             ),
             _react2['default'].createElement(
@@ -10147,7 +10147,16 @@ module.exports =
               _react2['default'].createElement(
                 'a',
                 { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/services' ? 'active' : ''), href: '/services', onClick: _Link2['default'].handleClick },
-                'Services'
+                'SERVICES'
+              )
+            ),
+            _react2['default'].createElement(
+              'li',
+              { className: 'Navigation-item' },
+              _react2['default'].createElement(
+                'a',
+                { className: 'Navigation-link', href: 'http://smarteredu.org/smarteredu/institution/smarter-edx/eBeecare/' },
+                'eBeeACADEMY'
               )
             ),
             _react2['default'].createElement(
@@ -10156,7 +10165,7 @@ module.exports =
               _react2['default'].createElement(
                 'a',
                 { className: 'Navigation-link Navigation-link-highlight', href: _coreUtil2['default'].partners },
-                'Become a Partner'
+                'BECOME A PARTNER'
               )
             ),
             _react2['default'].createElement(
@@ -10165,7 +10174,7 @@ module.exports =
               _react2['default'].createElement(
                 'a',
                 { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/booking-manage' ? 'active' : ''), href: '/booking-manage', onClick: _Link2['default'].handleClick },
-                'Manage Booking'
+                'MANAGE BOOKING'
               )
             ),
             _react2['default'].createElement(
@@ -10194,7 +10203,7 @@ module.exports =
                   _react2['default'].createElement(
                     'a',
                     { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/about' ? 'active' : ''), href: '/about', onClick: _Link2['default'].handleClick },
-                    'About'
+                    'ABOUT'
                   )
                 ),
                 _react2['default'].createElement(
@@ -10203,7 +10212,7 @@ module.exports =
                   _react2['default'].createElement(
                     'a',
                     { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/services' ? 'active' : ''), href: '/services', onClick: _Link2['default'].handleClick },
-                    'Services'
+                    'SERVICES'
                   )
                 ),
                 _react2['default'].createElement(
@@ -10212,7 +10221,7 @@ module.exports =
                   _react2['default'].createElement(
                     'a',
                     { className: 'Navigation-link', href: 'http://smarteredu.org/smarteredu/institution/smarter-edx/eBeecare/' },
-                    'eBeeAcademy'
+                    'eBeeACADEMY'
                   )
                 ),
                 _react2['default'].createElement(
@@ -10221,7 +10230,7 @@ module.exports =
                   _react2['default'].createElement(
                     'a',
                     { className: 'Navigation-link Navigation-link-highlight', href: _coreUtil2['default'].partners },
-                    'Become a Partner'
+                    'BECOME A PARTNER'
                   )
                 ),
                 _react2['default'].createElement(
@@ -10230,7 +10239,7 @@ module.exports =
                   _react2['default'].createElement(
                     'a',
                     { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/booking-manage' ? 'active' : ''), href: '/booking-manage', onClick: _Link2['default'].handleClick },
-                    'Manage Booking'
+                    'MANAGE BOOKING'
                   )
                 ),
                 _react2['default'].createElement(
@@ -15024,7 +15033,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.NavWrapper {\n  background-color: #FFF;\n  position: relative\n}\n\n@media (max-width: 768px) {\n\n  .NavWrapper {\n    z-index: 2;\n    position: fixed;\n    height: 57px;\n    top: 0;\n    left: 0;\n    right: 0;\n    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);\n    -ms-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);\n    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25)\n  }\n  }\n\n.Navigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.Navigation-wrapper .Navigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n@media (max-width: 1200px) {\n\n  .Navigation-wrapper .Navigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Navigation-wrapper .Navigation {\n    display: none\n  }\n    }\n\n.Navigation-item {\n  padding: 0 0.5em;\n}\n\n.Navigation-item .Navigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #444;\n  font-size: 15px;\n  text-decoration: none;\n  text-transform: uppercase;\n  cursor: pointer\n}\n\n.Navigation-item .Navigation-link:hover {\n  border-bottom: 3px solid #444;\n  color: #444;\n  text-decoration: none\n}\n\n.Navigation-item .Navigation-link.active {\n  border-bottom: 3px solid #fdbc1d;\n  color: #fdbc1d;\n  font-weight: bold\n}\n\n.Navigation-item .Navigation-link-highlight {\n  background-color: #f78d00;\n  color: #fff;\n  //: 1px solid #f78d00;\n  //: 5px\n}\n\n.Navigation-item .Navigation-link-highlight:hover {\n  //: 1px solid #fdbc1d;\n  border: none;\n  background-color: #fdbc1d;\n  color: #fff\n}\n\n@media (max-width: 768px) {\n\n  .Navigation-item .Navigation-link {\n    font-size: 18px\n  }\n    }\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n  position: fixed;\n  width: 24px;\n  height: 20px;\n  right: 18.5px;\n  top: 18.5px\n}\n@media (min-width: 768px) {\n\n  .bm-burger-button {\n    display: none\n  }\n  }\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #fdbc1d;\n  height: 10% !important;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #f78d00;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #ffffff;\n  padding: 2.5em 1em 0;\n  font-size: 1.15em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  // padding: 0.8em;\n}\n.bm-item-list .Navigation-item {\n  padding: 0;\n}\n.bm-item-list .Navigation-item .Navigation-link {}\n.bm-item-list .Navigation-item .Navigation-link.active, .bm-item-list .Navigation-item .Navigation-link:hover {\n  border-bottom: none\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.5) !important;\n}", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.NavWrapper {\n  background-color: #FFF;\n  position: relative\n}\n\n@media (max-width: 768px) {\n\n  .NavWrapper {\n    z-index: 2;\n    position: fixed;\n    height: 57px;\n    top: 0;\n    left: 0;\n    right: 0;\n    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);\n    -ms-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);\n    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25)\n  }\n  }\n\n.Navigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.Navigation-wrapper .Navigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n@media (max-width: 1200px) {\n\n  .Navigation-wrapper .Navigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Navigation-wrapper .Navigation {\n    display: none\n  }\n    }\n\n.Navigation-item {\n  padding: 0 0.5em;\n}\n\n.Navigation-item .Navigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #444;\n  font-size: 15px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.Navigation-item .Navigation-link:hover {\n  border-bottom: 3px solid #444;\n  color: #444;\n  text-decoration: none\n}\n\n.Navigation-item .Navigation-link.active {\n  border-bottom: 3px solid #fdbc1d;\n  color: #fdbc1d;\n  font-weight: bold\n}\n\n.Navigation-item .Navigation-link-highlight {\n  background-color: #f78d00;\n  color: #fff;\n  //: 1px solid #f78d00;\n  //: 5px\n}\n\n.Navigation-item .Navigation-link-highlight:hover {\n  //: 1px solid #fdbc1d;\n  border: none;\n  background-color: #fdbc1d;\n  color: #fff\n}\n\n@media (max-width: 768px) {\n\n  .Navigation-item .Navigation-link {\n    font-size: 18px\n  }\n    }\n\n/* Position and sizing of burger button */\n.bm-burger-button {\n  position: fixed;\n  width: 24px;\n  height: 20px;\n  right: 18.5px;\n  top: 18.5px\n}\n@media (min-width: 768px) {\n\n  .bm-burger-button {\n    display: none\n  }\n  }\n\n/* Color/shape of burger icon bars */\n.bm-burger-bars {\n  background: #fdbc1d;\n  height: 10% !important;\n}\n\n/* Position and sizing of clickable cross button */\n.bm-cross-button {\n  height: 24px;\n  width: 24px;\n}\n\n/* Color/shape of close button cross */\n.bm-cross {\n  background: #f78d00;\n}\n\n/* General sidebar styles */\n.bm-menu {\n  background: #ffffff;\n  padding: 2.5em 1em 0;\n  font-size: 1.15em;\n}\n\n/* Morph shape necessary with bubble or elastic */\n.bm-morph-shape {\n  fill: #373a47;\n}\n\n/* Wrapper for item list */\n.bm-item-list {\n  color: #b8b7ad;\n  // padding: 0.8em;\n}\n.bm-item-list .Navigation-item {\n  padding: 0;\n}\n.bm-item-list .Navigation-item .Navigation-link {}\n.bm-item-list .Navigation-item .Navigation-link.active, .bm-item-list .Navigation-item .Navigation-link:hover {\n  border-bottom: none\n}\n\n/* Styling of overlay */\n.bm-overlay {\n  background: rgba(0, 0, 0, 0.5) !important;\n}\n", ""]);
 
   // exports
 
