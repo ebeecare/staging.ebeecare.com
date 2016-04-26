@@ -6729,6 +6729,21 @@ module.exports =
             _react2['default'].createElement(
               'div',
               null,
+              _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement('input', { className: 'RememberMeCheckbox', type: 'checkbox', id: 'isPatient', name: 'isPatient', onChange: this._onCheckedPatient.bind(this) }),
+                _react2['default'].createElement(
+                  'label',
+                  { className: 'RememberMeCheckboxLabel', htmlFor: 'isPatient' },
+                  _react2['default'].createElement('span', null),
+                  _react2['default'].createElement(
+                    'span',
+                    null,
+                    'Are you the patient?'
+                  )
+                )
+              ),
               _react2['default'].createElement('input', { type: 'text', id: 'fullName', name: 'fullName', valueLink: (0, _reactLinkState2['default'])(this, 'fullName'), placeholder: 'Full Name*', maxLength: '50', required: true }),
               _react2['default'].createElement(
                 'div',
@@ -7183,6 +7198,19 @@ module.exports =
           event.preventDefault();
           // alert('Please fill up all required fields.');
           this._alertPopup.show('Please fill up all required fields.');
+        }
+      }
+    }, {
+      key: '_onCheckedPatient',
+      value: function _onCheckedPatient(event) {
+        if (event.target.checked === true) {
+          this.setState({
+            fullName: this.props.user.first_name + ' ' + this.props.user.last_name
+          });
+        } else {
+          this.setState({
+            fullName: undefined
+          });
         }
       }
     }, {
@@ -9656,8 +9684,8 @@ module.exports =
                     { className: 'Footer-nav-item' },
                     _react2['default'].createElement(
                       'a',
-                      { className: (0, _classnames2['default'])('Footer-nav-link', this.props.path === '/faq' ? 'active' : ''), href: '/faq', onClick: _Link2['default'].handleClick },
-                      'FAQ'
+                      { className: 'Navigation-link', href: 'http://smarteredu.org/smarteredu/institution/smarter-edx/eBeecare/' },
+                      'Learn@eBeeACADEMY'
                     )
                   )
                 ),
@@ -10159,8 +10187,8 @@ module.exports =
               { className: 'Navigation-item' },
               _react2['default'].createElement(
                 'a',
-                { className: 'Navigation-link', href: 'http://smarteredu.org/smarteredu/institution/smarter-edx/eBeecare/' },
-                'eBeeACADEMY'
+                { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/faq' ? 'active' : ''), href: '/faq', onClick: _Link2['default'].handleClick },
+                'FAQ'
               )
             ),
             _react2['default'].createElement(
@@ -10224,8 +10252,8 @@ module.exports =
                   { className: 'Navigation-item' },
                   _react2['default'].createElement(
                     'a',
-                    { className: 'Navigation-link', href: 'http://smarteredu.org/smarteredu/institution/smarter-edx/eBeecare/' },
-                    'eBeeACADEMY'
+                    { className: (0, _classnames2['default'])('Navigation-link', this.props.path === '/faq' ? 'active' : ''), href: '/faq', onClick: _Link2['default'].handleClick },
+                    'FAQ'
                   )
                 ),
                 _react2['default'].createElement(
