@@ -341,7 +341,38 @@ module.exports =
           var link = event.currentTarget;
           _coreLocation2['default'].push({
             pathname: _this.props && _this.props.to || link.pathname + link.search,
-            state: _this.props && _this.props.state || null
+            state: _this.props && _this.props.state || null,
+            query: _this.props && _this.props.query || null
+          });
+        }
+      },
+      enumerable: true
+    }, {
+      key: 'handleClickQuery',
+      value: function value(query, event) {
+        var allowTransition = true;
+        var clickResult = undefined;
+
+        if (_this.props && _this.props.onClick) {
+          clickResult = _this.props.onClick(event);
+        }
+
+        if (isModifiedEvent(event) || !isLeftClickEvent(event)) {
+          return;
+        }
+
+        if (clickResult === false || event.defaultPrevented === true) {
+          allowTransition = false;
+        }
+
+        event.preventDefault();
+
+        if (allowTransition) {
+          var link = event.currentTarget;
+          _coreLocation2['default'].push({
+            pathname: _this.props && _this.props.to || link.pathname + link.search,
+            state: _this.props && _this.props.state || null,
+            query: _this.props && _this.props.query || query || null
           });
         }
       },
@@ -586,7 +617,7 @@ module.exports =
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -717,6 +748,12 @@ module.exports =
 
 /***/ },
 /* 11 */
+/***/ function(module, exports) {
+
+  module.exports = require("moment");
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -803,12 +840,6 @@ module.exports =
 
   exports['default'] = AlertPopup;
   module.exports = exports['default'];
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-  module.exports = require("moment");
 
 /***/ },
 /* 13 */
@@ -1056,7 +1087,7 @@ module.exports =
                 _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
                 _react2['default'].createElement(
                   _BookingLocationUser2['default'],
-                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, user: this.state.user, patient: this.state.patient },
+                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, user: this.state.user, patient: this.state.patient, location: this.props.location },
                   _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
                 )
               );
@@ -1067,7 +1098,7 @@ module.exports =
                 _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
                 _react2['default'].createElement(
                   _BookingLocation2['default'],
-                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking },
+                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, location: this.props.location },
                   _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
                 )
               );
@@ -1080,7 +1111,7 @@ module.exports =
               _react2['default'].createElement(
                 _BookingDateTime2['default'],
                 { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingDate2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingDate2['default'], { booking: this.state.booking, location: this.props.location }),
                 _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
               )
             );
@@ -1092,7 +1123,7 @@ module.exports =
               _react2['default'].createElement(
                 _BookingDateTime2['default'],
                 { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingTime2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingTime2['default'], { booking: this.state.booking, location: this.props.location }),
                 _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
               )
             );
@@ -1104,12 +1135,12 @@ module.exports =
               _react2['default'].createElement(
                 _BookingDateTime2['default'],
                 { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingResults2['default'], { booking: this.state.booking }),
+                _react2['default'].createElement(_BookingResults2['default'], { booking: this.state.booking, location: this.props.location }),
                 _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
               )
             );
           } else if (this.props.location && this.props.path === '/booking4') {
-            component = _react2['default'].createElement(_BookingComplete2['default'], { booking: this.state.booking, user: this.state.user, patient: this.state.patient });
+            component = _react2['default'].createElement(_BookingComplete2['default'], { booking: this.state.booking, user: this.state.user, patient: this.state.patient, location: this.props.location });
           } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'confirmation') {
             component = _react2['default'].createElement(
               'div',
@@ -1676,7 +1707,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2158,7 +2189,7 @@ module.exports =
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2950,7 +2981,7 @@ module.exports =
               ),
               _react2['default'].createElement(
                 'a',
-                { href: '/booking1', className: 'btn btn-primary Banner-item-button Banner-item-text-4', onClick: _Link2['default'].handleClick },
+                { href: '/booking1', className: 'btn btn-primary Banner-item-button Banner-item-text-4', onClick: _Link2['default'].handleClickQuery.bind(this, this.props.location && this.props.location.query) },
                 'BOOK A CAREGIVER'
               )
             )
@@ -3021,7 +3052,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -3035,7 +3066,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -3293,6 +3324,10 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
+  var _moment = __webpack_require__(11);
+
+  var _moment2 = _interopRequireDefault(_moment);
+
   __webpack_require__(90);
 
   var _Container = __webpack_require__(4);
@@ -3401,8 +3436,9 @@ module.exports =
               patient_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
               patient_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_firstName,
               patient_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_lastName,
-              patient_dob: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_dob.format('YYYY-MM-DD'),
-              patient_gender: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_gender
+              patient_dob: (0, _moment2['default'])(this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_dob).format('YYYY-MM-DD'),
+              patient_gender: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_gender,
+              organization: this.props.location && this.props.location.query && this.props.location.query.organization || undefined
             },
             'case': {
               sid: this.props.booking && this.props.booking.service,
@@ -3678,7 +3714,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4533,7 +4569,7 @@ module.exports =
 
   var _lodashRemove2 = _interopRequireDefault(_lodashRemove);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4543,7 +4579,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -4664,7 +4700,7 @@ module.exports =
       key: '_onNext',
       value: function _onNext(event) {
         if (this.state.selectedDates.length) {
-          _Link2['default'].handleClick(event);
+          _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
           // this.props.booking.range = this.state.range;
           _actionsBookingActions2['default'].setDates(this.state.selectedDates);
@@ -4899,7 +4935,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -5890,7 +5926,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -5912,7 +5948,7 @@ module.exports =
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -6251,7 +6287,7 @@ module.exports =
       key: '_onNext',
       value: function _onNext(event) {
         if (this._bookingLocationForm.checkValidity()) {
-          _Link2['default'].handleClick(event);
+          _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
           var user = {
             client_contactEmail: this.state.client_contactEmail,
@@ -6340,7 +6376,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -6362,7 +6398,7 @@ module.exports =
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -7282,7 +7318,7 @@ module.exports =
       key: '_onNext',
       value: function _onNext(event) {
         if (this.state.patientId) {
-          _Link2['default'].handleClick(event);
+          _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
           var booker = {
             additionalInfo: this.state.additionalInfo
@@ -8198,7 +8234,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -8355,7 +8391,7 @@ module.exports =
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -8373,7 +8409,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -8759,7 +8795,7 @@ module.exports =
         this._confirmPopup.show(function () {
           if (_this4._agreeForm.checkValidity()) {
             // Link.handleClick(event);
-            _coreLocation2['default'].push({ pathname: '/booking4' });
+            _coreLocation2['default'].push({ pathname: '/booking4', query: _this4.props.location && _this4.props.location.query });
 
             // console.log(sessions);
             _actionsBookingActions2['default'].setSessions(sessions);
@@ -8836,7 +8872,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -9030,7 +9066,7 @@ module.exports =
       key: '_onNext',
       value: function _onNext(event) {
         if (this._bookingServicesForm.checkValidity()) {
-          _Link2['default'].handleClick(event);
+          _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
           _actionsBookingActions2['default'].setService(this.state.selectedService);
           _actionsBookingActions2['default'].setLast('booking1');
         } else {
@@ -9071,7 +9107,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(12);
+  var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -9289,7 +9325,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -9399,7 +9435,7 @@ module.exports =
           return event.preventDefault();
         }
 
-        _Link2['default'].handleClick(event);
+        _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
         // this.props.booking.timeslots = timeslots;
         _actionsBookingActions2['default'].setTimeslots(timeslots);
@@ -9879,17 +9915,29 @@ module.exports =
     _createClass(Layout, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          { className: 'Layout' },
-          _react2['default'].createElement(_Navigation2['default'], { path: this.props.path, pullRight: true }),
-          _react2['default'].createElement(
+        if (this.props.location && this.props.location.query && this.props.location.query.widget == 'true') {
+          return _react2['default'].createElement(
             'div',
-            { className: 'Body' },
-            this.props.children
-          ),
-          _react2['default'].createElement(_Footer2['default'], { path: this.props.path })
-        );
+            { className: 'Layout' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'Body' },
+              this.props.children
+            )
+          );
+        } else {
+          return _react2['default'].createElement(
+            'div',
+            { className: 'Layout' },
+            _react2['default'].createElement(_Navigation2['default'], { path: this.props.path, pullRight: true }),
+            _react2['default'].createElement(
+              'div',
+              { className: 'Body' },
+              this.props.children
+            ),
+            _react2['default'].createElement(_Footer2['default'], { path: this.props.path })
+          );
+        }
       }
     }], [{
       key: 'propTypes',
@@ -10409,7 +10457,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(11);
+  var _AlertPopup = __webpack_require__(12);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -12007,7 +12055,7 @@ module.exports =
         return _react2['default'].createElement(
           'div',
           null,
-          _react2['default'].createElement(_componentsBannerBanner2['default'], null),
+          _react2['default'].createElement(_componentsBannerBanner2['default'], { location: this.props.location }),
           _react2['default'].createElement(_componentsFeaturesFeatures2['default'], null),
           _react2['default'].createElement(_componentsActionsActions2['default'], null),
           _react2['default'].createElement(_componentsTestimonialsTestimonials2['default'], null)
