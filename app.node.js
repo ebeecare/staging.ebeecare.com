@@ -5956,6 +5956,10 @@ module.exports =
 
   var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
 
+  var _coreLocation = __webpack_require__(14);
+
+  var _coreLocation2 = _interopRequireDefault(_coreLocation);
+
   var BookingLocation = (function (_Component) {
     _inherits(BookingLocation, _Component);
 
@@ -5992,7 +5996,7 @@ module.exports =
           'form',
           { ref: function (c) {
               return _this._bookingLocationForm = c;
-            } },
+            }, onSubmit: this._onNext.bind(this) },
           _react2['default'].createElement(
             'div',
             { className: 'BookingLocationBodySection' },
@@ -6018,7 +6022,7 @@ module.exports =
             _react2['default'].createElement('input', { type: 'text', id: 'client_firstName', name: 'client_firstName', valueLink: (0, _reactLinkState2['default'])(this, 'client_firstName'), placeholder: 'First Name*', maxLength: '50', required: true }),
             _react2['default'].createElement('input', { type: 'text', id: 'client_lastName', name: 'client_lastName', valueLink: (0, _reactLinkState2['default'])(this, 'client_lastName'), placeholder: 'Last Name*', maxLength: '50', required: true }),
             _react2['default'].createElement('input', { type: 'email', id: 'client_contactEmail', name: 'client_contactEmail', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactEmail'), placeholder: 'Email*', maxLength: '50', required: true }),
-            _react2['default'].createElement('input', { type: 'text', id: 'client_contactNumber', name: 'client_contactNumber', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactNumber'), placeholder: 'Contact Number*', maxLength: '8', required: true })
+            _react2['default'].createElement('input', { type: 'text', id: 'client_contactNumber', name: 'client_contactNumber', valueLink: (0, _reactLinkState2['default'])(this, 'client_contactNumber'), placeholder: 'Mobile Number*', pattern: '[8,9]{1}[0-9]{7}', required: true })
           ),
           _react2['default'].createElement(
             'div',
@@ -6126,7 +6130,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'PatientAddressLeft inline' },
-                _react2['default'].createElement('input', { type: 'text', id: 'postalCode', name: 'postalCode', value: this.state.postalCode, onChange: this._onChangePostalCode.bind(this), placeholder: 'Enter Postal Code*', required: true }),
+                _react2['default'].createElement('input', { type: 'text', id: 'postalCode', name: 'postalCode', value: this.state.postalCode, onChange: this._onChangePostalCode.bind(this), placeholder: 'Enter Postal Code*', pattern: '[0-9]{6}', required: true }),
                 _react2['default'].createElement('input', { type: 'text', id: 'unitNumber', name: 'unitNumber', valueLink: (0, _reactLinkState2['default'])(this, 'unitNumber'), placeholder: 'Enter Unit Number' })
               ),
               _react2['default'].createElement(
@@ -6141,8 +6145,8 @@ module.exports =
               'This information will only be used to contact you regarding your booking.'
             ),
             _react2['default'].createElement(
-              'a',
-              { href: '/booking3a', className: 'btn btn-primary', onClick: this._onNext.bind(this) },
+              'button',
+              { className: 'btn btn-primary', type: 'submit' },
               'NEXT'
             )
           )
@@ -6287,7 +6291,7 @@ module.exports =
       key: '_onNext',
       value: function _onNext(event) {
         if (this._bookingLocationForm.checkValidity()) {
-          _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
+          event.preventDefault();
 
           var user = {
             client_contactEmail: this.state.client_contactEmail,
@@ -6311,6 +6315,8 @@ module.exports =
           _actionsBookingActions2['default'].setBooker(user);
           _actionsBookingActions2['default'].setLocation(location);
           _actionsBookingActions2['default'].setLast('booking2');
+
+          _coreLocation2['default'].push({ pathname: '/booking3a', query: this.props.location.query });
         } else {
           event.preventDefault();
           // alert('Please fill up all required fields.');
@@ -6826,7 +6832,7 @@ module.exports =
             'form',
             { ref: function (c) {
                 return _this2._patientDetailsForm = c;
-              } },
+              }, onSubmit: this._onClickSavePatient.bind(this) },
             _react2['default'].createElement(
               'div',
               null,
@@ -6911,7 +6917,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'PatientAddressLeft inline' },
-                  _react2['default'].createElement('input', { type: 'text', id: 'postalCode', name: 'postalCode', value: this.state.postalCode, onChange: this._onChangePostalCode.bind(this), placeholder: 'Enter Postal Code*', required: true }),
+                  _react2['default'].createElement('input', { type: 'text', id: 'postalCode', name: 'postalCode', value: this.state.postalCode, onChange: this._onChangePostalCode.bind(this), placeholder: 'Enter Postal Code*', pattern: '[0-9]{6}', required: true }),
                   _react2['default'].createElement('input', { type: 'text', id: 'unitNumber', name: 'unitNumber', valueLink: (0, _reactLinkState2['default'])(this, 'unitNumber'), placeholder: 'Enter Unit Number' })
                 ),
                 _react2['default'].createElement(
@@ -6928,7 +6934,7 @@ module.exports =
             ),
             _react2['default'].createElement(
               'button',
-              { className: 'btn btn-primary', onClick: this._onClickSavePatient.bind(this) },
+              { className: 'btn btn-primary', type: 'submit' },
               'Save Patient'
             )
           );
@@ -7255,6 +7261,7 @@ module.exports =
 
         if (this._patientDetailsForm.checkValidity()) {
           event.preventDefault();
+
           this.setState({
             savingPatient: true
           });
