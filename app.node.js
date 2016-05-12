@@ -59,61 +59,73 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDom = __webpack_require__(169);
+  var _reactDom = __webpack_require__(168);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
-  var _fbjsLibExecutionEnvironment = __webpack_require__(29);
+  var _reactRedux = __webpack_require__(5);
 
-  var _coreLocation = __webpack_require__(14);
+  var _redux = __webpack_require__(20);
+
+  var _fbjsLibExecutionEnvironment = __webpack_require__(28);
+
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _componentsLayout = __webpack_require__(58);
+  var _componentsLayout = __webpack_require__(56);
 
   var _componentsLayout2 = _interopRequireDefault(_componentsLayout);
 
+  var _actions = __webpack_require__(7);
+
+  var _reducers = __webpack_require__(82);
+
+  var _reducers2 = _interopRequireDefault(_reducers);
+
+  var store = (0, _redux.createStore)(_reducers2['default']);
+
   var routes = {
     '/404': function _() {
-      return __webpack_require__(64);
+      return __webpack_require__(62);
     }, '/500': function _() {
-      return __webpack_require__(65);
+      return __webpack_require__(63);
     }, '/about': function about() {
-      return __webpack_require__(66);
+      return __webpack_require__(64);
     }, '/booking-confirmation': function bookingConfirmation() {
-      return __webpack_require__(67);
+      return __webpack_require__(65);
     }, '/booking-manage': function bookingManage() {
-      return __webpack_require__(68);
+      return __webpack_require__(66);
     }, '/booking': function booking() {
-      return __webpack_require__(69);
+      return __webpack_require__(67);
     }, '/booking1': function booking1() {
-      return __webpack_require__(70);
+      return __webpack_require__(68);
     }, '/booking2': function booking2() {
-      return __webpack_require__(71);
+      return __webpack_require__(69);
     }, '/booking3a': function booking3a() {
-      return __webpack_require__(72);
+      return __webpack_require__(70);
     }, '/booking3b': function booking3b() {
-      return __webpack_require__(73);
+      return __webpack_require__(71);
     }, '/booking3c': function booking3c() {
-      return __webpack_require__(74);
+      return __webpack_require__(72);
     }, '/booking4': function booking4() {
-      return __webpack_require__(75);
+      return __webpack_require__(73);
     }, '/contact': function contact() {
-      return __webpack_require__(76);
+      return __webpack_require__(74);
     }, '/faq': function faq() {
-      return __webpack_require__(77);
+      return __webpack_require__(75);
     }, '/forgot-password': function forgotPassword() {
-      return __webpack_require__(78);
+      return __webpack_require__(76);
     }, '/': function _() {
-      return __webpack_require__(79);
+      return __webpack_require__(77);
     }, '/privacy-policy': function privacyPolicy() {
-      return __webpack_require__(80);
+      return __webpack_require__(78);
     }, '/services': function services() {
-      return __webpack_require__(81);
+      return __webpack_require__(79);
     }, '/terms-of-service-nurse': function termsOfServiceNurse() {
-      return __webpack_require__(82);
+      return __webpack_require__(80);
     }, '/terms-of-service': function termsOfService() {
-      return __webpack_require__(83);
+      return __webpack_require__(81);
     } }; // Auto-generated on build. See tools/lib/routes-loader.js
 
   var route = function route(location, callback) {
@@ -130,9 +142,13 @@ module.exports =
           component = context$1$0.sent;
           context$1$0.next = 7;
           return regeneratorRuntime.awrap(callback(_react2['default'].createElement(
-            _componentsLayout2['default'],
-            { location: location, path: path },
-            _react2['default'].createElement(component, { location: location, path: path })
+            _reactRedux.Provider,
+            { store: store },
+            _react2['default'].createElement(
+              _componentsLayout2['default'],
+              { location: location, path: path },
+              _react2['default'].createElement(component, { location: location, path: path })
+            )
           )));
 
         case 7:
@@ -148,6 +164,7 @@ module.exports =
     var container = document.getElementById('app');
     _coreLocation2['default'].listen(function (location) {
       // console.log(location);
+      store.dispatch((0, _actions.setRouter)({ location: location }));
       route(location, function callee$2$0(component) {
         return regeneratorRuntime.async(function callee$2$0$(context$3$0) {
           while (1) switch (context$3$0.prev = context$3$0.next) {
@@ -272,7 +289,7 @@ module.exports =
 
   __webpack_require__(116);
 
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -444,166 +461,9 @@ module.exports =
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-  var AppDispatcher = __webpack_require__(25);
-  var BookingConstants = __webpack_require__(20);
-
-  var BookingActions = {
-
-    /**
-     * @param  {string} services The services
-     */
-    setServices: function(services) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_SERVICES,
-        services: services
-      });
-    },
-
-    /**
-     * @param  {string} service The ID of the Service
-     */
-    setService: function(service) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_SERVICE,
-        service: service
-      });
-    },
-
-    /**
-     * @param  {string} location The location
-     */
-    setLocation: function(location) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_LOCATION,
-        location: location
-      });
-    },
-
-    /**
-     * @param  {string} dates List of date objects
-     */
-    setDates: function(dates) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_DATES,
-        dates: dates
-      });
-    },
-
-    /**
-     * @param  {string} timings Array of 'Morning', 'Afternoon' or 'Evening'
-     */
-    setTimeslots: function(timeslots) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_TIMESLOTS,
-        timeslots: timeslots
-      });
-    },
-
-    /**
-     * @param  {string} sessions The booked sessions
-     */
-    setSessions: function(sessions) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_SESSIONS,
-        sessions: sessions
-      });
-    },
-
-    /**
-     * @param  {string} sum The total sum
-     */
-    setSum: function(sum) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_SUM,
-        sum: sum
-      });
-    },
-
-    /**
-     * @param  {string} promoCode The promo code
-     */
-    setPromoCode: function(promoCode) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_PROMO,
-        promoCode: promoCode
-      });
-    },
-
-    /**
-     * @param  {string} booker The booker object containing contact and patient details
-     */
-    setBooker: function(booker) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_BOOKER,
-        booker: booker
-      });
-    },
-
-    /**
-     * @param  {string} booking The completed booking
-     */
-    setBooking: function(booking) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_BOOKING,
-        booking: booking
-      });
-    },
-
-    /**
-     * @param  {string} user The logged-in user
-     */
-    setUser: function(user) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_USER,
-        user: user
-      });
-    },
-
-    /**
-     * @param  {string} patient The patient
-     */
-    setPatient: function(patient) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_PATIENT,
-        patient: patient
-      });
-    },
-
-    /**
-     * @param  {string} last The last page
-     */
-    setLast: function(last) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_LAST,
-        last: last
-      });
-    },
-
-    /**
-     * Destroy booking
-     */
-    destroyBooking: function() {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_DESTROY
-      });
-    },
-
-    /**
-     * @param  {string} last The last page
-     */
-    setPostStatus: function(postStatus) {
-      AppDispatcher.dispatch({
-        actionType: BookingConstants.BOOKING_SET_POST_STATUS,
-        postStatus: postStatus
-      });
-    }
-
-  };
-
-  module.exports = BookingActions;
-
+  module.exports = require("react-redux");
 
 /***/ },
 /* 6 */
@@ -614,16 +474,29 @@ module.exports =
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
+  exports.isProduction = isProduction;
+  exports.isLoggedInBackend = isLoggedInBackend;
+  exports.isNavigationAllowed = isNavigationAllowed;
+  exports.getCookies = getCookies;
+  exports.filterServices = filterServices;
+  exports.subFilterServices = subFilterServices;
+  exports.calcRate = calcRate;
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
+  var PAGE_ORDERS = ['', 'booking1', 'booking2', 'booking3a', 'booking3b', 'booking3c', 'booking4', 'booking-confirmation', 'booking-payment'];
+
+  exports.PAGE_ORDERS = PAGE_ORDERS;
   var ALL_SERVICES = 'All Services';
 
+  exports.ALL_SERVICES = ALL_SERVICES;
   var SERVICES_CATEGORY_ORDER = [ALL_SERVICES, 'Social Care', 'Nursing Care', 'Medical', 'TCM', 'Mother Care'];
+
+  exports.SERVICES_CATEGORY_ORDER = SERVICES_CATEGORY_ORDER;
 
   function isProduction() {
     return typeof window !== 'undefined' && window.location.hostname.indexOf('www.ebeecare.com') > -1;
@@ -635,6 +508,13 @@ module.exports =
     } else if (!isProduction() && getCookies()['ebeecare_session_dev']) {
       return true;
     } else return false;
+  }
+
+  function isNavigationAllowed(path, lastPage) {
+    if (path.charAt(0) === '/') {
+      path = path.substring(1);
+    }
+    return PAGE_ORDERS.indexOf(lastPage) + 1 >= PAGE_ORDERS.indexOf(path);
   }
 
   function getCookies() {
@@ -653,7 +533,7 @@ module.exports =
   }
 
   function filterServices(services, filter) {
-    return services.filter(function (service) {
+    return Object.values(services).filter(function (service) {
       if (filter === ALL_SERVICES) return true;
       return service.category === filter;
     }).sort(function (a, b) {
@@ -708,6 +588,7 @@ module.exports =
     isProduction: isProduction,
 
     isLoggedInBackend: isLoggedInBackend,
+    isNavigationAllowed: isNavigationAllowed,
 
     getCookies: getCookies,
 
@@ -720,40 +601,223 @@ module.exports =
   };
 
   exports['default'] = util;
-  module.exports = exports['default'];
 
 /***/ },
 /* 7 */
 /***/ function(module, exports) {
 
-  module.exports = require("superagent");
+  /**
+   * @param  {string} router The router
+   */
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+  var setRouter = function setRouter(router) {
+    return {
+      type: 'SET_ROUTER',
+      router: router
+    };
+  };
+
+  exports.setRouter = setRouter;
+  /**
+   * @param  {string} services The services
+   */
+  var setServices = function setServices(services) {
+    return {
+      type: 'SET_SERVICES',
+      services: services
+    };
+  };
+
+  exports.setServices = setServices;
+  /**
+   * @param  {string} last The last page
+   */
+  var setLastPage = function setLastPage(lastPage) {
+    return {
+      type: 'SET_LAST_PAGE',
+      lastPage: lastPage
+    };
+  };
+
+  exports.setLastPage = setLastPage;
+  /**
+   * @param  {string} booking The completed booking
+   */
+  var setBooking = function setBooking(booking) {
+    return {
+      type: 'SET_BOOKING',
+      booking: booking
+    };
+  };
+
+  exports.setBooking = setBooking;
+  /**
+   * @param  {string} user The logged-in user
+   */
+  var setUser = function setUser(user) {
+    return {
+      type: 'SET_USER',
+      user: user
+    };
+  };
+
+  exports.setUser = setUser;
+  /**
+   * @param  {string} last The last page
+   */
+  var setPostStatus = function setPostStatus(postStatus) {
+    return {
+      type: 'SET_POST_STATUS',
+      postStatus: postStatus
+    };
+  };
+
+  exports.setPostStatus = setPostStatus;
+  /**
+   * @param  {string} service The ID of the Service
+   */
+  var setOrderService = function setOrderService(service) {
+    return {
+      type: 'ORDER_SET_SERVICE',
+      service: service
+    };
+  };
+
+  exports.setOrderService = setOrderService;
+  /**
+   * @param  {string} location The location
+   */
+  var setOrderLocation = function setOrderLocation(location) {
+    return {
+      type: 'ORDER_SET_LOCATION',
+      location: location
+    };
+  };
+
+  exports.setOrderLocation = setOrderLocation;
+  /**
+   * @param  {string} dates List of date objects
+   */
+  var setOrderDates = function setOrderDates(dates) {
+    return {
+      type: 'ORDER_SET_DATES',
+      dates: dates
+    };
+  };
+
+  exports.setOrderDates = setOrderDates;
+  /**
+   * @param  {string} timings Array of 'Morning', 'Afternoon' or 'Evening'
+   */
+  var setOrderTimeslots = function setOrderTimeslots(timeslots) {
+    return {
+      type: 'ORDER_SET_TIMESLOTS',
+      timeslots: timeslots
+    };
+  };
+
+  exports.setOrderTimeslots = setOrderTimeslots;
+  /**
+   * @param  {string} sessions The booked sessions
+   */
+  var setOrderSessions = function setOrderSessions(sessions) {
+    return {
+      type: 'ORDER_SET_SESSIONS',
+      sessions: sessions
+    };
+  };
+
+  exports.setOrderSessions = setOrderSessions;
+  /**
+   * @param  {string} sum The total sum
+   */
+  var setOrderSum = function setOrderSum(sum) {
+    return {
+      type: 'ORDER_SET_SUM',
+      sum: sum
+    };
+  };
+
+  exports.setOrderSum = setOrderSum;
+  /**
+   * @param  {string} promoCode The promo code
+   */
+  var setOrderPromoCode = function setOrderPromoCode(promoCode) {
+    return {
+      type: 'ORDER_SET_PROMO',
+      promoCode: promoCode
+    };
+  };
+
+  exports.setOrderPromoCode = setOrderPromoCode;
+  /**
+   * @param  {string} booker The booker object containing contact and patient details
+   */
+  var setOrderBooker = function setOrderBooker(booker) {
+    return {
+      type: 'ORDER_SET_BOOKER',
+      booker: booker
+    };
+  };
+
+  exports.setOrderBooker = setOrderBooker;
+  /**
+   * @param  {string} patient The patient
+   */
+  var setOrderPatient = function setOrderPatient(patient) {
+    return {
+      type: 'ORDER_SET_PATIENT',
+      patient: patient
+    };
+  };
+
+  exports.setOrderPatient = setOrderPatient;
+  /**
+   * Destroy order
+   */
+  var destroyOrder = function destroyOrder() {
+    return {
+      type: 'ORDER_DESTROY'
+    };
+  };
+  exports.destroyOrder = destroyOrder;
 
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-loader");
+  module.exports = require("superagent");
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-  module.exports = require("classnames");
+  module.exports = require("react-loader");
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-link-state");
+  module.exports = require("classnames");
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-  module.exports = require("moment");
+  module.exports = require("react-link-state");
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+  module.exports = require("moment");
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -776,7 +840,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _Popup = __webpack_require__(15);
+  var _Popup = __webpack_require__(16);
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
@@ -842,7 +906,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -865,7 +929,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _reactRedux = __webpack_require__(5);
+
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -875,79 +941,79 @@ module.exports =
 
   var _Container2 = _interopRequireDefault(_Container);
 
-  var _BookingNavigation = __webpack_require__(44);
+  var _BookingNavigation = __webpack_require__(42);
 
   var _BookingNavigation2 = _interopRequireDefault(_BookingNavigation);
 
-  var _BookingServices = __webpack_require__(52);
+  var _BookingServices = __webpack_require__(50);
 
   var _BookingServices2 = _interopRequireDefault(_BookingServices);
 
-  var _BookingLocation = __webpack_require__(42);
+  var _BookingLocation = __webpack_require__(40);
 
   var _BookingLocation2 = _interopRequireDefault(_BookingLocation);
 
-  var _BookingLocationUser = __webpack_require__(43);
+  var _BookingLocationUser = __webpack_require__(41);
 
   var _BookingLocationUser2 = _interopRequireDefault(_BookingLocationUser);
 
-  var _BookingDateTime = __webpack_require__(39);
+  var _BookingDateTime = __webpack_require__(37);
 
   var _BookingDateTime2 = _interopRequireDefault(_BookingDateTime);
 
-  var _BookingDate = __webpack_require__(38);
+  var _BookingDate = __webpack_require__(36);
 
   var _BookingDate2 = _interopRequireDefault(_BookingDate);
 
-  var _BookingTime = __webpack_require__(54);
+  var _BookingTime = __webpack_require__(52);
 
   var _BookingTime2 = _interopRequireDefault(_BookingTime);
 
-  var _BookingResults = __webpack_require__(51);
+  var _BookingResults = __webpack_require__(49);
 
   var _BookingResults2 = _interopRequireDefault(_BookingResults);
 
-  var _BookingComplete = __webpack_require__(35);
+  var _BookingComplete = __webpack_require__(33);
 
   var _BookingComplete2 = _interopRequireDefault(_BookingComplete);
 
-  var _BookingPostNavigation = __webpack_require__(49);
+  var _BookingPostNavigation = __webpack_require__(47);
 
   var _BookingPostNavigation2 = _interopRequireDefault(_BookingPostNavigation);
 
-  var _BookingConfirmation = __webpack_require__(36);
+  var _BookingConfirmation = __webpack_require__(34);
 
   var _BookingConfirmation2 = _interopRequireDefault(_BookingConfirmation);
 
-  var _BookingPayment = __webpack_require__(46);
+  var _BookingPayment = __webpack_require__(44);
 
   var _BookingPayment2 = _interopRequireDefault(_BookingPayment);
 
-  var _BookingPaypal = __webpack_require__(47);
+  var _BookingPaypal = __webpack_require__(45);
 
   var _BookingPaypal2 = _interopRequireDefault(_BookingPaypal);
 
-  var _BookingBankTransfer = __webpack_require__(34);
+  var _BookingBankTransfer = __webpack_require__(32);
 
   var _BookingBankTransfer2 = _interopRequireDefault(_BookingBankTransfer);
 
-  var _BookingCredits = __webpack_require__(37);
+  var _BookingCredits = __webpack_require__(35);
 
   var _BookingCredits2 = _interopRequireDefault(_BookingCredits);
 
-  var _BookingPostComplete = __webpack_require__(48);
+  var _BookingPostComplete = __webpack_require__(46);
 
   var _BookingPostComplete2 = _interopRequireDefault(_BookingPostComplete);
 
-  var _BookingSidebar = __webpack_require__(53);
+  var _BookingSidebar = __webpack_require__(51);
 
   var _BookingSidebar2 = _interopRequireDefault(_BookingSidebar);
 
-  var _BookingPostSidebar = __webpack_require__(50);
+  var _BookingPostSidebar = __webpack_require__(48);
 
   var _BookingPostSidebar2 = _interopRequireDefault(_BookingPostSidebar);
 
-  var _BookingDetails = __webpack_require__(41);
+  var _BookingDetails = __webpack_require__(39);
 
   var _BookingDetails2 = _interopRequireDefault(_BookingDetails);
 
@@ -955,15 +1021,9 @@ module.exports =
 
   var _Account2 = _interopRequireDefault(_Account);
 
-  var _actionsBookingActions = __webpack_require__(5);
+  var _actions = __webpack_require__(7);
 
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _storesBookingStore = __webpack_require__(18);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
-
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -978,10 +1038,11 @@ module.exports =
       _classCallCheck(this, BookingApp);
 
       _get(Object.getPrototypeOf(BookingApp.prototype), 'constructor', this).call(this, props);
-      if (this.props.path && this.props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(this.props.path)) {
+      var location = props.location;
+      var lastPage = props.lastPage;
+
+      if (location && location.pathname && location.pathname.indexOf('booking-confirmation') === -1 && !_coreUtil2['default'].isNavigationAllowed(location.pathname, lastPage)) {
         _coreLocation2['default'].replace('');
-      } else {
-        this.state = _storesBookingStore2['default'].getState();
       }
     }
 
@@ -990,16 +1051,14 @@ module.exports =
       value: function componentDidMount() {
         var _this = this;
 
-        _storesBookingStore2['default'].addChangeListener(this._onChange.bind(this));
-
-        if (!_storesBookingStore2['default'].getServices()) {
+        if (!this.props.allServices) {
           this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getServices').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
             if (err) {
               return console.error(_coreUtil2['default'].host + '/api/getServices', err.toString());
             }
             if (res.body && res.body.services && Array.isArray(res.body.services)) {
               // console.log(res.body.services);
-              _actionsBookingActions2['default'].setServices(res.body.services);
+              _this.props.setServices(res.body.services);
             } else {
               console.error('Failed to obtain services data.');
             }
@@ -1009,7 +1068,7 @@ module.exports =
         // if "bid" query parameter exists, must be booking manage/confirmation
         if (this.props.location && this.props.location.query && this.props.location.query.bid && this.props.location.query.email) {
           if (this.props.location.query.token) {
-            _actionsBookingActions2['default'].setPostStatus('payment-paypal');
+            this.props.setPostStatus('payment-paypal');
           }
 
           this.serverRequest2 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getBooking').query({
@@ -1023,12 +1082,12 @@ module.exports =
               console.log(res.body.booking);
               if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].isPaid) {
                 // if booking has already been completed
-                _actionsBookingActions2['default'].setPostStatus('success');
+                _this.props.setPostStatus('success');
               } else if (res.body.booking && res.body.booking['case'] && res.body.booking['case'].status === 'Accepting Quotes') {
                 // if booking is still pending service providers
                 _coreLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: _this.props.location.query.bid, email: _this.props.location.query.email } });
               }
-              _actionsBookingActions2['default'].setBooking(res.body.booking);
+              _this.props.setBooking(res.body.booking);
             } else {
               console.error('Failed to obtain booking data.');
             }
@@ -1043,7 +1102,7 @@ module.exports =
             }
             if (res.body && res.body.status === 1) {
               console.log(res.body.user);
-              _actionsBookingActions2['default'].setUser(res.body.user);
+              _this.props.setUser(res.body.user);
             } else {
               console.error('Failed to get user data.');
             }
@@ -1053,8 +1112,6 @@ module.exports =
     }, {
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
-        _storesBookingStore2['default'].removeChangeListener(this._onChange.bind(this));
-
         this.serverRequest1 && this.serverRequest1.abort();
         this.serverRequest2 && this.serverRequest2.abort();
         this.serverRequest3 && this.serverRequest3.abort();
@@ -1062,140 +1119,145 @@ module.exports =
     }, {
       key: 'componentWillReceiveProps',
       value: function componentWillReceiveProps(props) {
-        if (props.path && props.path.indexOf('booking-confirmation') === -1 && !_storesBookingStore2['default'].isNavigationAllowed(props.path)) {
+        var location = props.location;
+        var lastPage = props.lastPage;
+
+        if (location && location.pathname && location.pathname.indexOf('booking-confirmation') === -1 && !_coreUtil2['default'].isNavigationAllowed(location.pathname, lastPage)) {
           _coreLocation2['default'].replace('');
         }
       }
     }, {
       key: 'render',
       value: function render() {
-        // console.log('rendered ' + this.props.path + ' ' + this.state.postStatus);
+        var _props = this.props;
+        var location = _props.location;
+        var postStatus = _props.postStatus;
+        var user = _props.user;
+
         var component;
-        if (this.state) {
-          if (this.props.location && this.props.path === '/booking1') {
+        if (location && location.pathname === '/booking1') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingNavigation2['default'], null),
+            _react2['default'].createElement(_BookingServices2['default'], null)
+          );
+        } else if (location && location.pathname === '/booking2') {
+          if (user) {
             component = _react2['default'].createElement(
               'div',
               null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(_BookingServices2['default'], { location: this.props.location, allServices: this.state.allServices, booking: this.state.booking })
-            );
-          } else if (this.props.location && this.props.path === '/booking2') {
-            if (this.state.user) {
-              component = _react2['default'].createElement(
-                'div',
+              _react2['default'].createElement(_BookingNavigation2['default'], null),
+              _react2['default'].createElement(
+                _BookingLocationUser2['default'],
                 null,
-                _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-                _react2['default'].createElement(
-                  _BookingLocationUser2['default'],
-                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, user: this.state.user, patient: this.state.patient, location: this.props.location },
-                  _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
-                )
-              );
-            } else {
-              component = _react2['default'].createElement(
-                'div',
+                _react2['default'].createElement(_BookingSidebar2['default'], null)
+              )
+            );
+          } else {
+            component = _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement(_BookingNavigation2['default'], null),
+              _react2['default'].createElement(
+                _BookingLocation2['default'],
                 null,
-                _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-                _react2['default'].createElement(
-                  _BookingLocation2['default'],
-                  { allServicesHash: this.state.allServicesHash, booking: this.state.booking, location: this.props.location },
-                  _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
-                )
-              );
-            }
-          } else if (this.props.location && (this.props.path === '/booking3' || this.props.path === '/booking3a')) {
-            component = _react2['default'].createElement(
-              'div',
-              null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(
-                _BookingDateTime2['default'],
-                { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingDate2['default'], { booking: this.state.booking, location: this.props.location }),
-                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
+                _react2['default'].createElement(_BookingSidebar2['default'], null)
               )
             );
-          } else if (this.props.location && this.props.path === '/booking3b') {
-            component = _react2['default'].createElement(
-              'div',
+          }
+        } else if (location && (location.pathname === '/booking3' || location.pathname === '/booking3a')) {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingDateTime2['default'],
               null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(
-                _BookingDateTime2['default'],
-                { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingTime2['default'], { booking: this.state.booking, location: this.props.location }),
-                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking3c') {
-            component = _react2['default'].createElement(
-              'div',
+              _react2['default'].createElement(_BookingDate2['default'], null),
+              _react2['default'].createElement(_BookingSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking3b') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingDateTime2['default'],
               null,
-              _react2['default'].createElement(_BookingNavigation2['default'], { path: this.props.path }),
-              _react2['default'].createElement(
-                _BookingDateTime2['default'],
-                { booking: this.state.booking, path: this.props.path },
-                _react2['default'].createElement(_BookingResults2['default'], { booking: this.state.booking, location: this.props.location }),
-                _react2['default'].createElement(_BookingSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking, patient: this.state.patient })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking4') {
-            component = _react2['default'].createElement(_BookingComplete2['default'], { booking: this.state.booking, user: this.state.user, patient: this.state.patient, location: this.props.location });
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'confirmation') {
-            component = _react2['default'].createElement(
-              'div',
+              _react2['default'].createElement(_BookingTime2['default'], null),
+              _react2['default'].createElement(_BookingSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking3c') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingDateTime2['default'],
               null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingConfirmation2['default'],
-                { location: this.props.location, booking: this.state.booking },
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-paypal') {
-            component = _react2['default'].createElement(
-              'div',
+              _react2['default'].createElement(_BookingResults2['default'], null),
+              _react2['default'].createElement(_BookingSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking4') {
+          component = _react2['default'].createElement(_BookingComplete2['default'], null);
+        } else if (location && location.pathname === '/booking-confirmation' && postStatus === 'confirmation') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingPostNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingConfirmation2['default'],
               null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus, booking: this.state.booking },
-                _react2['default'].createElement(_BookingPaypal2['default'], { location: this.props.location, booking: this.state.booking }),
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-bank') {
-            component = _react2['default'].createElement(
-              'div',
+              _react2['default'].createElement(_BookingPostSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking-confirmation' && postStatus === 'payment-paypal') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingPostNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingPayment2['default'],
               null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus, booking: this.state.booking },
-                _react2['default'].createElement(_BookingBankTransfer2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'payment-credits') {
-            component = _react2['default'].createElement(
-              'div',
+              _react2['default'].createElement(_BookingPaypal2['default'], null),
+              _react2['default'].createElement(_BookingPostSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking-confirmation' && postStatus === 'payment-bank') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingPostNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingPayment2['default'],
               null,
-              _react2['default'].createElement(_BookingPostNavigation2['default'], { path: this.props.path, postStatus: this.state.postStatus }),
-              _react2['default'].createElement(
-                _BookingPayment2['default'],
-                { path: this.props.path, postStatus: this.state.postStatus, booking: this.state.booking },
-                _react2['default'].createElement(_BookingCredits2['default'], { booking: this.state.booking }),
-                _react2['default'].createElement(_BookingPostSidebar2['default'], { allServicesHash: this.state.allServicesHash, booking: this.state.booking })
-              )
-            );
-          } else if (this.props.location && this.props.path === '/booking-confirmation' && this.state.postStatus === 'success') {
-            component = _react2['default'].createElement(_BookingPostComplete2['default'], { booking: this.state.booking });
-          } else if (this.props.location && this.props.path === '/booking-manage') {
-            if (this.state.booking && this.state.booking.id && this.state.booking.isHPVerified) {
-              component = _react2['default'].createElement(_BookingDetails2['default'], { location: this.props.location, booking: this.state.booking });
-            } else {
-              component = _react2['default'].createElement(_Account2['default'], { type: 'login', location: this.props.location, booking: this.state.booking, bid: this.state.booking && this.state.booking.id, email: this.props.location && this.props.location.query && this.props.location.query.email });
-            }
+              _react2['default'].createElement(_BookingBankTransfer2['default'], null),
+              _react2['default'].createElement(_BookingPostSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking-confirmation' && postStatus === 'payment-credits') {
+          component = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_BookingPostNavigation2['default'], null),
+            _react2['default'].createElement(
+              _BookingPayment2['default'],
+              null,
+              _react2['default'].createElement(_BookingCredits2['default'], null),
+              _react2['default'].createElement(_BookingPostSidebar2['default'], null)
+            )
+          );
+        } else if (location && location.pathname === '/booking-confirmation' && postStatus === 'success') {
+          component = _react2['default'].createElement(_BookingPostComplete2['default'], null);
+        } else if (location && location.pathname === '/booking-manage') {
+          if (this.props.booking && this.props.booking.id && this.props.booking.isHPVerified) {
+            component = _react2['default'].createElement(_BookingDetails2['default'], null);
+          } else {
+            component = _react2['default'].createElement(_Account2['default'], { type: 'login', bid: this.props.booking && this.props.booking.id, email: this.props.location && this.props.location.query && this.props.location.query.email });
           }
         }
         return _react2['default'].createElement(
@@ -1204,26 +1266,44 @@ module.exports =
           component
         );
       }
-
-      /**
-       * Event handler for 'change' events coming from the BookingStore
-       */
-    }, {
-      key: '_onChange',
-      value: function _onChange() {
-        this.setState(_storesBookingStore2['default'].getState());
-        // console.log(this.state);
-      }
     }]);
 
     return BookingApp;
   })(_react.Component);
 
-  exports['default'] = BookingApp;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      booking: state.booking,
+      allServices: state.allServices,
+      postStatus: state.postStatus,
+      user: state.user,
+      lastPage: state.lastPage
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setServices: function setServices(services) {
+        dispatch((0, _actions.setServices)(services));
+      },
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      },
+      setBooking: function setBooking(booking) {
+        dispatch((0, _actions.setBooking)(booking));
+      },
+      setUser: function setUser(user) {
+        dispatch((0, _actions.setUser)(user));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingApp);
   module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1234,17 +1314,17 @@ module.exports =
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-  var _fbjsLibExecutionEnvironment = __webpack_require__(29);
+  var _fbjsLibExecutionEnvironment = __webpack_require__(28);
 
-  var _historyLibCreateBrowserHistory = __webpack_require__(160);
+  var _historyLibCreateBrowserHistory = __webpack_require__(158);
 
   var _historyLibCreateBrowserHistory2 = _interopRequireDefault(_historyLibCreateBrowserHistory);
 
-  var _historyLibCreateMemoryHistory = __webpack_require__(161);
+  var _historyLibCreateMemoryHistory = __webpack_require__(159);
 
   var _historyLibCreateMemoryHistory2 = _interopRequireDefault(_historyLibCreateMemoryHistory);
 
-  var _historyLibUseQueries = __webpack_require__(162);
+  var _historyLibUseQueries = __webpack_require__(160);
 
   var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
 
@@ -1254,7 +1334,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -1277,7 +1357,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -1411,224 +1491,16 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
   module.exports = __webpack_require__.p + "43f565f8e0ed24ca60f85dc6ce1c48b4.png";
 
 /***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "0def4601a4b1a46863c80ddaadc3eb3a.png";
-
-/***/ },
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var AppDispatcher = __webpack_require__(25);
-  var EventEmitter = __webpack_require__(158).EventEmitter;
-  var BookingConstants = __webpack_require__(20);
-  var assign = __webpack_require__(30);
-
-  var CHANGE_EVENT = 'change';
-
-  var _user;
-  var _patient;
-  var _services;
-  var _servicesHash;
-  var _booking = {};
-  var _case = {};
-  var _last = '';
-  var _postStatus = 'confirmation';
-
-  var orders = [
-    '',
-    'booking1',
-    'booking2',
-    'booking3a',
-    'booking3b',
-    'booking3c',
-    'booking4',
-    'booking-confirmation',
-    'booking-payment'
-  ];
-
-  var BookingStore = assign({}, EventEmitter.prototype, {
-
-    /**
-     * Get the state.
-     * @return {object}
-     */
-    getState: function() {
-      return {
-        allServices: _services,
-        allServicesHash: _servicesHash,
-        booking: _booking,
-        postStatus: _postStatus,
-        user: _user,
-        case: _case,
-        patient: _patient
-      };
-    },
-
-    /**
-     * Get the services.
-     * @return {object}
-     */
-    getServices: function() {
-      return _services;
-    },
-
-    /**
-     * Get the services hash.
-     * @return {object}
-     */
-    getServicesHash: function() {
-      return _servicesHash;
-    },
-
-    /**
-     * Get the booking.
-     * @return {object}
-     */
-    getBooking: function() {
-      return _booking;
-    },
-
-    /**
-     * Get the last booking page.
-     * @return {string}
-     */
-    getLastBookingPage: function() {
-      return _last;
-    },
-
-    /**
-     * Get whether navigation is allowed.
-     * @return {object}
-     */
-    isNavigationAllowed: function(path) {
-      if (path.charAt(0) === '/') {
-        path = path.substring(1);
-      }
-      return (orders.indexOf(_last) + 1) >= orders.indexOf(path);
-    },
-
-    emitChange: function() {
-      this.emit(CHANGE_EVENT);
-    },
-
-    /**
-     * @param {function} callback
-     */
-    addChangeListener: function(callback) {
-      this.on(CHANGE_EVENT, callback);
-    },
-
-    /**
-     * @param {function} callback
-     */
-    removeChangeListener: function(callback) {
-      this.removeListener(CHANGE_EVENT, callback);
-    }
-  });
-
-  // Register callback to handle all updates
-  AppDispatcher.register(function(action) {
-    var text;
-
-    switch(action.actionType) {
-      case BookingConstants.BOOKING_SET_SERVICES:
-        _services = action.services;
-        BookingStore.emitChange();
-        _servicesHash = {};
-        _services.forEach(function(service) {
-          _servicesHash[service.id] = service;
-        });
-        break;
-
-      case BookingConstants.BOOKING_SET_SERVICE:
-        _booking.service = action.service;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_LOCATION:
-        _booking.location = action.location;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_DATES:
-        _booking.dates = action.dates;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_TIMESLOTS:
-        _booking.timeslots = action.timeslots;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_BOOKER:
-        _booking.booker = action.booker;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_SESSIONS:
-        _booking.sessions = action.sessions;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_SUM:
-        _booking.sum = action.sum;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_PROMO:
-        _booking.promoCode = action.promoCode;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_BOOKING:
-        _booking = action.booking;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_USER:
-        _user = action.user;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_PATIENT:
-        _patient = action.patient;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_LAST:
-        _last = action.last;
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_DESTROY:
-        _booking = {};
-        _case = {};
-        _last = '';
-        _patient = null;
-        _postStatus = 'confirmation'
-        BookingStore.emitChange();
-        break;
-
-      case BookingConstants.BOOKING_SET_POST_STATUS:
-        _postStatus = action.postStatus;
-        BookingStore.emitChange();
-        break;
-
-      default:
-        // no op
-    }
-  });
-
-  module.exports = BookingStore;
-
+  module.exports = __webpack_require__.p + "0def4601a4b1a46863c80ddaadc3eb3a.png";
 
 /***/ },
 /* 19 */
@@ -1638,28 +1510,9 @@ module.exports =
 
 /***/ },
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-  var keyMirror = __webpack_require__(163);
-
-  module.exports = keyMirror({
-    BOOKING_SET_SERVICE: null,
-    BOOKING_SET_BOOKER: null,
-    BOOKING_SET_LOCATION: null,
-    BOOKING_SET_DATES: null,
-    BOOKING_SET_TIMINGS: null,
-    BOOKING_SET_SERVICES: null,
-    BOOKING_SET_SESSIONS: null,
-    BOOKING_SET_SUM: null,
-    BOOKING_SET_BOOKING: null,
-    BOOKING_SET_LAST: null,
-    BOOKING_SET_USER: null,
-    BOOKING_SET_PATIENT: null,
-    BOOKING_DESTROY: null,
-    BOOKING_SET_POST_STATUS: null,
-    BOOKING_SET_PROMO: null
-  });
-
+  module.exports = require("redux");
 
 /***/ },
 /* 21 */
@@ -1685,15 +1538,17 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1707,7 +1562,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -1719,9 +1574,7 @@ module.exports =
 
   var _ResendVerifyBookingPopup2 = _interopRequireDefault(_ResendVerifyBookingPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var _coreUtil = __webpack_require__(6);
 
@@ -1764,7 +1617,7 @@ module.exports =
               if (res.body && res.body.booking && res.body.status) {
                 console.log(res.body.booking);
                 if (res.body.booking) {
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this.props.setBooking(res.body.booking);
                 }
               } else {
                 console.error('Failed to obtain booking data.');
@@ -1791,7 +1644,7 @@ module.exports =
               if (res.body && res.body.booking && res.body.status) {
                 console.log(res.body.booking);
                 if (res.body.booking) {
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this2.props.setBooking(res.body.booking);
                 }
               } else {
                 console.error('Failed to obtain booking data.');
@@ -1932,7 +1785,7 @@ module.exports =
             if (res.body && res.body.booking && res.body.status) {
               console.log(res.body.booking);
               if (res.body.booking) {
-                _actionsBookingActions2['default'].setBooking(res.body.booking);
+                _this4.props.setBooking(res.body.booking);
               }
             } else {
               console.error('Failed to obtain booking data.');
@@ -1949,7 +1802,27 @@ module.exports =
     return Account;
   })(_react.Component);
 
-  exports['default'] = Account;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      booking: state.booking,
+      user: state.user,
+      patient: state.patient
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setBooking: function setBooking(booking) {
+        dispatch((0, _actions.setBooking)(booking));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Account);
   module.exports = exports['default'];
   /*
   <div className="Account-login Account-container-item">
@@ -1997,13 +1870,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDayPicker = __webpack_require__(31);
+  var _reactDayPicker = __webpack_require__(29);
 
   var _reactDayPicker2 = _interopRequireDefault(_reactDayPicker);
 
   __webpack_require__(112);
 
-  var _Popup = __webpack_require__(15);
+  var _Popup = __webpack_require__(16);
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
@@ -2167,15 +2040,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2185,11 +2058,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _Popup = __webpack_require__(15);
+  var _Popup = __webpack_require__(16);
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2376,15 +2249,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2394,7 +2267,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _Popup = __webpack_require__(15);
+  var _Popup = __webpack_require__(16);
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
@@ -2638,56 +2511,34 @@ module.exports =
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _flux = __webpack_require__(159);
-
-  var dispatcher = new _flux.Dispatcher();
-  exports['default'] = dispatcher;
-  module.exports = exports['default'];
+  module.exports = __webpack_require__.p + "7ad2245e83d3de7f615169027e4b23b5.png";
 
 /***/ },
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "7ad2245e83d3de7f615169027e4b23b5.png";
+  module.exports = __webpack_require__.p + "45d2446a2feec0d18320019ff910580f.png";
 
 /***/ },
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "45d2446a2feec0d18320019ff910580f.png";
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
   module.exports = __webpack_require__.p + "dd233d698a06a19cbf8c6aca0990d310.png";
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports) {
 
   module.exports = require("fbjs/lib/ExecutionEnvironment");
 
 /***/ },
-/* 30 */
-/***/ function(module, exports) {
-
-  module.exports = require("object-assign");
-
-/***/ },
-/* 31 */
+/* 29 */
 /***/ function(module, exports) {
 
   module.exports = require("react-day-picker");
 
 /***/ },
-/* 32 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2710,7 +2561,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2865,7 +2716,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 33 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2888,15 +2739,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSlick = __webpack_require__(174);
+  var _reactSlick = __webpack_require__(173);
 
   var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactAddonsCssTransitionGroup = __webpack_require__(166);
+  var _reactAddonsCssTransitionGroup = __webpack_require__(165);
 
   var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
@@ -3013,7 +2864,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 34 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3036,27 +2887,29 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _reactRedux = __webpack_require__(5);
+
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactDatetime = __webpack_require__(168);
+  var _reactDatetime = __webpack_require__(167);
 
   var _reactDatetime2 = _interopRequireDefault(_reactDatetime);
 
@@ -3066,13 +2919,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var _coreUtil = __webpack_require__(6);
 
@@ -3264,13 +3115,13 @@ module.exports =
                 }
                 if (res.body && res.body.booking && res.body.status) {
                   console.log(res.body.booking);
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this2.props.setBooking(res.body.booking);
                 } else {
                   console.error('Failed to obtain booking data.');
                 }
               });
 
-              _actionsBookingActions2['default'].setPostStatus('success');
+              _this2.props.setPostStatus('success');
             } else {
               _this2.setState({
                 pending: false,
@@ -3289,11 +3140,28 @@ module.exports =
     return BookingBankTransfer;
   })(_react.Component);
 
-  exports['default'] = BookingBankTransfer;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      booking: state.booking
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setBooking: function setBooking(booking) {
+        dispatch((0, _actions.setBooking)(booking));
+      },
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingBankTransfer);
   module.exports = exports['default'];
 
 /***/ },
-/* 35 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3316,15 +3184,17 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _reactRedux = __webpack_require__(5);
+
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -3342,11 +3212,9 @@ module.exports =
 
   var _VerifyBookingPopup2 = _interopRequireDefault(_VerifyBookingPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
+  var _actions = __webpack_require__(7);
 
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -3376,36 +3244,41 @@ module.exports =
       value: function componentDidMount() {
         var _this = this;
 
-        if (this.props.user && this.props.patient) {
+        var _props = this.props;
+        var order = _props.order;
+        var location = _props.location;
+        var user = _props.user;
+
+        if (user && order && order.patient) {
           var dates = [];
-          for (var i = 0; i < this.props.booking.sessions.length; i++) {
+          for (var i = 0; i < order.sessions.length; i++) {
             dates.push({
               type: 'Schedule',
-              dateTimeStart: this.props.booking.sessions[i].date + ' 00:00:00',
-              estTime: this.props.booking.sessions[i].time,
-              price: this.props.booking.sessions[i].price
+              dateTimeStart: order.sessions[i].date + ' 00:00:00',
+              estTime: order.sessions[i].time,
+              price: order.sessions[i].price
             });
           }
-          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createCase').auth(this.props.user.id, this.props.user.token).send({
-            notes: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
-            price: this.props.booking && this.props.booking.sum && this.props.booking.sum.toFixed(2),
-            pid: this.props.patient.id,
-            sid: this.props.booking && this.props.booking.service,
+          this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createCase').auth(user.id, user.token).send({
+            notes: order && order.booker && order.booker.additionalInfo,
+            price: order && order.sum && order.sum.toFixed(2),
+            pid: order && order.patient && order.patient.id,
+            sid: order && order.service,
             dates: dates,
             addresses: [{
-              address: this.props.booking && this.props.booking.location && this.props.booking.location.address,
-              postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
-              unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
+              address: order && order.location && order.location.address,
+              postalCode: order && order.location && order.location.postalCode,
+              unitNumber: order && order.location && order.location.unitNumber
             }],
-            promoCode: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code
+            promoCode: order && order.promoCode && order.promoCode.code
           }).end(function (err, res) {
             if (err) {
               return console.error(_coreUtil2['default'].host + '/api/createCase', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body['case']) {
-              // Destroy booking
-              _actionsBookingActions2['default'].destroyBooking();
+              // Destroy order
+              _this.props.destroyOrder();
 
               _this.setState({
                 bookingStatus: res.body.status,
@@ -3416,50 +3289,50 @@ module.exports =
               console.error('Failed to create case.');
             }
           });
-        } else if (this.props.booking) {
+        } else if (order && order.service && order.sessions && order.booker) {
           var dates = [];
-          for (var i = 0; i < this.props.booking.sessions.length; i++) {
+          for (var i = 0; i < order.sessions.length; i++) {
             dates.push({
               type: 'Schedule',
-              dateTimeStart: this.props.booking.sessions[i].date + ' 00:00:00',
-              estTime: this.props.booking.sessions[i].time,
-              price: this.props.booking.sessions[i].price
+              dateTimeStart: order.sessions[i].date + ' 00:00:00',
+              estTime: order.sessions[i].time,
+              price: order.sessions[i].price
             });
           }
           this.serverRequest = _superagent2['default'].post(_coreUtil2['default'].host + '/api/createBooking').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
             booking: {
-              client_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
-              client_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
-              client_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_firstName,
-              client_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_lastName,
-              patient_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
-              patient_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
-              patient_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_firstName,
-              patient_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_lastName,
-              patient_dob: (0, _moment2['default'])(this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_dob).format('YYYY-MM-DD'),
-              patient_gender: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_gender,
-              organization: this.props.location && this.props.location.query && this.props.location.query.organization || undefined
+              client_contactEmail: order && order.booker && order.booker.client_contactEmail,
+              client_contactNumber: order && order.booker && order.booker.client_contactNumber,
+              client_firstName: order && order.booker && order.booker.client_firstName,
+              client_lastName: order && order.booker && order.booker.client_lastName,
+              patient_contactEmail: order && order.booker && order.booker.client_contactEmail,
+              patient_contactNumber: order && order.booker && order.booker.client_contactNumber,
+              patient_firstName: order && order.booker && order.booker.patient_firstName,
+              patient_lastName: order && order.booker && order.booker.patient_lastName,
+              patient_dob: (0, _moment2['default'])(order && order.booker && order.booker.patient_dob).format('YYYY-MM-DD'),
+              patient_gender: order && order.booker && order.booker.patient_gender,
+              organization: location && location.query && location.query.organization || undefined
             },
             'case': {
-              sid: this.props.booking && this.props.booking.service,
-              notes: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
-              price: this.props.booking && this.props.booking.sum && this.props.booking.sum.toFixed(2),
+              sid: order && order.service,
+              notes: order && order.booker && order.booker.additionalInfo,
+              price: order && order.sum && order.sum.toFixed(2),
               dates: dates,
               addresses: [{
-                address: this.props.booking && this.props.booking.location && this.props.booking.location.address,
-                postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
-                unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
+                address: order && order.location && order.location.address,
+                postalCode: order && order.location && order.location.postalCode,
+                unitNumber: order && order.location && order.location.unitNumber
               }]
             },
-            promoCode: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code
+            promoCode: order && order.promoCode && order.promoCode.code
           }).end(function (err, res) {
             if (err) {
               return console.error(_coreUtil2['default'].host + '/api/createBooking', err.toString());
             }
             // console.log(res.body);
             if (res.body && res.body.booking && res.body.booking['case']) {
-              // Destroy booking
-              _actionsBookingActions2['default'].destroyBooking();
+              // Destroy order
+              _this.props.destroyOrder();
 
               _this.setState({
                 bookingStatus: res.body.status,
@@ -3496,7 +3369,7 @@ module.exports =
       value: function render() {
         var _this2 = this;
 
-        if (!this.props.booking) return null;
+        if (!this.state.booking) return null;
 
         var component, identity;
 
@@ -3681,11 +3554,27 @@ module.exports =
     return BookingComplete;
   })(_react.Component);
 
-  exports['default'] = BookingComplete;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order,
+      user: state.user
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      destroyOrder: function destroyOrder() {
+        dispatch((0, _actions.destroyOrder)());
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingComplete);
   module.exports = exports['default'];
 
 /***/ },
-/* 36 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3708,11 +3597,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -3720,11 +3611,11 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -3738,9 +3629,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var _coreUtil = __webpack_require__(6);
 
@@ -4127,12 +4016,12 @@ module.exports =
             _react2['default'].createElement(
               'div',
               null,
-              this.props.booking['case'] && this.props.booking['case'].addresses[0].address
+              this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].address
             ),
             _react2['default'].createElement(
               'div',
               null,
-              this.props.booking['case'] && this.props.booking['case'].addresses[0].unitNumber
+              this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].unitNumber
             )
           );
         }
@@ -4174,7 +4063,7 @@ module.exports =
                       _react2['default'].createElement(
                         'a',
                         { href: '#', className: this.state.editingUser ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                        _react2['default'].createElement('img', { src: __webpack_require__(16) })
+                        _react2['default'].createElement('img', { src: __webpack_require__(17) })
                       )
                     ),
                     _react2['default'].createElement(
@@ -4244,9 +4133,9 @@ module.exports =
             break;
           case 'address':
             this.setState({
-              postalCode: this.props.booking['case'].addresses[0].postalCode,
-              address: this.props.booking['case'].addresses[0].address,
-              unitNumber: this.props.booking['case'].addresses[0].unitNumber,
+              postalCode: this.props.booking && this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].postalCode,
+              address: this.props.booking && this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].address,
+              unitNumber: this.props.booking && this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].unitNumber,
 
               editingAddress: true
             });
@@ -4297,7 +4186,7 @@ module.exports =
                     editingUser: false,
                     updatingUser: false
                   });
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this2.props.setBooking(res.body.booking);
                 } else {
                   console.error('Failed to edit booking.');
                 }
@@ -4333,7 +4222,7 @@ module.exports =
                     editingAddress: false,
                     updatingAddress: false
                   });
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this2.props.setBooking(res.body.booking);
                 } else {
                   console.error('Failed to edit booking.');
                 }
@@ -4398,14 +4287,31 @@ module.exports =
         // Link.handleClick(event);
         event.preventDefault();
 
-        _actionsBookingActions2['default'].setPostStatus('payment-paypal');
+        this.props.setPostStatus('payment-paypal');
       }
     }]);
 
     return BookingConfirmation;
   })(_react.Component);
 
-  exports['default'] = BookingConfirmation;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      booking: state.booking
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setBooking: function setBooking(booking) {
+        dispatch((0, _actions.setBooking)(booking));
+      },
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingConfirmation);
   module.exports = exports['default'];
   /*
   <div className="TableRow">
@@ -4429,7 +4335,7 @@ module.exports =
   */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
-/* 37 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4452,7 +4358,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -4462,9 +4370,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  // import BookingActions from '../../actions/BookingActions';
 
   var BookingCredits = (function (_Component) {
     _inherits(BookingCredits, _Component);
@@ -4485,8 +4391,8 @@ module.exports =
           _react2['default'].createElement(
             'div',
             null,
-            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(26) }),
-            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(28) })
+            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(25) }),
+            _react2['default'].createElement('img', { className: 'BookingCreditsLogo', src: __webpack_require__(27) })
           ),
           _react2['default'].createElement(
             'p',
@@ -4529,7 +4435,7 @@ module.exports =
           }
         }
         // this.props.booking.timeslots = timeslots;
-        _actionsBookingActions2['default'].setTimeslots(timeslots);
+        // BookingActions.setOrderTimeslots(timeslots);
       }
     }]);
 
@@ -4540,7 +4446,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 38 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4563,19 +4469,21 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDayPicker = __webpack_require__(31);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactDayPicker = __webpack_require__(29);
 
   var _reactDayPicker2 = _interopRequireDefault(_reactDayPicker);
 
-  var _lodashSome = __webpack_require__(165);
+  var _lodashSome = __webpack_require__(163);
 
   var _lodashSome2 = _interopRequireDefault(_lodashSome);
 
-  var _lodashRemove = __webpack_require__(164);
+  var _lodashRemove = __webpack_require__(162);
 
   var _lodashRemove2 = _interopRequireDefault(_lodashRemove);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -4585,13 +4493,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var BookingDate = (function (_Component) {
     _inherits(BookingDate, _Component);
@@ -4601,7 +4507,7 @@ module.exports =
 
       _get(Object.getPrototypeOf(BookingDate.prototype), 'constructor', this).call(this, props);
       this.state = {
-        selectedDates: this.props.booking && this.props.booking.dates || []
+        selectedDates: this.props.order && this.props.order.dates || []
       };
     }
 
@@ -4709,8 +4615,8 @@ module.exports =
           _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
           // this.props.booking.range = this.state.range;
-          _actionsBookingActions2['default'].setDates(this.state.selectedDates);
-          _actionsBookingActions2['default'].setLast('booking3a');
+          this.props.setOrderDates(this.state.selectedDates);
+          this.props.setLastPage('booking3a');
         } else {
           event.preventDefault();
           // alert('Please select a date range.');
@@ -4722,14 +4628,32 @@ module.exports =
     return BookingDate;
   })(_react.Component);
 
-  exports['default'] = BookingDate;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setOrderDates: function setOrderDates(dates) {
+        dispatch((0, _actions.setOrderDates)(dates));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingDate);
   module.exports = exports['default'];
   /*
   <DateRangePicker numberOfCalendars={2} selectionType="range" singleDateRange={true} minimumDate={minimumDate} value={this.state.range} onSelect={this._handleSelect.bind(this)} />
   */
 
 /***/ },
-/* 39 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4762,7 +4686,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _BookingDateTimeNavItem = __webpack_require__(40);
+  var _BookingDateTimeNavItem = __webpack_require__(38);
 
   var _BookingDateTimeNavItem2 = _interopRequireDefault(_BookingDateTimeNavItem);
 
@@ -4790,9 +4714,9 @@ module.exports =
               _react2['default'].createElement(
                 'ul',
                 { className: 'BookingDateTimeNav' },
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3a', link: 'booking3a', name: 'Select Service Dates' }),
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3b', link: 'booking3b', name: 'Select Timeslots' }),
-                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { path: this.props.path, active: 'booking3c', name: 'Select Sessions' })
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { active: 'booking3a', link: 'booking3a', name: 'Select Service Dates' }),
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { active: 'booking3b', link: 'booking3b', name: 'Select Timeslots' }),
+                _react2['default'].createElement(_BookingDateTimeNavItem2['default'], { active: 'booking3c', name: 'Select Sessions' })
               )
             )
           ),
@@ -4820,7 +4744,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 40 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4843,7 +4767,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _reactRedux = __webpack_require__(5);
+
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -4853,9 +4779,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _storesBookingStore = __webpack_require__(18);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
+  var _coreUtil = __webpack_require__(6);
 
   var BookingDateTimeNavItem = (function (_Component) {
     _inherits(BookingDateTimeNavItem, _Component);
@@ -4869,14 +4793,21 @@ module.exports =
     _createClass(BookingDateTimeNavItem, [{
       key: 'render',
       value: function render() {
-        if (this.props.link && _storesBookingStore2['default'].isNavigationAllowed(this.props.link)) {
+        var _props = this.props;
+        var location = _props.location;
+        var lastPage = _props.lastPage;
+        var active = _props.active;
+        var link = _props.link;
+        var name = _props.name;
+
+        if (link && (0, _coreUtil.isNavigationAllowed)(link, lastPage)) {
           return _react2['default'].createElement(
             'li',
             { className: 'BookingDateTimeNavItem' },
             _react2['default'].createElement(
               'a',
-              { className: (0, _classnames2['default'])('BookingDateTimeNav-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : ''), href: '/' + this.props.link, onClick: _Link2['default'].handleClick },
-              this.props.name,
+              { className: (0, _classnames2['default'])('BookingDateTimeNav-link', location && location.pathname && location.pathname.indexOf('/' + active) == 0 ? 'active' : ''), href: '/' + link, onClick: _Link2['default'].handleClick },
+              name,
               _react2['default'].createElement(
                 'span',
                 { className: 'BookingDateTimeNav-arrow' },
@@ -4890,8 +4821,8 @@ module.exports =
             { className: 'BookingDateTimeNavItem' },
             _react2['default'].createElement(
               'span',
-              { className: (0, _classnames2['default'])('BookingDateTimeNav-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : '') },
-              this.props.name,
+              { className: (0, _classnames2['default'])('BookingDateTimeNav-link', location && location.pathname && location.pathname.indexOf('/' + active) == 0 ? 'active' : '') },
+              name,
               _react2['default'].createElement(
                 'span',
                 { className: 'BookingDateTimeNav-arrow' },
@@ -4906,11 +4837,18 @@ module.exports =
     return BookingDateTimeNavItem;
   })(_react.Component);
 
-  exports['default'] = BookingDateTimeNavItem;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      lastPage: state.lastPage
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, {})(BookingDateTimeNavItem);
   module.exports = exports['default'];
 
 /***/ },
-/* 41 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4933,19 +4871,21 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -4959,11 +4899,9 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
+  var _actions = __webpack_require__(7);
 
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -5389,12 +5327,12 @@ module.exports =
             _react2['default'].createElement(
               'div',
               null,
-              this.props.booking['case'] && this.props.booking['case'].addresses[0].address
+              this.props.booking['case'] && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].address
             ),
             _react2['default'].createElement(
               'div',
               null,
-              this.props.booking['case'] && this.props.booking['case'].addresses[0].unitNumber
+              this.props.booking['case'] && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].unitNumber
             )
           );
         }
@@ -5608,7 +5546,7 @@ module.exports =
                           _react2['default'].createElement(
                             'a',
                             { href: '#', className: this.state.editingUser || this.props.booking['case'].isPaid ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                            _react2['default'].createElement('img', { src: __webpack_require__(16) })
+                            _react2['default'].createElement('img', { src: __webpack_require__(17) })
                           )
                         ),
                         _react2['default'].createElement(
@@ -5769,7 +5707,7 @@ module.exports =
                     editingUser: false,
                     updatingUser: false
                   });
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this2.props.setBooking(res.body.booking);
                 } else {
                   console.error('Failed to edit booking.');
                 }
@@ -5805,7 +5743,7 @@ module.exports =
                     editingAddress: false,
                     updatingAddress: false
                   });
-                  _actionsBookingActions2['default'].setBooking(res.body.booking);
+                  _this2.props.setBooking(res.body.booking);
                 } else {
                   console.error('Failed to edit booking.');
                 }
@@ -5869,7 +5807,7 @@ module.exports =
       value: function _onClickManageBooking(event) {
         _Link2['default'].handleClick(event);
 
-        _actionsBookingActions2['default'].destroyBooking();
+        this.props.setBooking(null);
       }
     }, {
       key: '_onClickPay',
@@ -5878,7 +5816,7 @@ module.exports =
         event.preventDefault();
         _coreLocation2['default'].push({ pathname: '/booking-confirmation', query: this.props.location.query });
 
-        _actionsBookingActions2['default'].setPostStatus('confirmation');
+        this.props.setPostStatus('confirmation');
       }
     }]);
 
@@ -5886,6 +5824,26 @@ module.exports =
   })(_react.Component);
 
   exports['default'] = BookingDetails;
+
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      booking: state.booking
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setBooking: function setBooking(booking) {
+        dispatch((0, _actions.setBooking)(booking));
+      },
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingDetails);
   module.exports = exports['default'];
   /*
   <div className="TableRow">
@@ -5897,7 +5855,7 @@ module.exports =
   */ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingAddress ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'address')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingPatient ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
-/* 42 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5920,11 +5878,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -5932,7 +5892,7 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -5946,7 +5906,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _LoginPopup = __webpack_require__(59);
+  var _LoginPopup = __webpack_require__(57);
 
   var _LoginPopup2 = _interopRequireDefault(_LoginPopup);
 
@@ -5954,15 +5914,13 @@ module.exports =
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
+  var _actions = __webpack_require__(7);
 
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -5973,22 +5931,24 @@ module.exports =
       _classCallCheck(this, BookingLocation);
 
       _get(Object.getPrototypeOf(BookingLocation.prototype), 'constructor', this).call(this, props);
+      var order = this.props.order;
+
       this.state = {
-        client_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
-        client_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
-        client_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_firstName,
-        client_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_lastName,
-        patient_contactEmail: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactEmail,
-        patient_contactNumber: this.props.booking && this.props.booking.booker && this.props.booking.booker.client_contactNumber,
-        patient_firstName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_firstName,
-        patient_lastName: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_lastName,
-        patient_dob: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_dob,
+        client_contactEmail: order && order.booker && order.booker.client_contactEmail,
+        client_contactNumber: order && order.booker && order.booker.client_contactNumber,
+        client_firstName: order && order.booker && order.booker.client_firstName,
+        client_lastName: order && order.booker && order.booker.client_lastName,
+        patient_contactEmail: order && order.booker && order.booker.client_contactEmail,
+        patient_contactNumber: order && order.booker && order.booker.client_contactNumber,
+        patient_firstName: order && order.booker && order.booker.patient_firstName,
+        patient_lastName: order && order.booker && order.booker.patient_lastName,
+        patient_dob: order && order.booker && order.booker.patient_dob,
         patient_dob_temp: undefined,
-        patient_gender: this.props.booking && this.props.booking.booker && this.props.booking.booker.patient_gender,
-        additionalInfo: this.props.booking && this.props.booking.booker && this.props.booking.booker.additionalInfo,
-        postalCode: this.props.booking && this.props.booking.location && this.props.booking.location.postalCode,
-        address: this.props.booking && this.props.booking.location && this.props.booking.location.address,
-        unitNumber: this.props.booking && this.props.booking.location && this.props.booking.location.unitNumber
+        patient_gender: order && order.booker && order.booker.patient_gender,
+        additionalInfo: order && order.booker && order.booker.additionalInfo,
+        postalCode: order && order.location && order.location.postalCode,
+        address: order && order.location && order.location.address,
+        unitNumber: order && order.location && order.location.unitNumber
       };
     }
 
@@ -6269,7 +6229,7 @@ module.exports =
 
         this._loginPopup.show(function (user) {
           if (user.type === 'Client') {
-            _actionsBookingActions2['default'].setUser(user);
+            _this2.props.setUser(user);
           } else {
             _this2.setState({
               error: true
@@ -6318,9 +6278,9 @@ module.exports =
             address: this.state.address,
             unitNumber: this.state.unitNumber
           };
-          _actionsBookingActions2['default'].setBooker(user);
-          _actionsBookingActions2['default'].setLocation(location);
-          _actionsBookingActions2['default'].setLast('booking2');
+          this.props.setOrderBooker(user);
+          this.props.setOrderLocation(location);
+          this.props.setLastPage('booking2');
 
           _coreLocation2['default'].push({ pathname: '/booking3a', query: this.props.location.query });
         } else {
@@ -6334,7 +6294,31 @@ module.exports =
     return BookingLocation;
   })(_react.Component);
 
-  exports['default'] = BookingLocation;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setOrderBooker: function setOrderBooker(booker) {
+        dispatch((0, _actions.setOrderBooker)(booker));
+      },
+      setOrderLocation: function setOrderLocation(location) {
+        dispatch((0, _actions.setOrderLocation)(location));
+      },
+      setUser: function setUser(user) {
+        dispatch((0, _actions.setUser)(user));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingLocation);
   module.exports = exports['default'];
   /*
   <span>or</span>
@@ -6349,7 +6333,7 @@ module.exports =
      */
 
 /***/ },
-/* 43 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6372,15 +6356,17 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -6388,11 +6374,11 @@ module.exports =
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -6410,13 +6396,11 @@ module.exports =
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var _coreUtil = __webpack_require__(6);
 
@@ -6446,9 +6430,9 @@ module.exports =
         var _this = this;
 
         this._getPatients(this.props.user, function (patients) {
-          if (_this.props.patient) {
+          if (_this.props.order && _this.props.order.patient) {
             patients.forEach(function (patient, index) {
-              if (patient.id === _this.props.patient.id) {
+              if (patient.id === _this.props.order.patient.id) {
                 _this.setState({
                   patientId: index,
                   patients: patients
@@ -6962,7 +6946,7 @@ module.exports =
               _react2['default'].createElement(
                 'a',
                 { href: '#', className: this.state.editingUser ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                _react2['default'].createElement('img', { src: __webpack_require__(16) })
+                _react2['default'].createElement('img', { src: __webpack_require__(17) })
               )
             ),
             userDetails
@@ -7342,10 +7326,10 @@ module.exports =
             address: this.state.patients[this.state.patientId].addresses[0].address,
             unitNumber: this.state.patients[this.state.patientId].addresses[0].unitNumber
           };
-          _actionsBookingActions2['default'].setBooker(booker);
-          _actionsBookingActions2['default'].setLocation(location);
-          _actionsBookingActions2['default'].setPatient(this.state.patients[this.state.patientId]);
-          _actionsBookingActions2['default'].setLast('booking2');
+          this.props.setOrderBooker(booker);
+          this.props.setOrderLocation(location);
+          this.props.setOrderPatient(this.state.patients[this.state.patientId]);
+          this.props.setLastPage('booking2');
         } else {
           event.preventDefault();
           // alert('Please fill up all required fields.');
@@ -7366,7 +7350,7 @@ module.exports =
           }
           if (res.body && res.body.status === 1) {
             console.log(res.body);
-            // BookingActions.setUser(user);
+            // this.props.setUser(user);
             _this4.setState({
               patients: res.body.patients
             });
@@ -7381,7 +7365,32 @@ module.exports =
     return BookingLocationUser;
   })(_react.Component);
 
-  exports['default'] = BookingLocationUser;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order,
+      user: state.user
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setOrderBooker: function setOrderBooker(booker) {
+        dispatch((0, _actions.setOrderBooker)(booker));
+      },
+      setOrderLocation: function setOrderLocation(location) {
+        dispatch((0, _actions.setOrderLocation)(location));
+      },
+      setOrderPatient: function setOrderPatient(patient) {
+        dispatch((0, _actions.setOrderPatient)(patient));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingLocationUser);
   module.exports = exports['default'];
   /*
   <div className="TableRow">
@@ -7393,7 +7402,7 @@ module.exports =
   */ /*<a href="#" className={this.state.editingPatient || !this.state.patientId ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
-/* 44 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7422,7 +7431,7 @@ module.exports =
 
   var _Container2 = _interopRequireDefault(_Container);
 
-  var _BookingNavigationItem = __webpack_require__(45);
+  var _BookingNavigationItem = __webpack_require__(43);
 
   var _BookingNavigationItem2 = _interopRequireDefault(_BookingNavigationItem);
 
@@ -7463,7 +7472,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 45 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7486,7 +7495,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _reactRedux = __webpack_require__(5);
+
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -7496,9 +7507,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _storesBookingStore = __webpack_require__(18);
-
-  var _storesBookingStore2 = _interopRequireDefault(_storesBookingStore);
+  var _coreUtil = __webpack_require__(6);
 
   var BookingNavigationItem = (function (_Component) {
     _inherits(BookingNavigationItem, _Component);
@@ -7512,22 +7521,30 @@ module.exports =
     _createClass(BookingNavigationItem, [{
       key: 'render',
       value: function render() {
-        if (_storesBookingStore2['default'].isNavigationAllowed(this.props.link)) {
+        var _props = this.props;
+        var location = _props.location;
+        var lastPage = _props.lastPage;
+        var active = _props.active;
+        var link = _props.link;
+        var icon = _props.icon;
+        var text = _props.text;
+
+        if (link && (0, _coreUtil.isNavigationAllowed)(link, lastPage)) {
           return _react2['default'].createElement(
             'li',
             { className: 'BookingNavigationItem' },
             _react2['default'].createElement(
               'a',
-              { className: (0, _classnames2['default'])('BookingNavigation-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : ''), href: '/' + this.props.link, onClick: _Link2['default'].handleClick },
+              { className: (0, _classnames2['default'])('BookingNavigation-link', location && location.pathname && location.pathname.indexOf('/' + active) == 0 ? 'active' : ''), href: '/' + link, onClick: _Link2['default'].handleClick },
               _react2['default'].createElement(
                 'div',
                 { className: 'BookingNavigationItem-icon' },
-                this.props.icon
+                icon
               ),
               _react2['default'].createElement(
                 'span',
                 { className: 'BookingNavigationItem-text' },
-                this.props.text
+                text
               )
             )
           );
@@ -7537,16 +7554,16 @@ module.exports =
             { className: 'BookingNavigationItem' },
             _react2['default'].createElement(
               'span',
-              { className: (0, _classnames2['default'])('BookingNavigation-link', this.props.path && this.props.path.indexOf('/' + this.props.active) == 0 ? 'active' : '') },
+              { className: (0, _classnames2['default'])('BookingNavigation-link', location && location.pathname && location.pathname.indexOf('/' + active) == 0 ? 'active' : '') },
               _react2['default'].createElement(
                 'div',
                 { className: 'BookingNavigationItem-icon' },
-                this.props.icon
+                icon
               ),
               _react2['default'].createElement(
                 'span',
                 { className: 'BookingNavigationItem-text' },
-                this.props.text
+                text
               )
             )
           );
@@ -7557,11 +7574,18 @@ module.exports =
     return BookingNavigationItem;
   })(_react.Component);
 
-  exports['default'] = BookingNavigationItem;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      lastPage: state.lastPage
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, {})(BookingNavigationItem);
   module.exports = exports['default'];
 
 /***/ },
-/* 46 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7584,7 +7608,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _reactRedux = __webpack_require__(5);
+
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -7598,9 +7624,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var BookingPayment = (function (_Component) {
     _inherits(BookingPayment, _Component);
@@ -7614,8 +7638,13 @@ module.exports =
     _createClass(BookingPayment, [{
       key: 'render',
       value: function render() {
+        var _props = this.props;
+        var location = _props.location;
+        var booking = _props.booking;
+        var postStatus = _props.postStatus;
+
         var bankTransferItem;
-        var dates = this.props.booking && this.props.booking['case'] && this.props.booking['case'].dates;
+        var dates = booking && booking['case'] && booking['case'].dates;
         if (dates) {
           var earliestDate;
           for (var i = 0; i < dates.length; i++) {
@@ -7635,7 +7664,7 @@ module.exports =
               { className: 'BookingPaymentNav-item' },
               _react2['default'].createElement(
                 'a',
-                { className: (0, _classnames2['default'])('BookingPaymentNav-link', this.props.path === '/booking-confirmation' && this.props.postStatus === 'payment-bank' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this, 'bank') },
+                { className: (0, _classnames2['default'])('BookingPaymentNav-link', location && location.pathname === '/booking-confirmation' && postStatus === 'payment-bank' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this, 'bank') },
                 'Bank Transfer',
                 _react2['default'].createElement(
                   'span',
@@ -7663,7 +7692,7 @@ module.exports =
                   { className: 'BookingPaymentNav-item' },
                   _react2['default'].createElement(
                     'a',
-                    { className: (0, _classnames2['default'])('BookingPaymentNav-link', this.props.path === '/booking-confirmation' && this.props.postStatus === 'payment-paypal' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this, 'paypal') },
+                    { className: (0, _classnames2['default'])('BookingPaymentNav-link', location && location.pathname === '/booking-confirmation' && postStatus === 'payment-paypal' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this, 'paypal') },
                     'Paypal (Credit/Debit)',
                     _react2['default'].createElement(
                       'span',
@@ -7696,21 +7725,37 @@ module.exports =
       value: function _onClick(paymentType, event) {
         event.preventDefault();
 
-        _actionsBookingActions2['default'].setPostStatus('payment-' + paymentType);
+        this.props.setPostStatus('payment-' + paymentType);
       }
     }]);
 
     return BookingPayment;
   })(_react.Component);
 
-  exports['default'] = BookingPayment;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      booking: state.booking,
+      postStatus: state.postStatus
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingPayment);
   module.exports = exports['default'];
   /*<li className="BookingPaymentNav-item">
    <a className={classNames('BookingPaymentNav-link', (this.props.path === '/booking-confirmation' && this.props.postStatus === 'payment-credits') ? 'active' : '')} href="#" onClick={this._onClick.bind(this, 'credits')}>eBeeCare Credits<span className="BookingPaymentNav-arrow"><div className="nav-caret"></div></span></a>
   </li>*/
 
 /***/ },
-/* 47 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7733,11 +7778,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _superagent = __webpack_require__(7);
+  var _reactRedux = __webpack_require__(5);
+
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7747,9 +7794,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var _coreUtil = __webpack_require__(6);
 
@@ -7763,7 +7808,7 @@ module.exports =
 
       _get(Object.getPrototypeOf(BookingPaypal.prototype), 'constructor', this).call(this, props);
       this.state = {
-        paymentId: this.props.location.query['paymentId'],
+        paymentId: this.props.location && this.props.location.query && this.props.location.query['paymentId'],
         pending: false,
         redirecting: false
       };
@@ -7772,6 +7817,8 @@ module.exports =
     _createClass(BookingPaypal, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
+        var _this = this;
+
         if (this.state.paymentId) {
           this.setState({
             pending: true
@@ -7786,7 +7833,7 @@ module.exports =
             console.log(res.body);
             if (res.body && res.body.status) {
               // console.log(res.body.items);
-              _actionsBookingActions2['default'].setPostStatus('success');
+              _this.props.setPostStatus('success');
             } else {
               console.error('Failed to execute paypal payment.');
             }
@@ -7841,8 +7888,8 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 null,
-                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(26) }),
-                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(28) })
+                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(25) }),
+                _react2['default'].createElement('img', { className: 'BookingPaypalLogo', src: __webpack_require__(27) })
               ),
               _react2['default'].createElement(
                 'p',
@@ -7883,7 +7930,7 @@ module.exports =
     }, {
       key: '_onConfirm',
       value: function _onConfirm(event) {
-        var _this = this;
+        var _this2 = this;
 
         // Link.handleClick(event);
         event.preventDefault();
@@ -7895,12 +7942,13 @@ module.exports =
         var url;
         if (typeof window !== 'undefined') {
           url = (window.location.href.indexOf('?') > -1 ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
+          url = url.replace('#', '');
         }
 
         this.serverRequest2 = _superagent2['default'].post(_coreUtil2['default'].host + '/api/makePaypalWebPayment').auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).send({
-          amount: this.props.booking['case'].price,
+          amount: this.props.booking && this.props.booking['case'] && this.props.booking['case'].price,
           type: 'case',
-          cid: this.props.booking['case'].id,
+          cid: this.props.booking && this.props.booking['case'] && this.props.booking['case'].id,
           returnUrl: url,
           cancelUrl: url
         }).end(function (err, res) {
@@ -7910,7 +7958,7 @@ module.exports =
           if (res.body && res.body.status === 1) {
             console.log(res.body.url);
             console.log(res.body.payment_id);
-            _this.setState({
+            _this2.setState({
               redirecting: true
             });
             console.log('Redirecting to ' + res.body.url);
@@ -7928,11 +7976,26 @@ module.exports =
     return BookingPaypal;
   })(_react.Component);
 
-  exports['default'] = BookingPaypal;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      booking: state.booking
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingPaypal);
   module.exports = exports['default'];
 
 /***/ },
-/* 48 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7955,7 +8018,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -7969,10 +8034,6 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
   var BookingPostComplete = (function (_Component) {
     _inherits(BookingPostComplete, _Component);
 
@@ -7985,10 +8046,12 @@ module.exports =
     _createClass(BookingPostComplete, [{
       key: 'render',
       value: function render() {
+        var booking = this.props.booking;
+
         var component, message, bookingId, bookingAmt;
 
-        if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].transactions && this.props.booking['case'].transactions.length) {
-          var transaction = this.props.booking['case'].transactions[0];
+        if (booking && booking['case'] && booking['case'].transactions && booking['case'].transactions.length) {
+          var transaction = booking['case'].transactions[0];
           if (transaction) message = _react2['default'].createElement(
             'span',
             null,
@@ -8000,12 +8063,12 @@ module.exports =
           );
         }
 
-        if (this.props.booking && this.props.booking.id) {
-          bookingId = this.props.booking.id;
+        if (booking && booking.id) {
+          bookingId = booking.id;
         }
 
-        if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].price) {
-          bookingAmt = this.props.booking['case'].price;
+        if (booking && booking['case'] && booking['case'].price) {
+          bookingAmt = booking['case'].price;
         }
 
         // if (this.state.bookingStatus) {
@@ -8102,11 +8165,17 @@ module.exports =
     return BookingPostComplete;
   })(_react.Component);
 
-  exports['default'] = BookingPostComplete;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      booking: state.booking
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, {})(BookingPostComplete);
   module.exports = exports['default'];
 
 /***/ },
-/* 49 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8129,7 +8198,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _reactRedux = __webpack_require__(5);
+
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -8143,9 +8214,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var BookingPostNavigation = (function (_Component) {
     _inherits(BookingPostNavigation, _Component);
@@ -8159,6 +8228,10 @@ module.exports =
     _createClass(BookingPostNavigation, [{
       key: 'render',
       value: function render() {
+        var _props = this.props;
+        var location = _props.location;
+        var postStatus = _props.postStatus;
+
         return _react2['default'].createElement(
           'div',
           { className: 'BookingPostNavigation-wrapper' },
@@ -8173,7 +8246,7 @@ module.exports =
                 { className: 'BookingPostNavigation-item' },
                 _react2['default'].createElement(
                   'a',
-                  { className: (0, _classnames2['default'])('BookingPostNavigation-link', this.props.path === '/booking-confirmation' && this.props.postStatus === 'confirmation' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this) },
+                  { className: (0, _classnames2['default'])('BookingPostNavigation-link', location && location.pathname === '/booking-confirmation' && postStatus === 'confirmation' ? 'active' : ''), href: '#', onClick: this._onClick.bind(this) },
                   _react2['default'].createElement(
                     'div',
                     { className: 'BookingPostNavigation-item-icon' },
@@ -8191,7 +8264,7 @@ module.exports =
                 { className: 'BookingPostNavigation-item' },
                 _react2['default'].createElement(
                   'span',
-                  { className: (0, _classnames2['default'])('BookingPostNavigation-link', this.props.path === '/booking-confirmation' && this.props.postStatus.indexOf('payment') > -1 ? 'active' : '') },
+                  { className: (0, _classnames2['default'])('BookingPostNavigation-link', location && location.pathname === '/booking-confirmation' && postStatus.indexOf('payment') > -1 ? 'active' : '') },
                   _react2['default'].createElement(
                     'div',
                     { className: 'BookingPostNavigation-item-icon' },
@@ -8213,18 +8286,33 @@ module.exports =
       value: function _onClick(event) {
         event.preventDefault();
 
-        _actionsBookingActions2['default'].setPostStatus('confirmation');
+        this.props.setPostStatus('confirmation');
       }
     }]);
 
     return BookingPostNavigation;
   })(_react.Component);
 
-  exports['default'] = BookingPostNavigation;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      postStatus: state.postStatus
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setPostStatus: function setPostStatus(status) {
+        dispatch((0, _actions.setPostStatus)(status));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingPostNavigation);
   module.exports = exports['default'];
 
 /***/ },
-/* 50 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8247,7 +8335,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(11);
+  var _reactRedux = __webpack_require__(5);
+
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -8266,16 +8356,16 @@ module.exports =
       key: 'render',
       value: function render() {
         var service, location, sessions, sum;
-        if (this.props.allServicesHash && this.props.booking && this.props.booking['case'] && this.props.booking['case'].service) {
-          service = this.props.allServicesHash[this.props.booking['case'].service].name;
+        if (this.props.allServices && this.props.booking && this.props.booking['case'] && this.props.booking['case'].service) {
+          service = this.props.allServices[this.props.booking['case'].service].name;
         }
-        if (this.props.booking && this.props.booking['case']) {
+        if (this.props.booking && this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0]) {
           location = _react2['default'].createElement(
             'span',
             null,
-            this.props.booking['case'].addresses[0].address,
+            this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].address,
             _react2['default'].createElement('br', null),
-            this.props.booking['case'].addresses[0].unitNumber
+            this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].unitNumber
           );
         }
         if (this.props.booking && this.props.booking['case']) {
@@ -8369,11 +8459,18 @@ module.exports =
     return BookingPostSidebar;
   })(_react.Component);
 
-  exports['default'] = BookingPostSidebar;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      allServices: state.allServices,
+      booking: state.booking
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, {})(BookingPostSidebar);
   module.exports = exports['default'];
 
 /***/ },
-/* 51 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8396,23 +8493,25 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _objectAssign = __webpack_require__(30);
+  var _reactRedux = __webpack_require__(5);
+
+  var _objectAssign = __webpack_require__(164);
 
   var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
-  var _moment = __webpack_require__(11);
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -8422,19 +8521,17 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _ConfirmPopup = __webpack_require__(55);
+  var _ConfirmPopup = __webpack_require__(53);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
+  var _actions = __webpack_require__(7);
 
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -8449,12 +8546,14 @@ module.exports =
       _classCallCheck(this, BookingResults);
 
       _get(Object.getPrototypeOf(BookingResults.prototype), 'constructor', this).call(this, props);
+      var order = props.order;
+
       this.state = {
         sessions: undefined,
         slots: undefined,
-        promoCode: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code,
-        showPromoButton: this.props.booking && this.props.booking.promoCode && this.props.booking.promoCode.code && this.props.booking.promoCode.code.length ? true : false,
-        disablePromo: this.props.booking && this.props.booking.promoCode ? true : false,
+        promoCode: order && order.promoCode && order.promoCode.code,
+        showPromoButton: order && order.promoCode && order.promoCode.code && order.promoCode.code.length ? true : false,
+        disablePromo: order && order.promoCode ? true : false,
         agree: false
       };
     }
@@ -8464,16 +8563,18 @@ module.exports =
       value: function componentDidMount() {
         var _this = this;
 
+        var order = this.props.order;
+
         // Reset sum displayed on sidebar
-        _actionsBookingActions2['default'].setSum();
+        this.props.setOrderSum(null);
 
         this.serverRequest1 = _superagent2['default'].get(_coreUtil2['default'].host + '/api/getAvailableSchedule').query({
-          service: this.props.booking.service,
-          'dates[]': this.props.booking.dates.map(function (date) {
+          service: order.service,
+          'dates[]': order.dates.map(function (date) {
             return (0, _moment2['default'])(date).format('YYYY-MM-DD');
           }),
-          preferredPostalCode: this.props.booking.location.postalCode,
-          'preferredTimes[]': this.props.booking.timeslots // hack to send PHP style arrays
+          preferredPostalCode: order.location.postalCode,
+          'preferredTimes[]': order.timeslots // hack to send PHP style arrays
         }).auth(_coreUtil2['default'].authKey, _coreUtil2['default'].authSecret).end(function (err, res) {
           if (err) {
             return console.error(_coreUtil2['default'].host + '/api/getAvailableSchedule', status, err.toString());
@@ -8503,7 +8604,7 @@ module.exports =
               sessions[i] = (0, _objectAssign2['default'])(session, { date: timeslot.date });
               if (session.time) {
                 checkedData['session' + i] = true;
-                sum += _coreUtil2['default'].calcRate(sessions[i], _this.props.booking.promoCode, _this.props.booking.service);
+                sum += _coreUtil2['default'].calcRate(sessions[i], order.promoCode, order.service);
               } else {
                 session.disabled = true;
               }
@@ -8513,7 +8614,7 @@ module.exports =
               sessions: sessions
             }, checkedData);
             _this.setState(state);
-            _actionsBookingActions2['default'].setSum(sum);
+            _this.props.setOrderSum(sum);
           } else {
             console.error('Failed to obtain timeslots data.');
           }
@@ -8541,7 +8642,7 @@ module.exports =
         };
         var promoButton;
         if (this.state.showPromoButton) {
-          if (this.props.booking.promoCode) {
+          if (this.props.order.promoCode) {
             promoButton = _react2['default'].createElement(
               'button',
               { className: 'btn btn-primary btn-small', onClick: this._onRemovePromo.bind(this) },
@@ -8566,10 +8667,10 @@ module.exports =
               null,
               this.state.sessions && this.state.sessions.map(function (session, index) {
                 var promo, rate, discountedRate, priceText;
-                promo = _this2.props.booking.promoCode;
+                promo = _this2.props.order.promoCode;
                 rate = session.price;
                 if (promo) {
-                  discountedRate = _coreUtil2['default'].calcRate(session, _this2.props.booking.promoCode, _this2.props.booking.service).toFixed(2);
+                  discountedRate = _coreUtil2['default'].calcRate(session, _this2.props.order.promoCode, _this2.props.order.service).toFixed(2);
                   if (discountedRate == rate) {
                     // empty discountedRate if there is actually no discount
                     discountedRate = null;
@@ -8749,7 +8850,7 @@ module.exports =
                 promoCode: res.body.promoCode.code,
                 disablePromo: true
               });
-              _actionsBookingActions2['default'].setPromoCode(res.body.promoCode);
+              _this3.props.setOrderPromoCode(res.body.promoCode);
 
               _this3._updateSum();
             } else {
@@ -8773,7 +8874,7 @@ module.exports =
           promoCode: undefined,
           disablePromo: false
         });
-        _actionsBookingActions2['default'].setPromoCode();
+        this.props.setOrderPromoCode();
 
         this._updateSum();
       }
@@ -8811,9 +8912,9 @@ module.exports =
             _coreLocation2['default'].push({ pathname: '/booking4', query: _this4.props.location && _this4.props.location.query });
 
             // console.log(sessions);
-            _actionsBookingActions2['default'].setSessions(sessions);
+            _this4.props.setOrderSessions(sessions);
             // console.log(this.state);
-            _actionsBookingActions2['default'].setLast('booking3c');
+            _this4.props.setLastPage('booking3c');
           } else {
             _this4._rejectPopup.show('To continue, please accept our Terms of Service and Privacy Policy.');
           }
@@ -8829,22 +8930,45 @@ module.exports =
         var sum = 0;
         for (var i = 0; i < this.state.sessions.length; i++) {
           if (this.state['session' + i]) {
-            sum += _coreUtil2['default'].calcRate(this.state.sessions[i], this.props.booking.promoCode, this.props.booking.service);
+            sum += _coreUtil2['default'].calcRate(this.state.sessions[i], this.props.order.promoCode, this.props.order.service);
           }
         }
-        // this.props.booking.sum = this.state.sum;
-        _actionsBookingActions2['default'].setSum(sum);
+        this.props.setOrderSum(sum);
       }
     }]);
 
     return BookingResults;
   })(_react.Component);
 
-  exports['default'] = BookingResults;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setOrderSum: function setOrderSum(sum) {
+        dispatch((0, _actions.setOrderSum)(sum));
+      },
+      setOrderPromoCode: function setOrderPromoCode(promoCode) {
+        dispatch((0, _actions.setOrderPromoCode)(promoCode));
+      },
+      setOrderSessions: function setOrderSessions(sessions) {
+        dispatch((0, _actions.setOrderSessions)(sessions));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingResults);
   module.exports = exports['default'];
 
 /***/ },
-/* 52 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8867,11 +8991,13 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _reactRedux = __webpack_require__(5);
+
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
@@ -8885,13 +9011,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var _coreUtil = __webpack_require__(6);
 
@@ -8904,18 +9028,20 @@ module.exports =
       _classCallCheck(this, BookingServices);
 
       _get(Object.getPrototypeOf(BookingServices.prototype), 'constructor', this).call(this, props);
+      var _props = this.props;
+      var allServices = _props.allServices;
+      var order = _props.order;
+      var location = _props.location;
+
       this.state = {
         filter: _coreUtil2['default'].ALL_SERVICES,
         selectedService: undefined
       };
-      if (this.props.booking && this.props.booking.service) {
-        this.state.selectedService = this.props.booking.service;
-      } else if (this.props.allServices && this.props.location.query && this.props.location.query.sid) {
-        for (var i = 0; i < this.props.allServices.length; i++) {
-          if (parseInt(this.props.allServices[i].id) === parseInt(this.props.location.query.sid)) {
-            this.state.selectedService = this.props.allServices[i].id;
-            break;
-          }
+      if (order && order.service) {
+        this.state.selectedService = order.service;
+      } else if (allServices && location.query && location.query.sid) {
+        if (allServices[location.query.sid]) {
+          this.state.selectedService = location.query.sid;
         }
       }
     }
@@ -8923,9 +9049,9 @@ module.exports =
     _createClass(BookingServices, [{
       key: 'componentWillReceiveProps',
       value: function componentWillReceiveProps(props) {
-        if (props.booking && props.booking.service) {
+        if (props.order && props.order.service) {
           this.setState({
-            selectedService: props.booking.service
+            selectedService: props.order.service
           });
         } else if (props.allServices && props.location.query && props.location.query.sid) {
           for (var i = 0; i < props.allServices.length; i++) {
@@ -8943,12 +9069,17 @@ module.exports =
       value: function render() {
         var _this = this;
 
+        var allServices = this.props.allServices;
+        var _state = this.state;
+        var filter = _state.filter;
+        var selectedService = _state.selectedService;
+
         return _react2['default'].createElement(
           'div',
           { className: 'BookingServices' },
           _react2['default'].createElement(
             _reactLoader2['default'],
-            { className: 'spinner', loaded: this.props.allServices ? true : false },
+            { className: 'spinner', loaded: allServices ? true : false },
             _react2['default'].createElement(
               'div',
               { className: 'BookingServicesNav-wrapper' },
@@ -8964,7 +9095,7 @@ module.exports =
                       { className: 'BookingServicesNav-item', key: category },
                       _react2['default'].createElement(
                         'a',
-                        { className: (0, _classnames2['default'])('BookingServicesNav-link', _this.state.filter === category ? 'active' : ''), href: '#', onClick: _this._onClickFilter.bind(_this, category) },
+                        { className: (0, _classnames2['default'])('BookingServicesNav-link', filter === category ? 'active' : ''), href: '#', onClick: _this._onClickFilter.bind(_this, category) },
                         category,
                         _react2['default'].createElement(
                           'span',
@@ -8991,9 +9122,9 @@ module.exports =
                   _react2['default'].createElement(
                     'div',
                     { className: 'BookingServicesBody' },
-                    this.props.allServices && _coreUtil2['default'].subFilterServices(_coreUtil2['default'].filterServices(this.props.allServices, this.state.filter)).map(function (services) {
+                    allServices && _coreUtil2['default'].subFilterServices(_coreUtil2['default'].filterServices(allServices, filter)).map(function (services) {
                       var header;
-                      if (_this.state.filter === _coreUtil2['default'].ALL_SERVICES) {
+                      if (filter === _coreUtil2['default'].ALL_SERVICES) {
                         header = _react2['default'].createElement(
                           'h3',
                           null,
@@ -9021,7 +9152,7 @@ module.exports =
                           return _react2['default'].createElement(
                             'div',
                             { className: 'BookingServicesItem', key: service.id },
-                            _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === _this.state.selectedService, onChange: _this._onSelect.bind(_this), required: true }),
+                            _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === selectedService, onChange: _this._onSelect.bind(_this), required: true }),
                             _react2['default'].createElement(
                               'label',
                               { className: 'BookingServicesRadioLabel', htmlFor: id },
@@ -9080,8 +9211,9 @@ module.exports =
       value: function _onNext(event) {
         if (this._bookingServicesForm.checkValidity()) {
           _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
-          _actionsBookingActions2['default'].setService(this.state.selectedService);
-          _actionsBookingActions2['default'].setLast('booking1');
+
+          this.props.setOrderService(this.state.selectedService);
+          this.props.setLastPage('booking1');
         } else {
           event.preventDefault();
           // alert('Please select a service');
@@ -9093,11 +9225,30 @@ module.exports =
     return BookingServices;
   })(_react.Component);
 
-  exports['default'] = BookingServices;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order,
+      allServices: state.allServices
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setOrderService: function setOrderService(service) {
+        dispatch((0, _actions.setOrderService)(service));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingServices);
   module.exports = exports['default'];
 
 /***/ },
-/* 53 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9120,7 +9271,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _moment = __webpack_require__(11);
+  var _reactRedux = __webpack_require__(5);
+
+  var _moment = __webpack_require__(12);
 
   var _moment2 = _interopRequireDefault(_moment);
 
@@ -9142,31 +9295,35 @@ module.exports =
     _createClass(BookingSidebar, [{
       key: 'render',
       value: function render() {
-        var service, patient, location, dates, timeslots, sum;
-        if (this.props.allServicesHash && this.props.booking && this.props.booking.service) {
-          service = this.props.allServicesHash[this.props.booking.service].name;
+        var _props = this.props;
+        var allServices = _props.allServices;
+        var order = _props.order;
+
+        var service, patientName, location, dates, timeslots, sum;
+        if (allServices && order && order.service) {
+          service = allServices[order.service].name;
         }
-        if (this.props.patient && this.props.patient.fullName) {
-          patient = this.props.patient.fullName;
+        if (order && order.patient && order.patient.fullName) {
+          patientName = order.patient.fullName;
         }
-        if (this.props.booking && this.props.booking.location && this.props.booking.location.postalCode) {
+        if (order && order.location && order.location.postalCode) {
           location = _react2['default'].createElement(
             'span',
             null,
-            this.props.booking.location.address,
+            order.location.address,
             _react2['default'].createElement('br', null),
-            this.props.booking.location.unitNumber
+            order.location.unitNumber
           );
         }
-        if (this.props.booking && this.props.booking.dates) {
-          dates = this.props.booking.dates;
-          // dates = this.props.booking.range.start.format('DD-MM-YYYY') + ' - ' + this.props.booking.range.end.format('DD-MM-YYYY');
+        if (order && order.dates) {
+          dates = order.dates;
+          // dates = order.range.start.format('DD-MM-YYYY') + ' - ' + order.range.end.format('DD-MM-YYYY');
         }
-        if (this.props.booking && this.props.booking.timeslots) {
-          timeslots = this.props.booking.timeslots;
+        if (order && order.timeslots) {
+          timeslots = order.timeslots;
         }
-        if (this.props.booking && typeof this.props.booking.sum === 'number') {
-          sum = this.props.booking.sum;
+        if (order && typeof order.sum === 'number') {
+          sum = order.sum;
         }
         return _react2['default'].createElement(
           'div',
@@ -9204,7 +9361,7 @@ module.exports =
                   _react2['default'].createElement(
                     'div',
                     null,
-                    patient
+                    patientName
                   ),
                   _react2['default'].createElement(
                     'div',
@@ -9301,11 +9458,18 @@ module.exports =
     return BookingSidebar;
   })(_react.Component);
 
-  exports['default'] = BookingSidebar;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      allServices: state.allServices,
+      order: state.order
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, {})(BookingSidebar);
   module.exports = exports['default'];
 
 /***/ },
-/* 54 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9328,7 +9492,9 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactRedux = __webpack_require__(5);
+
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
@@ -9338,13 +9504,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
+  var _actions = __webpack_require__(7);
 
   var BookingTime = (function (_Component) {
     _inherits(BookingTime, _Component);
@@ -9353,10 +9517,12 @@ module.exports =
       _classCallCheck(this, BookingTime);
 
       _get(Object.getPrototypeOf(BookingTime.prototype), 'constructor', this).call(this, props);
+      var order = this.props.order;
+
       this.state = {
-        Morning: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Morning') > -1,
-        Afternoon: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Afternoon') > -1,
-        Evening: this.props.booking && this.props.booking.timeslots && this.props.booking.timeslots.indexOf('Evening') > -1
+        Morning: order && order.timeslots && order.timeslots.indexOf('Morning') > -1,
+        Afternoon: order && order.timeslots && order.timeslots.indexOf('Afternoon') > -1,
+        Evening: order && order.timeslots && order.timeslots.indexOf('Evening') > -1
       };
     }
 
@@ -9450,20 +9616,37 @@ module.exports =
 
         _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
-        // this.props.booking.timeslots = timeslots;
-        _actionsBookingActions2['default'].setTimeslots(timeslots);
-        _actionsBookingActions2['default'].setLast('booking3b');
+        this.props.setOrderTimeslots(timeslots);
+        this.props.setLastPage('booking3b');
       }
     }]);
 
     return BookingTime;
   })(_react.Component);
 
-  exports['default'] = BookingTime;
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      location: state.router && state.router.location,
+      order: state.order
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      setOrderTimeslots: function setOrderTimeslots(timeslots) {
+        dispatch((0, _actions.setOrderTimeslots)(timeslots));
+      },
+      setLastPage: function setLastPage(page) {
+        dispatch((0, _actions.setLastPage)(page));
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BookingTime);
   module.exports = exports['default'];
 
 /***/ },
-/* 55 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9486,7 +9669,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _Popup = __webpack_require__(15);
+  var _Popup = __webpack_require__(16);
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
@@ -9558,7 +9741,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 56 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9691,7 +9874,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 57 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9714,19 +9897,19 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactIconsLibFaFacebook = __webpack_require__(170);
+  var _reactIconsLibFaFacebook = __webpack_require__(169);
 
   var _reactIconsLibFaFacebook2 = _interopRequireDefault(_reactIconsLibFaFacebook);
 
-  var _reactIconsLibFaTwitter = __webpack_require__(172);
+  var _reactIconsLibFaTwitter = __webpack_require__(171);
 
   var _reactIconsLibFaTwitter2 = _interopRequireDefault(_reactIconsLibFaTwitter);
 
-  var _reactIconsLibFaInstagram = __webpack_require__(171);
+  var _reactIconsLibFaInstagram = __webpack_require__(170);
 
   var _reactIconsLibFaInstagram2 = _interopRequireDefault(_reactIconsLibFaInstagram);
 
@@ -9879,7 +10062,7 @@ module.exports =
   */
 
 /***/ },
-/* 58 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9908,11 +10091,11 @@ module.exports =
 
   var _Container2 = _interopRequireDefault(_Container);
 
-  var _Navigation = __webpack_require__(61);
+  var _Navigation = __webpack_require__(59);
 
   var _Navigation2 = _interopRequireDefault(_Navigation);
 
-  var _Footer = __webpack_require__(57);
+  var _Footer = __webpack_require__(55);
 
   var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -9967,7 +10150,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 59 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9990,15 +10173,15 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactLinkState = __webpack_require__(10);
+  var _reactLinkState = __webpack_require__(11);
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -10008,7 +10191,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _Popup = __webpack_require__(15);
+  var _Popup = __webpack_require__(16);
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
@@ -10156,7 +10339,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 60 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10216,7 +10399,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 61 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10239,11 +10422,11 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactBurgerMenu = __webpack_require__(167);
+  var _reactBurgerMenu = __webpack_require__(166);
 
   __webpack_require__(119);
 
@@ -10251,7 +10434,7 @@ module.exports =
 
   var _Container2 = _interopRequireDefault(_Container);
 
-  var _Logo = __webpack_require__(60);
+  var _Logo = __webpack_require__(58);
 
   var _Logo2 = _interopRequireDefault(_Logo);
 
@@ -10423,7 +10606,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 62 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10446,17 +10629,17 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _classnames = __webpack_require__(9);
+  var _classnames = __webpack_require__(10);
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactLoader = __webpack_require__(8);
+  var _reactLoader = __webpack_require__(9);
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactSanfona = __webpack_require__(173);
+  var _reactSanfona = __webpack_require__(172);
 
-  var _superagent = __webpack_require__(7);
+  var _superagent = __webpack_require__(8);
 
   var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -10470,15 +10653,11 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(12);
+  var _AlertPopup = __webpack_require__(13);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
-  var _actionsBookingActions = __webpack_require__(5);
-
-  var _actionsBookingActions2 = _interopRequireDefault(_actionsBookingActions);
-
-  var _coreLocation = __webpack_require__(14);
+  var _coreLocation = __webpack_require__(15);
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
@@ -10661,7 +10840,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 63 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10849,7 +11028,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 64 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10908,7 +11087,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 65 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10973,7 +11152,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 66 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11122,6 +11301,106 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
+
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
+
+  var _default = (function (_Component) {
+    _inherits(_default, _Component);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
+      }
+    }]);
+
+    return _default;
+  })(_react.Component);
+
+  exports['default'] = _default;
+  module.exports = exports['default'];
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
+
+  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
+
+  var _default = (function (_Component) {
+    _inherits(_default, _Component);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
+      }
+    }]);
+
+    return _default;
+  })(_react.Component);
+
+  exports['default'] = _default;
+  module.exports = exports['default'];
+
+/***/ },
 /* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11145,7 +11424,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11161,7 +11440,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11195,7 +11474,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11211,7 +11490,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11245,7 +11524,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11261,7 +11540,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11295,7 +11574,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11311,7 +11590,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11345,7 +11624,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11361,7 +11640,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11395,7 +11674,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11411,7 +11690,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11445,7 +11724,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
+  var _componentsBookingAppBookingApp = __webpack_require__(14);
 
   var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
 
@@ -11461,7 +11740,7 @@ module.exports =
     _createClass(_default, [{
       key: 'render',
       value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
+        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], null);
       }
     }]);
 
@@ -11473,106 +11752,6 @@ module.exports =
 
 /***/ },
 /* 74 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
-
-  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _componentsBookingAppBookingApp = __webpack_require__(13);
-
-  var _componentsBookingAppBookingApp2 = _interopRequireDefault(_componentsBookingAppBookingApp);
-
-  var _default = (function (_Component) {
-    _inherits(_default, _Component);
-
-    function _default() {
-      _classCallCheck(this, _default);
-
-      _get(Object.getPrototypeOf(_default.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(_default, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(_componentsBookingAppBookingApp2['default'], { location: this.props.location, path: this.props.path });
-      }
-    }]);
-
-    return _default;
-  })(_react.Component);
-
-  exports['default'] = _default;
-  module.exports = exports['default'];
-
-/***/ },
-/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11637,7 +11816,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 77 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11839,7 +12018,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 78 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -12012,7 +12191,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 79 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -12035,21 +12214,19 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  // import Container from '../components/Container/Container';
-
-  var _componentsBannerBanner = __webpack_require__(33);
+  var _componentsBannerBanner = __webpack_require__(31);
 
   var _componentsBannerBanner2 = _interopRequireDefault(_componentsBannerBanner);
 
-  var _componentsFeaturesFeatures = __webpack_require__(56);
+  var _componentsFeaturesFeatures = __webpack_require__(54);
 
   var _componentsFeaturesFeatures2 = _interopRequireDefault(_componentsFeaturesFeatures);
 
-  var _componentsActionsActions = __webpack_require__(32);
+  var _componentsActionsActions = __webpack_require__(30);
 
   var _componentsActionsActions2 = _interopRequireDefault(_componentsActionsActions);
 
-  var _componentsTestimonialsTestimonials = __webpack_require__(63);
+  var _componentsTestimonialsTestimonials = __webpack_require__(61);
 
   var _componentsTestimonialsTestimonials2 = _interopRequireDefault(_componentsTestimonialsTestimonials);
 
@@ -12083,7 +12260,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 80 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -12861,7 +13038,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 81 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -12884,7 +13061,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _componentsServicesServices = __webpack_require__(62);
+  var _componentsServicesServices = __webpack_require__(60);
 
   var _componentsServicesServices2 = _interopRequireDefault(_componentsServicesServices);
 
@@ -12915,7 +13092,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 82 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -13963,7 +14140,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 83 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -14693,6 +14870,257 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
+/* 82 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  var _redux = __webpack_require__(20);
+
+  var _lodashMerge = __webpack_require__(161);
+
+  var _lodashMerge2 = _interopRequireDefault(_lodashMerge);
+
+  var _order = __webpack_require__(83);
+
+  var _order2 = _interopRequireDefault(_order);
+
+  var router = function router(state, action) {
+    if (state === undefined) state = {};
+
+    switch (action.type) {
+      case 'SET_ROUTER':
+        return action.router;
+      default:
+        return state;
+    }
+  };
+
+  var allServices = function allServices(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'SET_SERVICES':
+        var allServicesHash = {};
+        action.services.forEach(function (service) {
+          allServicesHash[service.id] = service;
+        });
+        return allServicesHash;
+      default:
+        return state;
+    }
+  };
+
+  var user = function user(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'SET_USER':
+        return action.user;
+      default:
+        return state;
+    }
+  };
+
+  var lastPage = function lastPage(state, action) {
+    if (state === undefined) state = '';
+
+    switch (action.type) {
+      case 'SET_LAST_PAGE':
+        return action.lastPage;
+      default:
+        return state;
+    }
+  };
+
+  var booking = function booking(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'SET_BOOKING':
+        return action.booking;
+      default:
+        return state;
+    }
+  };
+
+  var postStatus = function postStatus(state, action) {
+    if (state === undefined) state = 'confirmation';
+
+    switch (action.type) {
+      case 'SET_POST_STATUS':
+        return action.postStatus;
+      default:
+        return state;
+    }
+  };
+
+  // export default function bookingApp(state = {}, action) {
+  //   return {
+  //     router: router(state.router, action),
+  //     allServices: allServices(state.allServices, action),
+  //     user: user(state.user, action),
+  //     booking: booking(state.booking, action),
+  //     postStatus: postStatus(state.postStatus, action),
+  //     order: order(state.order, action)
+  //   }
+  // }
+
+  var bookingApp = (0, _redux.combineReducers)({
+    router: router,
+    allServices: allServices,
+    user: user,
+    lastPage: lastPage,
+    booking: booking,
+    postStatus: postStatus,
+    order: _order2['default']
+  });
+
+  exports['default'] = bookingApp;
+  module.exports = exports['default'];
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _redux = __webpack_require__(20);
+
+  var service = function service(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_SERVICE':
+        return action.service;
+      default:
+        return state;
+    }
+  };
+
+  var location = function location(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_LOCATION':
+        return action.location;
+      default:
+        return state;
+    }
+  };
+
+  var dates = function dates(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_DATES':
+        return action.dates;
+      default:
+        return state;
+    }
+  };
+
+  var timeslots = function timeslots(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_TIMESLOTS':
+        return action.timeslots;
+      default:
+        return state;
+    }
+  };
+
+  var booker = function booker(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_BOOKER':
+        return action.booker;
+      default:
+        return state;
+    }
+  };
+
+  var sessions = function sessions(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_SESSIONS':
+        return action.sessions;
+      default:
+        return state;
+    }
+  };
+
+  var sum = function sum(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_SUM':
+        return action.sum;
+      default:
+        return state;
+    }
+  };
+
+  var promoCode = function promoCode(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_PROMO':
+        return action.promoCode;
+      default:
+        return state;
+    }
+  };
+
+  var patient = function patient(state, action) {
+    if (state === undefined) state = null;
+
+    switch (action.type) {
+      case 'ORDER_SET_PATIENT':
+        return action.patient;
+      default:
+        return state;
+    }
+  };
+
+  var order = (0, _redux.combineReducers)({
+    service: service,
+    location: location,
+    dates: dates,
+    timeslots: timeslots,
+    booker: booker,
+    sessions: sessions,
+    sum: sum,
+    promoCode: promoCode,
+    patient: patient
+  });
+
+  var destroyableOrder = function destroyableOrder(state, action) {
+    switch (action.type) {
+      case 'ORDER_DESTROY':
+        return order(undefined, { type: undefined });
+      default:
+        return order(state, action);
+    }
+  };
+
+  exports['default'] = destroyableOrder;
+  module.exports = exports['default'];
+
+/***/ },
 /* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -14925,7 +15353,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingNavigationItem {\n  margin: 0 0.5em;\n}\n\n.BookingNavigationItem .BookingNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(27) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingNavigationItem .BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(17) + ") no-repeat center;\n}\n\n.BookingNavigationItem a.BookingNavigation-link {}\n\n.BookingNavigationItem a.BookingNavigation-link:hover, .BookingNavigationItem a.BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(17) + ") no-repeat center;\n}\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    padding: 0.5em;\n    font-size: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n      }\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem {\n    width: 100%;\n    border-top: 1px solid #fff;\n  }\n\n  .BookingNavigationItem:first-child {\n    border-top: none;\n  }\n  }\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingNavigationItem {\n  margin: 0 0.5em;\n}\n\n.BookingNavigationItem .BookingNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(26) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingNavigationItem .BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center;\n}\n\n.BookingNavigationItem a.BookingNavigation-link {}\n\n.BookingNavigationItem a.BookingNavigation-link:hover, .BookingNavigationItem a.BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center;\n}\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    padding: 0.5em;\n    font-size: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n      }\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem {\n    width: 100%;\n    border-top: 1px solid #fff;\n  }\n\n  .BookingNavigationItem:first-child {\n    border-top: none;\n  }\n  }\n", ""]);
 
   // exports
 
@@ -14981,7 +15409,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostNavigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #fdbc1d\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column\n  }\n  }\n\n.BookingPostNavigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item {\n  margin: 0 0.5em;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(27) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(17) + ") no-repeat center\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link {}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(17) + ") no-repeat center\n}\n\n@media (max-width: 1200px) {\n\n  .BookingPostNavigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n    margin-left: 10px\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item {\n    width: 100%;\n    border-top: 1px solid #fff\n  }\n\n  .BookingPostNavigation .BookingPostNavigation-item:first-child {\n    border-top: none\n  }\n    }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostNavigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #fdbc1d\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column\n  }\n  }\n\n.BookingPostNavigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item {\n  margin: 0 0.5em;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(26) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link {}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center\n}\n\n@media (max-width: 1200px) {\n\n  .BookingPostNavigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n    margin-left: 10px\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item {\n    width: 100%;\n    border-top: 1px solid #fff\n  }\n\n  .BookingPostNavigation .BookingPostNavigation-item:first-child {\n    border-top: none\n  }\n    }", ""]);
 
   // exports
 
@@ -14995,7 +15423,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingPostSidebar .BookingPostSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  // background: url(" + __webpack_require__(16) + ") no-repeat top right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem .BookingPostSidebarItemRight {\n  float: right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div {\n  margin-top: 10px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div:first-child {\n  margin-top: 0;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter .BookingPostSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostSidebar {\n    margin: 50px 0 0 0;\n  }\n  }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingPostSidebar .BookingPostSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  // background: url(" + __webpack_require__(17) + ") no-repeat top right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent .BookingPostSidebarItem .BookingPostSidebarItemRight {\n  float: right;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div {\n  margin-top: 10px;\n}\n\n.BookingPostSidebar .BookingPostSidebarContent > div:first-child {\n  margin-top: 0;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingPostSidebar .BookingPostSidebarFooter .BookingPostSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostSidebar {\n    margin: 50px 0 0 0;\n  }\n  }", ""]);
 
   // exports
 
@@ -15037,7 +15465,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingSidebar .BookingSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  background: url(" + __webpack_require__(16) + ") no-repeat top right;\n}\n\n.BookingSidebar .BookingSidebarContent a {\n  color: #969696\n}\n\n.BookingSidebar .BookingSidebarContent a:hover {\n  text-decoration: none;\n}\n\n.BookingSidebar .BookingSidebarContent > a {}\n\n.BookingSidebar .BookingSidebarContent > a > div {\n  margin-top: 10px;\n}\n\n.BookingSidebar .BookingSidebarContent > a:first-child {\n  margin-top: 0;\n}\n\n.BookingSidebar .BookingSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarFooter .BookingSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingSidebar {\n    margin: 50px 0 0 0;\n    width: 100%;\n  }\n  }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingSidebar {\n  margin-left: 40px;\n  background-color: #ffffff;\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5;\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.BookingSidebar .BookingSidebarTitle {\n  padding: 15px 25px;\n  border-bottom: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarContent {\n  padding: 15px 25px;\n  color: #969696;\n  font-size: 21px;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarService {\n  text-transform: uppercase;\n}\n\n.BookingSidebar .BookingSidebarContent .BookingSidebarItem {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding-right: 30px;\n  background: url(" + __webpack_require__(17) + ") no-repeat top right;\n}\n\n.BookingSidebar .BookingSidebarContent a {\n  color: #969696\n}\n\n.BookingSidebar .BookingSidebarContent a:hover {\n  text-decoration: none;\n}\n\n.BookingSidebar .BookingSidebarContent > a {}\n\n.BookingSidebar .BookingSidebarContent > a > div {\n  margin-top: 10px;\n}\n\n.BookingSidebar .BookingSidebarContent > a:first-child {\n  margin-top: 0;\n}\n\n.BookingSidebar .BookingSidebarFooter {\n  padding: 15px 25px;\n  border-top: 2px solid #f3f3f3;\n  font-size: 25px;\n}\n\n.BookingSidebar .BookingSidebarFooter .BookingSidebarPriceCost {\n  float: right;\n  color: #f78d00;\n}\n\n@media (max-width: 768px) {\n\n  .BookingSidebar {\n    margin: 50px 0 0 0;\n    width: 100%;\n  }\n  }", ""]);
 
   // exports
 
@@ -15468,100 +15896,94 @@ module.exports =
 /* 158 */
 /***/ function(module, exports) {
 
-  module.exports = require("events");
+  module.exports = require("history/lib/createBrowserHistory");
 
 /***/ },
 /* 159 */
 /***/ function(module, exports) {
 
-  module.exports = require("flux");
+  module.exports = require("history/lib/createMemoryHistory");
 
 /***/ },
 /* 160 */
 /***/ function(module, exports) {
 
-  module.exports = require("history/lib/createBrowserHistory");
+  module.exports = require("history/lib/useQueries");
 
 /***/ },
 /* 161 */
 /***/ function(module, exports) {
 
-  module.exports = require("history/lib/createMemoryHistory");
+  module.exports = require("lodash/merge");
 
 /***/ },
 /* 162 */
 /***/ function(module, exports) {
 
-  module.exports = require("history/lib/useQueries");
+  module.exports = require("lodash/remove");
 
 /***/ },
 /* 163 */
 /***/ function(module, exports) {
 
-  module.exports = require("keymirror");
+  module.exports = require("lodash/some");
 
 /***/ },
 /* 164 */
 /***/ function(module, exports) {
 
-  module.exports = require("lodash.remove");
+  module.exports = require("object-assign");
 
 /***/ },
 /* 165 */
 /***/ function(module, exports) {
 
-  module.exports = require("lodash.some");
+  module.exports = require("react-addons-css-transition-group");
 
 /***/ },
 /* 166 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-addons-css-transition-group");
+  module.exports = require("react-burger-menu");
 
 /***/ },
 /* 167 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-burger-menu");
+  module.exports = require("react-datetime");
 
 /***/ },
 /* 168 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-datetime");
+  module.exports = require("react-dom");
 
 /***/ },
 /* 169 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-dom");
+  module.exports = require("react-icons/lib/fa/facebook");
 
 /***/ },
 /* 170 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/facebook");
+  module.exports = require("react-icons/lib/fa/instagram");
 
 /***/ },
 /* 171 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/instagram");
+  module.exports = require("react-icons/lib/fa/twitter");
 
 /***/ },
 /* 172 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/twitter");
-
-/***/ },
-/* 173 */
-/***/ function(module, exports) {
-
   module.exports = require("react-sanfona");
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports) {
 
   module.exports = require("react-slick");
