@@ -7534,7 +7534,7 @@ module.exports =
             { className: 'BookingNavigationItem' },
             _react2['default'].createElement(
               'a',
-              { className: (0, _classnames2['default'])('BookingNavigation-link', location && location.pathname && location.pathname.indexOf('/' + active) == 0 ? 'active' : ''), href: '/' + link, onClick: _Link2['default'].handleClick },
+              { className: (0, _classnames2['default'])('BookingNavigation-link', location && location.pathname && location.pathname.indexOf('/' + active) == 0 ? 'active' : ''), href: '/' + link, onClick: _Link2['default'].handleClickQuery.bind(this, this.props.location && this.props.location.query) },
               _react2['default'].createElement(
                 'div',
                 { className: 'BookingNavigationItem-icon' },
