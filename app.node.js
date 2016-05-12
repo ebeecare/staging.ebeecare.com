@@ -3347,9 +3347,9 @@ module.exports =
                   bookingVerified: true
                 });
 
-                // Notify parent window if it's embedded widget
+                // Notify parent window of booking completion for embedded widget
                 if (_this.props.location && _this.props.location.query && _this.props.location.query.widget == 'true') {
-                  window.parent.postMessage('closeebkwidget', '*');
+                  window.parent.postMessage('completedBooking', '*');
                 }
               });
             } else {
@@ -3370,12 +3370,22 @@ module.exports =
 
         if (!this.state.booking) return null;
 
-        var component, identity;
+        var component, identity, footer;
 
         if (this.state.bookingStatus) {
           if (this.state.bookingId) {
             var bookingLink, activateText;
-            if (this.state.bookingVerified) {
+            if (this.props.location && this.props.location.query && this.props.location.query.widget == 'true') {
+              bookingLink = _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                  'a',
+                  { href: '#', className: 'btn btn-primary', style: { 'color': '#fff' }, onClick: this._onClickClose.bind(this) },
+                  'Close Window'
+                )
+              );
+            } else if (this.state.bookingVerified) {
               bookingLink = _react2['default'].createElement(
                 'div',
                 null,
@@ -3441,6 +3451,23 @@ module.exports =
             );
           }
 
+          if (!(this.props.location && this.props.location.query && this.props.location.query.widget == 'true')) {
+            footer = _react2['default'].createElement(
+              'div',
+              { className: 'BookingCompleteFooter' },
+              _react2['default'].createElement(
+                'a',
+                { href: '/booking1', className: 'btn btn-primary', onClick: _Link2['default'].handleClick },
+                'Make Another Booking'
+              ),
+              _react2['default'].createElement(
+                'a',
+                { href: '/', className: 'btn btn-primary', onClick: _Link2['default'].handleClick },
+                'Back To Homepage'
+              )
+            );
+          }
+
           component = _react2['default'].createElement(
             'div',
             { className: 'BookingCompleteBody' },
@@ -3472,20 +3499,7 @@ module.exports =
               ),
               ' or call us at 6514 9729, Mon-Fri (9.00am - 6.00pm).'
             ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'BookingCompleteFooter' },
-              _react2['default'].createElement(
-                'a',
-                { href: '/booking1', className: 'btn btn-primary', onClick: _Link2['default'].handleClick },
-                'Make Another Booking'
-              ),
-              _react2['default'].createElement(
-                'a',
-                { href: '/', className: 'btn btn-primary', onClick: _Link2['default'].handleClick },
-                'Back To Homepage'
-              )
-            )
+            footer
           );
         } else if (this.state.bookingStatus < 1) {
           component = _react2['default'].createElement(
@@ -3547,6 +3561,11 @@ module.exports =
         event.preventDefault();
 
         _coreLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: this.state.bookingId, email: this.state.bookingEmail } });
+      }
+    }, {
+      key: '_onClickClose',
+      value: function _onClickClose(event) {
+        window.parent.postMessage('closeebkwidget', '*');
       }
     }]);
 
