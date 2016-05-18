@@ -2594,7 +2594,7 @@ module.exports =
     _createClass(Actions, [{
       key: 'componentDidMount',
       value: function componentDidMount() {
-        this._startCounter();
+        // this._startCounter();
       }
     }, {
       key: 'componentWillUnmount',
