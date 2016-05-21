@@ -171,13 +171,15 @@ module.exports =
 
     var container = document.getElementById('app');
     _coreLocation2['default'].listen(function (location) {
-      // console.log(location);
       store.dispatch((0, _actions.setRouter)({ location: location }));
       route(location, function callee$2$0(component) {
         return regeneratorRuntime.async(function callee$2$0$(context$3$0) {
           while (1) switch (context$3$0.prev = context$3$0.next) {
             case 0:
               return context$3$0.abrupt('return', _reactDom2['default'].render(component, container, function () {
+                // Scroll to the top
+                window.scrollTo(0, 0);
+
                 // Track the page view event via Google Analytics
                 window.ga('send', 'pageview');
               }));
