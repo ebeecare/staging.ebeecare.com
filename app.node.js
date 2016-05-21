@@ -7316,11 +7316,6 @@ module.exports =
                 'h3',
                 null,
                 'Contact Person Details'
-              ),
-              _react2['default'].createElement(
-                'a',
-                { href: '#', className: this.state.editingUser ? 'hidden' : '', onClick: this._onClickEdit.bind(this, 'user') },
-                _react2['default'].createElement('img', { src: __webpack_require__(15) })
               )
             ),
             userDetails
@@ -7762,7 +7757,7 @@ module.exports =
      <input type="email" id="email" name="email" value={this.props.user.email} placeholder="Email*" maxLength="50" required />
    </div>
   </div>
-  */ /*<a href="#" className={this.state.editingPatient || !this.state.patientId ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
+  */ /*<a href="#" className={this.state.editingUser ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'user')}><img src={require('../pencil.png')} /></a>*/ /*<a href="#" className={this.state.editingPatient || !this.state.patientId ? 'hidden' : ''} onClick={this._onClickEdit.bind(this, 'patient')}><img src={require('../pencil.png')} /></a>*/
 
 /***/ },
 /* 42 */
