@@ -1083,6 +1083,7 @@ module.exports =
   exports.isProduction = isProduction;
   exports.isLoggedInBackend = isLoggedInBackend;
   exports.isNavigationAllowed = isNavigationAllowed;
+  exports.isNextLastPage = isNextLastPage;
   exports.getCookies = getCookies;
   exports.filterServices = filterServices;
   exports.subFilterServices = subFilterServices;
@@ -1121,6 +1122,10 @@ module.exports =
       path = path.substring(1);
     }
     return PAGE_ORDERS.indexOf(lastPage) + 1 >= PAGE_ORDERS.indexOf(path);
+  }
+
+  function isNextLastPage(path, lastPage) {
+    return PAGE_ORDERS.indexOf(lastPage) + 1 === PAGE_ORDERS.indexOf(path);
   }
 
   function getCookies() {
@@ -1195,6 +1200,7 @@ module.exports =
 
     isLoggedInBackend: isLoggedInBackend,
     isNavigationAllowed: isNavigationAllowed,
+    isNextLastPage: isNextLastPage,
 
     getCookies: getCookies,
 
@@ -4927,6 +4933,10 @@ module.exports =
 
   var _actions = __webpack_require__(5);
 
+  var _coreUtil = __webpack_require__(7);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
+
   var BookingDate = (function (_Component) {
     _inherits(BookingDate, _Component);
 
@@ -5041,7 +5051,7 @@ module.exports =
 
           // this.props.booking.range = this.state.range;
           this.props.setOrderDates(this.state.selectedDates);
-          this.props.setLastPage('booking3a');
+          _coreUtil2['default'].isNextLastPage('booking3a', this.props.lastPage) && this.props.setLastPage('booking3a');
         } else {
           event.preventDefault();
           // alert('Please select a date range.');
@@ -5056,6 +5066,7 @@ module.exports =
   var mapStateToProps = function mapStateToProps(state) {
     return {
       location: state.router && state.router.location,
+      lastPage: state.lastPage,
       order: state.order
     };
   };
@@ -6330,6 +6341,10 @@ module.exports =
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
+  var _coreUtil = __webpack_require__(7);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
+
   var BookingLocation = (function (_Component) {
     _inherits(BookingLocation, _Component);
 
@@ -6667,7 +6682,7 @@ module.exports =
           };
           this.props.setOrderBooker(user);
           this.props.setOrderLocation(location);
-          this.props.setLastPage('booking2');
+          _coreUtil2['default'].isNextLastPage('booking2', this.props.lastPage) && this.props.setLastPage('booking2');
 
           _coreLocation2['default'].push({ pathname: '/booking3a', query: this.props.location.query });
         } else {
@@ -6684,6 +6699,7 @@ module.exports =
   var mapStateToProps = function mapStateToProps(state) {
     return {
       location: state.router && state.router.location,
+      lastPage: state.lastPage,
       order: state.order
     };
   };
@@ -7683,7 +7699,7 @@ module.exports =
           this.props.setOrderBooker(booker);
           this.props.setOrderLocation(location);
           this.props.setOrderPatient(this.props.patients[this.state.patientId]);
-          this.props.setLastPage('booking2');
+          _coreUtil2['default'].isNextLastPage('booking2', this.props.lastPage) && this.props.setLastPage('booking2');
         } else {
           event.preventDefault();
           // alert('Please fill up all required fields.');
@@ -7712,6 +7728,7 @@ module.exports =
   var mapStateToProps = function mapStateToProps(state) {
     return {
       location: state.router && state.router.location,
+      lastPage: state.lastPage,
       order: state.order,
       user: state.user.data,
       patients: state.patients.data,
@@ -8976,6 +8993,9 @@ module.exports =
           this.setState(state);
           this.props.setOrderSum(sum);
         }
+        if (this.props.order.promoCode !== nextProps.order.promoCode) {
+          this._updateSum(nextProps);
+        }
       }
     }, {
       key: 'render',
@@ -8989,7 +9009,7 @@ module.exports =
           return function (e) {
             checkedLink(key).requestChange(e.target.checked);
 
-            _this._updateSum();
+            _this._updateSum(_this.props);
           };
         };
         var promoButton;
@@ -9190,8 +9210,6 @@ module.exports =
                 disablePromo: true
               });
               _this2.props.setOrderPromoCode(res.response.promoCode);
-
-              _this2._updateSum();
             } else {
               _this2.props.showAlertPopup('Your promotion code is not valid.');
               console.error('Failed to obtain promo code data.');
@@ -9214,8 +9232,6 @@ module.exports =
           disablePromo: false
         });
         this.props.setOrderPromoCode(null);
-
-        this._updateSum();
       }
     }, {
       key: '_onCheckedAgree',
@@ -9240,7 +9256,7 @@ module.exports =
           // console.log(sessions);
           this.props.setOrderSessions(sessions);
           // console.log(this.state);
-          this.props.setLastPage('booking3c');
+          _coreUtil2['default'].isNextLastPage('booking3c', this.props.lastPage) && this.props.setLastPage('booking3c');
         } else {
           this.props.showAlertPopup('To continue, please accept our Terms of Service and Privacy Policy.');
         }
@@ -9268,14 +9284,14 @@ module.exports =
       }
     }, {
       key: '_updateSum',
-      value: function _updateSum() {
+      value: function _updateSum(props) {
         var sum = 0;
         for (var i = 0; i < this.state.sessions.length; i++) {
           if (this.state['session' + i]) {
-            sum += _coreUtil2['default'].calcRate(this.state.sessions[i], this.props.order.promoCode, this.props.order.service);
+            sum += _coreUtil2['default'].calcRate(this.state.sessions[i], props.order.promoCode, props.order.service);
           }
         }
-        this.props.setOrderSum(sum);
+        props.setOrderSum(sum);
       }
     }]);
 
@@ -9285,6 +9301,7 @@ module.exports =
   var mapStateToProps = function mapStateToProps(state) {
     return {
       location: state.router && state.router.location,
+      lastPage: state.lastPage,
       order: state.order,
       sessions: state.sessions.data,
       sessionsFetching: state.sessions.isFetching
@@ -9584,7 +9601,7 @@ module.exports =
           _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
           this.props.setOrderService(this.state.selectedService);
-          this.props.setLastPage('booking1');
+          _coreUtil2['default'].isNextLastPage('booking1', this.props.lastPage) && this.props.setLastPage('booking1');
         } else {
           event.preventDefault();
           // alert('Please select a service');
@@ -9599,6 +9616,7 @@ module.exports =
   var mapStateToProps = function mapStateToProps(state) {
     return {
       location: state.router && state.router.location,
+      lastPage: state.lastPage,
       order: state.order,
       allServices: state.allServices.items,
       allServicesFetching: state.allServices.isFetching
@@ -9700,7 +9718,7 @@ module.exports =
         if (order && order.timeslots) {
           timeslots = order.timeslots;
         }
-        if (order && typeof order.sum === 'number') {
+        if (this.props.location.pathname.indexOf('booking3c') > -1 && order && typeof order.sum === 'number') {
           sum = order.sum;
         }
         return _react2['default'].createElement(
@@ -9838,6 +9856,7 @@ module.exports =
 
   var mapStateToProps = function mapStateToProps(state) {
     return {
+      location: state.router && state.router.location,
       allServices: state.allServices,
       order: state.order
     };
@@ -9883,6 +9902,10 @@ module.exports =
   var _Link2 = _interopRequireDefault(_Link);
 
   var _actions = __webpack_require__(5);
+
+  var _coreUtil = __webpack_require__(7);
+
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var BookingTime = (function (_Component) {
     _inherits(BookingTime, _Component);
@@ -9985,7 +10008,7 @@ module.exports =
         _Link2['default'].handleClickQuery(this.props.location && this.props.location.query, event);
 
         this.props.setOrderTimeslots(timeslots);
-        this.props.setLastPage('booking3b');
+        _coreUtil2['default'].isNextLastPage('booking3b', this.props.lastPage) && this.props.setLastPage('booking3b');
       }
     }]);
 
@@ -9995,6 +10018,7 @@ module.exports =
   var mapStateToProps = function mapStateToProps(state) {
     return {
       location: state.router && state.router.location,
+      lastPage: state.lastPage,
       order: state.order
     };
   };
@@ -16229,7 +16253,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingServices {\n  background-color: #f3f3f3;\n  min-height: 400px;\n  position: relative;\n}\n\n.BookingServices .BookingServicesNav-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #f78d00\n}\n\n.BookingServices .BookingServicesNav {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 10px 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n.BookingServices .BookingServicesNav-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 0 0.5em;\n  text-align: center\n}\n\n.BookingServices .BookingServicesNav-item + .BookingServicesNav-item {}\n\n.BookingServices .BookingServicesNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.BookingServices .BookingServicesNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingServices .BookingServicesNav-link.active {\n  color: #fdbc1d;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow .nav-caret {\n  display: block;\n}\n\n.BookingServices .BookingServicesBody {\n  margin-top: 50px;\n  margin-bottom: 100px;\n  -webkit-column-count: 3;\n     -moz-column-count: 3;\n          column-count: 3;\n}\n\n.BookingServices .BookingServicesBody h3, .BookingServices .BookingServicesBody h3 a {\n  color: #f78d00;\n  font-weight: 600;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection {\n  -webkit-column-break-inside: avoid;\n  -moz-column-break-inside: avoid;\n  column-break-inside: avoid;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem {\n  display: inline-block;\n  color: #444;\n  font-size: 15px;\n  width: 100%;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesRadio {\n  // margin-right: 5px;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesRadioLabel {\n  width: 100%;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesItemDescription {\n  display: none;\n  color: #999\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesItemDescription-price {\n  font-style: italic;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem.active .BookingServicesItemDescription {\n  display: block;\n}\n\n.BookingServices .BookingServicesFooter {\n  padding-bottom: 100px;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    border-bottom: none;\n  }\n    }\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item + .BookingServicesNav-item {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 992px) {\n\n  .BookingServices .BookingServicesNav-link {\n    font-size: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesBody {\n    -webkit-column-count: 2;\n       -moz-column-count: 2;\n            column-count: 2;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesBody {\n    -webkit-column-count: 1;\n       -moz-column-count: 1;\n            column-count: 1;\n  }\n    }\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingServices {\n  background-color: #f3f3f3;\n  min-height: 400px;\n  position: relative;\n}\n\n.BookingServices .BookingServicesNav-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-bottom: 1px solid #f78d00\n}\n\n.BookingServices .BookingServicesNav {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 10px 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n.BookingServices .BookingServicesNav-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 0 0.5em;\n  text-align: center\n}\n\n.BookingServices .BookingServicesNav-item + .BookingServicesNav-item {}\n\n.BookingServices .BookingServicesNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.BookingServices .BookingServicesNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingServices .BookingServicesNav-link.active {\n  color: #fdbc1d;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow .nav-caret {\n  display: block;\n}\n\n.BookingServices .BookingServicesBody {\n  margin-top: 50px;\n  margin-bottom: 100px;\n  -webkit-column-count: 3;\n     -moz-column-count: 3;\n          column-count: 3;\n}\n\n.BookingServices .BookingServicesBody h3, .BookingServices .BookingServicesBody h3 a {\n  color: #f78d00;\n  font-weight: 600;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection {\n  -webkit-column-break-inside: avoid;\n  -moz-column-break-inside: avoid;\n  column-break-inside: avoid;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem {\n  display: inline-block;\n  color: #444;\n  font-size: 15px;\n  width: 100%;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesRadio {\n  // margin-right: 5px;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesRadioLabel {\n  width: 100%;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesItemDescription {\n  display: none;\n  color: #969696\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem .BookingServicesItemDescription-price {\n  font-style: italic;\n}\n\n.BookingServices .BookingServicesBody .BookingServicesSection .BookingServicesItem.active .BookingServicesItemDescription {\n  display: block;\n}\n\n.BookingServices .BookingServicesFooter {\n  padding-bottom: 100px;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    border-bottom: none;\n  }\n    }\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav {\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .BookingServices .BookingServicesNav-item + .BookingServicesNav-item {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 992px) {\n\n  .BookingServices .BookingServicesNav-link {\n    font-size: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesNav-link.active .BookingServicesNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 1200px) {\n\n  .BookingServices .BookingServicesBody {\n    -webkit-column-count: 2;\n       -moz-column-count: 2;\n            column-count: 2;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingServices .BookingServicesBody {\n    -webkit-column-count: 1;\n       -moz-column-count: 1;\n            column-count: 1;\n  }\n    }\n", ""]);
 
   // exports
 
