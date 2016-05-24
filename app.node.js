@@ -434,6 +434,7 @@ module.exports =
   exports.createCase = createCase;
   exports.login = login;
   exports.getUser = getUser;
+  exports.getUserWithToken = getUserWithToken;
   exports.destroyUser = destroyUser;
   exports.getPatients = getPatients;
   exports.createPatient = createPatient;
@@ -631,6 +632,12 @@ module.exports =
         method: 'get',
         auth: 'user'
       },
+      getUserWithToken: {
+        types: [USER_REQUEST, USER_SUCCESS, USER_FAILURE],
+        endpoint: 'getUser',
+        method: 'get',
+        auth: 'userParams'
+      },
       getPatients: {
         types: [PATIENTS_REQUEST, PATIENTS_SUCCESS, PATIENTS_FAILURE],
         endpoint: 'getPatients',
@@ -745,6 +752,10 @@ module.exports =
 
   function getUser() {
     return fetch('getUser');
+  }
+
+  function getUserWithToken(params) {
+    return fetch('getUserWithToken', params);
   }
 
   function destroyUser() {
@@ -1416,8 +1427,10 @@ module.exports =
 
         // if "uid" query parameter exists, login automatically
         if (this.props.location && this.props.location.query && this.props.location.query.uid && this.props.location.query.token) {
-
-          this.props.getUser().then(function (res) {
+          this.props.getUserWithToken({
+            id: this.props.location.query.uid,
+            token: this.props.location.query.token
+          }).then(function (res) {
             if (res.response && res.response.status < 1) {
               console.error('Failed to get user data.');
             }
@@ -1601,8 +1614,8 @@ module.exports =
       getBooking: function getBooking(params) {
         return dispatch((0, _actions.getBooking)(params));
       },
-      getUser: function getUser() {
-        return dispatch((0, _actions.getUser)());
+      getUserWithToken: function getUserWithToken(params) {
+        return dispatch((0, _actions.getUserWithToken)(params));
       },
       setPostStatus: function setPostStatus(status) {
         return dispatch((0, _actions.setPostStatus)(status));
@@ -2875,6 +2888,8 @@ module.exports =
       headers = { 'Authorization': 'Basic ' + window.btoa(_coreUtil2['default'].authKey + ':' + _coreUtil2['default'].authSecret) };
     } else if (auth === 'user') {
       headers = { 'Authorization': 'Basic ' + window.btoa(store.getState().user.data.id + ':' + store.getState().user.data.token) };
+    } else if (auth === 'userParams') {
+      headers = { 'Authorization': 'Basic ' + window.btoa(data.id + ':' + data.token) };
     }
     var request = (0, _httpOtro.client)({
       host: _coreUtil2['default'].host,
