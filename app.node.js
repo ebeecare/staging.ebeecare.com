@@ -3906,7 +3906,7 @@ module.exports =
                 null,
                 _react2['default'].createElement(
                   'a',
-                  { href: '/booking-manage' + this.state.bookingId + '&email=' + this.state.booking.client_contactEmail, className: 'btn btn-primary', style: { 'color': '#fff' } },
+                  { href: '/booking-manage?bid=' + this.state.bookingId + '&email=' + this.state.booking.client_contactEmail, className: 'btn btn-primary', style: { 'color': '#fff' } },
                   'View Booking'
                 )
               );
