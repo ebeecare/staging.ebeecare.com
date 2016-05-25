@@ -7129,26 +7129,12 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem1' },
-                  'First Name'
+                  'Name'
                 ),
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  _react2['default'].createElement('input', { type: 'text', id: 'first_name', name: 'first_name', valueLink: (0, _reactLinkState2['default'])(this, 'first_name'), placeholder: 'First Name*', maxLength: '50', required: true })
-                )
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'TableRow' },
-                _react2['default'].createElement(
-                  'div',
-                  { className: 'TableRowItem1' },
-                  'Last Name'
-                ),
-                _react2['default'].createElement(
-                  'div',
-                  { className: 'TableRowItem3' },
-                  _react2['default'].createElement('input', { type: 'text', id: 'last_name', name: 'last_name', valueLink: (0, _reactLinkState2['default'])(this, 'last_name'), placeholder: 'Last Name*', maxLength: '50', required: true })
+                  _react2['default'].createElement('input', { type: 'text', id: 'username', name: 'username', valueLink: (0, _reactLinkState2['default'])(this, 'username'), placeholder: 'Name*', maxLength: '50', required: true })
                 )
               ),
               _react2['default'].createElement(
@@ -7191,26 +7177,12 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem1' },
-                'First Name'
+                'Name'
               ),
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.user.first_name
-              )
-            ),
-            _react2['default'].createElement(
-              'div',
-              { className: 'TableRow' },
-              _react2['default'].createElement(
-                'div',
-                { className: 'TableRowItem1' },
-                'Last Name'
-              ),
-              _react2['default'].createElement(
-                'div',
-                { className: 'TableRowItem3' },
-                this.props.user.last_name
+                this.props.user.username
               )
             ),
             _react2['default'].createElement(
@@ -7726,8 +7698,7 @@ module.exports =
         switch (entity) {
           case 'user':
             this.setState({
-              first_name: this.props.user.first_name,
-              last_name: this.props.user.last_name,
+              username: this.props.user.username,
 
               mobilePhone: this.props.user.mobilePhone,
 
@@ -7946,7 +7917,7 @@ module.exports =
       value: function _onCheckedPatient(event) {
         if (event.target.checked === true) {
           this.setState({
-            fullName: this.props.user.first_name + ' ' + this.props.user.last_name
+            fullName: this.props.user.username
           });
         } else {
           this.setState({
