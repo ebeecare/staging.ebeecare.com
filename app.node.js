@@ -6151,7 +6151,7 @@ module.exports =
         // set booking status
         var bookingStatus = '';
         if (this.props.booking['case'].status === 'Accepting Quotes') {
-          bookingStatus = 'Pending Confirmation';
+          bookingStatus = 'Awaiting Caregiver';
         } else if (this.props.booking['case'].status === 'Closed' && this.props.booking['case'].isPaid) {
           bookingStatus = 'Paid & Confirmed';
         } else if (this.props.booking['case'].status === 'Closed' && !this.props.booking['case'].isPaid) {
