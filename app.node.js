@@ -7717,7 +7717,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  _react2['default'].createElement('input', { type: 'text', id: 'username', name: 'username', valueLink: (0, _reactLinkState2['default'])(this, 'username'), placeholder: 'Name*', maxLength: '50', required: true })
+                  _react2['default'].createElement('input', { type: 'text', id: 'fullName', name: 'fullName', valueLink: (0, _reactLinkState2['default'])(this, 'fullName'), placeholder: 'Name*', maxLength: '50', required: true })
                 )
               ),
               _react2['default'].createElement(
@@ -7765,7 +7765,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.user.username
+                this.props.user.fullName
               )
             ),
             _react2['default'].createElement(
@@ -7996,7 +7996,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  this.props.patients[this.state.patientId].addresses[0].address
+                  this.props.patients && this.props.patients[this.state.patientId] && this.props.patients[this.state.patientId].addresses && this.props.patients[this.state.patientId].addresses[0] && this.props.patients[this.state.patientId].addresses[0].address
                 )
               ),
               _react2['default'].createElement(
@@ -8010,7 +8010,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  this.props.patients[this.state.patientId].addresses[0].unitNumber
+                  this.props.patients && this.props.patients[this.state.patientId] && this.props.patients[this.state.patientId].addresses && this.props.patients[this.state.patientId].addresses[0] && this.props.patients[this.state.patientId].addresses[0].unitNumber
                 )
               ),
               _react2['default'].createElement(
@@ -8024,7 +8024,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  this.props.patients[this.state.patientId].addresses[0].postalCode
+                  this.props.patients && this.props.patients[this.state.patientId] && this.props.patients[this.state.patientId].addresses && this.props.patients[this.state.patientId].addresses[0] && this.props.patients[this.state.patientId].addresses[0].postalCode
                 )
               )
             );
@@ -8281,7 +8281,7 @@ module.exports =
         switch (entity) {
           case 'user':
             this.setState({
-              username: this.props.user.username,
+              fullName: this.props.user.fullName,
 
               mobilePhone: this.props.user.mobilePhone,
 
@@ -8500,7 +8500,7 @@ module.exports =
       value: function _onCheckedPatient(event) {
         if (event.target.checked === true) {
           this.setState({
-            fullName: this.props.user.username
+            fullName: this.props.user.fullName
           });
         } else {
           this.setState({
