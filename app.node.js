@@ -8052,24 +8052,6 @@ module.exports =
         });
       }
     }, {
-      key: '_onChangeNewDob',
-      value: function _onChangeNewDob(event) {
-        this.setState({
-          dob_temp: event.target.value
-        });
-      }
-    }, {
-      key: '_onBlurNewDob',
-      value: function _onBlurNewDob(event) {
-        // validate date (especially for manual keyboard input)
-        var d = (0, _moment2['default'])(event.target.value, 'YYYY-MM-DD');
-        var valid = d.isValid() && d.isBefore(new Date(), 'day');
-        this.setState({
-          dob: valid ? d.toDate() : '',
-          dob_temp: undefined
-        });
-      }
-    }, {
       key: '_onSelectGender',
       value: function _onSelectGender(entity, event) {
         var obj = {};
@@ -8077,67 +8059,22 @@ module.exports =
         this.setState(obj);
       }
     }, {
-      key: '_onChangePostalCode',
-      value: function _onChangePostalCode(event) {
-        var that = this;
-        var postalCodeInput = event.target;
-        this.setState({
-          postalCode: postalCodeInput.value
-        });
-        if (postalCodeInput.value.length === 6) {
-          // console.log(postalCodeInput.value);
-          try {
-            // postalCodeInput.disabled = true;
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({
-              'address': postalCodeInput.value,
-              'region': 'SG'
-            }, function (results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                var position = results[0].geometry.location;
-                geocoder.geocode({
-                  latLng: position
-                }, function (responses) {
-                  if (responses && responses.length > 0) {
-                    that.setState({
-                      address: responses[0].formatted_address
-                    });
-                    // postalCodeInput.disabled = false;
-                  } else {
-                      // postalCodeInput.disabled = false;
-                      console.error('Invalid postal code.');
-                    }
-                });
-              } else {
-                // postalCodeInput.disabled = false;
-                console.error('Invalid postal code.');
-              }
-            });
-          } catch (e) {
-            // postalCodeInput.disabled = false;
-            console.error('Unable to find your address.');
-          }
-        }
-      }
-    }, {
       key: '_onClickSavePatient',
-      value: function _onClickSavePatient(event) {
+      value: function _onClickSavePatient(values) {
         var _this3 = this;
 
-        if (this._patientDetailsForm.checkValidity()) {
-          event.preventDefault();
-
-          this.setState({
+        return new Promise(function (resolve) {
+          _this3.setState({
             savingPatient: true
           });
-          this.props.createPatient({
-            fullName: this.state.fullName,
-            gender: this.state.gender,
-            dob: (0, _moment2['default'])(this.state.dob).format('YYYY-MM-DD'),
+          _this3.props.createPatient({
+            fullName: values.fullName,
+            gender: values.gender,
+            dob: values.dob,
             addresses: [{
-              address: this.state.address,
-              postalCode: this.state.postalCode,
-              unitNumber: this.state.unitNumber
+              address: values.address,
+              postalCode: values.postalCode,
+              unitNumber: values.unitNumber
             }]
           }).then(function (res) {
             if (res.response && res.response.patient) {
@@ -8160,24 +8097,8 @@ module.exports =
               console.error('Failed to create patient.');
             }
           });
-        } else {
-          event.preventDefault();
-          // alert('Please fill up all required fields.');
-          this.props.showAlertPopup('Please fill up all required fields.');
-        }
-      }
-    }, {
-      key: '_onCheckedPatient',
-      value: function _onCheckedPatient(event) {
-        if (event.target.checked === true) {
-          this.setState({
-            fullName: this.props.user.fullName
-          });
-        } else {
-          this.setState({
-            fullName: undefined
-          });
-        }
+          resolve();
+        });
       }
     }, {
       key: '_onNext',
