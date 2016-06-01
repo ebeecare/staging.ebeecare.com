@@ -3585,6 +3585,7 @@ module.exports =
                 })
               });
             }
+            break;
           case ActionTypes.GEOCODE_SUCCESS:
             if (state.postalCode && state.postalCode.value && action.postalCode && state.postalCode.value == action.postalCode) {
               return _extends({}, state, {
@@ -3593,6 +3594,31 @@ module.exports =
                 })
               });
             }
+            break;
+          default:
+            return state;
+        }
+      },
+      bookingLocationUserPatientForm: function bookingLocationUserPatientForm(state, action) {
+        switch (action.type) {
+          case ActionTypes.HIDE_MODAL_DAYPICKER:
+            if (action.source === 'bookingLocationUserPatientForm') {
+              return _extends({}, state, {
+                dob: _extends({}, state.dob, {
+                  value: action.value
+                })
+              });
+            }
+            break;
+          case ActionTypes.GEOCODE_SUCCESS:
+            if (state.postalCode && state.postalCode.value && action.postalCode && state.postalCode.value == action.postalCode) {
+              return _extends({}, state, {
+                address: _extends({}, state.address, {
+                  value: action.address
+                })
+              });
+            }
+            break;
           default:
             return state;
         }
@@ -8231,8 +8257,8 @@ module.exports =
       setLastPage: function setLastPage(page) {
         return dispatch((0, _actions.setLastPage)(page));
       },
-      showDayPickerPopup: function showDayPickerPopup(value) {
-        return dispatch((0, _actions.showDayPickerPopup)(value));
+      showDayPickerPopup: function showDayPickerPopup(value, source) {
+        return dispatch((0, _actions.showDayPickerPopup)(value, source));
       },
       showAlertPopup: function showAlertPopup(message) {
         return dispatch((0, _actions.showAlertPopup)(message));
@@ -8329,7 +8355,7 @@ module.exports =
             _react2['default'].createElement(
               'div',
               null,
-              _react2['default'].createElement('input', _extends({ className: 'RememberMeCheckbox', type: 'checkbox' }, isPatient)),
+              _react2['default'].createElement('input', _extends({ className: 'RememberMeCheckbox', type: 'checkbox', id: 'isPatient' }, isPatient)),
               _react2['default'].createElement(
                 'label',
                 { className: 'RememberMeCheckboxLabel', htmlFor: 'isPatient' },
