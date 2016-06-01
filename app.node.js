@@ -8400,7 +8400,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'radio radio-inline' },
-                _react2['default'].createElement('input', _extends({ type: 'radio', id: 'gender_male', name: 'gender', value: 'Male' }, gender)),
+                _react2['default'].createElement('input', _extends({ type: 'radio', id: 'gender_male', name: 'gender' }, gender, { value: 'Male', checked: gender.value === 'Male' })),
                 _react2['default'].createElement(
                   'label',
                   { htmlFor: 'gender_male' },
@@ -8419,7 +8419,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'radio radio-inline' },
-                _react2['default'].createElement('input', _extends({ type: 'radio', id: 'gender_female', name: 'gender', value: 'Female' }, gender)),
+                _react2['default'].createElement('input', _extends({ type: 'radio', id: 'gender_female', name: 'gender' }, gender, { value: 'Female', checked: gender.value === 'Female' })),
                 _react2['default'].createElement(
                   'label',
                   { htmlFor: 'gender_female' },
