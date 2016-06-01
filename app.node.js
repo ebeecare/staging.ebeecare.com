@@ -3559,12 +3559,19 @@ module.exports =
         patient_firstName: function patient_firstName(value, previousValue, allValues) {
           if (allValues.isPatient) {
             return allValues.client_firstName;
-          }
+          } else return value;
         },
         patient_lastName: function patient_lastName(value, previousValue, allValues) {
           if (allValues.isPatient) {
             return allValues.client_lastName;
-          }
+          } else return value;
+        }
+      },
+      bookingLocationUserPatientForm: {
+        fullName: function fullName(value, previousValue, allValues) {
+          if (allValues.isPatient) {
+            return allValues.userName;
+          } else return value;
         }
       }
     }).plugin({
@@ -8337,7 +8344,7 @@ module.exports =
             _react2['default'].createElement(
               'div',
               { className: 'BookingLocationUserPatientFormGroup' },
-              _react2['default'].createElement('input', _extends({ type: 'text', id: 'fullName', name: 'fullName', placeholder: 'Full Name*' }, fullName)),
+              _react2['default'].createElement('input', _extends({ type: 'text', id: 'fullName', name: 'fullName', placeholder: 'Full Name*' }, fullName, { disabled: isPatient.value === true })),
               fullName.touched && fullName.error && _react2['default'].createElement(
                 'div',
                 { className: 'BookingLocationUserPatientFormError' },
@@ -8523,13 +8530,16 @@ module.exports =
 
   var reduxFormConfig = {
     form: 'bookingLocationUserPatientForm',
-    fields: ['fullName', 'dob', 'gender', 'additionalInfo', 'postalCode', 'unitNumber', 'address', 'isPatient'],
+    fields: ['userName', 'fullName', 'dob', 'gender', 'additionalInfo', 'postalCode', 'unitNumber', 'address', 'isPatient'],
     validate: validate
   };
 
   var mapStateToProps = function mapStateToProps(state) {
     // const { order } = state;
     return {
+      initialValues: {
+        userName: state.user.data && state.user.data.clients && state.user.data.clients[0] && state.user.data.clients[0].fullName
+      }
       // initialValues: {
       //   client_contactEmail: order && order.booker && order.booker.client_contactEmail || undefined,
       //   client_contactNumber: order && order.booker && order.booker.client_contactNumber || undefined,
@@ -8611,16 +8621,16 @@ module.exports =
             this.props.user ? _react2['default'].createElement(
               'ul',
               { className: 'BookingNavigation' },
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking1', link: 'booking1', icon: '1', text: 'Select Service' }),
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking2', link: 'booking2', icon: '2', text: 'Select Location' }),
+              _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking3', link: 'booking3a', icon: '3', text: 'Select Date/Time' })
+            ) : _react2['default'].createElement(
+              'ul',
+              { className: 'BookingNavigation' },
               _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking1', link: 'booking1', icon: '1', text: 'Service' }),
               _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking2', link: 'booking2', icon: '2', text: 'Location' }),
               _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking3', link: 'booking3a', icon: '3', text: 'Date/Time' }),
               _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking4', link: 'booking4', icon: '4', text: 'Patient' })
-            ) : _react2['default'].createElement(
-              'ul',
-              { className: 'BookingNavigation' },
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking1', link: 'booking1', icon: '1', text: 'Select Service' }),
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking2', link: 'booking2', icon: '2', text: 'Select Location' }),
-              _react2['default'].createElement(_BookingNavigationItem2['default'], { active: 'booking3', link: 'booking3a', icon: '3', text: 'Select Date/Time' })
             )
           )
         );
