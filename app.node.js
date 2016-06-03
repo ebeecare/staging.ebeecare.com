@@ -4836,7 +4836,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.client_firstName
+                this.props.booking && this.props.booking.client_firstName
               )
             ),
             _react2['default'].createElement(
@@ -4850,7 +4850,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.client_lastName
+                this.props.booking && this.props.booking.client_lastName
               )
             ),
             _react2['default'].createElement(
@@ -4864,7 +4864,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.client_contactEmail
+                this.props.booking && this.props.booking.client_contactEmail
               )
             ),
             _react2['default'].createElement(
@@ -4878,7 +4878,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.client_contactNumber
+                this.props.booking && this.props.booking.client_contactNumber
               )
             )
           );
@@ -4903,7 +4903,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  _react2['default'].createElement('input', { type: 'text', id: 'patient_firstName', name: 'patient_firstName', value: this.props.booking.patient_firstName, placeholder: 'First Name*', maxLength: '50', required: true })
+                  _react2['default'].createElement('input', { type: 'text', id: 'patient_firstName', name: 'patient_firstName', value: this.props.booking && this.props.booking.patient_firstName, placeholder: 'First Name*', maxLength: '50', required: true })
                 )
               ),
               _react2['default'].createElement(
@@ -4917,7 +4917,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  _react2['default'].createElement('input', { type: 'text', id: 'patient_lastName', name: 'patient_lastName', value: this.props.booking.patient_lastName, placeholder: 'Last Name*', maxLength: '50', required: true })
+                  _react2['default'].createElement('input', { type: 'text', id: 'patient_lastName', name: 'patient_lastName', value: this.props.booking && this.props.booking.patient_lastName, placeholder: 'Last Name*', maxLength: '50', required: true })
                 )
               ),
               _react2['default'].createElement(
@@ -4934,7 +4934,7 @@ module.exports =
                   _react2['default'].createElement(
                     'div',
                     { className: 'radio radio-inline' },
-                    _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_male', name: 'patient_gender', checked: this.props.booking.patient_gender === 'Male', value: 'Male', required: true }),
+                    _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_male', name: 'patient_gender', checked: this.props.booking && this.props.booking.patient_gender === 'Male', value: 'Male', required: true }),
                     _react2['default'].createElement(
                       'label',
                       { htmlFor: 'patient_gender_male' },
@@ -4953,7 +4953,7 @@ module.exports =
                   _react2['default'].createElement(
                     'div',
                     { className: 'radio radio-inline' },
-                    _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_female', name: 'patient_gender', checked: this.props.booking.patient_gender === 'Female', value: 'Female', required: true }),
+                    _react2['default'].createElement('input', { type: 'radio', id: 'patient_gender_female', name: 'patient_gender', checked: this.props.booking && this.props.booking.patient_gender === 'Female', value: 'Female', required: true }),
                     _react2['default'].createElement(
                       'label',
                       { htmlFor: 'patient_gender_female' },
@@ -4982,7 +4982,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  _react2['default'].createElement(_reactDatepicker2['default'], { selected: (0, _moment2['default'])(this.props.booking.patient_dob), maxDate: (0, _moment2['default'])(), dateFormat: 'YYYY-MM-DD', showYearDropdown: true, onChange: this._onSelectDob.bind(this), placeholderText: 'Date of Birth* (Y-M-D)' })
+                  _react2['default'].createElement(_reactDatepicker2['default'], { selected: this.props.booking && this.props.booking.patient_dob && (0, _moment2['default'])(this.props.booking.patient_dob), maxDate: (0, _moment2['default'])(), dateFormat: 'YYYY-MM-DD', showYearDropdown: true, onChange: this._onSelectDob.bind(this), placeholderText: 'Date of Birth* (Y-M-D)' })
                 )
               ),
               _react2['default'].createElement(
@@ -5016,7 +5016,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.patient_firstName
+                this.props.booking && this.props.booking.patient_firstName
               )
             ),
             _react2['default'].createElement(
@@ -5030,7 +5030,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.patient_lastName
+                this.props.booking && this.props.booking.patient_lastName
               )
             ),
             _react2['default'].createElement(
@@ -5044,7 +5044,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                this.props.booking.patient_gender
+                this.props.booking && this.props.booking.patient_gender
               )
             ),
             _react2['default'].createElement(
@@ -5058,7 +5058,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem3' },
-                (0, _moment2['default'])(this.props.booking.patient_dob, 'YYYY-MM-DD').format('ll')
+                this.props.booking && this.props.booking.patient_dob && (0, _moment2['default'])(this.props.booking.patient_dob, 'YYYY-MM-DD').format('ll')
               )
             )
           );
@@ -5137,12 +5137,12 @@ module.exports =
             _react2['default'].createElement(
               'div',
               null,
-              this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].address
+              this.props.booking && this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].address
             ),
             _react2['default'].createElement(
               'div',
               null,
-              this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].unitNumber
+              this.props.booking && this.props.booking['case'] && this.props.booking['case'].addresses && this.props.booking['case'].addresses[0] && this.props.booking['case'].addresses[0].unitNumber
             )
           );
         }
@@ -5163,7 +5163,7 @@ module.exports =
             null,
             _react2['default'].createElement(
               _reactLoader2['default'],
-              { className: 'spinner', loaded: this.props.booking.id ? true : false },
+              { className: 'spinner', loaded: this.props.booking && this.props.booking.id ? true : false },
               _react2['default'].createElement(
                 'div',
                 { className: 'BookingConfirmationWrapper' },
@@ -9664,7 +9664,7 @@ module.exports =
 
         var url;
         if (typeof window !== 'undefined') {
-          url = (window.location.href.indexOf('?') > -1 ? window.location.href.slice(0, window.location.href.indexOf('?') + 1) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
+          url = (window.location.href.indexOf('?') > -1 ? window.location.href.slice(0, window.location.href.indexOf('?')) : window.location.href) + '?bid=' + this.props.booking.id + '&email=' + this.props.booking.client_contactEmail;
           url = url.replace('#', '');
         }
 
