@@ -6686,7 +6686,7 @@ module.exports =
               _react2['default'].createElement(
                 'div',
                 { className: 'TableRowItem1' },
-                session.status === 'Active' && _react2['default'].createElement(_CloseButton2['default'], { onCloseClicked: _this._onCancelSession.bind(_this, session) })
+                session.status === 'Active' && (0, _moment2['default'])(session.dateTimeStart).isAfter((0, _moment2['default'])(), 'day') && _react2['default'].createElement(_CloseButton2['default'], { onCloseClicked: _this._onCancelSession.bind(_this, session) })
               )
             );
           })
