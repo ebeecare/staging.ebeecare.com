@@ -59,7 +59,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDom = __webpack_require__(189);
+  var _reactDom = __webpack_require__(191);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1325,8 +1325,8 @@ module.exports =
   exports.isNavigationAllowed = isNavigationAllowed;
   exports.isNextLastPage = isNextLastPage;
   exports.getCookies = getCookies;
-  exports.filterServices = filterServices;
-  exports.subFilterServices = subFilterServices;
+  exports.parseCategories = parseCategories;
+  exports.appendAllServices = appendAllServices;
   exports.calcRate = calcRate;
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -1334,6 +1334,14 @@ module.exports =
   var _moment = __webpack_require__(11);
 
   var _moment2 = _interopRequireDefault(_moment);
+
+  var _lodashUniqBy = __webpack_require__(185);
+
+  var _lodashUniqBy2 = _interopRequireDefault(_lodashUniqBy);
+
+  var _lodashSortBy = __webpack_require__(184);
+
+  var _lodashSortBy2 = _interopRequireDefault(_lodashSortBy);
 
   var PAGE_ORDERS = ['', 'booking1', 'booking2', 'booking3a', 'booking3b', 'booking3c', 'booking4', 'booking5', 'booking-confirmation', 'booking-payment'];
 
@@ -1384,29 +1392,61 @@ module.exports =
     }
   }
 
-  function filterServices(services, filter) {
-    return Object.values(services).filter(function (service) {
-      if (filter === ALL_SERVICES) return true;
-      return service.category === filter;
-    }).sort(function (a, b) {
-      return a.name.localeCompare(b.name);
-    });
+  //
+  // Output
+  //
+  // [{
+  //   name: CATEGORY_1,
+  //   children: [{
+  //     name: SUB_CATEGORY_1,
+  //     children: [{
+  //       id: SERVICE_ID_1,
+  //       ...service
+  //     }]
+  //   }]
+  // }]
+
+  function parseCategories(services) {
+    if (!services) return [];
+    return parseCategoriesLevel(Object.values(services), 0);
   }
 
-  function subFilterServices(services) {
-    var hash = {},
-        arr = [];
-    services.forEach(function (service) {
-      if (hash[service.subType]) {
-        hash[service.subType].push(service);
-      } else {
-        hash[service.subType] = [service];
-      }
-    });
-    for (var subType in hash) {
-      arr.push(hash[subType]);
+  function parseCategoriesLevel(services, index) {
+    var terms = ['category', 'subType', 'service'];
+    var hash = {};
+    if (index === 2) {
+      services.sort(function (a, b) {
+        return a[terms[index] + 'Order'] - b[terms[index] + 'Order'];
+      });
+      return services;
     }
-    return arr;
+    services.forEach(function (service, i) {
+      if (!hash[service[terms[index]]]) {
+        hash[service[terms[index]]] = [];
+      }
+      hash[service[terms[index]]].push(service);
+    });
+    var output = [];
+    for (var i in hash) {
+      output.push({ name: i, order: hash[i][0][terms[index] + 'Order'], children: parseCategoriesLevel(hash[i], index + 1) });
+    }
+    output.sort(function (a, b) {
+      return a.order - b.order;
+    });
+    return output;
+  }
+
+  function appendAllServices(tree) {
+    var t = {
+      name: ALL_SERVICES,
+      children: []
+    };
+    for (var i in tree) {
+      t.children = t.children.concat(tree[i].children);
+    }
+    tree.unshift(t);
+
+    return tree;
   }
 
   function calcRate(session, promo, sid) {
@@ -1447,8 +1487,9 @@ module.exports =
 
     ALL_SERVICES: ALL_SERVICES,
     SERVICES_CATEGORY_ORDER: SERVICES_CATEGORY_ORDER,
-    filterServices: filterServices,
-    subFilterServices: subFilterServices,
+
+    parseCategories: parseCategories,
+    appendAllServices: appendAllServices,
 
     calcRate: calcRate
   };
@@ -4047,7 +4088,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSlick = __webpack_require__(194);
+  var _reactSlick = __webpack_require__(196);
 
   var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
@@ -4055,7 +4096,7 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactAddonsCssTransitionGroup = __webpack_require__(185);
+  var _reactAddonsCssTransitionGroup = __webpack_require__(187);
 
   var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
@@ -4213,7 +4254,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactDatetime = __webpack_require__(188);
+  var _reactDatetime = __webpack_require__(190);
 
   var _reactDatetime2 = _interopRequireDefault(_reactDatetime);
 
@@ -4904,7 +4945,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactDatepicker = __webpack_require__(187);
+  var _reactDatepicker = __webpack_require__(189);
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
@@ -10680,7 +10721,7 @@ module.exports =
 
   var _reactRedux = __webpack_require__(3);
 
-  var _objectAssign = __webpack_require__(184);
+  var _objectAssign = __webpack_require__(186);
 
   var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
@@ -11267,6 +11308,12 @@ module.exports =
         var filter = _state.filter;
         var selectedService = _state.selectedService;
 
+        var serviceTree = _coreUtil2['default'].appendAllServices(_coreUtil2['default'].parseCategories(allServices));
+        var serviceTreeHash = {};
+        serviceTree.map(function (category) {
+          serviceTreeHash[category.name] = category;
+        });
+
         return _react2['default'].createElement(
           'div',
           { className: 'BookingServices' },
@@ -11282,14 +11329,16 @@ module.exports =
                 _react2['default'].createElement(
                   'ul',
                   { className: 'BookingServicesNav' },
-                  _coreUtil2['default'].SERVICES_CATEGORY_ORDER.map(function (category) {
+                  serviceTree.map(function (category) {
+                    var name = category.name;
+
                     return _react2['default'].createElement(
                       'li',
-                      { className: 'BookingServicesNav-item', key: category },
+                      { className: 'BookingServicesNav-item', key: name },
                       _react2['default'].createElement(
                         'a',
-                        { className: (0, _classnames2['default'])('BookingServicesNav-link', filter === category ? 'active' : ''), href: '#', onClick: _this._onClickFilter.bind(_this, category) },
-                        category,
+                        { className: (0, _classnames2['default'])('BookingServicesNav-link', filter === name ? 'active' : ''), href: '#', onClick: _this._onClickFilter.bind(_this, name) },
+                        name,
                         _react2['default'].createElement(
                           'span',
                           { className: 'BookingServicesNav-arrow' },
@@ -11315,7 +11364,7 @@ module.exports =
                   _react2['default'].createElement(
                     'div',
                     { className: 'BookingServicesBody' },
-                    allServices && _coreUtil2['default'].subFilterServices(_coreUtil2['default'].filterServices(allServices, filter)).map(function (services) {
+                    serviceTreeHash[filter].children.map(function (subType) {
                       var header;
                       if (filter === _coreUtil2['default'].ALL_SERVICES) {
                         header = _react2['default'].createElement(
@@ -11323,32 +11372,32 @@ module.exports =
                           null,
                           _react2['default'].createElement(
                             'a',
-                            { href: '#', onClick: _this._onClickFilter.bind(_this, services[0].category) },
-                            services[0].category
+                            { href: '#', onClick: _this._onClickFilter.bind(_this, subType.children[0].category) },
+                            subType.children[0].category
                           ),
                           ' > ',
-                          services[0].subType
+                          subType.name
                         );
                       } else {
                         header = _react2['default'].createElement(
                           'h3',
                           null,
-                          services[0].subType
+                          subType.name
                         );
                       }
                       return _react2['default'].createElement(
                         'div',
-                        { className: 'BookingServicesSection', key: services[0].subType },
+                        { className: 'BookingServicesSection', key: subType.children[0].category + subType.name },
                         header,
-                        services.map(function (service, index) {
+                        subType.children.map(function (service) {
                           var id = "BookingServicesRadio" + service.id;
                           return _react2['default'].createElement(
                             'div',
                             { className: (0, _classnames2['default'])('BookingServicesItem', service.id === selectedService ? 'active' : ''), key: service.id },
-                            _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: id, name: 'service', value: service.id, checked: service.id === selectedService, onChange: _this._onSelect.bind(_this), required: true }),
+                            _react2['default'].createElement('input', { className: 'BookingServicesRadio', type: 'radio', id: service.id, name: 'service', value: service.id, checked: service.id === selectedService, onChange: _this._onSelect.bind(_this), required: true }),
                             _react2['default'].createElement(
                               'label',
-                              { className: 'BookingServicesRadioLabel', htmlFor: id },
+                              { className: 'BookingServicesRadioLabel', htmlFor: service.id },
                               _react2['default'].createElement(
                                 'span',
                                 null,
@@ -12096,15 +12145,15 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactIconsLibFaFacebook = __webpack_require__(190);
+  var _reactIconsLibFaFacebook = __webpack_require__(192);
 
   var _reactIconsLibFaFacebook2 = _interopRequireDefault(_reactIconsLibFaFacebook);
 
-  var _reactIconsLibFaTwitter = __webpack_require__(192);
+  var _reactIconsLibFaTwitter = __webpack_require__(194);
 
   var _reactIconsLibFaTwitter2 = _interopRequireDefault(_reactIconsLibFaTwitter);
 
-  var _reactIconsLibFaInstagram = __webpack_require__(191);
+  var _reactIconsLibFaInstagram = __webpack_require__(193);
 
   var _reactIconsLibFaInstagram2 = _interopRequireDefault(_reactIconsLibFaInstagram);
 
@@ -12877,7 +12926,7 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactBurgerMenu = __webpack_require__(186);
+  var _reactBurgerMenu = __webpack_require__(188);
 
   __webpack_require__(139);
 
@@ -13090,7 +13139,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactSanfona = __webpack_require__(193);
+  var _reactSanfona = __webpack_require__(195);
 
   __webpack_require__(142);
 
@@ -13138,7 +13187,16 @@ module.exports =
       value: function render() {
         var _this = this;
 
-        var allServices = this.props.allServices;
+        var _props = this.props;
+        var allServices = _props.allServices;
+        var allServicesFetching = _props.allServicesFetching;
+        var filter = this.state.filter;
+
+        var serviceTree = _coreUtil2['default'].appendAllServices(_coreUtil2['default'].parseCategories(allServices));
+        var serviceTreeHash = {};
+        serviceTree.map(function (category) {
+          serviceTreeHash[category.name] = category;
+        });
 
         return _react2['default'].createElement(
           'div',
@@ -13158,7 +13216,7 @@ module.exports =
           ),
           _react2['default'].createElement(
             _reactLoader2['default'],
-            { className: 'spinner', loaded: allServices.isFetching ? false : true },
+            { className: 'spinner', loaded: allServicesFetching ? false : true },
             _react2['default'].createElement(
               'div',
               { className: 'ServicesNav-wrapper' },
@@ -13168,14 +13226,16 @@ module.exports =
                 _react2['default'].createElement(
                   'ul',
                   { className: 'ServicesNav' },
-                  _coreUtil2['default'].SERVICES_CATEGORY_ORDER.map(function (category) {
+                  serviceTree.map(function (category) {
+                    var name = category.name;
+
                     return _react2['default'].createElement(
                       'li',
-                      { className: 'ServicesNav-item', key: category },
+                      { className: 'ServicesNav-item', key: name },
                       _react2['default'].createElement(
                         'a',
-                        { className: (0, _classnames2['default'])('ServicesNav-link', _this.state.filter === category ? 'active' : ''), href: '#', onClick: _this._onClickFilter.bind(_this, category) },
-                        category,
+                        { className: (0, _classnames2['default'])('ServicesNav-link', filter === name ? 'active' : ''), href: '#', onClick: _this._onClickFilter.bind(_this, name) },
+                        name,
                         _react2['default'].createElement(
                           'span',
                           { className: 'ServicesNav-arrow' },
@@ -13196,20 +13256,20 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'ServicesBody' },
-                  allServices.data && _coreUtil2['default'].subFilterServices(_coreUtil2['default'].filterServices(allServices.data, this.state.filter)).map(function (services) {
+                  serviceTreeHash[filter].children.map(function (subType) {
                     return _react2['default'].createElement(
                       'div',
-                      { key: services[0].subType },
+                      { key: subType.children[0].category + subType.name },
                       _react2['default'].createElement(
                         'h3',
                         null,
-                        _this.state.filter === _coreUtil2['default'].ALL_SERVICES ? services[0].category + ' > ' : '',
-                        services[0].subType
+                        _this.state.filter === _coreUtil2['default'].ALL_SERVICES ? subType.children[0].category + ' > ' : '',
+                        subType.name
                       ),
                       _react2['default'].createElement(
                         _reactSanfona.Accordion,
                         { activeItems: -1 },
-                        services.map(function (service) {
+                        subType.children.map(function (service) {
                           return _react2['default'].createElement(
                             _reactSanfona.AccordionItem,
                             { title: service.name, key: service.id },
@@ -13276,7 +13336,8 @@ module.exports =
 
   var mapStateToProps = function mapStateToProps(state) {
     return {
-      allServices: state.allServices
+      allServices: state.allServices.data,
+      allServicesFetching: state.allServices.isFetching
     };
   };
 
@@ -18731,64 +18792,76 @@ module.exports =
 /* 184 */
 /***/ function(module, exports) {
 
-  module.exports = require("object-assign");
+  module.exports = require("lodash/sortBy");
 
 /***/ },
 /* 185 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-addons-css-transition-group");
+  module.exports = require("lodash/uniqBy");
 
 /***/ },
 /* 186 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-burger-menu");
+  module.exports = require("object-assign");
 
 /***/ },
 /* 187 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-datepicker");
+  module.exports = require("react-addons-css-transition-group");
 
 /***/ },
 /* 188 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-datetime");
+  module.exports = require("react-burger-menu");
 
 /***/ },
 /* 189 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-dom");
+  module.exports = require("react-datepicker");
 
 /***/ },
 /* 190 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/facebook");
+  module.exports = require("react-datetime");
 
 /***/ },
 /* 191 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/instagram");
+  module.exports = require("react-dom");
 
 /***/ },
 /* 192 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/twitter");
+  module.exports = require("react-icons/lib/fa/facebook");
 
 /***/ },
 /* 193 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-sanfona");
+  module.exports = require("react-icons/lib/fa/instagram");
 
 /***/ },
 /* 194 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-icons/lib/fa/twitter");
+
+/***/ },
+/* 195 */
+/***/ function(module, exports) {
+
+  module.exports = require("react-sanfona");
+
+/***/ },
+/* 196 */
 /***/ function(module, exports) {
 
   module.exports = require("react-slick");
