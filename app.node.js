@@ -1430,11 +1430,12 @@ module.exports =
 
   function parseCategoriesLevel(services, index) {
     var terms = ['category', 'subType', 'service'];
-    var name = terms[index];
+    var name = terms[index],
+        order = name + 'Order';
     if (name === 'service') name = 'name';
     var hash = {};
     if (index === 2) {
-      services = (0, _lodashSortBy2['default'])(services, [name + 'Order', name]);
+      services = (0, _lodashSortBy2['default'])(services, [order, name]);
       return services;
     }
     services.forEach(function (service, i) {
@@ -1445,7 +1446,7 @@ module.exports =
     });
     var output = [];
     for (var i in hash) {
-      output.push({ name: i, order: hash[i][0][name + 'Order'], children: parseCategoriesLevel(hash[i], index + 1) });
+      output.push({ name: i, order: hash[i][0][order], children: parseCategoriesLevel(hash[i], index + 1) });
     }
     output = (0, _lodashSortBy2['default'])(output, ['order', 'name']);
     return output;
