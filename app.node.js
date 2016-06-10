@@ -2135,123 +2135,6 @@ module.exports =
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "0def4601a4b1a46863c80ddaadc3eb3a.png";
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactRedux = __webpack_require__(3);
-
-  var _Popup = __webpack_require__(15);
-
-  var _Popup2 = _interopRequireDefault(_Popup);
-
-  __webpack_require__(130);
-
-  var _actions = __webpack_require__(4);
-
-  var ConfirmPopup = (function (_Component) {
-    _inherits(ConfirmPopup, _Component);
-
-    function ConfirmPopup() {
-      _classCallCheck(this, ConfirmPopup);
-
-      _get(Object.getPrototypeOf(ConfirmPopup.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(ConfirmPopup, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          { className: 'ConfirmPopup' },
-          _react2['default'].createElement(
-            _Popup2['default'],
-            { title: 'Confirmation', isOpen: this.props.visible, onCloseClicked: this._onClickCancel.bind(this) },
-            this.props.message,
-            this.props.children,
-            _react2['default'].createElement(
-              'div',
-              { className: 'ConfirmPopup-footer' },
-              _react2['default'].createElement(
-                'a',
-                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickOk.bind(this) },
-                'OK'
-              ),
-              _react2['default'].createElement(
-                'a',
-                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickCancel.bind(this) },
-                'Cancel'
-              )
-            )
-          )
-        );
-      }
-    }, {
-      key: '_onClickOk',
-      value: function _onClickOk(event) {
-        this.props.hideConfirmPopup();
-        this.props.onConfirmed && this.props.onConfirmed();
-        this.props.accept && this.props.accept();
-      }
-    }, {
-      key: '_onClickCancel',
-      value: function _onClickCancel(event) {
-        this.props.hideConfirmPopup();
-      }
-    }]);
-
-    return ConfirmPopup;
-  })(_react.Component);
-
-  ConfirmPopup.propTypes = {
-    onConfirmed: _react2['default'].PropTypes.func
-  };
-
-  var mapStateToProps = function mapStateToProps(state) {
-    return {
-      visible: state.modal.confirm.visible,
-      message: state.modal.confirm.message,
-      accept: state.modal.confirm.accept
-    };
-  };
-
-  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {
-      hideConfirmPopup: function hideConfirmPopup() {
-        return dispatch((0, _actions.hideConfirmPopup)());
-      }
-    };
-  };
-
-  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ConfirmPopup);
-  module.exports = exports['default'];
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -2433,6 +2316,123 @@ module.exports =
   };
 
   exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DayPickerPopup);
+  module.exports = exports['default'];
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "0def4601a4b1a46863c80ddaadc3eb3a.png";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactRedux = __webpack_require__(3);
+
+  var _Popup = __webpack_require__(15);
+
+  var _Popup2 = _interopRequireDefault(_Popup);
+
+  __webpack_require__(130);
+
+  var _actions = __webpack_require__(4);
+
+  var ConfirmPopup = (function (_Component) {
+    _inherits(ConfirmPopup, _Component);
+
+    function ConfirmPopup() {
+      _classCallCheck(this, ConfirmPopup);
+
+      _get(Object.getPrototypeOf(ConfirmPopup.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(ConfirmPopup, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(
+          'div',
+          { className: 'ConfirmPopup' },
+          _react2['default'].createElement(
+            _Popup2['default'],
+            { title: 'Confirmation', isOpen: this.props.visible, onCloseClicked: this._onClickCancel.bind(this) },
+            this.props.message,
+            this.props.children,
+            _react2['default'].createElement(
+              'div',
+              { className: 'ConfirmPopup-footer' },
+              _react2['default'].createElement(
+                'a',
+                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickOk.bind(this) },
+                'OK'
+              ),
+              _react2['default'].createElement(
+                'a',
+                { className: 'btn btn-primary btn-small', href: '#', onClick: this._onClickCancel.bind(this) },
+                'Cancel'
+              )
+            )
+          )
+        );
+      }
+    }, {
+      key: '_onClickOk',
+      value: function _onClickOk(event) {
+        this.props.hideConfirmPopup();
+        this.props.onConfirmed && this.props.onConfirmed();
+        this.props.accept && this.props.accept();
+      }
+    }, {
+      key: '_onClickCancel',
+      value: function _onClickCancel(event) {
+        this.props.hideConfirmPopup();
+      }
+    }]);
+
+    return ConfirmPopup;
+  })(_react.Component);
+
+  ConfirmPopup.propTypes = {
+    onConfirmed: _react2['default'].PropTypes.func
+  };
+
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      visible: state.modal.confirm.visible,
+      message: state.modal.confirm.message,
+      accept: state.modal.confirm.accept
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      hideConfirmPopup: function hideConfirmPopup() {
+        return dispatch((0, _actions.hideConfirmPopup)());
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ConfirmPopup);
   module.exports = exports['default'];
 
 /***/ },
@@ -6278,7 +6278,7 @@ module.exports =
 
   var _CloseButton2 = _interopRequireDefault(_CloseButton);
 
-  var _ConfirmPopup = __webpack_require__(19);
+  var _ConfirmPopup = __webpack_require__(20);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
@@ -7320,7 +7320,7 @@ module.exports =
 
   var _BookingLocationForm2 = _interopRequireDefault(_BookingLocationForm);
 
-  var _DayPickerPopup = __webpack_require__(20);
+  var _DayPickerPopup = __webpack_require__(18);
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
@@ -7696,7 +7696,7 @@ module.exports =
 
   var _BookingLocationUserPatientForm2 = _interopRequireDefault(_BookingLocationUserPatientForm);
 
-  var _DayPickerPopup = __webpack_require__(20);
+  var _DayPickerPopup = __webpack_require__(18);
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
@@ -7799,8 +7799,15 @@ module.exports =
             )
           );
         }
-        if (this.props.inlineForm && /^(patientName|patientGender|patientDob|patientLanguages|patientRace|patientReligion|patientLocation)$/i.test(this.props.inlineForm.name)) {
+        if (this.props.inlineForm && /^(patientName|patientGender|patientLanguages|patientRace|patientReligion|patientLocation)$/i.test(this.props.inlineForm.name)) {
           patientDetails = _react2['default'].createElement(_InlineForm2['default'], { fetchAddress: this.props.fetchAddress });
+        } else if (this.props.inlineForm && /^(patientDob)$/i.test(this.props.inlineForm.name)) {
+          patientDetails = _react2['default'].createElement(
+            'div',
+            null,
+            _react2['default'].createElement(_InlineForm2['default'], { fetchAddress: this.props.fetchAddress, showDayPickerPopup: this.props.showDayPickerPopup }),
+            _react2['default'].createElement(_DayPickerPopup2['default'], { title: 'Date of Birth' })
+          );
         } else if (this.props.patients && this.state.patientId) {
           if (this.state.editingPatient) {
             patientDetails = _react2['default'].createElement(
@@ -8363,7 +8370,7 @@ module.exports =
               inputs: {
                 dob: {
                   label: 'Date of Birth',
-                  type: 'text',
+                  type: 'date',
                   initialValue: this.props.patients && this.state.patientId && this.props.patients[this.state.patientId] && this.props.patients[this.state.patientId].dob
                 }
               },
@@ -9330,11 +9337,11 @@ module.exports =
 
   var _BookingPatientForm2 = _interopRequireDefault(_BookingPatientForm);
 
-  var _DayPickerPopup = __webpack_require__(20);
+  var _DayPickerPopup = __webpack_require__(18);
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
-  var _ConfirmPopup = __webpack_require__(19);
+  var _ConfirmPopup = __webpack_require__(20);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
@@ -10848,7 +10855,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _ConfirmPopup = __webpack_require__(19);
+  var _ConfirmPopup = __webpack_require__(20);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
@@ -12448,6 +12455,10 @@ module.exports =
 
   var _MultiSelect2 = _interopRequireDefault(_MultiSelect);
 
+  var _DayPickerPopup = __webpack_require__(18);
+
+  var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
+
   var _actions = __webpack_require__(4);
 
   var InlineForm = (function (_Component) {
@@ -12472,6 +12483,8 @@ module.exports =
     }, {
       key: 'render',
       value: function render() {
+        var _this = this;
+
         var _props = this.props;
         var fields = _props.fields;
         var invalid = _props.invalid;
@@ -12500,6 +12513,16 @@ module.exports =
                 case 'email':
                 case 'hidden':
                   inputField = _react2['default'].createElement('input', _extends({ type: input.type, id: name, name: name, placeholder: input.placeholder || input.label }, field));
+                  break;
+                case 'date':
+                  inputField = _react2['default'].createElement(
+                    'div',
+                    { className: 'DateInput' },
+                    _react2['default'].createElement('input', _extends({ type: 'text', id: name, name: name, placeholder: input.placeholder || input.label }, field)),
+                    _react2['default'].createElement('span', { onClick: function () {
+                        return _this.props.showDayPickerPopup && _this.props.showDayPickerPopup(field.value, 'inlineForm');
+                      } })
+                  );
                   break;
                 case 'select':
                   inputField = _react2['default'].createElement(
@@ -12575,18 +12598,18 @@ module.exports =
     }, {
       key: '_handleSubmit',
       value: function _handleSubmit() {
-        var _this = this;
+        var _this2 = this;
 
         if (this.props.onSave) {
           return this.props.onSave.apply(this, arguments).then(function () {
-            _this.props.hideInlineForm();
+            _this2.props.hideInlineForm();
           });
         } else if (this.props.ok) {
           return this.props.ok.apply(this, arguments).then(function () {
-            _this.props.hideInlineForm();
+            _this2.props.hideInlineForm();
           });
         } else return new Promise(function (resolve, reject) {
-          _this.props.hideInlineForm();
+          _this2.props.hideInlineForm();
           resolve();
         });
 
@@ -12622,7 +12645,10 @@ module.exports =
     onChange: _react.PropTypes.func,
     onBlur: _react.PropTypes.func,
     error: _react.PropTypes.string,
-    inputs: _react.PropTypes.object.isRequired
+    inputs: _react.PropTypes.object.isRequired,
+
+    fetchAddress: _react.PropTypes.func,
+    showDayPickerPopup: _react.PropTypes.func
   };
 
   var reduxFormConfig = {
@@ -18368,7 +18394,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingNavigationItem {\n  margin: 0 0.5em;\n}\n\n.BookingNavigationItem .BookingNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(28) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingNavigationItem .BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center;\n}\n\n.BookingNavigationItem a.BookingNavigation-link {}\n\n.BookingNavigationItem a.BookingNavigation-link:hover, .BookingNavigationItem a.BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center;\n}\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    padding: 0.5em;\n    font-size: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n      }\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem {\n    width: 100%;\n    border-top: 1px solid #fff;\n  }\n\n  .BookingNavigationItem:first-child {\n    border-top: none;\n  }\n  }\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingNavigationItem {\n  margin: 0 0.5em;\n}\n\n.BookingNavigationItem .BookingNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(28) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingNavigationItem .BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(19) + ") no-repeat center;\n}\n\n.BookingNavigationItem a.BookingNavigation-link {}\n\n.BookingNavigationItem a.BookingNavigation-link:hover, .BookingNavigationItem a.BookingNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n  background: url(" + __webpack_require__(19) + ") no-repeat center;\n}\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    padding: 0.5em;\n    font-size: 20px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n      }\n\n@media (max-width: 992px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link .BookingNavigationItem-text {\n    margin-left: 10px;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem .BookingNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem a.BookingNavigation-link:hover .BookingNavigationItem-icon, .BookingNavigationItem a.BookingNavigation-link.active .BookingNavigationItem-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingNavigationItem {\n    width: 100%;\n    border-top: 1px solid #fff;\n  }\n\n  .BookingNavigationItem:first-child {\n    border-top: none;\n  }\n  }\n", ""]);
 
   // exports
 
@@ -18452,7 +18478,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostNavigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #fdbc1d\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column\n  }\n  }\n\n.BookingPostNavigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item {\n  margin: 0 0.5em;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(28) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link {}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(18) + ") no-repeat center\n}\n\n@media (max-width: 1200px) {\n\n  .BookingPostNavigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n    margin-left: 10px\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item {\n    width: 100%;\n    border-top: 1px solid #fff\n  }\n\n  .BookingPostNavigation .BookingPostNavigation-item:first-child {\n    border-top: none\n  }\n    }", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.BookingPostNavigation-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color: #fdbc1d\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column\n  }\n  }\n\n.BookingPostNavigation {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item {\n  margin: 0 0.5em;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n  display: inline-block;\n  padding: 0.5em 1em;\n  color: #fff;\n  font-size: 28px;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n  display: inline-block;\n  width: 45px;\n  height: 51px;\n  background: url(" + __webpack_require__(28) + ") no-repeat center;\n  vertical-align: middle;\n  text-align: center;\n  line-height: 51px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n  vertical-align: middle;\n  margin-left: 25px\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(19) + ") no-repeat center\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link {}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n  background: url(" + __webpack_require__(19) + ") no-repeat center\n}\n\n@media (max-width: 1200px) {\n\n  .BookingPostNavigation {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation {\n    -webkit-box-pack: start;\n    -webkit-justify-content: flex-start;\n        -ms-flex-pack: start;\n            justify-content: flex-start\n  }\n  }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link .BookingPostNavigation-item-text {\n    margin-left: 10px\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link.active .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item .BookingPostNavigation-link {\n    font-size: 21px;\n    padding: 0 0.5em\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item a.BookingPostNavigation-link:hover .BookingPostNavigation-item-icon {\n    -webkit-background-size: 75% 75%;\n            background-size: 75%\n  }\n}\n\n@media (max-width: 768px) {\n\n  .BookingPostNavigation .BookingPostNavigation-item {\n    width: 100%;\n    border-top: 1px solid #fff\n  }\n\n  .BookingPostNavigation .BookingPostNavigation-item:first-child {\n    border-top: none\n  }\n    }", ""]);
 
   // exports
 
@@ -18620,7 +18646,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.InlineForm {\n  background-color: #f3f3f3;\n\n  position: relative;\n  min-height: 50px;\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n}\n\n.InlineForm input[type=radio] {\n  margin-top: 20px;\n}\n\n.InlineForm textarea {\n  width: 100%;\n}\n\n.InlineForm .InlineFormError {\n  padding: 5px 15px;\n  color: #f78d00;\n  font-size: 85%;\n}\n\n.InlineForm button {\n  margin: 5px;\n}\n\n.InlineForm .select {\n  display: inline-block;\n  margin: 0;\n}\n\n.InlineForm .InlineFormSection {\n  padding: 20px 0;\n  border-top: 1px solid #ccc;\n}\n\n.InlineForm .InlineFormSection .InlineFormGroup {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.InlineForm .InlineFormSection .InlineFormGroup .radio {\n  margin-top: 20px;\n}\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.InlineForm {\n  background-color: #f3f3f3;\n\n  position: relative;\n  min-height: 50px;\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10;\n  font-size: 21px;\n}\n\n.InlineForm input[type=radio] {\n  margin-top: 20px;\n}\n\n.InlineForm textarea {\n  width: 100%;\n}\n\n.InlineForm .DateInput {\n  margin: 0;\n}\n\n.InlineForm .InlineFormError {\n  padding: 5px 15px;\n  color: #f78d00;\n  font-size: 85%;\n}\n\n.InlineForm button {\n  margin: 5px;\n}\n\n.InlineForm .select {\n  display: inline-block;\n  margin: 0;\n}\n\n.InlineForm .InlineFormSection {\n  padding: 20px 0;\n  border-top: 1px solid #ccc;\n}\n\n.InlineForm .InlineFormSection .InlineFormGroup {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.InlineForm .InlineFormSection .InlineFormGroup .radio {\n  margin-top: 20px;\n}\n", ""]);
 
   // exports
 
@@ -18634,7 +18660,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Black\"), local(\"ProximaNova-Black\"), url(" + __webpack_require__(148) + ");\n  font-style: normal;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Black Italic\"), local(\"ProximaNova-BlackIt\"), url(" + __webpack_require__(147) + ");\n  font-style: italic;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Bold\"), local(\"ProximaNova-Bold\"), url(" + __webpack_require__(150) + ");\n  font-style: normal;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Bold Italic\"), local(\"ProximaNova-BoldIt\"), url(" + __webpack_require__(149) + ");\n  font-style: italic;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Extrabold\"), local(\"ProximaNova-Extrabld\"), url(" + __webpack_require__(152) + ");\n  font-style: normal;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Extrabold Italic\"), local(\"ProximaNova-ExtrabldIt\"), url(" + __webpack_require__(151) + ");\n  font-style: italic;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Thin\"), local(\"ProximaNovaT-Thin\"), url(" + __webpack_require__(160) + ");\n  font-style: normal;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Thin Italic\"), local(\"ProximaNova-ThinIt\"), url(" + __webpack_require__(159) + ");\n  font-style: italic;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Semibold Italic\"), local(\"ProximaNova-SemiboldIt\"), url(" + __webpack_require__(157) + ");\n  font-style: italic;\n  font-weight: 600;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Regular\"), local(\"ProximaNova-Regular\"), url(" + __webpack_require__(156) + ");\n  font-style: normal;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Regular Italic\"), local(\"ProximaNova-RegularIt\"), url(" + __webpack_require__(155) + ");\n  font-style: italic;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Light\"), local(\"ProximaNova-Light\"), url(" + __webpack_require__(154) + ");\n  font-style: normal;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Light Italic\"), local(\"ProximaNova-LightIt\"), url(" + __webpack_require__(153) + ");\n  font-style: italic;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Semibold\"), local(\"ProximaNova-Semibold\"), url(" + __webpack_require__(158) + ");\n  font-style: normal;\n  font-weight: 600;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(174) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-primary:disabled, button.btn-primary:disabled {\n  background-color: #969696;\n  cursor: default;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(178) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(177) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(179) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.DateInput {\n  display: inline-block;\n  position: relative;\n}\n\n.DateInput input {\n  width: 195px;\n  padding-right: 50px;\n}\n\n.DateInput span {\n  position: absolute;\n  right: 30px;\n  bottom: 16px;\n  height: 25px;\n  width: 25px;\n  background: url(" + __webpack_require__(176) + ") no-repeat\n}\n\n.DateInput span:hover {\n  cursor: pointer;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput:disabled, textarea:disabled {\n  color: #969696;\n  background-color: #f3f3f3;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {\n  overflow: hidden\n}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.strike-through {\n  text-decoration: line-through;\n}\n\n.nowrap {\n  white-space: nowrap;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n\n.TableRow input {\n  margin: 5px 0;\n}\n", ""]);
+  exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio, canvas, progress, video {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden], template {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active, a:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb, strong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode, kbd, pre, samp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton, input, optgroup, select, textarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton, select {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton, html input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled], html input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd, th {\n  padding: 0;\n}\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Black\"), local(\"ProximaNova-Black\"), url(" + __webpack_require__(148) + ");\n  font-style: normal;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Black Italic\"), local(\"ProximaNova-BlackIt\"), url(" + __webpack_require__(147) + ");\n  font-style: italic;\n  font-weight: 900;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Bold\"), local(\"ProximaNova-Bold\"), url(" + __webpack_require__(150) + ");\n  font-style: normal;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Bold Italic\"), local(\"ProximaNova-BoldIt\"), url(" + __webpack_require__(149) + ");\n  font-style: italic;\n  font-weight: 700;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Extrabold\"), local(\"ProximaNova-Extrabld\"), url(" + __webpack_require__(152) + ");\n  font-style: normal;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Extrabold Italic\"), local(\"ProximaNova-ExtrabldIt\"), url(" + __webpack_require__(151) + ");\n  font-style: italic;\n  font-weight: 800;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Thin\"), local(\"ProximaNovaT-Thin\"), url(" + __webpack_require__(160) + ");\n  font-style: normal;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Thin Italic\"), local(\"ProximaNova-ThinIt\"), url(" + __webpack_require__(159) + ");\n  font-style: italic;\n  font-weight: 100;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Semibold Italic\"), local(\"ProximaNova-SemiboldIt\"), url(" + __webpack_require__(157) + ");\n  font-style: italic;\n  font-weight: 600;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Regular\"), local(\"ProximaNova-Regular\"), url(" + __webpack_require__(156) + ");\n  font-style: normal;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Regular Italic\"), local(\"ProximaNova-RegularIt\"), url(" + __webpack_require__(155) + ");\n  font-style: italic;\n  font-weight: 400;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Light\"), local(\"ProximaNova-Light\"), url(" + __webpack_require__(154) + ");\n  font-style: normal;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Light Italic\"), local(\"ProximaNova-LightIt\"), url(" + __webpack_require__(153) + ");\n  font-style: italic;\n  font-weight: 300;\n}\n\n@font-face {\n  font-family: \"Proxima Nova\";\n  src: local(\"Proxima Nova Semibold\"), local(\"ProximaNova-Semibold\"), url(" + __webpack_require__(158) + ");\n  font-style: normal;\n  font-weight: 600;\n}\n\n/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\na.btn-primary, button.btn-primary {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nhtml, body {\n  margin: 0;\n  padding: 0;\n  background-color: #ffffff;\n  color: #444;\n  font-family: 'Proxima Nova',sans-serif;\n  font-size: 18px;\n}\n\nh1 {\n  color: #f78d00;\n  font-weight: normal;\n  font-size: 40px;\n}\n\nh2 {\n  font-weight: normal;\n}\n\nh3 {\n  margin: 0.5em 0;\n}\n\na {\n  color: #fdbc1d;\n  text-decoration: none\n}\n\na:hover {\n  text-decoration: underline;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nhr {\n  border: 0;\n  border-top: 1px solid #E0DFDF;\n  border-bottom: 1px solid #FEFEFE;\n  background: transparent url(" + __webpack_require__(174) + ") no-repeat center 0;\n  height: 6px;\n}\n\na.btn, button.btn {\n  text-decoration: none;\n  border: 0;\n  cursor:pointer;\n  text-align: center;\n}\n\na.btn-primary, button.btn-primary {\n  display: inline-block;\n  background-color: #f78d00;\n  text-decoration: none;\n  color: #fff;\n  width: 260px;\n  padding: 0.3em 0 0.3em 0;\n  font-size: 25px;\n  cursor:pointer\n}\n\na.btn-primary:hover, button.btn-primary:hover {\n  background-color: #fdbc1d;\n}\n\na.btn-primary:disabled, button.btn-primary:disabled {\n  background-color: #969696;\n  cursor: default;\n}\n\na.btn-small, button.btn-small {\n  width: 150px;\n  font-size: 21px;\n  padding: 0.25em 0 0.25em 0;\n}\n\na.btn-inline, button.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\ninput[type=checkbox], input[type=radio] {\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=checkbox]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;\n  border: 0.0625em solid #f78d00;\n  border-radius: 0;\n  background: transparent;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=checkbox]:not(old):checked + label > span {\n  color: #f78d00;\n}\n\ninput[type=checkbox]:not(old):checked + label > span:first-child:before {\n  content: '\\2713';\n  display: block;\n  width: 1em;\n  color: #f78d00;\n  font-size: 0.875em;\n  line-height: 1em;\n  text-align: center;\n  font-weight: bold;\n}\n\ninput[type=checkbox]:not(old):disabled + label > span:first-child {\n  border-color: #969696;\n}\n\ninput[type=radio]:not(old) {\n  width     : 2em;\n  margin    : 0;\n  padding   : 0;\n  font-size : 1em;\n  opacity   : 0\n}\n\ninput[type=radio]:not(old) + label {\n  display: inline-block;\n  margin-left: -2em;\n  line-height: 1.5em;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old) + label > span:first-child {\n  display: inline-block;\n  width: 0.875em;\n  height: 0.875em;\n  margin: 0.25em 0.5em 0.25em 0.25em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  vertical-align: bottom;\n  cursor: pointer;\n}\n\ninput[type=radio]:not(old):focus + label > span:first-child {\n  outline: -webkit-focus-ring-color auto 5px;\n}\n\ninput[type=radio]:not(old):checked + label > span:first-child > span {\n  display: block;\n  width: 0.4em;\n  height: 0.4em;\n  margin: 0.175em;/*border           : 0.0625em solid $secondary-color;*/\n  border: 1px solid #f78d00;\n  border-radius: 50%;\n  background: #f78d00;\n  cursor: pointer;\n}\n\ninput[type=text], input[type=email], input[type=password] {\n  width: 230px;\n  margin: 20px 20px 0 0;\n  padding: 15px;\n  border: 1px solid #ccc\n}\n\ninput[type=text].EmailInput, input[type=email].EmailInput, input[type=password].EmailInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(178) + ") no-repeat 12.5px;\n}\n\ninput[type=text].PasswordInput, input[type=email].PasswordInput, input[type=password].PasswordInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(177) + ") no-repeat 12.5px;\n}\n\ninput[type=text].BookingIdInput, input[type=email].BookingIdInput, input[type=password].BookingIdInput {\n  width: 195px;\n  padding-left: 50px;\n  background: url(" + __webpack_require__(179) + ") no-repeat 12.5px;\n}\n\ninput[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]::-moz-placeholder, input[type=email]::-moz-placeholder, input[type=password]::-moz-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput[type=text]:disabled, input[type=email]:disabled, input[type=password]:disabled {\n  border: 1px solid #969696;\n}\n\ninput.btn-inline {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.DateInput {\n  display: inline-block;\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.DateInput > input {\n  width: 195px;\n  padding-right: 50px;\n  margin: 0;\n}\n\n.DateInput > span {\n  position: absolute;\n  right: 15px;\n  bottom: 16px;\n  height: 25px;\n  width: 25px;\n  background: url(" + __webpack_require__(176) + ") no-repeat\n}\n\n.DateInput > span:hover {\n  cursor: pointer;\n}\n\ntextarea {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  min-width: 230px;\n  border: 1px solid #ccc;\n  margin-top: 20px;\n  padding: 15px\n}\n\ntextarea::-webkit-input-placeholder {\n  color: #ddd;\n}\n\ntextarea:-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea::-moz-placeholder {\n  color: #ddd;\n}\n\ntextarea:-ms-input-placeholder {\n  color: #ddd;\n}\n\ninput:disabled, textarea:disabled {\n  color: #969696;\n  background-color: #f3f3f3;\n}\n\n.select {\n  position: relative;\n  margin: 20px 20px 0 0;\n}\n\n.select select {\n  outline: none;\n  -webkit-appearance: none;\n  display: block;\n  width: 260px;\n  padding: 15px;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  color: #555;\n  line-height: normal;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.select > span {\n  background: #fff;\n  bottom: 5px;\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  width: 50px;\n  pointer-events: none;\n}\n\n.select > span:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 15px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.select > span:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  right: 17px;\n  margin-top: -5px;\n  pointer-events: none;\n  border-top: 8px solid #fff;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n}\n\n.radio {\n  margin-right: 20px;\n}\n\n.radio-inline {\n  display: inline-block;\n}\n\n.nav-caret {\n  display: none;\n  position: relative;\n}\n\n.nav-caret:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-top: 10px solid #f78d00;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n}\n\n.nav-caret:after {\n  content: '';\n  position: absolute;\n  left: 1px;\n  top: 0;\n  border-top: 9px solid #f3f3f3;\n  border-left: 9px solid transparent;\n  border-right: 9px solid transparent;\n}\n\n.Layout {\n  margin: 0 auto;\n}\n\n.Layout .Body {\n  overflow: hidden\n}\n\n@media (max-width: 768px) {\n\n  .Layout .Body {\n    margin-top: 57px;\n  }\n    }\n\n.small {\n  font-size: 75%;\n}\n\n.text-center {\n  text-align: center;\n}\n\n.inline {\n  display: inline-block;\n}\n\n.strike-through {\n  text-decoration: line-through;\n}\n\n.nowrap {\n  white-space: nowrap;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.error {\n  color: #FF0000;\n}\n\n.featured {\n  font-size: 25px;\n  line-height: 2em;\n}\n\n.TableRow {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row;\n      -ms-flex-flow: row;\n          flex-flow: row;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 5px 0;\n}\n\n.TableRow .TableRowItem1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.TableRow .TableRowItem2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2;\n}\n\n.TableRow .TableRowItem3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\n", ""]);
 
   // exports
 
