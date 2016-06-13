@@ -1696,15 +1696,17 @@ module.exports =
       value: function componentDidMount() {
         var _this = this;
 
+        var location = this.props.location;
+
         // if "bid" query parameter exists, must be booking manage/confirmation
-        if (this.props.location && this.props.location.query && this.props.location.query.bid && this.props.location.query.email) {
-          if (this.props.location.query.token) {
+        if (location && location.query && location.query.bid && location.query.email) {
+          if (location.query.token) {
             this.props.setPostStatus('payment-paypal');
           }
 
           this.props.getBooking({
-            bid: this.props.location.query.bid,
-            email: this.props.location.query.email
+            bid: location.query.bid,
+            email: location.query.email
           }).then(function (res) {
             if (res.response && res.response.status >= 1) {
               var data = res.response.data;
@@ -1714,7 +1716,7 @@ module.exports =
                 _this.props.setPostStatus('success');
               } else if (data && data['case'] && data['case'].status === 'Accepting Quotes') {
                 // if booking is still pending service providers
-                _coreLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: _this.props.location.query.bid, email: _this.props.location.query.email } });
+                _coreLocation2['default'].replace({ pathname: '/booking-manage', query: { bid: location.query.bid, email: location.query.email } });
               }
             } else {
               console.error('Failed to obtain booking data.');
@@ -1723,10 +1725,10 @@ module.exports =
         }
 
         // if "uid" query parameter exists, login automatically
-        if (this.props.location && this.props.location.query && this.props.location.query.uid && this.props.location.query.token) {
+        if (location && location.query && location.query.uid && location.query.token) {
           this.props.getUserWithToken({
-            id: this.props.location.query.uid,
-            token: this.props.location.query.token
+            id: location.query.uid,
+            token: location.query.token
           }).then(function (res) {
             if (res.response && res.response.status < 1) {
               console.error('Failed to get user data.');
@@ -5750,10 +5752,6 @@ module.exports =
   var _react2 = _interopRequireDefault(_react);
 
   var _reactRedux = __webpack_require__(3);
-
-  var _reactLinkState = __webpack_require__(12);
-
-  var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
   __webpack_require__(107);
 
@@ -13702,7 +13700,7 @@ module.exports =
                           _react2['default'].createElement('polygon', { fill: '#ff0000', points: '60,0 120,30 120,90 60,120 0,90 0,30' })
                         )
                       ),
-                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(163) })
+                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(164) })
                     )
                   )
                 ),
@@ -13741,7 +13739,7 @@ module.exports =
                           _react2['default'].createElement('polygon', { fill: '#ff0000', points: '60,0 120,30 120,90 60,120 0,90 0,30' })
                         )
                       ),
-                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(162) })
+                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(163) })
                     )
                   )
                 ),
@@ -13780,7 +13778,7 @@ module.exports =
                           _react2['default'].createElement('polygon', { fill: '#ff0000', points: '60,0 120,30 120,90 60,120 0,90 0,30' })
                         )
                       ),
-                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(161) })
+                      _react2['default'].createElement('image', { clipPath: 'url(#hex-mask)', height: '120', width: '120', xlinkHref: __webpack_require__(162) })
                     )
                   )
                 ),
@@ -18163,7 +18161,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Account {\n  background-image: url(" + __webpack_require__(164) + ");\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat;\n  padding: 60px 0;\n}\n\n.Account .Account-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.Account .Account-container .Account-container-item {\n  position: relative;\n  min-height: 350px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: rgba(255, 255, 255, 0.9);\n  margin: 5px;\n  padding: 40px;\n}\n\n.Account .Account-container .Account-container-item form {\n  display: inline-block;\n}\n\n.Account .Account-container .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n}\n\n.Account .Account-container .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n  border-radius: 0;\n}\n\n.Account .Account-container .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.Account .Account-container .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer .LoginInsteadLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.Account .Account-container .Account-login {}\n\n.Account .Account-container .Account-find {}\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Account {\n  background-image: url(" + __webpack_require__(161) + ");\n  background-position: center;\n  -webkit-background-size: cover;\n          background-size: cover;\n  background-repeat: no-repeat;\n  padding: 60px 0;\n}\n\n.Account .Account-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.Account .Account-container .Account-container-item {\n  position: relative;\n  min-height: 350px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 340px;\n  background-color: rgba(255, 255, 255, 0.9);\n  margin: 5px;\n  padding: 40px;\n}\n\n.Account .Account-container .Account-container-item form {\n  display: inline-block;\n}\n\n.Account .Account-container .Account-container-item form h3 {\n  color: #fdbc1d;\n  font-weight: normal;\n  font-size: 24px;\n  margin: 0 0 24px 0;\n}\n\n.Account .Account-container .Account-container-item form input {\n  margin: 0;\n  font-size: 21px;\n  border-radius: 0;\n}\n\n.Account .Account-container .Account-container-item form input + input {\n  border-top: 0;\n}\n\n.Account .Account-container .Account-container-item form a.btn {\n  width: 100%;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle {\n  height: 95px;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .LoginInsteadContainer .LoginInsteadLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer {\n  padding: 10px 0;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle .ForgotPasswordContainer .ForgotPasswordLink {\n  color: #f78d00;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old) + label > span:first-child {\n  border-color: #ccc;\n}\n\n.Account .Account-container .Account-container-item form .Account-container-item-middle input[type=checkbox]:not(old):checked + label > span {\n  color: #444;\n}\n\n.Account .Account-container .Account-login {}\n\n.Account .Account-container .Account-find {}\n", ""]);
 
   // exports
 
@@ -18914,25 +18912,25 @@ module.exports =
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "41a362787de0146bbaad2626e2cd8036.jpg";
+  module.exports = __webpack_require__.p + "97e83ef71d77e96111add3cbb6bb34bc.jpg";
 
 /***/ },
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "d81f3716cdf39c9d1a129477c7f109b8.jpg";
+  module.exports = __webpack_require__.p + "41a362787de0146bbaad2626e2cd8036.jpg";
 
 /***/ },
 /* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "7316f65273cf478b4dfa952425383b32.jpg";
+  module.exports = __webpack_require__.p + "d81f3716cdf39c9d1a129477c7f109b8.jpg";
 
 /***/ },
 /* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-  module.exports = __webpack_require__.p + "97e83ef71d77e96111add3cbb6bb34bc.jpg";
+  module.exports = __webpack_require__.p + "7316f65273cf478b4dfa952425383b32.jpg";
 
 /***/ },
 /* 165 */
