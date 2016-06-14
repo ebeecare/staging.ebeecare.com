@@ -6790,7 +6790,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  this.props.booking['case'].quotes[0].fullName
+                  this.props.booking && this.props.booking['case'] && this.props.booking['case'].quotes && this.props.booking['case'].quotes[0] && this.props.booking['case'].quotes[0].fullName
                 )
               ),
               _react2['default'].createElement(
@@ -6804,7 +6804,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  this.props.booking['case'].quotes[0].user.email
+                  this.props.booking && this.props.booking['case'] && this.props.booking['case'].quotes && this.props.booking['case'].quotes[0] && this.props.booking['case'].quotes[0].user && this.props.booking['case'].quotes[0].user.email
                 )
               ),
               _react2['default'].createElement(
@@ -6818,7 +6818,7 @@ module.exports =
                 _react2['default'].createElement(
                   'div',
                   { className: 'TableRowItem3' },
-                  this.props.booking['case'].quotes[0].user.mobilePhone
+                  this.props.booking && this.props.booking['case'] && this.props.booking['case'].quotes && this.props.booking['case'].quotes[0] && this.props.booking['case'].quotes[0].user && this.props.booking['case'].quotes[0].user.mobilePhone
                 )
               )
             )
