@@ -3041,8 +3041,8 @@ module.exports =
                       )
                     ),
                     _react2['default'].createElement(
-                      'button',
-                      { className: 'btn btn-primary', onClick: this._onClickSubmit.bind(this) },
+                      'a',
+                      { href: '#', className: 'btn btn-primary', onClick: this._onClickSubmit.bind(this) },
                       'Submit'
                     )
                   )
@@ -3279,8 +3279,8 @@ module.exports =
                       resentText
                     ),
                     _react2['default'].createElement(
-                      'button',
-                      { className: 'btn btn-primary', onClick: this._onClickSubmit.bind(this) },
+                      'a',
+                      { href: '#', className: 'btn btn-primary', onClick: this._onClickSubmit.bind(this) },
                       'Submit'
                     )
                   )
