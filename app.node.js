@@ -10716,8 +10716,10 @@ module.exports =
             booking['case'] && booking['case'].addresses && booking['case'].addresses[0] && booking['case'].addresses[0].unitNumber
           );
         }
-        if (booking && booking['case']) {
-          sessions = booking['case'].dates;
+        if (booking && booking['case'] && booking['case'].dates) {
+          sessions = booking['case'].dates.filter(function (date) {
+            return date.status === 'Active';
+          });
         }
         if (booking && booking['case']) {
           sum = parseFloat(booking['case'].price);
