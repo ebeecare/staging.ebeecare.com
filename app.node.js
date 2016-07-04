@@ -14409,7 +14409,7 @@ module.exports =
         if (location && location.query && location.query.subcat && allServices) {
           (function () {
             var subcatClass = undefined;
-            switch (location.query.subcat) {
+            switch (parseInt(location.query.subcat)) {
               case 11:
                 subcatClass = 'headheart';
                 break;
