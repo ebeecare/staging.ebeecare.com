@@ -59,7 +59,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactDom = __webpack_require__(219);
+  var _reactDom = __webpack_require__(218);
 
   var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -4308,9 +4308,9 @@ module.exports =
 
   var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-  var _reactAddonsCssTransitionGroup = __webpack_require__(215);
+  var _reactLoader = __webpack_require__(8);
 
-  var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+  var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
   __webpack_require__(110);
 
@@ -4324,9 +4324,9 @@ module.exports =
 
   var _coreLocation2 = _interopRequireDefault(_coreLocation);
 
-  var _reactLoader = __webpack_require__(8);
+  var _coreUtil = __webpack_require__(7);
 
-  var _reactLoader2 = _interopRequireDefault(_reactLoader);
+  var _coreUtil2 = _interopRequireDefault(_coreUtil);
 
   var bgImagesCount = 2;
 
@@ -4472,7 +4472,10 @@ module.exports =
         event.preventDefault();
 
         if (this.state.option) {
-          _coreLocation2['default'].push({ pathname: '/booking1', query: { sid: this.state.option } });
+          this.props.setOrderService(parseInt(this.state.option));
+          _coreUtil2['default'].isNextLastPage('booking1', this.props.lastPage) && this.props.setLastPage('booking1');
+
+          _coreLocation2['default'].push({ pathname: '/booking2' });
         }
       }
     }]);
@@ -4485,7 +4488,8 @@ module.exports =
       allServices: state.allServices.data,
       allServicesFetching: state.allServices.isFetching,
       rankedServices: state.rankedServices.data,
-      rankedServicesFetching: state.rankedServices.isFetching
+      rankedServicesFetching: state.rankedServices.isFetching,
+      lastPage: state.lastPage
     };
   };
 
@@ -4496,6 +4500,12 @@ module.exports =
       },
       getRankedServices: function getRankedServices() {
         return dispatch((0, _actions.getRankedServices)());
+      },
+      setOrderService: function setOrderService(service) {
+        return dispatch((0, _actions.setOrderService)(service));
+      },
+      setLastPage: function setLastPage(page) {
+        return dispatch((0, _actions.setLastPage)(page));
       }
     };
   };
@@ -4545,7 +4555,7 @@ module.exports =
 
   var _moment2 = _interopRequireDefault(_moment);
 
-  var _reactDatetime = __webpack_require__(218);
+  var _reactDatetime = __webpack_require__(217);
 
   var _reactDatetime2 = _interopRequireDefault(_reactDatetime);
 
@@ -5236,7 +5246,7 @@ module.exports =
 
   var _reactLinkState2 = _interopRequireDefault(_reactLinkState);
 
-  var _reactDatepicker = __webpack_require__(217);
+  var _reactDatepicker = __webpack_require__(216);
 
   var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
@@ -12863,15 +12873,15 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactIconsLibFaFacebook = __webpack_require__(220);
+  var _reactIconsLibFaFacebook = __webpack_require__(219);
 
   var _reactIconsLibFaFacebook2 = _interopRequireDefault(_reactIconsLibFaFacebook);
 
-  var _reactIconsLibFaTwitter = __webpack_require__(222);
+  var _reactIconsLibFaTwitter = __webpack_require__(221);
 
   var _reactIconsLibFaTwitter2 = _interopRequireDefault(_reactIconsLibFaTwitter);
 
-  var _reactIconsLibFaInstagram = __webpack_require__(221);
+  var _reactIconsLibFaInstagram = __webpack_require__(220);
 
   var _reactIconsLibFaInstagram2 = _interopRequireDefault(_reactIconsLibFaInstagram);
 
@@ -13864,7 +13874,7 @@ module.exports =
 
   var _classnames2 = _interopRequireDefault(_classnames);
 
-  var _reactBurgerMenu = __webpack_require__(216);
+  var _reactBurgerMenu = __webpack_require__(215);
 
   __webpack_require__(152);
 
@@ -14348,7 +14358,7 @@ module.exports =
 
   var _reactLoader2 = _interopRequireDefault(_reactLoader);
 
-  var _reactSanfona = __webpack_require__(223);
+  var _reactSanfona = __webpack_require__(222);
 
   __webpack_require__(157);
 
@@ -20062,7 +20072,7 @@ module.exports =
 
 
   // module
-  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Services {\n  min-height: 400px;\n  position: relative;\n}\n\n.Services .ServicesNav-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-top: 1px solid #f78d00;\n  border-bottom: 1px solid #f78d00\n}\n\n.Services .ServicesNav {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 10px 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n.Services .ServicesNav-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 0 0.5em;\n  text-align: center\n}\n\n.Services .ServicesNav-item + .ServicesNav-item {}\n\n.Services .ServicesNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.Services .ServicesNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.Services .ServicesNav-link.active {\n  color: #fdbc1d;\n}\n\n.Services .ServicesNav-link.active .ServicesNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.Services .ServicesNav-link.active .ServicesNav-arrow .nav-caret {\n  display: block;\n}\n\n.Services .ServiceBody {\n  border-top: 1px solid #f78d00;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper .service-icon {\n  margin: 65px 30px 30px 30px\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper {\n  -webkit-box-flex: 4;\n  -webkit-flex: 4;\n      -ms-flex: 4;\n          flex: 4;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeTitle {\n  margin-top: 65px;\n  font-size: 65px;\n  color: #f78d00;\n  word-break: break-all;\n  -webkit-hyphens: auto;\n     -moz-hyphens: auto;\n      -ms-hyphens: auto;\n          hyphens: auto;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeDesc {\n  margin-top: 25px;\n  margin-bottom: 65px;\n  line-height: 22px;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper h3 {\n  color: #f78d00;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona {\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item .react-sanfona-item-title {\n  border-top: 1px solid #ccc;\n  color: #444;\n  font-weight: 600;\n  padding: 10px;\n  -webkit-transition: background-color .3s;\n  -o-transition: background-color .3s;\n  transition: background-color .3s;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item .react-sanfona-item-body .react-sanfona-item-body-wrapper {\n  padding: 10px;\n  position: relative;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item.react-sanfona-item-expanded .react-sanfona-item-title {\n  background-color: #fdbc1d;\n  color: #fff;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item:first-child .react-sanfona-item-title {\n  border-top: none;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceItem {\n  color: #444;\n  font-size: 15px;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceItem .ServiceItemDescription {}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceItem .ServiceItemDescription-price {\n  font-style: italic;\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesTitle {\n  margin-top: 80px;\n  margin-bottom: 55px;\n  font-size: 35px;\n  color: #f78d00\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesList {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: horizontal;\n      -ms-flex-direction: horizontal;\n          flex-direction: horizontal;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  text-align: center;\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n  margin-bottom: 100px;\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItem {\n  margin: 0px 35px 0px 35px\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItemTitle {\n  color: #f78d00;\n}\n\n.Services .ServicesBody {\n  margin-top: 50px;\n  margin-bottom: 100px;\n}\n\n.Services .ServicesBody h3 {\n  color: #f78d00;\n}\n\n.Services .ServicesBody .react-sanfona {\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item .react-sanfona-item-title {\n  border-top: 1px solid #ccc;\n  color: #444;\n  font-weight: 600;\n  padding: 10px;\n  -webkit-transition: background-color .3s;\n  -o-transition: background-color .3s;\n  transition: background-color .3s;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item .react-sanfona-item-body .react-sanfona-item-body-wrapper {\n  padding: 10px;\n  position: relative;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item.react-sanfona-item-expanded .react-sanfona-item-title {\n  background-color: #fdbc1d;\n  color: #fff;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item:first-child .react-sanfona-item-title {\n  border-top: none;\n}\n\n.Services .ServicesBody .ServicesItem {\n  color: #444;\n  font-size: 15px;\n}\n\n.Services .ServicesBody .ServicesItem .ServicesItemDescription {}\n\n.Services .ServicesBody .ServicesItem .ServicesItemDescription-price {\n  font-style: italic;\n}\n\n.Services .ServicesFooter {\n  padding-bottom: 100px;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    border-bottom: none;\n  }\n    }\n\n@media (max-width: 1200px) {\n\n  .Services .ServicesNav {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav {\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-item {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .Services .ServicesNav-item + .ServicesNav-item {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-link.active .ServicesNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper .service-icon {\n    margin: 35px 0 0 0;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper {\n    text-align: center;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeTitle {\n    text-align: center;\n    margin: 0;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeDesc {\n    text-align: center;\n    margin: 10px 0 35px;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesTitle {\n    text-align: center;\n    margin: 20px 0 0;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesList {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItem {\n    margin: 10px auto 10px auto;\n  }\n          }\n", ""]);
+  exports.push([module.id, "/*\n * Scaffolding\n * -------------------------------------------------------------------------- */\n\n/*\n * Typography\n * -------------------------------------------------------------------------- */\n\n/*\n * Media queries breakpoints\n * -------------------------------------------------------------------------- */\n\n.Services {\n  min-height: 400px;\n  position: relative;\n}\n\n.Services .ServicesNav-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-top: 1px solid #f78d00;\n  border-bottom: 1px solid #f78d00\n}\n\n.Services .ServicesNav {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  margin: 0;\n  padding: 10px 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center\n}\n\n.Services .ServicesNav-item {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  padding: 0 0.5em;\n  text-align: center\n}\n\n.Services .ServicesNav-item + .ServicesNav-item {}\n\n.Services .ServicesNav-link {\n  position: relative;\n  display: inline-block;\n  padding: 0;\n  color: #444;\n  font-size: 25px;\n  text-decoration: none;\n  cursor: pointer\n}\n\n.Services .ServicesNav-link:hover {\n  color: #f78d00;\n  text-decoration: none;\n}\n\n.Services .ServicesNav-link.active {\n  color: #fdbc1d;\n}\n\n.Services .ServicesNav-link.active .ServicesNav-arrow {\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  width: 20px;\n  height: 14px;\n  bottom: -24px;\n  left: 0;\n  right: 0;\n}\n\n.Services .ServicesNav-link.active .ServicesNav-arrow .nav-caret {\n  display: block;\n}\n\n.Services .ServiceBody {\n  border-top: 1px solid #f78d00;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper .service-icon {\n  margin: 65px 30px 30px 30px\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper {\n  -webkit-box-flex: 4;\n  -webkit-flex: 4;\n      -ms-flex: 4;\n          flex: 4;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeTitle {\n  margin-top: 65px;\n  font-size: 65px;\n  color: #f78d00;\n  word-break: break-word;\n  -webkit-hyphens: auto;\n     -moz-hyphens: auto;\n      -ms-hyphens: auto;\n          hyphens: auto;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeDesc {\n  margin-top: 25px;\n  margin-bottom: 65px;\n  line-height: 22px;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper h3 {\n  color: #f78d00;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona {\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item .react-sanfona-item-title {\n  border-top: 1px solid #ccc;\n  color: #444;\n  font-weight: 600;\n  padding: 10px;\n  -webkit-transition: background-color .3s;\n  -o-transition: background-color .3s;\n  transition: background-color .3s;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item .react-sanfona-item-body .react-sanfona-item-body-wrapper {\n  padding: 10px;\n  position: relative;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item.react-sanfona-item-expanded .react-sanfona-item-title {\n  background-color: #fdbc1d;\n  color: #fff;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .react-sanfona .react-sanfona-item:first-child .react-sanfona-item-title {\n  border-top: none;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceItem {\n  color: #444;\n  font-size: 15px;\n}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceItem .ServiceItemDescription {}\n\n.Services .ServiceBody .ServiceDesc-wrapper .ServiceItem .ServiceItemDescription-price {\n  font-style: italic;\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesTitle {\n  margin-top: 80px;\n  margin-bottom: 55px;\n  font-size: 35px;\n  color: #f78d00\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesList {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  margin: 0 0 2em 0;\n  padding: 20px 0 0;\n  list-style: none;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItem {\n  padding: 10px 0;\n  text-align: center\n}\n\n.Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItemTitle {\n  color: #f78d00;\n  font-size: 22px;\n  padding: 5px 10px\n}\n\n.Services .ServicesBody {\n  margin-top: 50px;\n  margin-bottom: 100px;\n}\n\n.Services .ServicesBody h3 {\n  color: #f78d00;\n}\n\n.Services .ServicesBody .react-sanfona {\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item .react-sanfona-item-title {\n  border-top: 1px solid #ccc;\n  color: #444;\n  font-weight: 600;\n  padding: 10px;\n  -webkit-transition: background-color .3s;\n  -o-transition: background-color .3s;\n  transition: background-color .3s;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item .react-sanfona-item-body .react-sanfona-item-body-wrapper {\n  padding: 10px;\n  position: relative;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item.react-sanfona-item-expanded .react-sanfona-item-title {\n  background-color: #fdbc1d;\n  color: #fff;\n}\n\n.Services .ServicesBody .react-sanfona .react-sanfona-item:first-child .react-sanfona-item-title {\n  border-top: none;\n}\n\n.Services .ServicesBody .ServicesItem {\n  color: #444;\n  font-size: 15px;\n}\n\n.Services .ServicesBody .ServicesItem .ServicesItemDescription {}\n\n.Services .ServicesBody .ServicesItem .ServicesItemDescription-price {\n  font-style: italic;\n}\n\n.Services .ServicesFooter {\n  padding-bottom: 100px;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    border-bottom: none;\n  }\n    }\n\n@media (max-width: 1200px) {\n\n  .Services .ServicesNav {\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav {\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-item {\n    width: 100%;\n    text-align: left;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 65px;\n    margin: 0 0.5em;\n    border-bottom: 1px solid #ccc;\n  }\n    }\n\n@media (min-width: 768px) {\n\n  .Services .ServicesNav-item + .ServicesNav-item {\n    border-left: 1px solid #fdbc1d;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-link {\n    font-size: 18px;\n  }\n    }\n\n@media (max-width: 768px) {\n\n  .Services .ServicesNav-link.active .ServicesNav-arrow {\n    display: none;\n  }\n}\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper .service-icon {\n    margin: 35px 0 0 0;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceIcon-wrapper {\n    text-align: center;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeTitle {\n    text-align: center;\n    margin: 0;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper .ServiceContent-wrapper .ServiceSubTypeDesc {\n    text-align: center;\n    margin: 10px 0 35px;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .ServiceDesc-wrapper {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n  }\n      }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesTitle {\n    text-align: center;\n    margin: 20px 0 0;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesList {\n    padding: 0;\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n        }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItem {\n    padding: 0;\n  }\n          }\n\n@media (max-width: 768px) {\n\n  .Services .ServiceBody .OtherServices .OtherServicesList .OtherServicesItemTitle {\n    font-size: 18px;\n    padding: 5px;\n  }\n          }\n", ""]);
 
   // exports
 
@@ -20429,52 +20439,46 @@ module.exports =
 /* 215 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-addons-css-transition-group");
+  module.exports = require("react-burger-menu");
 
 /***/ },
 /* 216 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-burger-menu");
+  module.exports = require("react-datepicker");
 
 /***/ },
 /* 217 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-datepicker");
+  module.exports = require("react-datetime");
 
 /***/ },
 /* 218 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-datetime");
+  module.exports = require("react-dom");
 
 /***/ },
 /* 219 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-dom");
+  module.exports = require("react-icons/lib/fa/facebook");
 
 /***/ },
 /* 220 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/facebook");
+  module.exports = require("react-icons/lib/fa/instagram");
 
 /***/ },
 /* 221 */
 /***/ function(module, exports) {
 
-  module.exports = require("react-icons/lib/fa/instagram");
-
-/***/ },
-/* 222 */
-/***/ function(module, exports) {
-
   module.exports = require("react-icons/lib/fa/twitter");
 
 /***/ },
-/* 223 */
+/* 222 */
 /***/ function(module, exports) {
 
   module.exports = require("react-sanfona");
