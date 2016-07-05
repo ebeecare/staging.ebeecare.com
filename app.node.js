@@ -14516,7 +14516,7 @@ module.exports =
                           { className: 'ServicesList' },
                           _react2['default'].createElement(
                             _reactSanfona.Accordion,
-                            { activeItems: -1 },
+                            { activeItems: [undefined], key: subcatServices[0].id },
                             subcatServices && subcatServices.map(function (service) {
                               return _react2['default'].createElement(
                                 _reactSanfona.AccordionItem,
