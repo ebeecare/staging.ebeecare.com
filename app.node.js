@@ -87,7 +87,7 @@ module.exports =
 
   var _reducers2 = _interopRequireDefault(_reducers);
 
-  var _middlewareApi = __webpack_require__(21);
+  var _middlewareApi = __webpack_require__(22);
 
   var _middlewareApi2 = _interopRequireDefault(_middlewareApi);
 
@@ -330,7 +330,7 @@ module.exports =
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var _middlewareApi = __webpack_require__(21);
+  var _middlewareApi = __webpack_require__(22);
 
   var SERVICES_REQUEST = 'SERVICES_REQUEST';
   exports.SERVICES_REQUEST = SERVICES_REQUEST;
@@ -1816,11 +1816,11 @@ module.exports =
 
   var _BookingDetails2 = _interopRequireDefault(_BookingDetails);
 
-  var _Account = __webpack_require__(23);
+  var _Account = __webpack_require__(24);
 
   var _Account2 = _interopRequireDefault(_Account);
 
-  var _AlertPopup = __webpack_require__(24);
+  var _AlertPopup = __webpack_require__(20);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -2488,6 +2488,100 @@ module.exports =
 
   var _Popup2 = _interopRequireDefault(_Popup);
 
+  __webpack_require__(109);
+
+  var _actions = __webpack_require__(3);
+
+  var AlertPopup = (function (_Component) {
+    _inherits(AlertPopup, _Component);
+
+    function AlertPopup() {
+      _classCallCheck(this, AlertPopup);
+
+      _get(Object.getPrototypeOf(AlertPopup.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(AlertPopup, [{
+      key: 'render',
+      value: function render() {
+        return _react2['default'].createElement(
+          'div',
+          { className: 'AlertPopup' },
+          _react2['default'].createElement(
+            _Popup2['default'],
+            { title: 'Alert', isOpen: this.props.visible, onCloseClicked: this._closePopup.bind(this) },
+            this.props.message,
+            this.props.children,
+            _react2['default'].createElement(
+              'div',
+              { className: 'AlertPopup-footer' },
+              _react2['default'].createElement(
+                'a',
+                { className: 'btn btn-primary btn-small', href: '#', onClick: this._closePopup.bind(this) },
+                'OK'
+              )
+            )
+          )
+        );
+      }
+    }, {
+      key: '_closePopup',
+      value: function _closePopup() {
+        this.props.hideAlertPopup();
+      }
+    }]);
+
+    return AlertPopup;
+  })(_react.Component);
+
+  var mapStateToProps = function mapStateToProps(state) {
+    return {
+      visible: state.modal.alert && state.modal.alert.visible,
+      message: state.modal.alert && state.modal.alert.message
+    };
+  };
+
+  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+      hideAlertPopup: function hideAlertPopup() {
+        return dispatch((0, _actions.hideAlertPopup)());
+      }
+    };
+  };
+
+  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AlertPopup);
+  module.exports = exports['default'];
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _react = __webpack_require__(1);
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactRedux = __webpack_require__(4);
+
+  var _Popup = __webpack_require__(16);
+
+  var _Popup2 = _interopRequireDefault(_Popup);
+
   __webpack_require__(138);
 
   var _actions = __webpack_require__(3);
@@ -2570,7 +2664,7 @@ module.exports =
   module.exports = exports['default'];
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2696,13 +2790,13 @@ module.exports =
   };
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
   module.exports = require("react-slick");
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2940,100 +3034,6 @@ module.exports =
    </form>
   </div>
   */
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _react = __webpack_require__(1);
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactRedux = __webpack_require__(4);
-
-  var _Popup = __webpack_require__(16);
-
-  var _Popup2 = _interopRequireDefault(_Popup);
-
-  __webpack_require__(109);
-
-  var _actions = __webpack_require__(3);
-
-  var AlertPopup = (function (_Component) {
-    _inherits(AlertPopup, _Component);
-
-    function AlertPopup() {
-      _classCallCheck(this, AlertPopup);
-
-      _get(Object.getPrototypeOf(AlertPopup.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(AlertPopup, [{
-      key: 'render',
-      value: function render() {
-        return _react2['default'].createElement(
-          'div',
-          { className: 'AlertPopup' },
-          _react2['default'].createElement(
-            _Popup2['default'],
-            { title: 'Alert', isOpen: this.props.visible, onCloseClicked: this._closePopup.bind(this) },
-            this.props.message,
-            this.props.children,
-            _react2['default'].createElement(
-              'div',
-              { className: 'AlertPopup-footer' },
-              _react2['default'].createElement(
-                'a',
-                { className: 'btn btn-primary btn-small', href: '#', onClick: this._closePopup.bind(this) },
-                'OK'
-              )
-            )
-          )
-        );
-      }
-    }, {
-      key: '_closePopup',
-      value: function _closePopup() {
-        this.props.hideAlertPopup();
-      }
-    }]);
-
-    return AlertPopup;
-  })(_react.Component);
-
-  var mapStateToProps = function mapStateToProps(state) {
-    return {
-      visible: state.modal.alert && state.modal.alert.visible,
-      message: state.modal.alert && state.modal.alert.message
-    };
-  };
-
-  var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {
-      hideAlertPopup: function hideAlertPopup() {
-        return dispatch((0, _actions.hideAlertPopup)());
-      }
-    };
-  };
-
-  exports['default'] = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AlertPopup);
-  module.exports = exports['default'];
 
 /***/ },
 /* 25 */
@@ -4296,7 +4296,7 @@ module.exports =
 
   var _reactRedux = __webpack_require__(4);
 
-  var _reactSlick = __webpack_require__(22);
+  var _reactSlick = __webpack_require__(23);
 
   var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
@@ -4476,6 +4476,8 @@ module.exports =
           _coreUtil2['default'].isNextLastPage('booking1', this.props.lastPage) && this.props.setLastPage('booking1');
 
           _coreLocation2['default'].push({ pathname: '/booking2' });
+        } else {
+          this.props.showAlertPopup('Please select a service.');
         }
       }
     }]);
@@ -4506,6 +4508,9 @@ module.exports =
       },
       setLastPage: function setLastPage(page) {
         return dispatch((0, _actions.setLastPage)(page));
+      },
+      showAlertPopup: function showAlertPopup(msg) {
+        return dispatch((0, _actions.showAlertPopup)(msg));
       }
     };
   };
@@ -6526,7 +6531,7 @@ module.exports =
 
   var _CloseButton2 = _interopRequireDefault(_CloseButton);
 
-  var _ConfirmPopup = __webpack_require__(20);
+  var _ConfirmPopup = __webpack_require__(21);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
@@ -9627,7 +9632,7 @@ module.exports =
 
   var _DayPickerPopup2 = _interopRequireDefault(_DayPickerPopup);
 
-  var _ConfirmPopup = __webpack_require__(20);
+  var _ConfirmPopup = __webpack_require__(21);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
@@ -11143,7 +11148,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _ConfirmPopup = __webpack_require__(20);
+  var _ConfirmPopup = __webpack_require__(21);
 
   var _ConfirmPopup2 = _interopRequireDefault(_ConfirmPopup);
 
@@ -14059,7 +14064,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSlick = __webpack_require__(22);
+  var _reactSlick = __webpack_require__(23);
 
   var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
@@ -14370,7 +14375,7 @@ module.exports =
 
   var _Link2 = _interopRequireDefault(_Link);
 
-  var _AlertPopup = __webpack_require__(24);
+  var _AlertPopup = __webpack_require__(20);
 
   var _AlertPopup2 = _interopRequireDefault(_AlertPopup);
 
@@ -14819,7 +14824,7 @@ module.exports =
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _reactSlick = __webpack_require__(22);
+  var _reactSlick = __webpack_require__(23);
 
   var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
@@ -16010,7 +16015,7 @@ module.exports =
 
   var _componentsContainerContainer2 = _interopRequireDefault(_componentsContainerContainer);
 
-  var _componentsAccountAccount = __webpack_require__(23);
+  var _componentsAccountAccount = __webpack_require__(24);
 
   var _componentsAccountAccount2 = _interopRequireDefault(_componentsAccountAccount);
 
@@ -16207,6 +16212,10 @@ module.exports =
 
   var _componentsDownload2 = _interopRequireDefault(_componentsDownload);
 
+  var _componentsAlertPopup = __webpack_require__(20);
+
+  var _componentsAlertPopup2 = _interopRequireDefault(_componentsAlertPopup);
+
   var _default = (function (_Component) {
     _inherits(_default, _Component);
 
@@ -16228,7 +16237,8 @@ module.exports =
           _react2['default'].createElement(_componentsTestimonials2['default'], { location: this.props.location }),
           _react2['default'].createElement(_componentsFeatures2['default'], null),
           _react2['default'].createElement(_componentsActions2['default'], null),
-          _react2['default'].createElement(_componentsDownload2['default'], null)
+          _react2['default'].createElement(_componentsDownload2['default'], null),
+          _react2['default'].createElement(_componentsAlertPopup2['default'], null)
         );
       }
     }]);
@@ -19184,7 +19194,7 @@ module.exports =
 
   var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-  var _middlewareApi = __webpack_require__(21);
+  var _middlewareApi = __webpack_require__(22);
 
   var _middlewareApi2 = _interopRequireDefault(_middlewareApi);
 
